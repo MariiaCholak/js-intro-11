@@ -1,0 +1,194 @@
+RECAP:
+
+Function: it is a block of code used to run a specific task
+which can be executed repeatedly.
+It can take parameters (arguments).
+It can be return (returns a value-data back when invoked) 
+or void (does not return anything but just runs a task)
+
+function launchChrome() {
+  // body   нічого не повернеться ми просто
+   сказали run your task does it
+}
+function goToTechGlobalTrainingApp() {
+  //
+}
+function loginToApp(username, password) {
+  // 
+} 
+with void- ми просто invoke them
+launchChrome();
+goToTechGlobalTrainingApp();
+loginToApp();
+ 
+ we need store it in a variable
+let actualTitle = getTitle(); // 'Apple'
+let expectedTitle = 'Welcome to TechGlobal School Training';
+we they are not same we failed
+if(actualTitle === expectedTitle) {
+  // TEST PASSED
+}
+else {
+  // FAILED
+}
+function getTitle() {
+  //
+}
+завжди дасть щось бек
+наша дейлі робота- prepare script get expect data( examp broser)
+and always check is everything is metching
+
+1. Function Declaration 
+function functionName() {
+  // body
+}
+it's 0 arguments function
+ or we can have some parameter
+function functionName(param1, param2) {
+  // body
+}
+
+REDUNDANT: no need to use it
+
+number % 2 === 0          -> true     EVEN 
+                          -> false    ODD 
+
+number % 2 !== 0          -> true     ODD 
+                          -> false    EVEN
+
+
+let fname = 'John';
+
+fname[0]; // 'J'
+
+Use slice() for extracting multiple characters-substring from a string 
+User property access [] to get a single character
+at() is recommended to be used when getting last characters using negative indexes 
+
+
+let fullname = 'alexander mark';
+
+let fullnameArr = fullname.split(' '); // ['alexander', 'mark']
+
+
+ARROW FUNCTIONS:
+const sum3 = (num1, num2) => num1 + num2;
+const initials = (fname, lname) => `${fname[0]}.${lname[0]}.`;
+
+const isEven = number => number % 2 === 0;
+
+Function Parameters
+• A function parameter is a value accepted by the
+function.
+• A function can have any number of parameters.
+• Parameters act as variables inside the function.
+
+JS Function Expressions
+• A function is a block of code that performs a specific task.
+• A JavaScript function can also be defined using an expression and this expression
+can be stored in a variable.
+• Functions are also JavaScript objects even though the typeof operator in JavaScript
+returns "function" for functions.
+• The function above is actually an anonymous function (a function without a name).
+• Functions stored in variables do not need function names. They can be invoked
+(called) using the variable name.
+JS Arrow Functions
+• JavaScript arrow functions allows a short syntax for
+writing function expressions.
+• We don't need the function keyword, the return
+keyword, and the curly brackets.
+• Using const is safer and preferred, because a
+function expression is always constant value.
+• We can only omit the return keyword and the curly
+brackets if the function body has a single statement.
+• We can skip the parentheses if we have only one
+parameter.
+
+
+console.log(isEven(4)); // true
+
+HOISTING: moving variable declaration to the top of the file
+1. Function Declaration
+2. Function Expression 
+3. Arrow Functions
+
+
+Create a function called isWin()
+This takes 2 number args and return true if both numbers are positive (1 or above)
+Else it will return false
+
+isWin(1, 5)   -> true
+isWin(1, 0)   -> false
+isWin(2, -3)  -> false
+isWin(-4, -3) -> false
+*/
+два мають бути позитивні якщо одге негаттвне то це фолс
+function isWin1(num1, num2) {
+  return num1 > 0 && num2 > 0;
+}  або num1>1&&num>1 it's possible but on top more prefer
+
+const isWin2 = function (num1, num2) {
+  return num1 > 0 && num2 > 0;
+}; the same function, but we hava a function name as a variable name
+
+const isWin3 = (num1, num2) => num1 > 0 && num2 > 0;
+we cant skip() because it's 2 arguments
+console.log(isWin1(1, 2)); // true
+console.log(isWin2(1, 0)); // false
+
+Write a function called theEnd
+it takes 2 parameters called str, bool
+if bool is true, return the first letter from the given string
+if bool is false, return the last letter from the string
+краще читати з приколадів вони пояснюють краще
+theEnd("Hello", true)   → "H"
+theEnd("Hello", false)  → "o"
+theEnd("oh", true)      → "o"
+*/
+
+function theEnd(str, bool) {
+  if(bool===true) {    or if(boo)  треба перевірити чи бул тру
+    return str[0];
+  }
+  else {
+    return str.at(-1);
+  }
+}
+in java you can store string only in single quotes
+console.log(theEnd('Hello', true)); // 'H'
+console.log(theEnd('Hello', false)); // 'o'
+return at the same times means like a break means this function is done
+після нього писати console.log('can this run') світиться сірим  і називається unreachable
+unreachable code  все що йде після return
+we don't have a code after return statement
+зверху ми маємо приклад після ретерн ми маємо код, але вони два окремих розділені{}
+after raw return it will be unreacable, bur esle completely separate 
+
+function anyFun (){
+  return 'Hello', 123;
+  це помилка  і джава намагається перекласти це  джава перекладе друге
+
+}
+ Java try to get rid of hoisting
+
+console.log(y);
+var y = 5; underfibe
+hoisting moving variable declaration to the top of the line
+тому нам не вибиває помилку let буде underfine
+Java move to the top only because it's var, it's polutin
+let con they are not hoisting 
+
+
+var y;
+console.log(y);
+y = 5;
+
+// function hoisting
+sayHi();
+sayHi();
+
+const sayHi = () => {
+  console.log('Hi');
+}
+зверху над кодом теж читає коли function сказано йди на низ та прочитай 
+а коли ми декларує фанкшин через конст і зверху пишемо то буде помилка

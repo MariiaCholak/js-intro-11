@@ -1,0 +1,341 @@
+S Operators
+1. Assignment Operator: = sign
+2. Shorthand Assignment Operators: +=, -=, *=, %=, **=, /=
+
+  let num = 10;
+  num %= 4;
+  console.log(num); // 2
+
+3. Arithmetic Operators: +, -, *, /, **, ++, -- (incresind 1)
+
+post vs pre increment/decrement 
+
+int i = 10; досі 10, після збільшиться
+
+i++; // i = 10
+
+int j = 10;
+
+++j; // 11
+
+4. Comparison Operators: ==, ===, != нот іквел , !== стрік нот іквел, <, >, <=, >=
+*** All the comparison operators will evaluate to boolean тобто результат  (true or false)
+intervie question
+== vs ===
+== is used for loose comparison and it checks if only values are equal
+=== is used for strict comparison and it checks if both values and data types are equal
+
+'3' === 5   -> false  велю і дата тайп нот іквел
+5 == 'five' -> false  false event not digel
+5 == '5'    -> true the same value
+5 === '5'   -> false data types different
+
+Logical operator 
+It's going to convert your expression to other side
+&& logical and   ти маєш відвідувати усі класи та робити домашку
+|| logical or I'm at home or at work
+! logical not 
+
+
+
+3 > 2 &&(and) 5 (not equel)!= 5       -> false 
+ all the condition must be true. first is true/ second is false that's why its false
+
+&& (AND) Operator
+_____ && and ______ 
+якщо хоч одне не правильно, то все False. має бути два тру
+It will return true only if both conditions are true
+•It will return false if one or both conditions are false
+
+true  && true       -> true 
+true  && false      -> false
+false && true       -> false
+false && false      -> false
+I/m not at school at this moment and I'm at home as well. but I ar work that's why
+ 
+
+
+|| (OR) Operator якесь одне з них правдиве хоча б, то решта буде тру.
+It will return false only if both conditions are false
+•It will return true if one or both conditions are true
+
+_____ || ______
+true  || false      -> true I'm older than you or you're older than me
+false || true       -> true you are in person or oline student  
+true  || true       -> true  you are a student and student
+false || false      -> false both false you are not stydent and not SDAT
+
+
+! (NOT) Operator
+
+!false    ->  returns true 
+!true     ->  returns false 
+
+!not(5 === '5') -> true
+залежно де ми маємо !нот залежить все
+
+!((3 >= 3 || false) && !true)     -> true
+крок за кроком. перші внутрішні дужки тру
+!(true && (and not true) = false)
+! (true&&false)
+!false нот фолс означає тру
+// NOT (!), OR (||), AND (&&)
+
+console.log(3 ** 2 < 10 && !false && (5 % 2) == !false); // true
+true -true -1(equel true)  true 
+
+false evaluated to 0
+true = 1
+
+let b1 = !(!(('Hello' === 'Hello') || 5 > 5) && (3 * 5 >= 3 ** 4));
+('Hello' === 'Hello')- true or далы немаэ значення бо якщо э одне тру це вже буде тру,
+(3 * 5 >= 3 ** 4) фолс
+ маємо !(true && false) and if one false everuthing false
+ !false = true
+console.log(b1); // true
+Ми вживаэмо ці оперейшин з if, else boolean
+
+let age = 15;
+ if(age >= 16){ or (16 <=age)
+ // let the ger Dl   
+ }
+ else{
+    // not allowed
+ }
+
+ let loggedIn = true;
+ let enoughBalance = true;
+ if(loggedIn && enoughBalance) {
+    /// make transation
+ } 
+ esle{
+    /// you can't
+ }
+якщо одне з них фолс то не вдасться зробити транзакцію 
+
+nullish operator coalescing is new. 2020 but it's very popular
+The nullish coalescing operator (??) is a relatively new addition 
+to JavaScript, introduced in ECMAScript 2020 (ES11). 
+•It provides a concise way to handle default values for variables or 
+expressions when dealing with null or undefined values.
+NOTE: The key distinction between the nullish coalescing 
+operator (??) and the logical OR operator (||) is in how they 
+handle "falsy" values other than null and undefined. 
+•The || operator evaluates to the right-hand value if the left-hand 
+value is falsy (e.g., false, 0, an empty string, NaN, or null). 
+•The ?? operator only checks for null or undefined.
+ 
+ let name (comes from servera) не даємо зараз імя це андіфайн
+  
+ r || or 'John' якщо ымя ыз сервера не підтягну вживати джон або " " емпті
+  console.log(fetchedName) comes from server and we know it's undervine the result be empty because || or operator if the left operent 
+  is false it walways take right side.
+  /// let result = value1 || value2; 
+  if value1 is falsy, then result is always value2
+  if value1 is truthy, then the result is always value1
+  FALSY VALUES: 0, '', undefined, null, NaN, false
+тобто якщо вал1 має фослі значення хоч одне із верху це значить що воно буде вживати вал1
+
+let NameInServer = john, (hohn) true отрмаєм тру
+                  = false nj ,  то буде інше значення " "
+
+let nameInServer = false;
+let fetchedName = nameInServe ??nullish coalescing operator  'empty'
+результат фолс.
+let result = value1 ?? value2;
+if value1 is undefined or null,(не всі фослі значення) then the result is always value2
+if value1 is not undefined/null, then the result is always value1
+різниця ІІ ор має валю2 праву частину для будь яких фолсі значень
+а ?? має праву сторонуб валю2  якщо валю null or underfine
+
+let nameInServer = null;
+nameInServer = nameInServer ?? 'customer';
+console.log(`Dear ${nameInServer}`);
+якщо імя із сервера нул ор андерфайн онови до кастомерс
+with or || Im making sure it's not of falthy and with ?? sure it's not null ot underfine
+
+
+
+REFERENCE TYPES 
+- array, object, function найважливіші
+ми також маємо тисячі інших референс. не можна сторити кріетівс
+- Math, Date, Number, BigInt, String......
+- Set, Map 
+
+обджект завжди має проперті та фанкшин
+OBJECT: all built-in objects in programming languages have their own properties
+and functions. 
+важливо
+properties: information-state-instance variales about the object - what it has 
+    get data about the object
+functions/methods : behaviors/ function abilities of the object - what it does що робить
+  run the task for object
+Math.PI; // 3.14 directly asking the inf properties
+Math.max(1, 2); // 2 it's operats it's functon
+Number.MAX_SAFE_INTEGER; //  it's prorerty
+Number.MIN_SAFE_INTEGER; // 
+All property does not have paranthesis ()
+all function has parenthesis(0)
+smth() // it's function
+log () it's function, log smth to console
+function use to run the task 
+Math.max(1, 2, 10, 7); // 10 find me the numb
+
+Numbers
+ has only one type of number that can store whole or decimal numbers.
+•Many other languages has other number types like byte, short, int, long, float, double etc.
+•JS numbers are always stored as double precision (up to 15-16 digits) 
+номер може зберегкти до 16 цифр все що більше bigint
+•JavaScript uses the + operator for both addition and concatenation. Numbers are added. Strings are 
+concatenated.
+•JS converts all the strings to numbers with all the other numeric operations.
+
+NaN – Not a Number
+•NaN is a JavaScript reserved word indicating 
+that a number is not a legal number.
+•Trying to do arithmetic with a non-numeric 
+string will result in NaN (Not a Number).
+•We can use the global JavaScript function 
+isNaN() to find out if a value is a not a number.
+•typeof NaN returns a number.
+5+ Nan // Nan     0/0/ // Nan    2* "hello' // NaN 
+Nan + "hello' // NanHello  convert to string
+isNaN - find out if a value is a not a number
+isNan (5/ "Hello')// true бо це не номер?
+наче питаємо isNan(2+2) // false because it's numb
+type of Nan ///number
+
+If we use function with another fuction careful w () everything must be close
+let num = 20;
+console.log(typeof num); // number
+console.log(isNaN(num)); // false
+питає питання is чи , isNot чи не є номеромб фолс бо це є номер
+console.log(20 * 'Hi'); // NaN
+console.log(typeof NaN); // number
+console.log(isNaN(NaN)); // true чи не номер є не номер
+console.log(isNaN(5)); // false
+console.log(isNaN('Hi')); // true
+console.log(1 + NaN); // NaN немає результ бо немає валюномера
+
+Infinity 
+Infinity (or -Infinity) is the value that JS will 
+return if you calculate a number outside the 
+largest possible number.
+•typeof Infinity returns a number.
+console.log(Infinity * Infinity); // Infinity
+console.log(-Infinity * Infinity); // -Infinity 
+console.log(-Infinity + Infinity); // NaN
+console.log(Infinity / Infinity); // NaN
+console.log(Infinity % Infinity); // NaN
+console.log(Infinity ** Infinity); // Infinity
+
+JavaScript Number Properties
+roperty  Description
+MAX_VALUE  The largest number possible in JS
+MIN_VALUE  The smallest number possible in JS
+MAX_SAFE_INTEGER  The maximum safe integer ЦІ ДВА ВАЖЛИВІ
+MIN_SAFE_INTEGER The minimum safe integer
+POSITIVE_INFINITY  Infinity (returned on overflow) ЦІ НЕ ЮЗАЄМ
+NEGATIVE_INFINITY  Negative infinity (returned on 
+overflow)
+NaN  A "Not-a-Number" value
+
+Number is a bult in JS object has property and functions
+Number(all object stars with uppercase). apear a window w different inf blue box its property, 
+start with uppercase and the same time it's const we can't change int
+Number.MAX_SAFE_INTEGER = 5; (WE CANT DO IT) FAILED
+PURPLE CUBE IT'S FUNCTION(METHOD)
+
+JavaScript Number Functions
+•toString() - returns a number as a string
+•toFixed() - returns a number written with a number of 
+decimals
+НЕ ДУЖЕ toPrecision() - returns a number written with a 
+specified length
+
+let num1 = 10.4546;
+let num2 = 5;
+let num3 = 10;
+console.log(num1.toFixed(2)) // wants 10.45
+ми не пишемо через плюс чи відступ ставимо крапку і відразу ту і обовзяково взяти в дужки число на ск хочемо обрізати.
+console.log(num1.toPrecision(2))  , 10    дай мені лише 2 цифри мене не хвилює десімал частина дроби 
+console.log((22.25).toFixed(1)); // 22.3  лиши мені лише одну цифри. Дужки важливо!
+console.log((2.225).toPrecision(2)); // 2.2 мені не важливо просто дай мені дві цифри
+tofixed вжив ціни часто пресіжин майже не вживають хіба
+
+let num2 = 5;
+let num3 = 10;
+
+console.log(num2 + num3); // 15
+console.log(num2.toString() + num3.toString()); // '510'
+toString перетвор в стрінг. фанкшн повині мати обовязково дужки
+here we creat variable, write down variable and invoke a function w variable.
+
+Number Object Functions
+•Number.isInteger() - returns true if the 
+argument is an integer
+•Number.isSafeInteger() - returns true if the 
+argument is a safe integer
+•Number.parseFloat() - converts a string to a 
+number
+•Number.parseInt() - converts a string to a whole 
+number
+
+тут ми натискаємо билтінк намбер і інволв фанкш.
+ Number.isFinite(5) іс типу питає нас тру ор фолс чи 5 скінцений номер. тру
+ можна і зберегти як веріебл let r1 = Number.isFinite(5)
+console.log(Number.isFinite('Hello')); // false
+
+Number.isInteger
+integers: 10, 5, 100 /// number doesn't have decimal
+floats / doubles: 10.5, 20.21  / have decimal
+Number.isInteger(5)  /// true      5.5 /// false
+наприклад якщо вводять не правильну дату
+
+console.log(Number.isSafeInteger(9007199254740991)); // true
+перевірить чи зможе зберегти номер інфромації чи ні
+
+console.log(Number.isNaN(5));
+console.log(isNaN(5));
+isNaN()        -> global function можна інкоук це без будь яких інших обджект
+Number.isNaN() -> користувались колись вирішили зробити глобально тепер вжив без намбер
+ те саме вони зробили з parseFloat and parseInt шлобалі
+
+ console.log(Number.parseInt('10') + 5); // 15 ми можемо конверт наш номер в стрінк
+console.log(Number.parseInt('10.99') + 5); // 15   може віришити лише цілі цифри integer. дроби не читає
+console.log(Number.parseFloat('10.5') + 5); // 15.5
+console.log(Number.parseFloat('10') + 5); // 15
+Отже лише parseInt цілі цифри can't decimal а parseFloat цифри та дроби
+
+global more popular
+console.log(parseInt('100') + 1); // 101
+console.log(parseInt('100.99') + 1); // 101
+console.log(parseFloat('100.99') + 1); // 101.99
+
+some functions method we call w Number some other with variable
+different'
+ let num = 5;
+//non-static require variable or object like instance method   
+num.toString()
+num.toFixed(2)
+num.toPrecision(3)
+use w variable
+
+//static  involv with object name (like Number)
+Number.isFinite(5)
+Number.isSafeInteger(235)
+it's object
+ common
+ let price = '100.99';
+ let discount = price * 0.1; //// 10
+ let NewPrice = price + 10  //1100 hapen concatination
+ correct parseInt, but w prise the best parseFloat
+let newPrice = parseFloat(price) + 10; // 110
+console.log(newPrice);
+if we have age, count, number of items - parseI nt
+// Convert number to a string - rare
+let count = 10;
+console.log(count + 5); // 15
+console.log(count.toString() + 5); // '105' more prefer
+console.log(String(count) + 5); // '105'
+

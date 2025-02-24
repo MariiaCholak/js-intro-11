@@ -1,0 +1,609 @@
+
+
+Data Types: 
+Primitives: складення в prioritis 
+  string: used to store text data (quotes) не є книжкове пояснення для інтервю
+  number: used to store numbers including decimals  коротко і зрозуміло без книжкових значень щоб не покаазти що ти з буткеп
+  boolean: used to store true or false 
+  undefined: it is a variable declared but not assigned with value 
+  null: it is a variable declared and intentionally assigned with null stating absence of data
+  bigint: used to store larger number (64 bit) два останіх доданно недавно багато хто їх навіть не враховує
+  symbol: used to store a symbol
+ 
+ коли маємо адресу 
+2800 S River Rd  underfine я не знаю ще але ще буде інфа
+Ste 310 null це не є обовязкове поле  
+
+let streetLine1 = undefined;
+let streetLine2 = null;
+
+Reference Types: 
+Arrays: are used to store multiple same/similar data
+Objects: are used to store key-value pairs (properties) 
+Functions: are also objects    typeof object
+
+
+Arrays:  w array we use const щоб ніхто не зміг зміннити переписати
+const arr1 = []; // creating an array with array templates
+or
+const arr2 = new Array(); // creating an array with Array constructor
+але ніхто не вживає другий тип 
+
+*** constructor in all programming languages 
+Used to instantiate an object from a blueprint/templates/prototypes креслення план проект
+план будувати будинок
+ерей прототайп
+const arr = new Array(); друга частина це конструктор
+arr is the instance of the Array prototype по ньому будуть
+Array is the blueprint/prototype план
+Array() is the constructor of the Array prototype 
+We use constructors with new keyword
+
+може бути як фанкшин ерей
+const orders = [
+  {
+    productName: 'Phone Screen Protector',
+    price: 10.99
+  },
+  {
+    productName: 'Lego',
+    price: 100.99
+  }
+];
+наприклад список замовлення, 
+console.log(orders[0].price); // 10.99 з першого елемент дай мені ціну
+
+як  ерей of object
+const favorites = [
+  ['Salmon', 'Salad'],
+  ['Amok', 'My Name is Red'],
+  ['Chicago', 'LA', 'Toronto'],
+  ['Tesla', 'Toyota', 'BMW', 'Honda']
+];
+
+favorites.length; // 4
+favorites[2].length; // 3   другого ерей довжина незабуть починається з 0 ерей
+favorites[1].length; // 2
+
+// Basics of Arrays 
+const numbers = [ 10, 5, 7, -3, 15 ];
+
+// Get the size of the array using length property 
+let size = numbers.length; // 5 скільки елементів ти маєш
+console.log(size);
+// Get the elements in an array using index (indexing starts from ZERO)
+numbers[0]; // 10
+numbers[3]; // -3 
+
+numbers[-1]; // undefined числа немає 
+numbers[5]; // undefined 
+
+// How to dynamically get first and last elements in an array using property access важливо
+property access meaning  use [] w indexes
+const names = [ 'John', 'Jane', 'Max', 'Alex' ];
+
+names[0]; // always returns first name 
+names[names.length - 1]; // always returns last name
+довжина завжди змінюються і ця формула щоб динамічно використовувати -1 бо останній не врах
+
+console.log(names[1.5]); // undefined так не можна не існує
+
+// *** Interview Question 
+// How do check if a variable is array?
+
+const arr = [];
+
+console.log(typeof arr); // object
+якшо тру то ми знаємо що це ерей 
+// Array.isArray()
+/*
+TASK: checks if a variable is an instance of Array or not
+ARGUMENTS: Yes, one variable to check
+RETURN: returns a boolen. true if the variable is an Array instance, false otherwise.
+STATIC or INSTANCE: Static
+DOES IT MODIFY ORIGINAL ARRAY: No
+*/
+
+console.log(Array.isArray(arr)); // true
+на сайті  можна знайти більше методів
+ length it's not a method it's property w use it without ()
+Arrays in JavaScript
+• JS Arrays are used to store multiple values in a single variable,
+instead of declaring separate variables for each value.
+• JS Array can be created using an array literal.
+• The two examples given do exactly the same but there is no
+need to use new Array().
+• For simplicity, readability and execution speed, use the array
+literal method.
+• Arrays are a special type of objects. The typeof operator in
+JavaScript returns "object" for arrays.
+w w w . t e c h g l o b a l s c h o o l . c o m
+Accessing Array Elements
+• You can access an array element by referring to the index of the
+item.
+• Note: Array indexes start with 0.
+
+
+
+
+pop() - removes and returns the last element
+from an array.
+• push() - adds a new element to an array (at
+the end) and returns the new array's length.
+push pop дуже популярне і ми часто вживаємо їх на інтервю
+push додаємо елементи навіть багато елементів в той самий час в ОСТАННІЙ ЕЛЕМЕНТ TAIL
+const animals = ['Lion', 'Bird', 'Tiger'];
+console.log(animals.push('Rabbit')); // 4
+let newSize = animals.push('Monkey', 'Fish');
+
+console.log(newSize); // 6
+
+console.log(animals);
+
+/*
+TASK: add one or more elements to the tail (end) of the array
+ARGUMENTS: one or more elements
+RETURN: it returns the new length of the array
+STATIC or INSTANCE: Instance
+DOES IT MODIFY ORIGINAL ARRAY: Yes
+*/
+
+pop забирає останній елемент не можна за один раз багато лише один елемент 
+const numbers = [5, 10, 100, 7, 20];
+
+console.log(numbers.pop()); // 20 
+numbers.pop(); // 7
+
+console.log(numbers);
+
+/*
+TASK: removes the last element in the array
+ARGUMENTS: no args
+RETURN: returns the removed element
+  NOTE: if the array is empty, then it returns undefined
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: Yes 
+*/
+
+console.log([].pop()); // undefined
+
+JS Arrays - Shifting and Unshifting elements
+• shift() - removes the first array
+element and "shifts" all other
+elements to a lower index. It also
+returns the removed element.
+• unshift() - adds a new element
+to an array (at the beginning),
+and "unshifts" older elements. It
+also returns the new array's
+length.
+shift unshift 
+unshift додає елементи на початку можна додати декілька
+const objects = ['Laptop', 'Remote', 'Pen', 'Camera'];
+
+objects.unshift('Mouse'); // 5
+objects.unshift('Pencil', 'Eraser', 'Adapter'); // 8
+
+console.log(objects);
+
+/*
+TASK: adds one or more elements to start of the array
+ARGUMENTS: one or more elements
+RETURN: new length of the array
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: Yes
+*/
+
+
+
+shift забирає перший елемент видаляє його
+objects.shift(); // 'Pencil'
+objects.shift(); // 'Eraser'
+
+console.log(objects);
+
+console.log([].shift()); // undefined
+
+/*
+TASK: removes the last element from the start of the array
+ARGUMENTS: no args
+RETURN: returns removed element
+  NOTE: if the array is empty, then it returns undefined
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: Yes
+*/
+unshift: add elements to the head of the array - longer array 
+shift: removes elements from the head of the array - shorter array
+
+
+JS Arrays – Searching elements
+• indexOf() - returns the first index at which a given element
+can be found in the array, or -1 if it is not present.
+• includes() - checks the array if it includes a certain value
+and returns a boolean.
+• lastIndexOf() - returns the last index at which a given
+element can be found in the array, or -1 if it is not present.
+
+часто вжив коли шукаємо елемент напр на амазоні ми фільтреємо наприклад пишемо спун
+
+const students = [ 'John', 'Alex', 'Jessie', 'Jane', 'Omar', 'Omar' ];
+повертає тру або фолс
+let b1 = students.includes('John'); // true
+students.includes('John', 1); // false це означає includes John after index of 1
+students.includes('Omar'); // true
+students.includes('Max'); // false
+students.includes('jane'); // false мала буква
+console.log(b1);
+includes can take 2 arguments as well
+/*
+TASK: checks if the array has the specified element
+ARGUMENTS: takes element as an argument 
+  NOTE: it can take a second argument which is the start index of search
+RETURN: it returns true if the element exists in the array, false otherwise
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: No
+*/
+
+повертає індекс де воно є 
+students.indexOf('Jane'); // 3
+students.lastIndexOf('Jane'); // 3   бо в нас всеодно воно одне
+
+students.indexOf('Omar'); // 4 вираховує перший який попав 
+students.lastIndexOf('Omar'); // 5 пропускає перший збіг та йде до другого
+
+students.indexOf('Heidi'); // -1 бо імені у нас немає тому результ -1 бо ми всеодно маємо повернути число а -1 ніколи не має валю
+students.lastIndexOf('Heidi'); // -1
+
+/*
+indexOf() 
+TASK: checks if the array has the specified element and returns the index of first matching element
+ARGUMENTS: takes element as an argument 
+  NOTE: it can take a second argument which is the start index of search
+RETURN: it returns a valid first index if the element exists in the array, -1 otherwise
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: No
+
+lastIndexOf() 
+TASK: checks if the array has the specified element and returns the index of last matching element
+ARGUMENTS: takes element as an argument 
+  NOTE: it can take a second argument which is the start index of search
+RETURN: it returns a valid last index if the element exists in the array, -1 otherwise
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: No
+*/
+
+concat  we can merge multiple arrays
+const arr1 = [1, 2, 3];
+const arr2 = [6, 7, 8];
+const arr3 = [4, 5, 6];
+const newArr1 = arr1.concat(arr2); // [1, 2, 3, 6, 7, 8]
+(length arr1 + arr2)
+const newArr2 = arr1.concat(arr3, arr2); // [1, 2, 3, 4, 5, 6, 6, 7, 8]
+console.log(newArr1);
+console.log(newArr2);
+console.log(arr1);
+console.log(arr2);
+console.log(arr3);
+/*
+TASK: merges multiple arrays together
+ARGUMENTS: one or more arrays/elements 
+RETURN: returns a new array 
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: No
+*/
+console.log([1, 5, 10].concat(100, 35)); // [ 1, 5, 10, 100, 35 ]
+у цбому приклді кокахано що джава може конкет ерей з намбер який в () а не [] в інших мовах це була б помилка
+*** Interview Questions : mutable vs immutable !!!
+String: immutable (original value cannot be changed)
+Array: mutable (original value can be changed)
+
+it's mutates the array and return a reference to the same arrays
+Тобто воно не ствоює нове а модифікує старе  тепер вийде 321
+const numbers = [1, 2, 3];
+const newNumbers = numbers.reverse();
+console.log(newNumbers); // [ 3, 2, 1 ]
+console.log(numbers); // [ 3, 2, 1 ]
+треба бути обережний бо якщо зробили reverse to return back to oraginal, we need to male again reverse
+часто вживають для фільтрів старшиій новіший, ціна 
+не часто вживають
+/*
+TASK: reverses the array
+ARGUMENTS: no args
+RETURN: returns the same array with modification
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: Yes
+*/
+Primitives are immutable
+References are mutable
+
+ Arrays – Slicing and Splicing Arrays
+• slice() -> slices out a piece of an array and
+returns a new array.
+• splice() -> adds new items to an array.
+• first argument that defines the position where
+new elements should be added (spliced in).
+• second argument defines how many elements
+should be removed.
+• rest of the arguments define the new elements
+to be added.
+ на інтервю можуть питати яка між ними різниця бо в них дуже схожі назви
+ але вони суцільно різні
+const objects = ['Remote', 'Watch', 'Pen', 'PC', 'Mouse'];
+старт від 0 і йди до числа яке я дав, останєє число не incudes
+const partial1 = objects.slice(0, 2); // ['Remote', 'Watch']
+const partial2 = objects.slice(1, 4); // ['Watch', 'Pen', 'PC'] почни з першого індексу, отсанній не вкл тому 4/ було б вкл було б 3
+const partial3 = objects.slice(2); // ['Pen', 'PC', 'Mouse'] почни з цього індексу і йди до кінця не треба вказувати останній індекс
+не змінює оріджінал ерей
+console.log(partial1, partial2, partial3);
+console.log(objects); // ['Remote', 'Watch', 'Pen', 'PC', 'Mouse']
+
+console.log(objects.slice(-2)); // [ 'PC', 'Mouse' ] знайде останні два для нас
+console.log(objects.slice(-5, -3)); // [ 'Remote', 'Watch' ]
+ось тут я затупила   -5 починається рахувати з кінця тому ми отримуємо перше remote 
+ і -3 виходить Pen але останній індекс нот інклудет тому watch
+// Tricky point
+console.log(objects.slice(-4, -5)); // [ ]
+console.log(objects.slice(1, 0)); // [ ]
+if you start(left) index is bigger or equel then right index(end) you get empty []
+ми не можемо так вертатись назад  it was substring wich retutn it
+це не популфрно на роботі чи інтер. цей трікі 
+/*
+TASK: retrieve partial arrays using indexes
+ARGUMENTS: takes one or more index (start index inclusive, end index exclusive)
+RETURN: returns a new array
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: No
+*/
+
+console.log([1, 2, 3, 10, 50].slice(undefined, 3)); // [ 1, 2, 3 ]
+console.log([1, 2, 3, 10, 50].slice(-Infinity, Infinity)); // [ 1, 2, 3, 10, 50 ] якщо чогось немає то воно дасть ерей бек
+if start is underfine  thar slice begins at index 0 
+тобто почни з початку і йти до третього індексу але він не вкл
+if end is underfine slice extends to the end of the array
+
+
+// splice() -> it can do everything we did with pop(), push(), shift(), unshift()
+It's combanation of these methods
+const names = ['John', 'Jane', 'Alex', 'Max', 'Mariia'];
+splice first ask you  start point  and number     deleteCount?:(mean it's optional arguments you may have it or not)
+//console.log(names.splice(0, 1)); // [ 'John' ] починаючи від нуля ск елементів ти хочеш видалити тобто 2й аргумент(ск арг ти хочеш видалити)
+це поверне removed elements as an array [ john]
+//names.splice(0, 3); // this will remove first 3 elements
+start from 0 stop at 3
+
+wants add some names benween john and alex 
+this method useful to add element between in a middle
+//console.log(names.splice(2, 0, 'Adam')); // []  2=start 0=how many elements delete  last=how many elements to add
+шукаємо старт поїнт 2 чи видалємо елементи? ні 0. додай Адам
+повернеться always remove elements, but we didn't remove any elements. that's why []
+byt if we check our names Adam now between Jane and Alex
+
+// Remove 'Jane', 'Alex' and add 'Adam', 'Omar' instead
+names.splice(1, 2, 'Adam', 'Omar', 'Alina');
+start point Jane(1)  how many element's delete 2,  and add elements we can add multiple elements 
+console.log(names);
+
+/*
+splice() method 
+TASK: used to add or remove elements anywhere within the array 
+RETURN: returns the removed elements as an array 
+ARGUMENTS: 2 or more arguments 
+    1st argument is the start position-index 
+    2nd arguement is the number of elements you want to remove including the start position-index 
+    3rd... are the new elements to be added after the start position-index 
+STATIC or INSTANCE: Instance
+CHANGE ORIGINAL VALUE: YES
+*/
+
+
+DAY 2 
+Array: is a built-in object in JS used to store multiple data.
+It has properties and methods
+Array() -> array constructor
+Constructor: is a special method used to instantiate ІНІЦІалізувати  its blueprint/prototype/class
+Array.isArray()
+const arr = new Array();
+arr.slice()
+
+class Mercedes{
+  brand = "mercedes" static inf бо всі машини є мерс
+  color = "Black" instance бо вони можуть бути різного кольору
+}
+
+FROM OF
+FROM takes a string and creating a new array w all the characters of that string
+вперше вчитель вживає чей метод із нами 
+iterable - like circkle, loop 
+let name = 'John';
+const nameChars1 = name.split(''); return array back
+const nameChars2 = Array.from(name);
+console.log(nameChars1); [j o h n]
+console.log(nameChars2);
+console.log(name);
+
+/*
+TASK: creates a new array from iterable object
+ARGUMENTS: it takes an iterable object
+RETURN: a new array
+STATIC or INSTANCE: Static
+DOES IT MODIFY ORIGINAL ITERABLE OBJECT: No
+*/
+
+OF
+const arr1 = [1, 2, 3];
+const arr2 = new Array('Berlin', 'Oslo', 'Toronto'); arr constructor
+const arr3 = Array.of('John', 'Jane', 'Alex');
+const arr4 = Array.of(name, null, 5, 10.99); може бути мікс ерей
+ це три різні методи створення ерей але вживають лише перший
+console.log(arr1); те саме
+console.log(arr2); те саме 
+console.log(arr3); те саме
+console.log(arr4);
+
+console.log(Array.isArray(arr1)); тру
+console.log(Array.isArray(arr2)); тру
+console.log(Array.isArray(arr3)); тру
+/*
+TASK: creates a new array with the given items/elements
+ARGUMENTS: items/elements
+RETURN: a new array
+STATIC or INSTANCE: Static
+DOES IT MODIFY ORIGINAL ITEMS: No
+*/
+
+
+спитали в сервера
+ const arr = ['Mouse', 'Laptop', 'Keyboard', 'Camera'];
+
+// First and last elements in the array
+arr[0];
+arr[arr.length - 1]; //  OR arr.at(-1)
+ 
+  WITH STRING AND ARRAYS DO NOT EVER USE SLICE TO HET A SINGLE ELEMENT FOR THEM ONLY AT OR PROPERY ACSSES
+// Second and the second from the last
+arr[1];
+arr[arr.length - 2]; // OR arr.at(-2)
+
+// Find the average of first and last element in the below array
+const number = [ 5, 7, 12,15]
+ let age =  (number[0] + number[number.length - 1]) / 2
+ console.log(age)
+  ВЧИТЕЛЬ ЗРОБИВ const numbers = [5, 7, 12, 15];
+let first = numbers[0];
+let last = numbers.at(-1);
+let sum = first + last;
+console.log(sum / 2);
+/*
+TASK: used to retrieve element at specified index
+ARGUMENTS: it takes a number as an index
+  NOTE: it works with negative indexes as well (backward)
+RETURN: returns an element found at the specified index
+  NOTE: if there is no element at the specified index, it returns undefined
+STATIC or INSTANCE: Instance (call it w vaeiable)
+DOES IT MODIFY ORIGINAL ARRAY: No
+*/
+// [index] access vs at(index) два точно такі самі і працюють так само приклад застосування
+console.log([1, 2, 3].at(1)); // 2
+console.log([1, 2, 3][1]); // 2
+а ось приклда з негативними
+console.log([1, 2, 3].at(-1)); // 3   вернется перший з кінця
+console.log([1, 2, 3][-1]); // undefined
+коли не інсує 
+console.log([1, 2, 3].at(5)); // undefined
+console.log([1, 2, 3].at(-5)); // undefined
+console.log([1, 2, 3][5]); // undefined
+
+FILL ВЧИТЕЛЬ НЕ ВЖИВ
+const arr1 = [ 10, 6, 4, 7, 2 ];
+FILL  w 0 from position 2 untill position 4 end usually exlusive
+fill (value, start, and)
+якщо нема страту то починається з 0 якщо неемає енд то йде до кінця
+arr.fill(99, 2, 3);
+console.log(arr); ... 10. 6  99 7 2   (бо 3 не інкл)  
+
+/*
+TASK: changes the array elements with a new value/element
+ARGUMENTS: newValue for replacement, startIndex? = 0, endIndex? = arr.length
+RETURN: modified array
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: Yes
+*/
+
+
+Sort() -> sorts an array alphabetically - be
+careful with the numbers!
+• This functions performs a lexicographic
+(dictionary) sort by default, treating numbers
+as strings. This means it compares the
+characters in the number as strings, which
+can lead to unexpected results.
+• We will solve that issue later!
+ASCII CHARACTER ORDER СПЕршу йдть апер кейс тоді ловер
+const names = [ 'alex', 'Adam', 'Jane', 'John', 'alexander' ];
+sort array in place  this method mutates the array and returns a reference to the same array
+names.sort();
+console.log(names); // [ 'A dam', 'Jane', 'John', 'alex', 'alexander' ]
+SORTING ARRAYS:
+string: they will be sorted lexicographically (alphabetically)
+numbers: from smallest to biggest
+const numbers = [ 1, 40, 15, 20, 2];
+number.sort();
+console.log(numbers)  /// 1, 15, 2, 20 ,40
+ like Ascii first looking for one because it's first
+
+to solve it we need to use comparison function within the sort
+const numbers = [ 1, 40, 15, 20, 2];
+numbers.sort((a, b) => a - b); it's ASCENDING ORDER
+console.log(numbers); // [ 1, 2, 15, 20, 40 ]
+пояснення 
+ASCENDING ORDER: smallest -> largest 
+DESCENDING ORDER: largest -> smallest    (a, b) => b - a
+
+it's looks like arow function, if we don't want it use function expresion
+// [ 1, 40, 15, 20, 2]
+numbers.sort(function(a, b) {
+  return a - b we can use any names x, y 
+});
+ this function takes 2 numbers and return their subtraction
+
+a     b       a - b       result    memory 
+1     40      1-40        negative  1 sho uld be listed earlier than 40 
+40    15      40-15       positive  40 should be listed later than 15
+javaS do it for us
+
+const studentAges = [ 25, 19, 45, 55, 32 ];
+studentAges.sort((a, b) => b - a); // [ 55, 45, 32, 25, 19 ] it's desending order
+і тут ми взяли витяг із нашого результату
+console.log(`The youngest age is ${studentAges[0]}.`);
+console.log(`The oldest age is ${studentAges.at(-1)}.`);
+
+
+ми можемо у фашнкшин додати іншу фанкшин 
+function funcA(callbackFunc) {
+    console.log('This is A!');
+    callbackFunc();    /// invoke w ()
+  }
+  
+  funcA(() => console.log('This is B!')); creat a function and passing another function as an argument
+  
+  intervie qouestion
+  // funcA takes another function as a parameter -> Higher Order Function
+  // funcB is passed as and argument to another function -> Callback Function
+   we use it a lot 
+  
+  
+  function visitUrl(callbackFunc) {
+    let serverUp = true;    = false
+    if(serverUp) {
+      console.log('URL visited...');
+      callbackFunc();
+    }
+    else console.log('ERROR, server down!');
+  }
+  function searchData() {
+    console.log(`Data returned...`);
+  }
+
+  1. visitUrl(searchData);
+  2. searchData()
+  ми модемо шукати інф лише коли відвідаєм сторінку
+  ми хочемо коли це успішно відвідано тоді шукай інф
+   глянь зверху if server false  it's mean error, and we can't search 
+   if server up then we need to run second  this function
+   that's why we use callbackFunc
+   but when it's true   it's execute 2 functions
+   колись повернемось до цієї теми 
+   якщо щось одне не вийде то інші дія не вийде
+
+
+
+ 
+
+
+
+
+TASK: 
+ARGUMENTS:
+RETURN: 
+STATIC or INSTANCE: 
+DOES IT MODIFY ORIGINAL ARRAY: 

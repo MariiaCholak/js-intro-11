@@ -1,0 +1,382 @@
+RECAP:
+
+Changing cases: 
+toUpperCase();
+toLowerCase();
+
+Extract Characters:
+[] -> property access easiest way
+at(); useful work w negetive character
+charAt(); not use
+charCodeAt(); not use 
+
+First vs Last Characters in a String
+Before
+str[0]; // first char 
+str[str.length - 1]; // last char
+
+After  now
+str[0]; // first char 
+str.at(-1); // last char
+
+different if the indexes are invalid
+'Hi'[3]; // undefined 
+'Hi'.charAt(3); // ''
+'Hi'.at(3); // undefined
+
+Searching: 
+startsWith(); //return booling true false 
+endsWith(); bool
+includes();bool
+search(); ОСТАННІ ТРИ ПРАЦЮЮТЬ ТОЧНО ТАК САМО will chech if your string
+have a given  string, return as a number take string as a reject
+they return a number -1 if they don't have string
+indexOf(); always take string as a argument, looks first match left side
+lastIndexOf(); last match right side 
+
+Trimming: delete white spaces frond and back
+trim();
+trimStart();
+trimEnd();
+
+Extracting Substrings:
+slice(); mainly use
+substring(); don't use 
+difference: 
+Do they work with negative indices?
+slice()       -> YES
+substring()   -> NO, it converts to ZERO 
+
+How they act when startIndex if greater than endIndex?
+str.slice(5, 3); // '' go to 5 on the rifht side come back to 3
+str.substring(5, 3); // str.substring(3, 5);  try to make 3 to 5, it's going to give you back
+
+
+String - Extracting Partial Strings
+• split() – split a string into an array of
+substrings.
+• substring() – extract a substring from a string.
+• substr() - extract a part of a string with the
+length specified. (deprecated)
+• slice() – extract a part of a string.
+
+let str1 = 'Today is Sunday';
+const words = str1.split(' '); split spaces 3
+the best data type to store-array
+w array use const
+console.log(words); // [ 'Today', 'is', 'Sunday' ]
+console.log(words[0]); // 'Today' взяли перше слово
+console.log(words[2].slice(0, 3)); // 'Sun'
+взяли слово, а потім обрізали потрібні літери, останній індекс не включається тому не SUnd
+l
+et str2 = '+90 (312) 000 0000';
+console.log(str2.split(' ')); // [ '+1', '(312)', '000', '0000' ]
+console.log(str2.split(' ').length); // 4
+first spit by space (4 string)
+console.log(str2.split(' ')[0] === '+1'); // true///  ми можемо перевірити чи точно це відповіда
+є тому числу
+
+
+let str3 = 'C:\\Users\\techglobal\\Desktop\\MyFolder'; // треба ставити два слаші щоб побачити один в кінці
+console.log(str3.split('\\')); теж означає один  слаш 
+наш сеперейтор не лише спейс це може бути що завгодно 
+let str4 = 'One word or two';
+console.log(str4.split('word')); // [ 'One ', ' or two' ] \\\  array 2 elements ми ніколи це не будемо вживати
+
+let str5 = 'Apple';
+console.log(str5.split('')); empty string  divide each character // [ 'A', 'p', 'p', 'l', 'e' ]
+
+let countWords = 'I am at school and teaching JS String split method today!'.split(' ').length; /// split by space
+console.log(countWords); // 11
+
+transation  date дата з сайтів йде одна а в джаві дата число місяць років
+2025-02-14 02-14-2025 нот іквел
+const actualDate = '2025-02-14'; зберегли дату
+const appDate = actualDate.split('-'); 
+console.log(appDate); розділились індекси
+
+let expectedDate = `${appDate[1]}/${appDate[2]}/${appDate[0]}`;конвертуємо 
+вживаємо '' для конвертації
+console.log(expectedDate);
+
+console.log(expectedDate === '02/14/2025'); точно перевірити чи те саме тру
+найбільше вжив
+
+/*
+TASK: split the string with the given separator
+ARGUMENTS: Yes, a string or regex separator
+RETURN: returns an Array of your splitted substrings  
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/
+
+// EDGE Case  ... дасть якийсь не той результ 
+let str6 = 'Hello';
+
+console.log(str6.split('.')); //   у нас немає крапки і результ буде те саме але в значенні ерей[ 'Hello' ]
+
+String - Replacing Strings
+• replace() – replace a substring in a
+string with a new one.
+• replaceAll() – replace all occurrences
+of a substring that matches a pattern
+with a new one.
+читати інструкції в програмі
+цей метод не змінює старе значення треба створити новe string  and safe через let
+let str = '123 Street 123';
+let strReplaced = str.replace('123', '###'); /// didn't change the second one only first
+let strReplacedAll = str.replaceAll('123', '###');
+console.log(str);
+console.log(strReplaced);
+console.log(strReplacedAll); усі значення
+/*
+replace() method
+TASK: replaces the first found occurrence of searchString with another string
+ARGUMENTS: 2 args, searchString, newValue(replace w newvalue)
+RETURN: returns a new string with replacement applied  
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/
+
+/*
+replaceA;;() method
+TASK: replaces all the found occurrences of searchString with another string
+ARGUMENTS: 2 args, searchString, newValue
+RETURN: returns a new string with replacement applied  
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/
+
+// EDGE
+let str1 = 'Today is Sunday';
+console.log(str1.replace('Saturday', 'Monday'));
+ result nothing will be change, result today is sunday
+
+we cant use sumbers or string methods w each other!!!
+not- Hello.toFixed(не можна намбер метод застосовув зі стрінк)
+console.log(str1.replaceAll('day', 'XXX'));
+ми маємо 2 дні that why they will be replace //// toxxx is sunxx
+l
+
+String - Padding доповнення
+padStart() & padEnd() – pad a string with another string until the
+result string reaches the given length.
+letter.padStart(5, "1") //1111$ means add 1 at the beginning of the string untill you get length 5
+needs add four ones because + $=5
+
+Method Chaining
+• Chaining methods allows you to perform multiple
+operations on the same object in a concise and
+readable way.
+
+We can use one method wright after another as far it's make sence
+let splitString=str.trim().toUpperCase().split(" "); //// hello, WORLD
+Assume that you are given a string of any length
+ПРАКТИКА В КЛАСІ
+Get the last 5 characters from it
+Morning     -> rning
+Saturday    -> urday
+Hello       -> Hello
+*/
+let str11 = 'Hello';
+ДВА ШЛЯХИ: ЯКЩО ДАЄМО НЕГАТИВНИЙ ІНДЕКС ДО СЛАЙС ЦЕ ОЗНАЧАЄ РАХУЙ З КІНЦЯ 
+І ЦЕ МІЙ старт індекс якщо я не вказую кінцевий що означає почни з -5(R) та йди до кінця слова 
+// let res1 = str1.slice(str1.length - 5);
+let res1 = str11.slice(-5); 
+let str2 = 'saturday'
+let result2 = str1.slice(3); or  потрібно під кожне слово міняти цифри зверху універсальний для всіх
+let result3 = str2.slice(str2.lenght - 5);
+we don't use substring, use slice
+last 2 last 4 recomends use slice negttive 5
+
+let str =javascript
+/*
+Assume that you are given a string of any length
+Get the first 3 characters and the last 3 characters
+Then, concatenate these in a new string
+JavaScript      -> Javipt
+Hello           -> Helllo
+123             -> 123123
+*/
+let str13 = 'JavaScript';
+let res2 = str13.slice(0, 3) + str2.slice(-3); // 3 not include
+console.log(res2)
+abab
+concatination don't need
+et str1 = 'abc';
+let str2 = '123';
+str1 + str2; // 'abc123'
+`${str1}${str2}`; // 'abc123'
+str1.concat(str2); // 'abc123' don't use
+
+   'John'.concat(' ', 'is', ' ', '25', ' years old.'); зєднає речення
+
+repeat() method повторює фразу 
+let str = 'ABC';
+let res = str.repeat(3); // 'ABCABCABC'
+
+
+08_JS_Basic_Functions
+Functions in JavaScript
+• A function is a block of code that performs a specific task
+• Functions are also known as methods or behaviors of the
+class
+• A JS function is defined with the function keyword, followed by
+a name, and by parentheses ().
+• The parentheses may include parameter-argument names
+separated by commas.
+Function Components
+• name- It is an identifier that is used to refer to the function in a program, could be any name but should be meaningful to increase
+readability of your code.
+• function body - It includes the programming statements that are used to perform some tasks. The function body is enclosed
+inside the curly braces { }.
+• function parameters – Arguments that we pass inside the function parentheses.
+• return - used to return a value from function which can be used later outside the function. return will terminate the function
+Function Parameters
+• A function parameter is a value accepted by the
+function.
+• A function can have any number of parameters.
+• Parameters act as variables inside the function.
+S Function Expressions
+• A function is a block of code that performs a specific task.
+• A JavaScript function can also be defined using an expression and this expression
+can be stored in a variable.
+• Functions are also JavaScript objects even though the typeof operator in JavaScript
+returns "function" for functions.
+• The function above is actually an anonymous function (a function without a name).
+• Functions stored in variables do not need function names. They can be invoked
+(called) using the variable name.
+umber methods
+Math methods
+String methods
+Additional Methods or Functions 
+1. Libraries 
+2. Custom (власний)methods or functions 
+ми будемо створювати багато фанкшин, щось що ми робимо завжди і думаємо було б добре якби був якийсь метод
+
+When we create our custom functions or methods, we should always have below
+defined before starting.
+тобто нам потрібно disign our method
+getRandomNumber(start, end); 
+TASK:
+ARGS - PARAMS:
+RETURN:
+треба знати ці рішення що я хочу зробити
+
+BENEFITS of CREATING CUSTOM FUNCTIONS-METHODS:
+-It makes programming easier, creating programs-apps easier 
+-REUSABILITY: create once, use everyhere whenever needed
+-READABILITY, MAINTAINABILITY
+
+How do we create functions:
+1. we use function keyword to declare a function.. function.printHi()
+2. we give our function always a meaningful name
+3. decide if you will have argumentss or no .. 
+4. implement впровадити the body of the function: block of code will be executed each time
+you invoke the function
+ми це робили коли декларували веріабле let =  а це function
+function should have a body оце  {
+// Function declaration
+function printHi() {
+  console.log('Hi');
+} printHi();
+printHi();
+} you cant have the 2 same variable name and function at the same file
+function завжди треба писати!
+
+
+// Function declaration
+  function runMyDaily() {
+    console.log('Prepare coffee');
+    console.log('Take a shower');
+    console.log('Drink coffee');
+    console.log('Head to school');
+  }  хочемо вживати багато разів або копіювати і завжди можна його вжив
+  тому можна створити нову function
+  runMyDaily();
+  runMyDaily();
+  runMyDaily();
+  function always need to have()  id it's empty mean we don't use any arguments
+  
+  // Function declaration with an argument додаємо якусь інф в()
+  function hiName(name) {          це імя буде дано в майьутнбмоу динамічно
+    console.log(`Hi ${name}!`);     різні іменна, це шаблон
+  }
+  hiName('John');
+  hiName('Adam');
+  this method they don't return anithing they only excequte the line
+  call this method as void 
+  
+  void method-functions: they do not return any value 
+return method-functions: they return a value //// let result
+
+ми створили
+  // Function declaration with 2 arguments
+  // Take 2 args called as greet, name 
+  // function name greetName 
+  // greetName('Hello', 'John') -> print 'Hello, John!'
+  // greetName('Good morning', 'Jane') -> print 'Good morning, Jane!'
+  динамічно ця інф comes as arguments 
+  ми робили ПРАКТИКА
+  обовязково вживати function name which given to us, дано дві аргумент, тому треба вживати разом
+  order don't change!(name, greet- fail)
+  ми незнаємо яке привітання та імя але вони дадуть пізінше
+  function greetName(greet, name) {
+    console.log(`${greet}, ${name}!`); .. це наша function
+  }
+  greetName('Good evening', 'Max');
+  greetName('Hi', 'Stefan');
+  greetName('Bye', 'Mariia');
+  !!! не можна мати тут console.log('good morning, ${name}!`)
+  because we hard code it, we not dynamicaly get the greet, the same name we can't HARD CODE IT
+  
+  RETURN TYPE FUNCTIONS 
+these are functions returning a value-data when invoked, MEAN WHEN YOU USE THEM
+
+function multiply(num1, num2) {     name multiply
+  let result = num1 * num2;
+  return result;   ми отримали зворотній результат
+}
+multiply (2,5) ми не бачимого його це вжу retutn ми можемо або зберегти
+з новоб variable let r = multiply or console log it
+  console.log(multiply(2, 5));
+  я можу робити з результатом залежить від мене
+  
+  /*
+  Create a function called as average
+  This function takes 2 parameters called as num1, num2 
+  And it returns the average of these arguments
+  */
+  function average(num1, num2) {
+    return (num1 + num2) / 2;     / 
+  }
+  or longer way
+  function average(num1, num2) {
+ let sum = num1 + num2
+ let  average = sum / 2
+ return average; }
+  
+  console.log(average(3, 5)); ...4
+  console.log(average(0, 0)); //0
+  console.log(average(-1, -3));////2
+  console.log(average(5, -3)); ///1
+
+
+utils, utilities, helpers, support
+щоб застосувати файл з utility спуршу треба export його(коли відправл щось)
+ module.exports.getRandomNumber = getRandomNumber;  кажумо це будемо використовувати десь інакше
+
+MODULES: used to import/export reusable function, classes, components 
+1. Before ES6: CommonJS (module.export and require)
+2. After ES6: ES6 Modules (export and import)
+
+щоб його використовувати треба  спершу це імпортувати
+нам треба дати як стрінк './ telling i'm in this homework what i have here
+тоді наші рухи як би відриваємо папки це крапки 
+я сказав я хочу вжив це з цієї адреси
+
+const { getRandomNumber } = require('./../utils/MathHelper.js');
+let r11 = getRandomNumber(1, 100);
+let r12 = getRandomNumber(1, 100);
+let r13 = getRandomNumber(1, 100);
+ console.log(r11, r12, r13)

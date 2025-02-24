@@ -1,0 +1,412 @@
+
+
+pushing code: publishing/sharing your code with others 
+pulling code:  retrieving/gettign others code into your local
+we can't get rid of our code
+*** NOTE:
+When creating new repositories on GitHub and linking them with your local
+projects, DO NOT USE HTTPS.
+
+We'll use SSH for authentication!
+
+Creating SSH:
+Stands for Secure Shell
+Used for authentication
+
+1. ssh-keygen 
+
+
+
+HOW TO CREATE AND PUSH A NEW PROJECT FROM LOCAL TO REMOTE
+1. Create a project on your local 
+2. Create a remote repo
+3. Initialize your local project with GIT 
+  git init 
+
+4. Link your local project with remote repo
+  git remote add origin <remote-url>
+
+5. Stage the changes 
+  git add <file-name>
+  git add .
+
+6. Commit the changes with a meaningful message 
+  git commit -m "message"
+
+7. Publish your changes / push 
+  git push
+
+
+GIT PUSH - existing local repo
+First time for the branch: Use one of the below
+git push --set-upstream origin master
+git push -u origin master
+
+Later: git push
+
+Check if GIT is installed with git –-version (in our terminal) we ask
+• https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+
+git config --global user.name "John Doe"
+ git config --global user.email johndoe@example.com
+ тут ми редагували наші дані імя на акаунті та пошту
+
+git config --list    в терміналі можна побачити наші user name and vail
+
+якщо в нас є master то скрізь має бути мастерб якщо main то має бути main
+in github go to account-setting -repositories-make sure it's musters
+
+IT (Global Information Tracker)
+• GIT is a software for tracking changes in any set of files, and usually used for coordinating work among programmers to
+collaboratively develop the source code.
+• VCS (Version Control System)
+• Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.
+• Version Control Types
+1. Centralized - one central server and many users
+2. Distributed - local repositories added for each user (Git)
+main difference is having everything centralized in the server and have direct connection w it from workstation(laptop, or coworker)
+if it's some issues w the server then you lose connection anf you can't pull or push code
+you need to wait when connection is back
+we don't rely on centralized 
+
+VCS - Centralized
+• It uses a central server to store all files and enables team collaboration.
+• Repository is not locally available and always need to be connected to a
+network to perform any action.
+• Since everything is centralized, in any case of the central server getting
+crashed or corrupted will result in losing the entire data of the project.
+• REPOSITORY (FOLDER OR PROJECT) IS NOT IN YOUR LOCAL.
+• You need to be online all the time while working on the task
+
+in our local we call it project but when we push it to Git -it's name now as a repository(code in a cloud)
+
+Distributed even server doen't work we still be able to change, update our local copy
+and when it's fix w server it's running we can push from here
+іншими слова тут інший шар, навіть якщо сервер не працює ти маєш середній рівень з яким ти можеш далі працювати навіть якщо сервер не відповідає and you can committing your changes
+it's give you extra layer to keep work w your code
+
+GIT allows
+- team members to collaborate
+- track and revert (повернути) changes
+It is also an open-source tool.
+
+GIT vs GitHub
+• GIT is a software for tracking changes in any set of files, and usually used for coordinating work among programmers to
+collaboratively develop the source code.
+• GIT is an open-source tool that allows
+- team members to collaborate
+- track and revert changes
+• GitHub is a website where developers store their projects as repositories and have additional features to help them to collaborate
+to develop projects.
+• Similar hosting websites: GitLab, Bitbucket
+diffferent beyween them gitHub- onle web application you visit it on web www
+to see your changes that you did w Git. you push your code 
+git - software for tracking changes in any set of files usually used for coordinanting work
+git we install to our laptop  helps track changes, pull push changes
+GitHub to see you action on a user interface 
+
+git add .(. means track them all) я кажу git від зараз монітор ці файлиб тримай на них око якщо я роблю якісь зміни
+
+git status check what happend
+
+якщо щось змінилось і фони були відслідкованні ми можемо committed them (means just this level) 
+тобто я відправив їх в мій другий рівень мого локалу
+мій локан має дві зони: перший цілком мій, другий який я можу поділитись з іншими людьми це готову бути відправлене до сервера (staging area)
+so when I commit it'll be one step close to server
+so we should always commit our changes which we want to push w git commit commands
+but we always need to tell other people what does this commit about
+example git commit -m "git intto notes" - enter (бачимо зміни звіт)
+якщо підемо gitHub ми ще не бачимо цей файл із змінами
+git push -  тепер це піде до сервера на сайт (gitHub) we see this file
+
+delete it's also chande, imagine we deleted smth in our file then check - git status (see changes) and then
+git add .(all) to stage this to be send leter and if we do git status one more time => this stage tells us 
+  do you want to commit it? => git commit -m "updated git into notes" називаємо
+  бачимо що змінилось => git push  і тоді бачимо на нашому сервері
+
+  our terminal and VS terminal the same but only difference 
+  VS starts right away w JS-into-11 and in our terminal it's always in our home directiry Users/mariia
+For COMPUTER Terminal
+1. first check if you in your desktop cd Desktop
+2. creat a new project mkdir git-gemo  (new folder)
+3. cd git-demo   - now I'm in git demo
+4. now create a file echo "hello" > file.txt   ми сказади створи файл з  хелоу
+ Now we want push it to gitHub
+зупинись тут та піди прочитати нижче інфу щоб розуміти подальші кроки (розділ до кінця SSN Key)
+5. we created our local repositiry and we created remoted as well
+називати їх одинаковими іменами не достатньо we need to tell GId I'm linking this progect(git demO w  repository git demo (on web site)) 
+and on web side it's already telling me if you were to create a new repository on the command line do this
+touch README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/seankross/womp.git
+git push -u origin master
+  First of  do we create new repositore on our local or do we already have one if we have allready use second option belove
+git remote add origin https://github.com/seankross/womp.git
+git push -u origin master
+ Use our Github name
+ 6. git init      from now it's link to gitHub repository and we can start pushing or pulling
+ ми копїюжмо та вставляємо це 
+ git remote add origin git@github.com:MariiaCholak/git-demo.git
+ 7. git remore -v   ask tell me the remote depository for this project
+ check if it's stat w Git якщо ні то це помилка
+ тепер вони link 
+ to check if we have any changes or not use git status
+ 8.git add . здається що нічого не зміилось але коли ми додамо git status (green it's been staged )
+ we can change it back using git rm --cached,    or we can comitted it
+ 9.  git commit -m "added file" (ніколи не використовую твій commit without m!!!!) 
+  це означає що ти comiited всі зміни і це готове щоб бути відправлено до сервера
+ 10. git status 
+  
+  кожен раз для першого разу треба git push -u orgin master
+  наступного разу коли ти вживаєш той самий бренч можна вживати git push 
+  лише для першого нам треба визначити stream, server branch
+
+HOW TO CREATE AND PUSH A NEW PROJECT FROM LOCAL TO REMOTE 
+GIT PUSH - existing local repo
+First time for the branch: Use one of the below
+git push --set-upstream origin master
+git push -u origin master
+Later: git push
+11.
+ 
+ to push it to git Hub we need to set up our SSh key correctly, if not' it won't work
+ if we sent a new project w GitHub we need to have a new repository in GitHub as well
+ we go in GitHub => new reposotory or create => create the the same name as a project git-demo choose privet don'r touch anuthing else 
+ and then create repository  
+ on next page  we can add collaborators, then choose SSH   never choose HTTPS!!!!!
+ When creating new repositories on GitHub and linking them with your local
+projects, DO NOT USE HTTPS.
+We'll use SSH for authentication!
+Creating SSH: для приватності щоб ніхто інший не користувався
+Stands for Secure Shell
+Used for authentication
+
+1. ssh-keygen create SSH  
+ssh-keygen -t ed25519 -C "your_email@example.com"   компанії найчастіше використовують це 
+ssn it's in a hidden folder папка С user mariia .SS in our local  it's privet 
+we copy that code go to GitHub account -setting-ssH keys- add ssn code (якщо воно не зійдеться ніхто не хможе скинути)
+тому замість імя та пароля ми в;bdf'vj public and prrivate key value
+
+C:\Users\masha>cd OneDrive
+
+C:\Users\masha\OneDrive>sd Робочий стіл
+'sd' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\masha\OneDrive>cd Робочий стіл
+
+C:\Users\masha\OneDrive\Робочий стіл>mkdir git-demo
+
+C:\Users\masha\OneDrive\Робочий стіл>cd git-demo
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>echo "hello"  . file.txt
+"hello"  . file.txt
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>echo. "Hello" > file.txt
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>git init
+Initialized empty Git repository in C:/Users/masha/OneDrive/Робочий стіл/git-demo/.git/
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>git remote add origin git@github.com:MariiaCholak/git-demo.git
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>git remote -v
+origin  git@github.com:MariiaCholak/git-demo.git (fetch)
+origin  git@github.com:MariiaCholak/git-demo.git (push)
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>git add .
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   file.txt
+
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>git commit -m
+error: switch `m' requires a value
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>git commit -m "added file
+[master (root-commit) 4f76473] added file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>git status
+On branch master
+nothing to commit, working tree clean
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>git push -u origin master
+The authenticity of host 'github.com (140.82.112.4)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 223 bytes | 55.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:MariiaCholak/git-demo.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+C:\Users\masha\OneDrive\Робочий стіл\git-demo>
+
+
+після другого разу змін нам не трба лінк їх ми лише к\виконуєм настуані кроки
+5. Stage the changes 
+  git add <file-name>
+  git add .
+
+6. Commit the changes with a meaningful message 
+  git commit -m "message" (added more changes)
+
+7. Publish your changes / push 
+  git push
+ in our local we do changes but when we write add . it's move to stage and after we tipe push it's move to server
+
+
+  Creating a GitHub Repository
+• Go to https://github.com/
+• Login with your account
+• Create a new repository with a proper name
+• Link this repository with your existing project on your local BUT
+• First make sure default branches are same
+• Generate SSH Key using CLI to ease your work with GitHub
+• https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-
+your-repository/changing-the-default-branch
+• https://docs.github.com/en/repositories
+
+SSH Key
+• An SSH key is an alternative way to identify yourself that doesn't require you to enter username and password every time.
+• SSH keys come in pairs, a public key that gets shared with services like GitHub, and a private key that is stored only on your
+local.
+• If the keys match, you're granted access.
+• https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
+Generating the SSH Key
+• Run the command ssh-keygen in the Terminal or cmd and generate public and private key pairs of SSH in the default folder.
+• Go to GitHub Settings and add new SSH Key (public key).
+• Copy and paste your public key from local to GitHub with a proper name.
+
+
+ Для VS нам треба спочатку писати git init  ми сказали to come and track my change, now it’s initialize
+git 
+git status
+git add .
+git status
+git commit –m “first-comit”
+git status
+then go to GitHub logo new repository and copy this and add to VS terminal,
+git@github.com:MariiaCholak/js-git-demo.git
+now it’s know where to push, it’s our first time
+git push
+чому ми  не робимо git add .  git commit ? бо ми вже зробли це перед тим (ми можемо це робити перед або після)
+вибила помилка не тому що  no URL but it’s the first time my remote reto doesn’t know the branch master so I use:
+git push -u origin master 
+ якщо оновимо гітхаб наш перший пуш буде видно ( w master) 
+then in VS to see how many branches we have 
+git branch        //( 1)  якщо маєш 10 одна твоя буде завжди зелена решта оранджнві
+how usually we name our branches usually it’s  task name and   Id 
+git branch 123-login
+then again to check how many branches we have git branch( now 2)
+(я створив 123 login when we were in master, that means 123-login it’s a copy of master
+git checkout 123-login        switch between branches
+git branch    /// ми бачимо що 123 лок тепер зелений наший
+створили нову папку loginTest.jsб написали в ній комент тоді
+git add . 
+git commit -m "added valid login test"
+(we commit it w 123 login)
+now we want to push it 
+git push але перший раз воно скаже ей ні  use this  і дасть приклда
+git push --set-upstream origin 123-login
+ і тепер це пішло в remote but not master    into 123 log
+тоді йдемо в GitHub бачимо нічого не змінилось,  нам треба змінити  in left side master to branch 123 log
+якщо хочемо повернутись до master 
+git checkout master
+login test disappear because its not master
+якщо ми хочемо це побачити нам треба  be in 
+git checkout 123-login    /// now I see it
+
+
+we can contribute orr click git-demo => press compare & pull request or on top pull requsrt
+це рекомендує зднати ці файли
+I want my changes go to master because this not going be there forever but master going to be forever this is out area for all codes
+We click on press compare pull request  we see on top=> open a pull request page from our 123-login to base: master
+ title use the same if it’s meaningful
+reviewers we add they can check my code
+finally creat pull request=> merge pull request => confirm merge
+means it’s successfully merged and closed (branch can be safely deleted) why we delete? because we done w it   imagine we don’t delete after few month it would be hundreds of branches it’s not good we need to keep it clear. Is my code in a muster? Yes because we requested it and merge it
+on the remote side I had changes merge to muster, but local it’s difficult
+git checkout master   
+git branch (still 2)    first get rid of 123 login branch(because I’ve alredy pushed my changes I requested PR it’s in remote muster)
+git branch –d 123 login 
+git branche(only master)
+git pull  test it right there it tells me that one file change you get some changes NOW ALL NEW CHANGES IN MASTERS
+
+NEW TASK
+TEST LOGIN FUNCTIONALLITY
+1.FIRST I should not be in a master I will quickly create and switch to branch 
+git checkout –b 124-loggin  (I’m alredy in this brange)
+2. When did changes in task, complete task  and need push it
+git add .
+git commit –m “added invalid user name”
+git push (not work because it new branch) use the sentances above or 
+git push –origin 124-loggin
+ go to gubhub update I don’t see it  because I’m on master (on left side change the branch) I see my file
+now I need merge this branch into master so this changes eventually in the master
+we can do it mulriple way 
+1. On top add invalid username cannot loggin (it shows what are the changes) => pull request => compere pull =>(but if you click new request you need to switch muster and branch!!!) => can add few description =>create pull request=>merge pull request => conf merge => delete branch
+now we need to do things in my local and be ready for a new task
+get rid of things
+ git checkout master
+git branch –d 124-login
+git branch(master)
+git pull
+
+   
+
+   SSH Key
+• An SSH key is an alternative way to identify yourself that doesn't require you to enter username and password every time.
+• SSH keys come in pairs, a public key that gets shared with services like GitHub, and a private key that is stored only on your
+local.
+• If the keys match, you're granted access.
+• https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
+Generating the SSH Key
+• Run the command ssh-keygen in the Terminal or cmd and generate public and private key pairs of SSH in the default folder.
+• Go to GitHub Settings and add new SSH Key (public key).
+• Copy and paste your public key from local to GitHub with a proper name.
+
+First Push to GitHub Repository
+• Make sure that you have a project created on your local and a GitHub repo created to host your local project.
+• Initialize and link your local project with remote repo using command below.
+git init
+git remote add origin <URL>
+• Now, your project is linked to remote repo and ready push some changes to GitHub.
+• Make sure that you tracked and committed changes to your local branch, then push with below commands.
+git add .
+git commit –m “commit message”
+git push –u origin <branch> or git push
+w w w . t e c h g l o b a l s c h o o l . c o m
+GIT Branching
+• Allows developing different code on the same base.
+• Makes it easy to work together and collaborate with team members.
+• git branch -> list the existing branches.
+• git branch <branch-name> -> create a new branch with the specified name.
+• git checkout <branch-name> -> switch to the specified branch
+• git checkout -b <branch-name> -> create and switch to the created branch.
+• git branch –d <branch-name> -> delete the specified branch.
+w w w . t e c h g l o b a l s c h o o l . c o m

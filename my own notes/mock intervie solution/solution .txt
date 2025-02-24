@@ -1,0 +1,346 @@
+How will the following expression be evaluated? Please provide a detailed 
+explanation of the result. 
+(3 == "3" || 2 + 5 === "7") && !(5 < 10 || !false)  ////true
+3=3true   numbandstringvaluefalse     true      true
+ or mean if one true everything true,    the result is true because we have 2 true for and&&
+
+• (!true && !false) || 5 * 2 === true * 10  //// true
+false&true = F         true    
+for me true for JS   
+• "3" * "5" >= 15 && true == 1 && "   " == false && "" === 0    //// false
+T T cjnvert string   1=1=t
+" " == false
+Це порівняння рядка зі значенням false. Тут важливе приведення типів.
+Строка " " — це рядок, який містить лише пробіли. Коли рядок порівнюється з false, JavaScript намагається привести рядок до числа.
+Строка " " при приведенні до числа дасть NaN (Not-a-Number), оскільки пробіли не можна перетворити в число.
+Тепер порівнюється NaN == false. За правилами JavaScript, false при приведенні до числа дає 0, а NaN ніколи не дорівнює числу, в тому числі 0.
+Отже, " " == false дасть false.
+"" === 0
+Оператор === перевіряє строго рівність, без приведення типів.
+Пустий рядок "" не є строго рівним числу 0, тому цей вираз дасть false. 
+true && true && false && false   result false
+
+!(5 ** (10 / 5) === 25 || 5 === "5" || 3 >= 5)  false
+true || false || false = TRUE,    !TRUE = FALSE
+
+• !(2 + 2 === 8 / 2 && !false && 10 % 2 === 0) || 25 % 4 == "1" TRUE
+ TRUE & TRUE(!NOT FALSE) & TRUE(0 0) = TRUE
+ ТОДІ !TRUE= FALSE
+ FALSE || TRUE = TRUE
+
+• (true && false) || (10 + 5 === "15" && "apple" !== "orange")   FALSE
+
+• !(10 <= 20 && 3 * 2 === "6") && (5 + 5 !== 11 || false)   TRUE
+СПЕРШУ ПЕРШІ ДУЖКИ FALSE А ПІСЛЯ НИХ РОБИМО ! НОТ ВИХОДЕ !FALSE= TRUE
+TRUE& TRUE
+
+• ("Hello" + "World" === "HelloWorld" || 5 > 3) && (true && !false) TRUE
+
+• (4 >= 3 && 5 * 2 === "10") || !(7 !== "7" && "dog" === "cat")  TRUE
+
+• (20 % 6 !== 0 && "apple" === "orange") || !(2 + 2 === 4 && true)  FALSE
+
+• (!true && !false) && ("car" === "vehicle" || 3 ** 2 <= 10)  FALSE
+
+• (5 + 3 >= "8" && 2 ** 3 === "8") || !(false || true)  FALSE
+
+• (10 / 2 === 5 || "hello" + "world" === "helloworld") && (5 === "5" || true) TRUE
+
+• ("hello" !== "world" && "apple" + "pie" === "applepie") || (5 + 5 !== "10" && 7 % 2 === 0) TRUE
+
+• (5 * 2 === 9 || true) && !(10 - 5 !== 5 && 10 % 3 === 1) TRUE
+
+X
+Find if a number is even or not. 
+Write a program that generates a random number between 1 and 10 (both inclusive). 
+If the random number is even, print true. 
+Otherwise, print false. 
+Examples: 
+1  -> false 
+2   - true
+5  false
+10  -> true 
+
+Find if a number is odd or not. 
+Write a program that generates a random number between 1 and 10 (both inclusive). 
+If the random number is odd, print true. 
+Otherwise, print false. 
+Examples: 
+1  -> true 
+2  false
+5  true
+10  -> false 
+
+Find if a number is positive or not. 
+Write a program that generates a random number between -5 and 5 (both inclusive). 
+If the random number is positive, print true. 
+Otherwise, print false. 
+->  -> 
+Examples: 
+-5  -> false 
+-1   > false 
+0  false -
+1  true
+5  -> true
+
+Find if a number is negative or not. 
+Write a program that generates a random number between -5 and 5 (both inclusive). 
+If the random number is negative, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+-5   -> true 
+-1   -> true 
+0   -> false 
+1   -> false 
+5   -> false 
+ 
+Find if a number is divisible by 5 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 5, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+5   -> true 
+20   -> true 
+37   -> false 
+50   -> true 
+ 
+Find if a number is divisible by 7 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 7, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+7   -> true 
+35   -> true 
+49   -> true 
+50   -> false 
+ 
+ 
+ Find if a number is negative or not. 
+Write a program that generates a random number between -5 and 5 (both inclusive). 
+If the random number is negative, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+-5   -> true 
+-1   -> true 
+0   -> false 
+1   -> false 
+5   -> false 
+ 
+Find if a number is divisible by 5 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 5, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+5   -> true 
+20   -> true 
+37   -> false 
+50   -> true 
+ 
+Find if a number is divisible by 7 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 7, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+7   -> true 
+35   -> true 
+49   -> true 
+50   -> false 
+ 
+ 
+ Find if a number is negative or not. 
+Write a program that generates a random number between -5 and 5 (both inclusive). 
+If the random number is negative, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+-5   -> true 
+-1   -> true 
+0   -> false 
+1   -> false 
+5   -> false 
+ 
+Find if a number is divisible by 5 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 5, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+5   -> true 
+20   -> true 
+37   -> false 
+50   -> true 
+ 
+Find if a number is divisible by 7 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 7, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+7   -> true 
+35   -> true 
+49   -> true 
+50   -> false 
+ 
+ 
+ 
+Find if a number is negative or not. 
+Write a program that generates a random number between -5 and 5 (both inclusive). 
+If the random number is negative, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+-5   -> true 
+-1   -> true 
+0   -> false 
+1   -> false 
+5   -> false 
+ 
+Find if a number is divisible by 5 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 5, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+5   -> true 
+20   -> true 
+37   -> false 
+50   -> true 
+ 
+Find if a number is divisible by 7 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 7, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+7   -> true 
+35   -> true 
+49   -> true 
+50   -> false 
+ 
+ 
+ Find if a number is negative or not. 
+Write a program that generates a random number between -5 and 5 (both inclusive). 
+If the random number is negative, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+-5   -> true 
+-1   -> true 
+0   -> false 
+1   -> false 
+5   -> false 
+ 
+Find if a number is divisible by 5 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 5, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+5   -> true 
+20   -> true 
+37   -> false 
+50   -> true 
+ 
+Find if a number is divisible by 7 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 7, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+7   -> true 
+35   -> true 
+49   -> true 
+50   -> false 
+ 
+ Find if a number is negative or not. 
+Write a program that generates a random number between -5 and 5 (both inclusive). 
+If the random number is negative, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+-5   -> true 
+-1   -> true 
+0   -> false 
+1   -> false 
+5   -> false 
+ 
+Find if a number is divisible by 5 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 5, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+5   -> true 
+20   -> true 
+37   -> false 
+50   -> true 
+ 
+Find if a number is divisible by 7 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 7, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+7   -> true 
+35   -> true 
+49   -> true 
+50   -> false 
+ 
+ 
+ Find if a number is negative or not. 
+Write a program that generates a random number between -5 and 5 (both inclusive). 
+If the random number is negative, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+-5   -> true 
+-1   -> true 
+0   -> false 
+1   -> false 
+5   -> false 
+ 
+Find if a number is divisible by 5 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 5, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+5   -> true 
+20   -> true 
+37   -> false 
+50   -> true 
+ 
+Find if a number is divisible by 7 or not. 
+Write a program that generates a random number between 1 and 50 (both inclusive). 
+If the random number is divisible by 7, print true. 
+Otherwise, print false. 
+ 
+Examples: 
+1   -> false 
+7   -> true 
+35   -> true 
+49   -> true 
+50   -> false 
+ 
+ 
+ 
+ 

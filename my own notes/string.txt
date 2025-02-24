@@ -1,0 +1,446 @@
+
+String:  is Text data, Stored using single or double quotes  
+
+String Templates - Backticks (ES6)
+let fname = 'John';
+let lname = 'Doe';
+let fullname = fname + ' ' lname; // 'John Doe' застаріле. можуть вживати для не важких речень
+let fullname = `${fname} ${lname}`; // 'John Doe'
+${} it's interparation we can interperate variable or math operation, expresion (product.Price * quantity)
+
+Static vs Instance Methods 
+Основні відмінності:
+Інстансні методи прив'язані до конкретного об'єкта (екземпляра класу), тоді як статичні методи прив'язані до самого класу.
+Для виклику інстансних методів потрібно створювати об'єкти класу, а статичні методи можна викликати без створення об'єкта.
+Статичні методи не мають доступу до властивостей інстансу класу через this, тому що вони не працюють з конкретним об'єктом.
+
+        How do I invoke the method? посилатись
+yes
+  By Built-in Object            By creating a value and with value
+  static method                 instance method
+
+
+Math.max(); // static method одразу називали їх з билтінг обджект
+Number.parseInt(); // static method 
+
+let num = 25.99;
+num.toFixed(1); // non-static, instance method в, variable of number(jbject) invoke the method w variable завжди робимо так коли наш метод нот статік
+
+
+class Account {
+  static method1() { //// лекго сторити бо зі словом статік ми просто додаємо key word
+    console.log('I am a static method');  its body
+  }
+
+  method2() {  // not static because no key word static
+    console.log('I am a instance method');
+  }
+}///// to ne able to involve method 1 we don't need a variable only say 
+Account.method1(); // 'I am a static method' /// оскільки це статік то ми назвали Account.method1
+if a method not static we can involve , we need has variable
+let myAccount = new Account(); // we create variable and object (new acc)
+myAccount.method2(); // 'I am a instance method'
+тому метод2 може бути invoke w variable and variable shoud be of type account if you trying involve account method 
+
+String length Property
+• The length property is used to find the length of a string
+• length of a string = total number of characters in a string
+including the whitespaces.
+дасть інф ск керактерів я маю
+let fname = 'James';
+console.log(fname.length); // 5
+ми створюємо variable when we use it more than 1 time, when 1 time not necesery
+at work we don't use console log, onle for you to check, debag 
+let fullname = 'Jane Doe'; //yes it's count a space, space it's caracter
+console.log(fullname.length); // 8
+
+String - Changing Cases
+• toUpperCase() – return a string with all characters
+converted to uppercase.
+• toLowerCase() – return a string with all characters
+converted to lowercase.
+
+let company = 'TechGlobal';
+let companyLower = company.toLowerCase(); //  the result is return to a new string
+console.log(company); // 'TechGlobal' original valur don't be change
+console.log(companyLower); // 'techglobal' new
+/*
+TASK: ( what it does) it converts the string to lowercase version
+ARGUMENTS: no args because we pass the arg with this function, () empty
+RETURN: it returns a new string 
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: instance  (non static) якщо ми invoke it w a variable or object? we involve w variable company that's why its instance
+якби статік було б String.toLowerCase але це не працювало б немає такого методу коли натиснули String. немає any option for lowercase that's why it's not static
+*/
+
+let course = 'Software Engineer in Test';
+
+let courseUpper = course.toUpperCase();
+
+console.log(course); /// no change this method cread a new method
+console.log(courseUpper);
+
+/*
+TASK: it converts the string to upper case version
+ARGUMENTS: no args
+RETURN: returns a new string 
+DOES IT CHANGE ORIGINAL VALUE: No not modify original strings
+STATIC or INSTANCE: instance
+*/
+
+console.log('BofA'.toLowerCase().toUpperCase()); // 'BOFA'   
+/// we can run/use methods right after each other, we involve a few methods right left to right. Everything convert to lower case and than to upper case
+
+console.log('Saturday'.toLowerCase().length); // 8
+result first convert to lower case and last result 8
+ / we can't add length into ()
+
+extract-character
+charAt() - returns the character at a specified
+index (position) in a string.
+• charCodeAt() - returns the unicode of the
+character at a specified index in a string.
+• Property access with []
+
+let company = 'TechGlobal'; /// index start w 0
+// Get char using property access 
+console.log(company[0]); // 'T' 
+console.log(company[8]); // 'a'
+
+// Get first and last chars 
+може змінюватись перший і останій характер і нам треба зробити це динамічним. 0 завжди перший, але останній 
+змінюється hi, hello. hey My goal type smth here and it should work without any changes/
+we need to use length. i din't know what would be my word by i know last character always be in last index length - 1
+let greeting = 'Good morning'; hi hello
+let firstChar = greeting[0];
+let lastChar = greeting[greeting.length - 1];
+give fisrt and last character even when we change our character 
+console.log(firstChar);
+console.log(lastChar);
+
+ mostly use property access which is easy but also cam use:
+
+// charAt()
+let city = 'Chicago'; 
+console.log(city.charAt(2)); // 'i' 
+console.log(city.charAt(city.length - 1)); // 'o'
+
+console.log(city);
+
+
+// at()
+let color = 'Purple'; 
+console.log(color.at(0)); // 'P'
+console.log(color.at(color.length - 1)); // 'e'
+ 
+ усі три методи працюють одинаково але краще property access
+яка різниця? різниця покладається в edge cases (крайові випадки які виникають при введенні або обробці даних що виходять за межі стандартних очікувань.
+такі помилки можуть спричинняти помилки або непердбачену поведінку програми) What do they do when your index is invalid
+// EDGE CASES (dry yoy to error)
+
+let name = 'Max';
+console.log(name[-1]); // undefined немає числа
+console.log(name[3]);  // undefined
+
+Deprecation: deprecated
+name was once a reserved keyword and it was used for a specific task but now
+it is deprecated. ,було кі ворд але вже не вживають у цьому значенні нейм
+name перекресленне бо застраріле значення та не вживають (deprecated)
+
+console.log(name.charAt(-1)); // '' ebpty string не побачимо в конзолі бо пусте місце
+console.log(name.charAt(3));  // ''
+
+console.log(name.at(-1)); // 'x'
+console.log(name.at(3));  // undefined
+Max
+console.log(name.at(-1));   /x means last index
+console.log(name.at(-2)); /a
+console.log(name.at(-3)); / m
+console.log(name.at(-4)); /underf
+
+at - рахує з кінця теж -1 останій індекс,(х) він можу рахувати слово з кінця коли -. 
+(цей метож може рахувати з двох кінців) 
+aded at 2022 
+// Get first and last chars in a string 
+let brand = 'Apple';
+let fChar = brand[0];
+let fChar = brand[brand.length - 1] or
+let lChar = brand.at(-1); because it gets the last index
+
+let str = 'kdjfhglskdhglsahdglsdjhgjhdsgfjhsdg';
+First char: str[0]
+Second char: str[1]
+Third char: str[2]
+Last char: str.at(-1) рахує останнє число or str.length - 1 
+Second from the last: str.at(-2)
+/*
+charAt()
+TASK: used to retrieve (отримати) a char from string at specified index
+ARGUMENTS: yes, it takes an index
+RETURN: returns a char as a string  
+  NOTE: if the index is not valid for the string, it returns undefined
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance (call it w variable)
+*/
+/*
+at()
+TASK: used to retrieve a char from string at specified index
+  NOTE: index could be negative as well (counting backward)
+ARGUMENTS: yes, it takes an index
+RETURN: returns a char as a string  
+  NOTE: if the index is not valid for the string, it returns empty string
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/
+
+
+let str = 'abcde';
+console.log(str.charCodeAt(0)); ascii table  таблиця яка перекладає комплю цифри
+console.log(str.charCodeAt(1));
+console.log(str.charCodeAt(2));
+console.log(str.charCodeAt(10)); // NaN
+
+String - Searching
+• search() – searches a string for a string (or a regular expression) and
+returns the position of the match.
+• indexOf() – get the index of the first occurrence of a substring in a string.
+• lastIndexOf() – find the index of the last occurrence of a substring in a
+string.
+• includes() – check if a string contains a substring.
+• startsWith() – check if a string starts with another string.
+• endsWith() – determine if a string ends with another string.
+• match() - returns an array containing the results of matching a string
+against a string (or a regular expression).
+• matchAll() - returns an iterator of results after matching a string against a
+regular expression. 
+
+
+// startsWith() vs endsWith() we check if the first characters stars w
+let company = 'TechGlobal'; 
+console.log(company.startsWith('T')); // true
+console.log(company.startsWith('Tech')); // true
+console.log(company.startsWith('TechGlobal')); // true
+
+console.log(company.startsWith('t')); // false
+console.log(company.toLowerCase().startsWith('t')); // true
+спочатку конвертувало в низькі 
+console.log(company.endsWith('l')); // true
+console.log(company.endsWith('Global')); // true
+console.log(company.endsWith('TechGlobal')); // true
+everythinf start and ends w itself
+console.log(company.startsWith('') && company.endsWith('')); // true
+емпті та емпті
+console.log(company.toUpperCase().startsWith('TECH') && company.toLowerCase().endsWith('l')); // true
+великі тоді малі закінчення малої 
+/*
+startsWith() method
+TASK: used to check if string starts with another substring
+ARGUMENTS: yes, it takes a string to check  (TECH)
+RETURN: returns a boolean (true if string starts with substring or false otherwise) 
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/
+ 
+/*
+endsWith() method
+TASK: used to check if string ends with another substring
+ARGUMENTS: yes, it takes a string to check 
+RETURN: returns a boolean (true if string ends with substring or false otherwise) 
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/
+
+
+// includes() method перевіряє не стар чи енд а будь де, шукає exactly match   
+додано 2015 ES6 
+let quote = `Let's do it`;
+console.log(quote.includes('')); // завжди true між кожним характеро є емпті стрінк 
+console.log(quote.includes(' ')); // true
+console.log(quote.includes('do')); // true
+console.log(quote.includes('let')); // false бо мала буква
+console.log(quote.includes('it ')); // false бо є ще відступ а це додатковий характк
+/*
+includes() method  
+TASK: checks if the string contains another substring
+ARGUMENTS: it takes another substring to check ('do')
+RETURN: returns a boolean (true if string contains the substring or false otherwise) 
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/
+
+let address = '123 Street Chicago IL 12345';
+console.log(address.includes('Chicago')); // true
+console.log(address.includes('Chicago', 20)); // false 
+ми сказали шукай чикаго піля індекс 20( а це починається там де іліноїс)
+
+console.log(address.startsWith('123')); // true
+console.log(address.startsWith('123', 1)); // false after 1, and it's mean 0 not included and shuld start w 23 
+те саме до ends but this situation not common
+
+// search() ////not returns true or false, it finds first match index 
+let str = 'abcdea';
+console.log(str.search('abc')); // 0
+console.log(str.search('d')); // 3  []
+console.log(str.search('x')); // -1 when it can't find a string which you are looking for it's -1
+console.log(str.search('bc')); // 1 може бути 1 або 2. але завжди буде брати перший лівий індекс
+console.log(str.search('bcde')); // 1 те саме б =1
+console.log(str.search('abcde')); // 0 
+console.log(str.search('bcda')); // -1 щось що ми шукаємо не є в стрінг завжди буде -1
+console.log(str.search(' ')); // -1 пропуск немає
+console.log(str.search('')); // 0 маємо скрізь тому починаєтсья з першого
+console.log(str.search('a')); // 0 завжди перша навіть якщо є дві одинакові
+
+
+// indexOf() and lastIndexOf() methods /// exactly the same ar search
+якщо в нас наприклад багато індексів наприклад буква а indexof gives first, index last gives last a
+let today = 'saturday';
+console.log(today.indexOf('a')); // 1
+console.log(today.lastIndexOf('a')); // 6
+console.log(today.lastIndexOf('123')); // -1 dont have
+console.log(today.indexOf('123')); // -1
+console.log(today.indexOf('r')); // 4
+console.log(today.lastIndexOf('r')); // 4  .. бо вона лише одна тому немає різниці який індекс same value
+якщо у нас 3 символа напр 3 букви а воно знайде першу і останню але не середню
+
+// if there is only one match of the searched string, then indexOf() and 
+// lastIndexOf() will always return the same index
+
+це було колись до 2015
+let myAddress = '123 Street Chicago'; 
+// Make sure the address has Street keyword
+console.log(myAddress.indexOf('Street') !== -1); // true не дорівнює. і я маю вулицю
+console.log(myAddress.indexOf('12345') !== -1); // false
+unction includes(substring) {
+  return this.indexOf(substring) >= 0;
+} колись
+
+ indexOf() or lastIndexOf() method
+if the result of this method is 0 or positive index -> we have the subtring  found in the original String
+if the result of this method is -1 -> we don't have the subtring found in the original String
+
+/*
+indexOf()
+TASK: check if the original string has a substring
+ARGUMENTS: Yes, a substring
+RETURN: returns the first found index of the matching substring within original string
+  NOTE: if it cannot found the substring, then it returns -1
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/
+/*
+lastIndexOf()
+TASK: check if the original string has a substring
+ARGUMENTS: Yes, a substring
+RETURN: returns the last found index of the matching substring within original string
+  NOTE: if it cannot found the substring, then it returns -1
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/
+console.log('can i can a can'.indexOf('can')); // 0 бо перше
+console.log('can i can a can'.lastIndexOf('can')); // 12 бо станнє
+
+String - Trimming use a lot обрізання 
+обрізати екстра спейс перед після. Дивелопери часто додають із відступами
+і коли ми копіюємо слова із сайту це має наприклад не 5 символів а 7
+• trim() – remove whitespace characters from a string.
+• trimStart() – remove the leading whitespace characters of a
+string.
+• trimEnd() – remove the ending whitespace characters of a
+string.
+get rid of all our extra space use it a lot
+let city = ' Chicago ';
+console.log(city.length); // 9
+console.log(city.trimStart().length); // 8 first
+console.log(city.trimEnd().length); // 8 last
+console.log(city.trim().length); // 7 all remove all everywhe re
+/*
+trim()
+TASK: remove extra whitespaces before and after your string
+ARGUMENTS: No args
+RETURN: returns a new string  
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/
+ 
+let str = '   Hello ';
+let strTrimmed = str.trim();
+
+console.log(str);
+console.log(str.length);9
+console.log(strTrimmed);
+console.log(strTrimmed.length);5
+
+let greet = '   Good Morning Dear!   ';  /// don't remove middle space beetwen the words
+console.log(greet.trim()); //
+
+String - Extracting Partial Strings
+• split() – split a string into an array of
+substrings.
+• substring() – extract a substring from a string.    use
+• substr() - extract a part of a string with the
+length specified. (deprecated) don't use
+• slice() – extract (витягнути) a part of a string.
+ 
+ треба почати з того числа та закінчити start index included end= exclusive!! 
+ let school = 'TechGlobal School';
+let s1 = school.slice(0, 4); // 'Tech'  /// if 4 included means start from 0 go to 4, but not include 4 (1,2,3,4)
+let s2 = school.slice(4, 10); // 'Global'  4-g  
+let s3 = school.slice(0, 10); // 'TechGlobal' star begin to 10 but not inc 10
+let s4 = school.slice(11); // 'School' ///другий індекст не треба, означає почни з того індекса та йди до кінця
+console.log(school.slice(4)); // 'Global School'
+we don't use substring we use more slice
+
+let city = 'Los Angeles';
+console.log(city.substring(0, 3)); ///los
+console.log(city.substring(4)); /// 4
+ difference between slice
+console.log('Apple'.slice(2, 10)); // 'ple' ///немає 10. почин з 2 що є друга р то йти до кінця слова, окей дам частину що існує
+console.log('Apple'.substring(2, 10)); // 'ple'
+console.log('Orange'.slice(-10, 10)); // 'Orange' ми не отримаєммо помилки в цих ситуаціях
+console.log('Orange'.substring(-10, 10)); // 'Orange'
+
+console.log('Banana'.slice(1, -1)); // 'anan'
+console.log('Banana'.slice(1, -2)); // 'ana'  -2n not included
+console.log('Banana'.slice(0, -5)); // 'B' 5 останіх букв не вкл
+console.log('Banana'.slice(0, -6)); // '' .. нічого не вкл емпті
+console.log('Banana'.slice(0, 0)); // '' точно такий самий рез
+слайс має наувазі почни з 1 букви А(індекс) і йти до кінця, але right index not included end -1
+console.log('Banana'.substring(1, 0)); // 'B'
+console.log('Banana'.substring(0, 0)); // ''
+console.log('Banana'.substring(3, 0)); // 'Ban'
+console.log('Banana'.slice(3, 0)); // ''
+for substring any negetive index witch you provide consider as  0/
+substring start from 3 go back to 0 wich is B
+console.log('Miami'.substring(2, 0));
+
+NOTE: We'll always use slice() method to extract substrings 
+If you have 2 positive index:
+  if startIndex < endIndex, then the result is a substring including startIndex, excluding endIndex
+  'Hello'.slice(1, 3); // 'el' second l exludive
+
+  if endIndex is not provided, the the result is substring including startIndex all the way to the end 
+  'Hello'.slice(2); // 'llo'
+
+  if startIndex >= endIndex, then your result is always ''
+  'Hello'.slice(3, 2); // ''
+  'Hello'.slice(3, 3); // ''
+
+slice() method also works with negative indices (indexes)
+In this case, you'll go backward 
+'Hello'.slice(-1); // 'o'
+'Hello'.slice(-2); // 'lo' /// get last 2 characters
+'Hello'.slice(-3); // 'llo'
+
+'Chicago'.slice(-5, -2); // 'ica' дві останні не врах  
+'Chicago'.slice(-1, -4); // '' no result rule 3 if startindex  more or = the end index result is empty
+
+'Miami'.substring(-2, -4); // ''
+'Miami'.substring(2, 0); // 'Mi'*
+slice()
+TASK: used to extract substrings from a string
+ARGUMENTS: takes one or two index arguments
+RETURN: returns a substring including startIndex, excluding endIndex 
+  NOTE: it also allows negative indexes, and count backward in this case
+DOES IT CHANGE ORIGINAL VALUE: No
+STATIC or INSTANCE: Instance
+*/

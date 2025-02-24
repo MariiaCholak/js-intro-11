@@ -1,0 +1,264 @@
+RECAP:
+Method vs Function 
+
+Number.isFinite(5); //  коли є намбер. то це method 
+
+// Create a function that takes 2 number arguments and returns sum of these
+Ми створимо свої власні function. everithing which is go with function knows as parameters
+
+function findSum(num1, num2) {
+  return num1 + num2; }
+
+console.log(findSum(10, 5)); // 15  give 2 numbers
+we creat our own function.
+definishing will be the same, we can involve this methid on more time.
+findSum (3,4); //7
+якщо хочемо побач результ console.log(findSum(10, 5 ));
+
+Static Methods: These are the methods invoked with class or object itself
+Instance Methods: These are the methods invoked with an instance of the class or object 
+
+Number.isFinite(5); // static method 
+we call our global object(number) and we involve method (isFinite) thats why its static
+Math.max(3, 5); // static 
+math-global
+
+ а коли не статік: ми створємо variable and involve method w this variable.
+let num1 = 10.234;  variable
+num1.toFixed(1); // 10.2
+ we invoked  it w variable, not w Number.toFix
+
+ number vs bigint
+
+Number object: store big inf, will have additional features: properties and methods 
+
+properties: information/state/instance variables of the object 
+    get data about the object what it has more inf about object
+
+methods: behaviors/functions of the object
+    runs a task for the object , what it does
+ 
+ MAX_VALUE
+MIN_VALUE
+MAX_SAFE_INTEGER properties
+
+
+isFinite()
+isSafeInteger()
+toFixed() numbers methods
+
+Account Object
+properties: accountNumber, pinCode
+methods: createAccount(), deleteAccount(), updateAccount() behavior
+
+JavaScript Math Object
+All properties/functions of Math can be called by using Math as 
+an object, without creating it.
+•Mostly used Math functions are max(), min(), abs(), 
+round(), trunc(), pow()  and random()
+  Статік бо ми відразу називаємо їх з Math.abs ми не створюємо обджектб намберт
+так як ми робили з number when we type math. we see all  properties w blue box and all methods with purpul box.
+/ Properties
+let pi = Math.PI; or
+console.log(pi);  //3/14
+
+// Methods 
+console.log(Math.abs(5)); ablosute numbers
+console.log(Math.abs(-5));     //5
+ntgetive 5 goes as positive 5 it can never be negetive, always come as positive 
+2-5=-3=3 always
+
+let a1 = Math.abs(3 - 5) - 3;
+console.log(a1); // -1  
+бо в нас в дужках позитів 2, бо ми щойно говорили біля абсолют намбер не може бути негативного числа, воно перетворюється в позитивне
+-2=2 і тоді 2-3=-1
+
+let a2 = Math.abs(Math.abs(2 * 5 - 3) - 15);
+console.log(a2); // 8
+спершу дужки 7. 7-15=-8=8 абсолют лише позитив!
+вживаємо цей метот в реалному житті. коли ми рахуємо різницю відстані звідси до даунтаун дистанція це є в відміному значення а позитивна
+ми не кажумо -30 милью або вік Л. ми не кажемо у нас різниця ти 30 років я 25 років різниця у нас - 5 роківб ми вживаємо в позитивному 5
+
+
+let userAge1 = 15;
+let userAge2 = 20;
+
+console.log(`The age difference is ${Math.abs(userAge2 - userAge1)}`);
+зараз працює \\\ 5, але якби ми змінили юзерів місцями 
+let userAge1 = 20;
+let userAge2 = 15;
+
+console.log(`The age difference is ${(userAge2 - userAge1)}`)
+різниця віку -5, тому треба бути обережними. тому ми вживаємл  Math.abs. тому тут не важливо хто страший хто ні, результат буде позитивне число
+
+JavaScript Math Object Functions
+•abs(x) - returns the absolute value of x
+•ceil(x) - returns x, rounded upwards to the nearest integer
+•floor(x) - returns x, rounded downwards to the nearest integer
+•max(x1,x2,..) - returns the number with the highest value
+•min(x1,x2,..) - returns the number with the lowest value
+•pow(x, y) - returns the value of x to the power of y
+•random() - returns a random number between 0 and 1 (0 included but 
+1 excluded)
+•round(x) - rounds x to the nearest integer
+•sqrt(x) - returns the square root of x
+•trunc(x) - returns the integer part of a number (x)
+
+
+very similar/ ceil()up, floor()down, trunc() close to floor, round() mix both  methods
+run numbers up and down (decimal nomber to closer integer)
+console.log(Math.trunc(10.99)); // 10 trunk=обрізати
+console.log(Math.trunc(10.01)); // 10
+Math.trunc просто обрізає десяткиб позбувається від них і лишає звичайне число яке є
+
+console.log(Math.round(10.99)); // 11
+console.log(Math.round(10.01)); // 10
+console.log(Math.round(10.49)); // 10
+console.log(Math.round(10.50)); // 11
+console.log(Math.round(10.51)); // 11
+наближається до ближчого числа і обрізає дроби
+console.log(Math.round(3.4923)); // 3
+console.log(Math.round(3.49257)); // 3
+має бути хоча б .3.5062 щоб обріpати до 4
+
+console.log(Math.ceil(10.0001)); // 11
+console.log(Math.ceil(10.99)); // 11
+move it up будь які десятки вже піднімуть до наступного числа
+
+
+console.log(Math.floor(10.01)); // 10
+console.log(Math.floor(10.99)); // 10
+а цей навпакий обрізає всі дроби але лише це саме оригінальне число
+сходий із trunk(get rid of decimal), floor get down to the nearest number
+// pow() method we are free to use any of them, but trunc use a lot 
+ще важлива риса  що флор округлює до найближчого меншого числа  for віжємних округляє вниз
+math.floor(-3.9) ///- 4
+math.trunk (-3.9) /// -3
+
+console.log(Math.pow(2, 3)); // 8  mean 2**3 (2*2*2)
+console.log(Math.pow(5, 2)); // 25
+pow is exactly the same method as an exponantiantion.має бути два числа base - основа число яке піднесемо до степення та  exponent - показник степення
+
+// sqrt() method
+console.log(Math.sqrt(64)); // 8 корінь скверрут
+console.log(Math.sqrt(25)); // 5
+console.log(Math.sqrt(5).toFixed(1)); // 2.2
+останій приклад вийшло багато дробів тому додали toFixed(HOW MANY DECIMAL 1)
+
+// max(), min() methods
+console.log(Math.max(5, 3, 10)); // 10
+ЗНАХОдить найблільше число
+console.log(Math.max(3.119, 3.1191)); // 3.1191
+console.log(Math.max(5, 3)); // 5
+
+console.log(Math.max(5)); // 5
+console.log(Math.min(5, 3, 10)); // 3
+console.log(Math.min(3.119, 3.1191)); // 3.119
+console.log(Math.min(5, 3)); // 3
+console.log(Math.min(5)); // 5
+
+Generating Random Numbers
+•random() - returns a random number between 0 and 1 (0 included but 
+1 excluded) генерує випадкове число в діапазоні від 0 до 1 (але не включаючи 1).
+•We can work around this function to generate random numbers within a   
+range we specified
+Math.random() ми отримаємо номери від 0-1. у нас є інфінітив кількість значень. 0.001 і тд.
+але ніколи не отримаємо 1.
+щоб створити рандомні  цілі числа наприклад 3-5 both inclusive. з цією формолою
+we always use this method random() without passing anything into paranthesis нічого не додаємо
+багато чисел але ніколи не отримаємо 1 
+якщо помножимо на 3 
+0.47191602951935563 * 3 = 1.5 ніколи не досягне цього числа
+будь який результат який я отримаю вжив Math.floor і обріжимо дроби. і множимо на три бо в нас є 3 рандомних числа може бути н-кількість
+Math.floor(0.47191602951935563 * 3) + 3   -> 4
+Math.floor(0.5860923717534425 * 3) + 3   -> 4
+Math.floor(0.3232354803378943 * 3) + 3    -> 3
+Math.floor(0.5511186465807323 * 3) + 3   -> 4
+Math.floor(0.7505881933310556 * 3) + 3   -> 5
+формула: console.log(Math.floor(Math.random()*3))
+ 
+ et result = Math.floor(Math.random() * (max - min + 1)) + min;
+let result2 = Math.ceil(Math.random() * (max - min + 1)) + min - 1;
+let result3 = Math.round(Math.random() * (max - min)) + min;
+
+Math.random(); // returns a number between 0 (inclusive) and 1 (exclusive)
+
+/*
+Find a random number betwee a and b (both inclusive) вкл
+1. Calculate how many numbers you have in the range
+let count = biggerNumber - smallerNumber + 1
+5- до17=13 numbers both inclusive. if both exlusive 11. if on e exlusive 12
+to easily find when you have inclusive numbers like this biggerNumber - smallerNumber +1 скаже ск номерів ми маємо
+17-5+1=13, якщо one mumber is not inclusive then we don't plus 1, will be without1
+
+2  . Multiply the count you found with Math.random()
+result = Math.random() * count   досі десімал намбер
+
+3. Floor the result using Math.floor() method обрізаємо дроби
+newResult = Math.floor(result)
+
+4. Add your smaller number to new result
+finalResult = newResult + smallerNumber;
+формули
+let result = Math.floor(Math.random() * (max - min + 1)) + min;
+let result = Math.ceil(Math.random() * (max - min + 1)) + min - 1; 
+let result = Math.round(Math.random() * (max - min)) + min;
+*/
+// Generate random number between 6 and 10 both inclusive
+let r1 = Math.floor(Math.random() * (10 - 6 + 1)) + 6;
+console.log(r1);   ..6-10
+
+якщо вжити ceil, то буде працювати але всі цифри підуть на одну вгору. тому краще зменшити останнє число на один замість 6 буде 5 
+числа збереглись
+let r1 = Math.сeil(Math.random() * (10 - 6 + 1)) + 5; 
+
+приклад, коли ми беремо імя із сервера і незнаємо яке число більше
+let num1 
+let num2 
+
+// Generate a random number between num1 and num2 both inclusive
+let max = Math.max(num1, num2); вибере найбільше число
+let min = Math.min(num1, num2);
+і тепер ми можемо в формулу додати значення мах та мін і воно нам знайде
+let r2 = Math.floor(Math.random() * (max - min + 1)) + min;
+console.log(r2);     //// 4.3.2
+наприклад  num1= 2, num2 4
+max min ми можемо вж 
+
+
+getRandomNumber(5, 15); метод отримати рандомні числа, але джава його немає
+getRandomNumber(15, 5);
+ 1.ми можемо додати External Libraries дасть метод згенерувати рандом номери
+2. створити власну function or library вивчемо в майбутньому
+
+Псевдокод (Pseudocode) — це абстракція алгоритму, яка описує логіку програми без прив'язки до конкретної мови програмування. Це не реальний код, а скоріше "мови" або умовні інструкції, які допомагають розробникам зрозуміти, як буде працювати програма, ще до написання реального коду
+Псевдокод дозволяє зосередитися на логіці алгоритму, а не на синтаксисі певної мови програмування, як, наприклад, JavaScript. Псевдокод часто використовується на етапах планування чи обговорення програмних рішень.
+ треба описати в коментарі що ми будемо робити
+ PSEUDO CODE
+1. Generate 3 random numbers bt 1 and 10 (both inclusive)
+2. Find max and min numbers among the random numbers
+3. Calculate and output max - min
+
+PSEUDO CODE
+1. Generate 3 random numbers bt 1 and 10 (both inclusive)
+2. Find max and min numbers among the random numbers
+3. Calculate and output max - min
+*/
+ми не маємо починати цей код з let num1 = 1, num2=2, num3=4
+це не правильно. бо ми маємо згенерувати рандомні номери, а тут вони уже приєсвоєнні
+не вживати hard code, ми це називаємо hard code.let num1 = 1, let num2=2, let num3=4
+values which we just assign to your varibles
+
+щоб створити вживаємо фомулу       бо це найбіль і найменш
+let r1 = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+let r2 = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+let r3 = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+завжди різні рандомні номери
+console.log(`Random numbers are  = ${r1}, ${r2}, ${r3}`);
+
+let max = Math.max(r1, r2, r3);  
+let min = Math.min(r1, r2, r3);
+console.log(`Max number is ${max} and min number is ${min}`);
+let result = max - min;
+console.log(`The result = ${result}`);
+

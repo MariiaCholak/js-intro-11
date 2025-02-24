@@ -1,0 +1,517 @@
+Terminal – Command Prompt
+we can type in Visual studio terminal, in computer app
+the different only where it started for windows in search type CMD
+наприклад якщо нас треба відкрити хомвок нам спершу треба хайти в JS інто а тоді знайти папку хомв
+
+•Terminal or command prompt is known as apps to get the 
+work done with commands
+•Terminal or command prompt can be used to execute 
+entered commands
+• A command is a directive to a computer program to 
+perform a specific task
+•CLI vs GUI (Command Line Interface vs Graphical User 
+Interface)
+•CLI is much faster than GUI and it helps to execute 
+repetitive tasks easily
+
+pwd (MAC) vs cd (WINDOWS) 
+•use this command to check which directory you are working on (WHERE YOU ARE)
+•directory = folder
+•PATH = location of a directory
+•Home directory?
+•WINDOWS -> C:\Users\{username}\
+•MAC -> /Users/{username}
+. it's meen it's hidden
+cd {directoryName} (MAC and 
+WINDOWS)•cd = change directory
+•use this command to open the specified directory – navigate to the specified directory
+
+cd .. (MAC and WINDOWS)
+•use this command to move up to the parent directory– navigate to the parent directory
+
+cd / (MAC and WINDOWS)
+•use this command to move up to the starting directory– root directory
+•Root directory?
+•WINDOWS -> C:\
+•MAC -> /
+ще один спосіб повернутись назад на початок
+cd ~  (MAC) vs cd %userprofile% 
+(WINDOWS) •use this command to move to the home directory
+•Windows alternative -> cd %HOMEPATH%
+•Home directory?
+•WINDOWS -> C:\Users\{username}\
+•MAC -> /Users/{username}
+OR use;
+•WINDOWS -> cd C:\Users\{username}\
+•MAC -> cd /Users/{username}
+cd.. one step back повернення на попередню вкл
+якщо хочемо ще одне назад то /..  і тому на дві вкл повернутсь виглядає так: cd ../..
+ ми можемо за один раз перейти на три кроки вперед а не щоразу писати cd
+ напр сd OneDrive\Робочий стіл\Js-intro-11> і коли я це все ввела я опинюсь на останій папці
+cd / =коли ввели слаш то ми поверенемось до нашого root
+clear (MAC)  vs cls (WINDOWS)
+•use this command to clear working terminal or command prompt
+
+mkdir (MAC and WINDOWS)
+•use this command to create a new directory
+•use double quotes for naming directory with multiple words
+•EXAMPLE/ mkdir “New Folder”
+
+rmdir (MAC and WINDOWS)
+•use this command to remove an existing empty directory
+•use double quotes for directories named with multiple words
+•EXAMPLE/ rmdir “New Folder”
+•You can also use rd command to remove an existing empty directory (WINDOWS)
+•use rm –rf (MAC) command to remove an existing non-empty directory
+•use rmdir /s or rmdir /s /q (WINDOWS) command to remove an existing non-empty directory
+touch (MAC) vs echo. > (WINDOWS)
+•use this command to create a new file
+•make sure you define the extension of the file
+•EXAMPLE/ touch myFile.txt or echo. > myFile.txt
+
+echo content > fileName (MAC and 
+WINDOWS)•use this command to create a new file with an initial text
+•EXAMPLE/ echo Hello myFile.txt or echo Hello > myFile.txt
+Use it especially w gig comments
+
+rm (MAC) vs del(WINDOWS)
+•use this command to delete an existing file
+•make sure you define the extension of the file
+•EXAMPLE/ rm myFile.txt or del myFile.txt
+
+
+CLI -> Command Line Interface 
+GUI -> Graphical User Interface ( ми спочатку вибирали)
+
+MACOS -> Terminal 
+Windows -> Command Prompt (search)
+
+Home Directory or Home Path:
+MAC: /Users/{username}
+Windows: C:\Users\{username}
+linux don't have almost nice desighn, we don't see it
+
+Root Directory or Root Path: початок всього
+MAC: / 
+Windows: C:\
+
+Directory: Folder
+
+Path: String representation of where to find a specific folder/file in your local
+
+Path of the first-program.js on my local:
+Users/techglobal/Desktop/js-intro-11/01-basics
+C:\Users\masha\OneDrive\Робочий стіл\Js-intro-11>
+
+1. pwd (mac) vs cd (windows)
+Print working directory: where you are or which path you're on
+скеровує куди треба йти
+2. ls (mac) vs dir (windows)  все що ми маємо
+Lists the existing folders/files in the current path/directory 
+показує тобі список наявності що у тебе є
+List all items including hidden ones
+ls -a 
+dir /ah
+
+
+MAC Users: 
+Navigate to Home Directory GUI: cmd + shift + H 
+Show/hide hidden folders/files: cmd + shift + .
+
+Windows Users:
+Navigate to Home Directory GUI: C:\Users\{username}
+Show/hide hidden folders/files: Select View / Select Show / Hidden Items
+
+we can use note to run any JSfile почистити 
+3. clear (mac) vs cls (windows) 
+Clear working CLI (Terminal or CMD)
+
+мій шлях
+C:\Users\masha\OneDrive\Робочий стіл>
+C:\Users\masha\OneDrive\Робочий стіл>cd Js-intro-11
+
+C:\Users\masha\OneDrive\Робочий стіл\Js-intro-11>
+C:\Users\masha\OneDrive\Робочий стіл\Js-intro-11>cd 01-basics
+
+C:\Users\masha\OneDrive\Робочий стіл\Js-intro-11\01-basics>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 4C13-E4CD
+ Directory of C:\Users\masha\OneDrive\Робочий стіл\Js-intro-11\01-basics
+
+01/28/2025  08:04 PM    <DIR>          .
+01/28/2025  08:04 PM    <DIR>          ..
+01/21/2025  08:49 PM               168 01-first-program.js
+01/26/2025  11:31 AM                 0 02-concat-addition.js
+01/24/2025  09:39 AM               782 02-escape-sequances.js
+01/26/2025  10:30 PM               145 03-increment-decreent.js
+               4 File(s)          1,095 bytes
+               2 Dir(s)  10,619,330,560 bytes free
+
+C:\Users\masha\OneDrive\Робочий стіл\Js-intro-11\01-basics>node 01-first-program.js
+Hello
+Today is JS learning day
+My name is Mariia
+I am 25 years old
+I am 25 years old
+C:\Users\masha\OneDrive\Робочий стіл\Js-intro-11\01-basics>
+4. cd directoryName (mac & windows)
+It changes the directory
+
+
+5. cd / (mac & windows) 
+It changes the directory to root directory 
+
+
+6. cd ~ (mac)
+   cd %HOMEPATH% (for windows)
+   cd %userprofile% (for windows)
+It changes the directory to home directory 
+
+7. cd .. (mac & windows) 
+It changes directory to parent directory 
+cd../../ ../. (./ go to current directory(homework) then move back ..(Js intro) to / go to utiles)
+make shure you are in a right direction type cd to check
+8. mkdir directoryName (mac & windows)  make dorectory(creat new holder) then space 
+and type your holder
+Makes a new directory 
+в comand promts we can creat 3 holder the same time
+NOTE: if your directory has multiple words, use "Directory Name"
+Якщо ми хочемо створити папку з реченням типу My favorite cars вона все розділе і сторе окремі папки
+тому нам треба вжив "Me fav cars"
+cd .. повертає на попередню вкладку
+коли ми намагаємось видалити папаку яка не пуста і має щось в середині ми не можемо це видалити  можна лише пусту
+9. rmdir directoryName (mac & windows) remove directire видаляє папку
+Removes directory 
+
+rd directoryName (windows) альтернатива для rmdir
+
+NOTE: if your directory has multiple words, use "Directory Name"
+NOTE: This command will delete only empty directories 
+
+
+10. rm -rf directoryName (mac)
+    rmdir /s (windows with confirmation Y/N) запитає чи ви точно хочете видалити
+    rmdir /s /q (windows without confirmation) нічого не питає а відразу видаляє не пусту папку
+видалити не пусті папки в середині
+Removes non-empty directory  
+
+creat file the .js; 
+11. touch fileName.ext (mac)
+    echo. > fileName.ext (windows) створює файл
+    echo "" > fileName.ext (windows) nt; ghfw.'
+
+Creates a empty file 
+
+
+12. cat fileName.txt (mac) 
+    type fileName.txt (windows) показує що є в середина файлу
+Write file content
+
+
+13. rm fileName.ext (mac)
+    del fileName.ext (windows) delete file
+
+Removes the file
+ якщи ми вадаляємо файли папки його в корзині не буде це повністю видаляється
+ undo coment to return it nack quickly
+
+щоб ezecute file we cam  use note fileName.Js
+
+питають на інтервю
+(команди схожі з MAC)
+Are you familiar with Linux?
+Are you familiar with Linux commands?
+Can you tell me some Lunix commands you use daily?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. cd directoryName (mac & windows)
+It changes the directory
+
+
+5. cd / (mac & windows) 
+It changes the directory to root directory 
+
+
+6. cd ~ (mac)
+   cd %HOMEPATH% (for windows)
+   cd %userprofile% (for windows)
+It changes the directory to home directory 
+
+7. cd .. (mac & windows) 
+It changes directory to parent directory 
+
+
+8. mkdir directoryName (mac & windows) 
+Makes a new directory 
+
+NOTE: if your directory has multiple words, use "Directory Name"
+
+9. rmdir directoryName (mac & windows) 
+Removes directory 
+
+rd directoryName (windows)
+
+NOTE: if your directory has multiple words, use "Directory Name"
+NOTE: This command will delete only empty directories 
+
+
+10. rm -rf directoryName (mac)
+    rmdir /s (windows with confirmation Y/N)
+    rmdir /s /q (windows without confirmation)
+
+Removes non-empty directory
+
+11. touch fileName.ext (mac)
+    echo. > fileName.ext (windows)
+    echo "" > fileName.ext (windows)
+
+Creates a empty file 
+
+
+12. cat fileName.txt (mac) 
+    type fileName.txt (windows)
+
+Write file content
+
+
+13. rm fileName.ext (mac)
+    del fileName.ext (windows)
+
+Removes the file
+
+
+Are you familiar with Linux?
+Are you familiar with Linux commands?
+Can you tell me some Lunix commands you use daily?

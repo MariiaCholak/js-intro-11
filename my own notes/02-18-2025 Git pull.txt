@@ -1,0 +1,345 @@
+GIT: software used to track files/versions and collaborate with others.
+GitHub: Hosting website (repository) don't say code it's different codes
+
+Git is distributed VCS (Version Control System) 
+distributed vs centralized(don't use) lose connection can't truck changes
+distibuted extra leyer another copy of central repasetory even when you lost connection to central resository you still can stage and comitt
+free to say you know them  if you know gitlab  = Bitbucket, GitLab, Azure DevOps
+almost know differents
+
+2 different flows 
+local master branch -> we did changes -> stage/commit/push -> remote master 
+
+LOCAL: Our laptops, machines 
+REMOTE: Cloud 
+
+
+local master branch -> local task branch -> we did changes -> stage/commit/push
+-> remote task branch -> PR or MR -> Reviewers / Approvals -> remote master branchpr
+pr(pull request) mr(merge request) вжив скорочення , тоді ревю та епрув лише вкінці мастер
+
+
+
+Merge Conflict: 
+It happens when 2 or more collaborators contribute to same file.
+
+1. Resolve inline in GitHub
+
+2. Resolve in VSCode 
+  Go to VSCode 
+  Switch to Master 
+  Pull the changes into local master from remote master (git pull)
+  Switch back to your local branch which caused conflict 
+  Merge local master into your local branch (git merge master)
+
+You should see same conflicts in VSCode now! 
+Resolve them and commit your changes one more time.
+
+
+цього разу починаємо з gibHub and we clone it, це більш популярне бо коли ми приєднуємочь в компанію у них уже є проекти
+нам треба копіювати до нашого локал. 95% там
+ 
+ start from remote
+ create repository name it => create repository
+ in work environment always check if it's main or master to make uor locall as well
+спершу компанія відпрае нам  URL (link) go and clone this repository
+Cloning remote repositories to your local 
+1. You'll be provided repository url
+2. Copy the cloning address 
+3. Open your terminal/cmd and run below code in the correct path
+  git clone <repo-url> (linl)
+
+ press code when we open a file => ssh=>  copy link
+
+in work we almost dont use deskrop we use another folder for windows it's repolse
+press code when we open a file => ssh=>  copy link
+тоді йдемо до робочого терміналу та створюємо папку 
+
+C:\Users\masha\OneDrive\Робочий стіл>git clone git@github.com:MariiaCholak/js-app.git
+fatal: destination path 'js-app' already exists and is not an empty directory.
+перевіряємо що вона існує на робочому столію тоді ідемо в VS
+when we clone it from GitHub it's already git initialize and we don't need to do it anymore
+and open JS app with VS (ПРОСТО ПЕРЕТЯГНУТИ ПАПКУ)
+README ДОПОМАГАЄ ВЕСТИ ДОКУМЕНТАЦІЮ ТА ІНШИМ ЛЮДЯМ ЧИТАТИ  explain whta your repository does
+when we clone it we can't imediately change it because it's in master
+never ever change in MASTER!!!!
+АЛЕ ЯКЩО вже зробили то залиш як є та створи власну branch
+git checkout -b refactor-readme  this comment means creat and switch the branch
+PS C:\Users\masha\OneDrive\Робочий стіл\js-app> git checkout -b refactor-readme
+Switched to a new branch 'refactor-readme'
+git status
+cтворили папкунатиснули git status  і бачимос що його відслідковуют, а я хочу щоб воно було ігнор
+я не хочу щоб ти слідкув за змінами
+в сорс контрол бачимо с змін було і коли дадати їх до GIT IGNORE WE DON'T SEE IT ANYMORE
+І В ТЕРМІНАЛІ МИ МОЖЕМО  перевірити git status it'n not tracking anymore
+.gitignore  файл  який буде сховваний
+я зробив усі зміни тепер я готовий пуш, але це нова бренч ремемре
+PS C:\Users\masha\OneDrive\Робочий стіл\js-app> git add .
+PS C:\Users\masha\OneDrive\Робочий стіл\js-app> git commit -m "refactored readme"
+[refactor-readme (root-commit) 40506db] refactored readme
+ 2 files changed, 4 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+ тепер git push but it's a new branch
+ можна вжити комент який проконує після гіт пуш or pit push -u origin refactor-readme
+ тоді починає стврювати
+ відкриваємо лінк в коменті в терміналі та читаємо переходимо за посиданням
+ відкриваємо наш проект натискаємо compare & pull request
+ перевіряємо що я у мастер і нам треба змінити branch на нашу   та 
+додаємо тайтл creat pull request
+бачимо що немає конфлікту  натискаємо merge pull request => confirm merge
+delete branch on github щоб не було багато
+
+поаернулись в локал switch branch to master git checkout master
+
+we need to delete it from local our branch
+git branch -d  refactor-readme
+
+from now we can star on our new branch and new path 
+
+new project: ... нам треба сторити нову бренч не забути
+
+Отже коли ми маємо таск
+ми його на гітхабі клонуємо
+йдемо в терміналустворюємо там папку , точніше копіюємо писилання
+git clone посилання
+папку пересунули в VS
+переконались що усі в майстер
+  треба створити свою брендж git checkout -b Mariia-login
+  на лівій стороні стврили папку з таким самим імя і щось там всередині написали щоб була хоча б якась зміна
+  тоді git add . => git commit -m "first commit" ось приклад як виглядає
+  PS C:\Users\masha\OneDrive\Робочий стіл\batch11-practice> git add .
+PS C:\Users\masha\OneDrive\Робочий стіл\batch11-practice> git commit -m "First comit"
+[Mariia-login 39a4f34] First comit
+ 4 files changed, 8 insertions(+), 1 deletion(-)
+ create mode 100644 .gitignore
+
+ тоді git push(але не працює бо це наш перший пуш)
+ копіюємо речення яке мені вибило і вставляємо ту команду
+ (але треба пермішин, бо ми можемо зіпсувати чийсь код якщо він відкритий  ) у нас має бути запрошення
+((push  up arrow і має повторити ще раз попередній комент))
+
+тоді на сайт гітхаб у нашоому розділі натиснула comrare and pull
+create pull request( now we teem)
+merge коли ти це робиш кожен отримує notofocation< 
+after you finish you can delete notificati branch
+
+
+тепер на локалі нам треба зробити master 
+git checkout master( НА МАЙСТЕРІ Я НЕ МАЮ НІЧОГО)
+АЛЕ КОЛИ  я натискаю git pull усі коди мені підтягуються інших учасників
+це щодня ми робимо в компанії
+
+ми в мастері отримали усі зміни а тепер видаляємо  свій брендж
+git branch перевіряємо які є і як називається щоб видалити
+git branch -d назва  видалили
+ми щойно зробили це без ніяких проблем бо ми працювали над різними файлами
+але на рбооті це називається  merge conflict Merge Conflict: 
+It happens when 2 or more collaborators contribute to same file. один файл робили різні люди
+
+тепер уявимо робиом нові зміни [njcm phj,bd nf dslghfdbd ]
+спершу сторили нову брендж у тому самому файлі git checkout -b add-new-branch
+git add.     git commit -m "refactor test"     git push
+тоді гітхаб compare pull request=> create pull request - merge- delete branch
+
+а тепер хтось інший зробив все те саме та намагається відправити свій код (це стається дуже часто)
+зробив усі зміни git checkout -b create-more-tests    git add .   git commit -m "add payments"
+git push
+ тпер на сайті гітхаб  (проджект) comrare pull,  create pull request 
+ видасть що хтось this branch has conflicts that must be resolved (the button merge pull requesr is disable )
+каже перед00 тим як ти змінив цей файл хтось уже зробив зміни до теье і ти маєш спершу Pull the chnges and continue off of this changes
+
+нам треба на тій самій сторінці натиснути resolve conflict 
+ми бачимо наш бренч нейм ( кажу ти намагаєшся додати свій код дві лінії до когось але хтось інший вже додав свій код (мастер))
+наш бренч та чиїсь код(мастер)
+
+ми можемо видалити ті пунктирні лінії. та зробити чийсь код першим а тоді мій 
+і ми не маємо іншого конфлікту. 
+натискаємо в правому кутку mark as resolved => comit this merge => merge pull request and then merge it
+and delete branch in github
+
+тоді вернулись в локал git checkout master  => git pull
+
+
+
+when you didn't pull somone changes in a file and you wants to push your changes too same file
+git checkout master 
+do chaanges
+git checkout -b new -branch 
+git add . 
+git commit -m "changes"
+git push 
+copy name of branch 
+git push (name of brand)
+go to github => => comrare& pull =>create pull req => (have conflict) => resolve conflict
+(one by one check thiese files and resolve it) коли ми не можемо розвязати in line (просто видалити рядки)
+більшість часу ми не можемо розвязати так бо для цього треба декілька ліній коду але уяви якщо те тисячі рядків коду
+і у тебе є конфлікт у багатьох файшлах. ти можеш це робити але це буде не легко, без VS
+
+2   ШЛЯХ ВИРІШЕННЯ КОНФЛІКТІВ!!!!!!!! ПОВЕРНЕННЯ ДО vs
+як тільки ти заходиш у github і бачиш конлікт тобі треба повернутись назад у VS
+ there problem was you didn't pull last changes and you make new changes, I'm making step back my mistake didn't pull last changes
+from master  тому нам треба повернутись назад у мастер ( I forgot pull in master resently)
+git checkout master
+git pull (my mistakes which i didn't i did know and i get coworkers  changes)
+* know we need go back to my branch that was causing conflicts
+git checkout new -branch ( ,бачимо що це інше ніж мастер)(замість того щоб мердж мою бренч в майсер я мердж мастер в мою брендж)
+і я викликаю точно такий самий конфлікт який бачу в гітхаб сайті 
+нам треба перейти в  git merge master (тобто я мердж локал в мою брендж)
+і ми бачимо точно такий самий конфлікт з гітхаб ( 3 файли підтягнулись)
+: ми можемо фіксити один за одним рядки і мердж це  або 
+МИ МОЖЕМО RESOLVED IN MERGE EDITOR (КОЛИ МИ РОЗВЯЗУЄМО ТАМ МАЄМО ТРИ РІЗНИХ ВІКНА ліве-incoming(те що приходить з мастер ), праве -current(що ти намагаєшся зробити ), buttom is resolved(кінцевий результат) )
+ наприклад спочатку ми почали з ліва ми прийняла її зміни дві галочки прийняли( )
+ а тепер мої додали  => Complete merge  один файл вирішено але ще є решта
+
+ знову RESOLVED IN MERGE CONF ( ПЕРША ЛЮДИНИ ТОДІ МОЇ) 
+  ТРЕТІЙ МАЛА ПОМИЛRА (ACCEPT CHANGES ) ТОДІ ПРИЙНЯТИ МОЇ ЗМІНИ АЛЕ ДВА РЯДКИ ЗМІГАЮТЬСЯ ТОМУ МИ ПРОСТО ВИдаляємо їх та підтвердити
+ і в кінці зліва COMMIT +=> PULL AND PUSH => YES   
+ ТЕПЕР НА САЙТІ ОНОВИЛИ СТОРІНКУ це вирішено merge oull => confirm 
+
+ третій день
+ GIT CONFLICT
+ коли конф відбув? When 2 or more team members work on same files and they 
+push their code and merge it remote/main or remote/master
+
+Conflict happens because you did not pull the latest 
+remote/master or remote/main changes
+
+CONFLICTs happen and we need to resolve them.
+1. If it is a small conflict, just resolve it inline
+2. Pull the last changes to your local, merge it to your branch
+This will create same conflicts in your local, resolve them and push the changes 
+once again.
+
+sprint: a period of time (2 weeks)(10 днів ворк) ми отримуємо новий таск ми позуємо що закінчили за цей час
+3-5 branches 
+7-10 commits 
+3-5 PRs 
+3-5 Pull changes 
+
+
+
+Miscellaneous
+1. Can I rename my branch? How to name branches?  (Taskid-description) інколи своє  імя
+таск айді приходить з джура, 
+    git branch 456347-dashboard-tests
+    git checkout 456347-dashboard-tests
+    git branch -m 456347-dashboard-smoke-tests 
+git branch -m new name комент щоб переймен 
+smoke test mean the most important functionality in you application (like login) 
+ 
+2. Can I switch to another branch without committing my changes?
+Yes, on your local but it is recommended to commit your changes and then switch branch.
+
+3. Can I merge my local branches?
+Yes, first switch to your branch that you want to merge all the changes 
+Then use below command to merge the other branch into current branch 
+git merge <other-branch-name>
+
+4. Can I switch to my team member's branch? 
+  Yes.
+  git fetch       -> it updates your local with all the remote branches 
+
+5. Can I pull my team member's changes without PR into master?
+  git fetch 
+  git checkout origin/<branch-name>
+  You can do changes in this branch 
+  You can commit and push changes 
+
+  
+6. What happens if I forget the commit message?
+VI - Visual Editor to add your commit message 
+Insert mode: press i 
+You can type your commit message while in insert mode and then exit
+Exit insert mode: press ESC 
+Command mode: press :   
+
+w   -> save 
+q   -> quit 
+wq  -> save & quit
+
+7. Can I change the commit message before I push?
+git commit --amend
+git commit --amend -m "New commit message"
+(те саме що віджуал едіток)
+спершу  треба перейти в insert molt ( I) => type => escape=> :wq   git push
+8. What is git stash and git stash apply?
+Is a way to resolve conflicts that are obvious (you not it will be conflicts)
+
+git stash     git stash apply  
+1. I did some changes with a local branch 
+2. Then someone updated remote master and I know if I push my code, it will create conflict 
+3. Stash my changes: git stash 
+4. Switch to master in your local 
+5. Pull the changes from remote master: git pull 
+6. Switch back your local branch (you stashed changes)
+7. Merge local master changes into your local branch 
+8. Retrieve stashed changes: git stash apply 
+9. This is going to create conflicts 
+10. Resolve them, and publish your branch
+
+9. What is git fetch, git merge and git pull? Their differences?
+There are 2 ways to update your local branches with remote branches 
+Case of master branch 
+1. Switch to master in your local and run 'git pull'
+2. Switch to master in your local and run 'git fetch' to retrive all the changes without merging
+And then run 'git merge origin/master' to update your local master with remote changes
+
+інтервю питання яка різниця між git fetch and git pull = git fetch also get the changes but it'a not marge to your local branch, while git pull retreive and merge changes
+
+
+
+10. What else I should know about GIT commands?
+git merge vs git rebase інтервю питання
+git merge та git rebase — це два способи інтеграції змін з однієї гілки в іншу, але вони працюють по-різному і мають різні наслідки для історії комітів.
+
+1. Git Merge
+git merge об'єднує зміни з однієї гілки в іншу, створюючи новий "merge commit" (коміт об'єднання), що зберігає історію обох гілок. Це простіше і зберігає всі коміти, але може привести до "merge commit", якщо є конфлікти.
+
+Переваги:
+
+Зберігається історія обох гілок.
+Легко застосовувати.
+Недоліки:
+
+Може призвести до більш складної історії з багатьма додатковими "merge commit".
+Виглядає менш лінійно.
+2. Git Rebase
+git rebase переміщує або "переписує" коміти з однієї гілки на основі іншої. Він застосовує всі коміти з поточної гілки поверх іншої, ніби ви почали робити зміни з її останнього стану. Це робить історію більш лінійною, але переписує коміти.
+
+Переваги:
+
+Історія виглядає лінійно і чисто.
+Легше читати та аналізувати.
+Недоліки:
+
+Може змінити історію комітів, що може бути проблемою, якщо інші працюють над тією ж гілкою.
+Якщо є конфлікти, їх потрібно буде вирішувати для кожного коміту.
+Коли використовувати:
+Merge: Якщо хочеш зберегти точну історію та уникнути переписування комітів.
+Rebase: Якщо хочеш мати чисту, лінійну історію без зайвих merge комітів (особливо на власних гілках, до того, як вони потраплять в основну гілку).
+
+
+
+
+git log 
+This command will show all the history of commits and branches
+
+
+we can merge 2 brancas together  ми вже в якісь бренч  і я  хочу доїднати до неї іншу треба git merge(name of another branch)
+але зявилось повідомлення пояснити чому цей мерд важливий  
+# vusual editor треба знати з нього немає виходу. треба перейти в insert modes we need press I on iur keyboard
+insert=> some text ( to explain)
+we need escape button коли зробили isert пропало  
+ тоді  вести коментар :wq (save my commit massage and quit my moll )
+ другий спосіб в лівому боці екрана commit  
+ якщо хочемо змінити commit massage (git commit )
+
+ git log ( можна побачити усі попередні commit and commit masages)
+ 
+ усі мої локал  доступні branches  я можу побачити натиснувши в лівому куті внизуа потім зверху
+
+ як я можу отримати все що в remotte     
+ git checkout master
+  git fetch(see everyone new branch) вибирай того кого потрібно наприклад допомогти отримує інформацію від ремоте
+git checkout  1254-tabya  (допомогли виправили а тоді відпраивли назад можна двома шляхами в V termim фьщ правий кут павутинка пишемо комент тоді коміт тоді єс )

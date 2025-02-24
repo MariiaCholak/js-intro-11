@@ -1,0 +1,170 @@
+RECAP:
+
+Function: it is a block of code used to run a specific task
+which can be executed repeatedly.
+It can take parameters (arguments).
+It can be return (returns a value-data back when invoked) 
+or void (does not return anything but just runs a task)
+
+function launchChrome() {
+  // body
+}
+
+function goToTechGlobalTrainingApp() {
+  //
+}
+
+function loginToApp(username, password) {
+  // 
+} 
+
+launchChrome();
+goToTechGlobalTrainingApp();
+loginToApp();
+
+let actualTitle = getTitle(); // 'Apple'
+let expectedTitle = 'Welcome to TechGlobal School Training';
+
+if(actualTitle === expectedTitle) {
+  // TEST PASSED
+}
+else {
+  // FAILED
+}
+
+function getTitle() {
+  //
+}
+
+
+1. Function Declaration 
+function functionName() {
+  // body
+}
+
+function functionName(param1, param2) {
+  // body
+}
+Write a function which takes a number and return true if the number is even 
+or return false if the number is odd
+
+isEven(4)   -> true
+isEven(3)   -> false
+isEven(0)   -> true
+*/
+1. declare function, give a name
+function isEven(number) {
+     return number % 2 === 0;   
+  }
+  
+  console.log(isEven(2));///t
+  console.log(isEven(-1));////F|
+  we don't do anything w return, we can only stor sf we nned it
+
+REDUNDANT: no need to use it
+
+number % 2 === 0          -> true     EVEN 
+                          -> false    ODD 
+
+number % 2 !== 0          -> true     ODD 
+                          -> false    EVEN
+
+
+Write a function named initials which takes 2 arguments as fname and lname and 
+  return initials
+  
+  initials('John', 'Doe')      -> 'J.D.'
+  initials('Adam', 'Smith')    -> 'A.S.'
+  initials('Max', 'Smith')     -> 'M.S.'
+  */
+  вжив functions name it as a initials take 2 arguments
+  перше імя перша буква перше буква прізвища
+  function initials(fname, lname) {
+    return `${fname[0]}.${lname[0]}.`;
+  }  вживаємо `` легше записати краще 
+  console.log(initials('John', 'Doe')); jD
+  let fname = 'John';
+ fname[0]; // 'J'
+  
+  if we need get 1 letter from this don't use slice we need to use property access
+  Ir would work but not prefer slice(0,1) ///J 0 inc 1 inclusive but it's too long
+  someone use charAt which is beeter than slice because it's used to get one character
+if we have last character it's can use at method because it works w last characters
+
+
+Use slice() for extracting multiple characters-substring from a string 
+User property access [] to get a single character
+at() is recommended to be used when getting last characters using negative indexes 
+but not when first or second character for those we use property accsses []
+don't use at w positive  indexes!  
+let fullname = 'alexander mark';
+
+/*
+  Write a function named inits which takes a fullname and return initials
+  
+  inits('John Doe')           -> 'JD'
+  inits('Adam smith')         -> 'AS'
+  inits('max Smith')          -> 'MS'
+  inits('alexander mark')     -> 'AM'
+  */
+  let fullnameArr = fullname.split(' '); // ['alexander', 'mark']
+  
+  function inits(fullname) {
+    // return `${fullname[0]}${fullname[fullname.indexOf(' ') + 1]}`.toUpperCase(); 
+    return (fullnameArr[0][0] + fullnameArr[1][0]).toUpperCase();
+  }
+  indexof дасть спейс не поганий метод але є кращий split
+if i want to spit this from the space(' ') its gives back array w 2 strings
+fullname.split (' ')' /// ['alexander', 'mark']
+from fullname array [0] gives me alex and fros alex i want a i need another [0]
+and than concatinay + it fullname array[1][0] бо це другий індекс ерей, і нуль бо перша буква іменні
+let fullnameArr = fullname.split(' '); // ['', '']
+return (fullnameArr[0][0] + fullnameArr[1][0]).toUpperCase()
+  перший 0 перше слово другий 0 перша буква
+  console.log(inits('max Smith')); MS
+  console.log(inits('Jonh Doe'));JD 
+   
+   
+   ////Function Declaration - traditional way
+function sum1(num1, num2) {
+  return num1 + num2;}
+console.log(sum1(1, 5)); // 6
+
+// 2. Function Expressions  точно та сама фанкшин дали ту саму валю
+we assighn function to  a variable (like sting or number)
+this time we are not assingmen name in a variable but we asing function in variable
+we dont have name into function we have it into variable
+const sum2 = function (num1, num2) {
+  return num1 + num2;
+}
+console.log(sum2(1, 2)); // 3
+
+// 3. Arrow Functions - ES6 feature 
+like our name in a vatiable, right away give our argumenrs( num) arrow then bodyour function is =>
+const sum3 = (num1, num2) => 
+  return num1 + num2;
+  all of them use a lot
+
+ARROW FUNCTIONS:allow us to make it easy навіть не треба писати return а просто після с
+трілочки писати результат
+const sum3 = (num1, num2) => num1 + num2;
+const initials = (fname, lname) => `${fname[0]}.${lname[0]}.`;
+if it more then 1 expression don't do it
+const isEven = number => number % 2 === 0;
+console.log(isEven(4)); // true
+if you have only one arguments you don't need parant(), put if more () must 
+
+HOISTING: moving variable declaration to the top of the file
+1. Function Declaration
+2. Function Expression 
+3. Arrow Functions
+
+
+
+console.log(y);
+var y = 5;
+
+
+var y;
+console.log(y);
+y = 5;

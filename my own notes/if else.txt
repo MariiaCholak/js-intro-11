@@ -1,0 +1,824 @@
+switch is another from of if else
+very similar but instead of using if else we use cases( like change over clothe every day of week)
+
+
+if - else statements: conditional statements, control flow statements 
+
+SYNTAX:  
+   ///  syf comes from server or broser and to able to demonstrade it we need to store it in a variable
+if(false) { condition 
+  // if block - will be exacuted CASE TRUE 
+}
+else {
+  // else block -  if block CASE FALSE
+}
+
+condition might be a single variable or an expression that evaluates to true or false 
+false, NaN, undefined, null, 0, ''  -> falsy 
+everything else is truly
+if(isSchool) - it's  a variable
+if(num % 2 ===0) it's an expression check if a number here eveb
+ let isSchool;
+
+
+if(age >= 30 && isMP) /// they will retire 
+if(isSchool) {    /// its means it true or false
+  console.log('GO TO SCHOOL');
+}
+else {
+  console.log('SLEEP EXTRA HOURS');
+}
+one of this block will be executed never 2
+or it could be more then 3 exam
+ ... оцінки grain
+90+ A 
+80+ B 
+70+ C 
+60+ D 
+F 
+let examResult = NaN;/// value letter (0-100_)
+if one block is exectudet the rest will not even be visible mean you find matching condition and skip the rest if you got 80 the rest of block wouldn't be visible
+all the other condition after 60 has  else F
+if it's underfine NaN, non of this blocks wouldn't be excecuted it will go to else 
+anything else run else
+if(examResult >= 90) {
+  // A 
+}
+else if(examResult >= 80) { dont say everything else we need still specify  
+  // B
+}
+else if(examResult >= 70) {
+  // C 
+}
+else if(examResult >= 60) {
+  // D
+}
+else {
+  // F 
+}
+
+if(examResult >= 90) { //// w if we make sure it's a A   90
+  if(examResult >= 95) {
+    // A+
+  }
+  else {
+    // A
+  }
+}
+else {
+  if()
+}
+
+
+
+
+let password = 'Abcd123456#';   
+
+if(password.length < 8)  {
+  console.log('Your password is short. Provide at least 8 characters!');
+}
+else if(password.length > 16) {
+  console.log('Your password is long. Provide up to 16 characters!');
+}
+else if(!CharacterHelper.hasUppercase(password)) {
+  console.log('Your password MUST have an uppercase letter!');
+}
+else if(!CharacterHelper.hasLowercase(password)) {
+  console.log('Your password MUST have an lowercase letter!');
+}
+else if(!CharacterHelper.hasDigit(password)) {
+  console.log('Your password MUST have a digit!');
+}
+else if(!CharacterHelper.hasSpecial(password)) {
+  console.log('Your password MUST have a special character!');
+}
+else {
+  console.log('Your password is successfully created!');
+}
+
+
+
+let emailName = 'tgschool05';
+
+if(emailName.length < 6 || emailName.length > 30) {
+  console.log('Sorry, your username must be between 6 and 30 characters long.')
+}
+else if(EmailChecker.hasEmail(emailName)) {
+  console.log('That username is taken. Try another.')
+}
+else {
+  // Allow user to continue creating account
+}
+
+
+NOTE: if statement can be used without any else or else if 
+However, else block or else if block cannot be used without if statement 
+
+console.log('I am learning if else statements');
+let mood = false;
+if(mood) { /// якщо тру іф блок буде екзекютб fnd tlse will be skip
+  console.log('ALL GOOD!');
+}
+else {
+  console.log('HELL');
+}
+console.log('End of the program');
+
+перший та останій сонсол будуть запущенні бо іони не в блоці а самі по собі  а вже в середині те що правда 
+одне в блоці буде досліджено
+якщо ти маєш один стейтмент лише то можна буде позьутись кривих дужок зробити одну лінію,
+
+Short if-else omitting(упущення пропуск) curly braces - ALLOWED ONLY if you have one statement in the blocks
+
+if(mood) console.log('ALL GOOD!');
+else console.log('HELL');
+
+if(condition) {
+  //statement 1  це не можна упустити дужки
+  //statement 2
+}
+else //statement 3 якщо видалив дужки треба не мати відступ а відразу внизу писати
+Passing score is 60 or above
+
+We will write a program to check if we pass the exam or failed.
+60 or above -> PASS
+else -> FAIL
+
+EDGE SCENARIOS:
+MUST
+59
+60
+61
+
+NICE TO HAVE
+30
+100
+
+STILL GOOD TO HAVE  можна теж спробув
+'Hello'
+null
+undefined
+*/
+
+let examScore = 60;
+
+if(examScore >= 60) {
+  console.log('PASS');
+}
+else {
+  console.log('FAIL');
+}
+
+
+
+if(examScore < 60) {
+  console.log('FAIL');
+} 
+else {
+  console.log('PASS');
+}
+
+// Short omitting curly braces - ONE Statement
+if(examScore < 60) console.log('FAIL');
+else console.log('PASS');
+
+/*
+Retirement age is 65
+
+We will write a program to check if we can be retired or not.
+
+age is greater than or equal 65 -> YOU CAN GET RETIRED
+else -> YOU CANNOT GET RETIRED!!!
+*/
+
+let age = 65;
+
+if(age < 65) {
+  console.log('YOU CANNOT GET RETIRED!!!');
+}
+else {
+  console.log('YOU CAN GET RETIRED');
+}
+ці два приклдаи ідентичні і працюватимуть одинаково
+if(age >= 65) {
+  console.log('YOU CAN GET RETIRED');
+}
+else {
+  console.log('YOU CANNOT GET RETIRED!!!');
+}
+
+let examScore1 = 60; //// 59 fail 
+if (examScore1 >= 60) {
+    console.log('pass')
+}
+else {
+   ('Fail') 
+} 
+everything comes from server
+
+
+TERNAry operator-like example if else ternary ope we can you for both examples
+let let examScore = 59;
+
+examScore >= 60 ? console.log('PASS') : console.log('FAIL');
+
+console.log(examScore >= 60 ? 'PASS' : 'FAIL');
+
+// Preferred зберігати у веріебил, для них степ бай степ
+let result = examScore >= 60 ? 'PASS' : 'FAIL';
+console.log(result); /// 
+
+examScore >= 60 дасть мені true чи false, тоді дам ?(якщо це тру збережи'pass' в результаті замість тру) : (крапочки означають else) "Fail"
+чи це тру збережи пес якщо фолс збережи фейл
+
+let age = 65;              TERNARY OPERATOR
+let retirementAllowed = age < 65 ? 'NO' : 'YES';
+                       (CONDITION)(TRUE)   (FALSE)
+console.log(retirementAllowed); /// true      <65 
+?- if 
+: else
+А ЦЕ Я ЗРОБИЛА
+let age1 = 65;
+let retirementAllowed1  = age1 >= 65 ? "Alowed" : "Not allowed"
+console.log(retirementAllowed1)
+first it always true, second false
+
+let gender = 'female';
+let fname = gender === 'female' ? 'Jane' : 'John';
+
+If statement
+•if statement is used to test the condition. 
+•It controls the flow of the program based on the 
+condition and executes the statement if condition is 
+truthy (true).
+ if-else if – else ladder statement
+•If else if statements are used when there are multiple 
+cases
+•Only one of the blocks will be executed.
+use multiple if else (dress, rand numb)
+
+Ladderonst { getRandomNumber } = require('./../utils/MathHelper.js');
+
+/*
+Get a random number between -5 and 5
+Find if the number is POS, NEG, NEUTRAL
+*/
+
+let ran1 = getRandomNumber(-5, 5);
+console.log(`The random num1 is = ${ran1}`);
+
+if(ran1 > 0) {
+  console.log('POS');
+}
+else if(ran1 < 0) {
+  console.log('NEG');
+}
+else { 
+  console.log('NEUTRAL');
+}
+
+if(ran1 > 0) console.log('POS');     next ro each other без спейсу
+else if(ran1 < 0) console.log('NEG');
+else console.log('NEUTRAL');
+
+0
+let result1 = ran1 > 0 ? 'POS' : ran1 < 0 ? 'NEG' : 'NEUTRAL';
+console.log(result1);
+
+console.log('End of the program!');
+
+Ternary operator
+•Ternary operator can be 
+used instead of if-else 
+statements.
+•It can be considered as 
+short version of if-else 
+statement and commonly 
+used in programming 
+languages.
+switch statement
+•It is like if else statement but based on cases instead of conditions.
+•NOTE: Switch cases use strict comparison (===).
+•The values must be of the same type to match.
+•A strict comparison can only be true if the operands are of the same type.
+•It allows to have any number of case statements within a switch.
+•Each case is followed by colon (:).
+•The statement for a case will execute until a break statement is reached.
+•When a break statement is reached, the switch terminates.
+•Using break is optional. If no break appears, the flow of control continue until 
+a break is reached.
+•A switch statement can have an optional default case, which must be at the 
+end of the switch. The default case can be used for performing a task when 
+none of the cases is true. No break is needed in the defau
+break statement
+•In JavaScript, break statement is used for the termination.
+•It is used with switch statements and loop statements.
+•Syntax:
+break;
+The biggest mistake ; don;t put it in if else statement(it close statement) everythind independent
+means statement done
+console.log('DO NOT EVER USE ; AFTER if condition');
+if(true) {
+  console.log('Hello');
+}
+else {
+  console.log('HELL');
+}
+
+console.log('End of the program!');
+
+const { getRandomNumber } = require('./../utils/MathHelper.js');
+
+/*
+Get a random number between -5 and 5
+Find if the number is POS, NEG, NEUTRAL
+*/
+
+let ran1 = getRandomNumber(-5, 5);
+console.log(`The random num1 is = ${ran1}`);
+
+// Ladder statements - solution
+if(ran1 > 0) {
+  console.log('POS');
+}
+else if(ran1 < 0) {
+  console.log('NEG');
+}
+else { 
+  console.log('NEUTRAL');
+}
+
+// Nested if-else statements 
+if(ran1 > 0) {
+  console.log('POS');
+}
+else {
+  if(ran1 < 0) {
+    console.log('NEG');
+  }
+  else {
+    console.log('NEUTRAL');
+  }
+}
+
+if(ran1 === 0) {
+  console.log('NEUTRAL');
+}
+else {
+  if(ran1 < 0) {
+    console.log('NEG');
+  }
+  else {
+    console.log('POS');
+  }
+}
+Lddwe atTEMENR THE BEAR FOR WORK ENVORIMENT
+flow
+FIRST CHEch if user name correct( yes ask passport, no- tell error user name is wrong),  then ask password ( if it matching in server ) 
+   
+   let username = "TechGlobal"; // TechGlobal
+let password = "Test1234"; // Test1234
+correct credentiol
+first check if username correct
+i'll get password only if passpot correct 
+тут є сенс брати nest
+if (username === "TechGlobal") {////// ask password if it correct
+  if (password === "Test1234") {
+    console.log("You are logged in");
+  } else {
+    console.log("Invalid Password entered!"); /// if passport wrong
+  }
+} else {
+  console.log("Invalid Username entered!");
+}
+const { getRandomNumber } = require("./../utils/MathHelper.js");
+
+/*
+Generate a random number between 1 and 12 (both inclusive) are considered as months
+1 January
+.
+.
+12 December
+
+Print "Winter" if the generated number is 12, 1, or 2
+Print "Spring" if the generated number is 3, 4, or 5
+Print "Summer" if the generated number is 6, 7, 8
+Print "Fall" if the generated number is 9, 10, 11
+*/
+
+let month = getRandomNumber(1, 12);
+console.log(`Random month is = ${month}`);
+
+if (month === 12 || month === 1 || month === 2) console.log("W inter");//// перший спосіб порівняння
+else if (month >= 3 && month <= 5) console.log("Spring");///// or month <= 5
+else if (month >= 6 && month <= 8) console.log("Summer"); //// month <= 8
+else console.log("Fall"); //// решта
+et season =
+  month === 12 || month === 1 || month === 2
+    ? "Winter"
+    : month <= 5
+    ? "Spring"
+    : month <= 8
+    ? "Summer"
+    : "Fall";
+
+console.log(season);
+
+
+
+RECAP:
+control-flow statements or conditional statements 
+By using if-else we'll control the flow of the program, different block
+of codes will be executed depending on conditions.
+
+if(condition) {
+  // block - runs if condition is true 
+}
+else  {
+  // block - runs if condition is false
+}
+///// if it's one line if else we can ommit the {}, ot use termet operator
+let winner;
+
+if(a > b) {
+  winner = a;
+}
+else  {
+  winner = b;
+}
+
+if(a > b) winner = a;
+else winner = b;
+
+the same
+let loser = a > b ? b : a;
+
+//// 3 варіант
+let gameResult;//// initialy underfine
+
+if(x > y) {
+  gameResult = 'X won';
+}
+else if(y > x) {
+  gameResult = 'Y won';
+}
+else {
+  gameResult = 'Tie';
+}
+we have more then 2 options
+
+let gameResult = x > y ?(if) 'X won' (else): y > x ?(if) 'Y won' (else): 'Tie';
+ це були ladder if else 
+
+
+NESTED if else
+one if else in another one 
+if(5 > 10) { ////condition
+  if(true) {
+    console.log('Good morning!');
+  }
+  else {
+    console.log('Hello');
+  }
+}
+else {
+  if(undefined) console.log('Hi');
+  else if(null) console.log('Good evening!');
+  else console.log('Yay!');
+}
+це є фолс. тому ми пропускажмо блок if true and go to false
+FALSY: false, undefined, null, 0, '', NaN 
+any nymber exept 0 its truly any string if it not empty it's truly
+if(NaN) console.log('Hello');
+else console.log('Hi');
+everythinh comes from server
+
+let referrerFullName = student5.getReferrer(); // null, '', undefined // 
+if we have his inf it would be stoew in another variable (if), but if we don't have this inf
+we will get   null, "", undefined
+if(referrerFullName) {
+  console.log('This student has a referrer');
+}
+else {
+  console.log('This student DOES NOT have a referrer');
+}
+other language do this we need provide all of them
+if(referrerFullName === undefined || referrerFullName === null || referrerFullName === '') {
+  console.log('This student DOES NOT have a referrer');
+}
+else {
+  console.log('This student has a referrer');
+}
+
+
+switch statement it's like if else, don't use a lot use strick comparison
+•It is like if else statement but based on cases instead of conditions.
+•NOTE: Switch cases use strict comparison (===).
+•The values must be of the same type to match.
+•A strict comparison can only be true if the operands are of the same type.
+•It allows to have any number of case statements within a switch.
+•Each case is followed by colon (:).
+•The statement for a case will execute until a break statement is reached.
+•When a break statement is reached, the switch terminates.
+•Using break is optional. If no break appears, the flow of control continue until 
+a break is reached.
+•A switch statement can have an optional default case, which must be at the 
+end of the switch. The default case can be used for performing a task when 
+none of the cases is true. No break is needed in the default case.(consider if else)
+  
+  look for mathching, find,  and break mean go out from it 
+
+const { getRandomNumber } = require('./../utils/MathHelper.js');
+ let ran1 = getRandomNumber (1, 3);
+ console,log( ' random number is $ {ran1})
+ if(ran1 ===1){
+  console.log(" One ")
+ }
+ else if (ran1 ===2) {
+  console.log('Two')
+ }
+else{
+  console.log("Three)
+  не треба нічого казати бо я знаю що це вже і так три
+}
+ перевіре той блок який відповідає числу
+
+/// for the first case i will look for if the random number is one
+ switch(ran1){
+  case 1: (: inportant)
+  console.log('one")
+  break;  /// ecch can should be broken
+  case 2:  ... if it matching 2
+  console,log('Rwo)
+  case 3: or else, use default(use like else)  we can do
+ default: 
+ console.log('Three) ... якщо це один не два це значить три після цього не треба break бо воно вже і так донизу іде
+ }
+с
+console.log('End of the program!');
+
+if we find a matchinf case it runs it zкщо ми забиремо break statement це перодовжує екзекют наш код
+наприклад якщо знайшло число 2 то після нього решта кейсів теж підтгне, дійде то гото аж кінця, якщо знайшло два  йде до кінця
+
+
+if else -  go throught all step step by step find first matching and then stopped check one by one
+наприклад наше число 100 перевірить кожен рядок тому тту краще switch бо воно відразу знаходе перший find first matching and stopped.
+не досліджує кожен рядок 
+ наприклад зайшли в клас незнаємо хто джон питаємо кожного студента- if else
+ знаємо хто студент двон відразу говоримо до ного - SWITCH
+
+SWITCH WE DON'T USE A LOT BECAUSE IT'S TO BIG CODE AND DOEAN'T WORK W BOOLING, AND OTHER LANGUAGE DON'T USE
+
+EVERYONE USE TO IF ELSE
+
+IF ELSE HAS EASIER  SYNTAXEX
+
+w JAVA WE CAN USE BOOLYN WITH SWITCHES
+// This is something not available in Java-C#
+
+const { getRandomNumber } = require('./../utils/MathHelper.js');
+let ran1 = getRandomNumber(-100, 100);
+console.log(`Random number is ${ran1}`); // -67
+ if (ran1 >0) {
+  console.log ('Pos')
+ }
+ else if( ran1 - 0){
+  console.log(""Neg')
+ }
+ else {
+  (console.log("neut"))
+ }
+
+out case is boolyn lang, in other languages switch doesn't work w BOOLYN
+ми можемо зробити 
+switch(ran1){
+  case - 100:
+  console.log("neg")
+  break;
+  case - 99:
+console.log('Neg)
+break
+} //// це те саме ми можемо скоротити 
+іwitch(ran1){
+  case - 100:
+  case - 99:
+console.log('Neg)
+break/// we ran all the same
+
+Краще If Else
+switch(true) {
+  case ran1 > 0: 
+    console.log('POS');
+    break;
+  case ran1 < 0: 
+    console.log('NEG');
+    break;
+  default:
+    console.log('NEUTRAL');
+}
+
+ date. ... після крапочки є різні дати і показує точно той в якому ти знаходишся, можна навіть перетворитии в string
+getDate,hours. 
+
+Write a program that tells if the day is WEEKEND or a WEEKDAY
+0 or 6 -> WEEKEND 
+1-5    -> WEEKDAY
+*/
+
+const date = new Date ();
+lat dayOfTheWeek = date.getDay(); //// 0-sunday 6 -saturday /*
+ if(dayOfTheWeek === 0 || dayoftheweek === 6 ){
+  console.log (Weekend)
+ }
+ else {
+  console.log('weekday)
+ }
+ а тепер switch case
+switch(dayOfTheWeek){
+  case 0:
+  case 6:
+      console.log('WEEKEND');
+      break;
+  default:
+      console.log('WEEKDAY');
+
+
+switch(true) {   ..... вчителя приклад
+  case dayOfTheWeek === 0 || dayOfTheWeek === 6:
+    console.log('WEEKEND');
+    break;
+  default:
+    console.log('WEEKDAY');
+}
+
+ми маємо так робити
+}'John'.includes('a') || 'John'.includes('e') писати двічі імя
+day === 0 || day === 6 маємо сеперетлі чек як це і писати ще раз
+console.log(date.getFullYear()); // 2025
+console.log(date.getDay()); // current day (0-6)
+console.log(date.getHours()); // current hours (0-23)
+console.log(date.getMinutes()); // current minutes (0-59)
+console.log(date.getSeconds()); // current seconds (0-59)
+console.log(date.getMonth()); // current month (0-11)
+console.log(date.getTime()); //
+console.log(date.getDate()); // current day (1-28 for February)
+ дата приходе така яка сьогодні завтра буде інший результ
+
+
+switch (dayOfTheWeek) { // 0
+  case 0:
+  case 6:
+    console.log("WEEKEND");
+    break;
+  default:
+    console.log("WEEKDAY");
+
+а це ternary
+let result = dayOfTheWeek === 0 || dayOfTheWeek === 6 ? 'WEEKEND' : 'WEEKDAY';
+console.log(result);
+ switch not popular
+
+
+
+ from function we return somth, but using if else
+only one block will be executed
+if you don't provide second part it's underfine
+don't show a mistake
+return means break authometecly exit a function , we don;t need return can have only return
+many people use to omit second else and write only return"Odd" 
+function oddEven(number) {
+  if(number % 2 === 0) {
+    return 'EVEN';
+  }
+  else {
+    return 'ODD';
+  }
+}
+
+function evenOdd(number) {
+    return number % 2 === 0 ? "EVEN" : "ODD";
+  }
+  
+  console.log(evenOdd(2));
+  console.log(evenOdd(3));
+
+
+  function posNegZero(nuber){
+   if (number > 0 ){
+    console.log('Pos;)
+   }
+  }
+   else if  (number < 0) {
+    console.log("Neg')
+  }
+else {    ///// last can be omited we can type onle - return "Zero"
+  return number = 0 
+  console.log('Zero")
+}
+console.log(posNegZero(1));
+  console.log(posNegZero(0));
+  console.log(posNegZero(-1));
+  
+  also when it's one line we can delete {}
+  function posNegZero(nuber){
+   if (number > 0 ) return 'Pos';
+   else if  (number < 0) Neg'
+   return "zero'}
+
+
+ const posNegZero = (number) => {
+    return number > 0 ? "POS" : number < 0 ? "NEG" : "ZERO";
+  };  вчитель
+   Якщо ми видалили дужки то треба писати в одному рядку бо код не є readable
+/*
+  Write function that takes a name and check if it starts with 'E' or 'e' and returns a boolean
+  Function name is startE.
+  NOTE: If the given name is empty -> then return false
+  
+  startE('Emily') -> true
+  startE('emily') -> true 
+  startE('Alex') -> false 
+  startE('') -> false
+  startE('John') -> false
+  */
+
+//// charAt - return  " "
+  function startE(name) {
+ //return name.toUpperCase().startsWith('E');
+or
+///return name.toUpperCase().startWith("E")
+
+or ////const startEArrow = name => name.toLowerCase().startWith('e')
+   
+    return name.trim().length !== 0 && name[0].toLowerCase() === "e"; .....вчитель
+  
+  console.log(startE(""));
+  
+  const startEArrow = (name) =>      /// first my argum then my arrow
+    name.trim().length !== 0 && name[0].toLowerCase() === "e";
+  
+use propery acess whe you have 123 character []  ,  at method last seconf from last
+
+/*
+  Write a function called divisible5 and it takes a number as an argument
+  It will return true if the number is divisible by 5
+  It will return false if the number is NOT divisible by 5
+  
+  divisible5(7)       -> false
+  divisible5(0)       -> true
+  divisible5(10)      -> true
+  divisible5(99)      -> false
+  */
+
+  
+function divisible7(number) {
+  if (number % 5 === 0)  return true;
+  return false;
+}
+console.log(divisible7(55))
+console.log(divisible7(6))
+
+//// shorter teacger way
+  function divisible5(number) {
+    return number % 5 === 0;
+  }
+  
+
+  /* interview question
+  Write a function called fooBar which takes a number and return a string or a number.
+  if the given number is divisible by 5 -> return 'foo'
+  if the given number is divisible by 7 -> return 'bar'
+  if the given number is divisible both by 5 and 7 -> return 'foobar'
+  if the numbers is not divisible by 5 or 7 -> return the same number back
+  
+  fooBar(2)   -> 2
+  fooBar(3)   -> 3
+  fooBar(5)   -> 'foo'
+  fooBar(10)  -> 'foo'
+  fooBar(14)  -> 'bar'
+  forBar(0)   -> 'foobar'
+  fooBar(35)  -> 'foobar'
+  fooBar(70)  -> 'foobar'
+  */
+  
+  function fooBar(number) {   ///// ми мали не  5& 7 а помнижити їх спершу
+    if(number % (5 * 7) === 0) return 'foobar';
+    else if(number % 5 === 0) return 'foo';
+    else if(number % 7 === 0) return 'bar';
+    return number;
+  }
+  
+  console.log(fooBar(2)); // 2
+  console.log(fooBar(5)); // foo
+  console.log(fooBar(7)); // bar
+  console.log(fooBar(70)); // foobar
+
+
+
+
+
+
+0 35, 70, 105, 140, 175
+
+Numbers divisible by both 5 and 7 -> divisible by 35
+Numbers divisible by both 3 and 5 -> divisible by 15
