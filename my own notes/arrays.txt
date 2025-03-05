@@ -596,8 +596,198 @@ function funcA(callbackFunc) {
    якщо щось одне не вийде то інші дія не вийде
 
 
+ flat() -> reduces the dimensionality of an array
+and creates a new array with sub-array
+elements concatenated to a specified depth.
+FLAT const students = [
+    ['A', 'B', 'C'],
+    ['X', 'Y', 'Z'],
+    ['K', 'L'],
+    ['D']
+  ];  МИ МАЄМО 4 ЕЛЕМЕНТІВ  4 ЕРЕЙ
 
+  console.log(students);  ARRAY W 4 different array
+  console.log(students.flat()); one array w all elements [ djwfidifj]  d. length /// 9 
+return a new array w all sub-array elements 
+  
+  const numbers = [   winin array i have another array
+    [1, 2, 3],
+    [4, 5, [6, 7, [8, 9]]]
+  ];
+  
+  console.log(numbers);
+  console.log(numbers.flat()); ////  [12345[67[89]]] одні [] was taken
+  console.log(numbers.flat(2)); [] 2 were taken
+  console.log(numbers.flat(3));
+  забирає дужки і робить одними дужками
+  /*
+  TASK: flattens nested-arrays
+  ARGUMENTS: it can take an optional depth argument 
+    NOTE: by default it is 1
+  RETURN: a new array which flattened
+  STATIC or INSTANCE: Instance
+  DOES IT MODIFY ORIGINAL ARRAY: No
+  */ НЕ ДУЖЕ ВЖИВ. АЛЕ ДЛЯ ІНТЕРВЮ ВЖИВАЮТЬ CAN GIVE NESTED ARRAY AND ASK FIND THE MAX NUMBER
+  W js YOU CAN flat it and find   Math.Max([[156, 461, 5,] 5, 7, 6].flat ()); ///461
  
+we need convert out date to present our manager in a nice way we don't use for our report [], we use coma , -
+
+
+Arrays – Converting Arrays to String
+• toString() -> converts an array to a string of
+(comma separated) array values.
+• join() -> joins all array elements into a string.
+we can specify the separator.
+
+ TO STRING()
+const names = ['Alex', 'John', 'Jane'];
+
+let namesStr1 = names.toString(); //// alex, john , jane
+let namesStr2 = names.join();alex, jogn, 
+let namesStr3 = names.join(' | ');
+join(-)
+console.log(namesStr1); // Alex,John,Jane
+console.log(namesStr2); // Alex,John,Jane
+console.log(namesStr3); // Alex-John-Jane
+
+if you don't have any argument join to exectly the same thing(), we can specify if you don't want coma but you want  "-"
+teacher use join()
+
+const date = [2025, 2, 23];
+console.log(date.join('/'));
+console.log(date); 
+/*
+join()
+TASK: it converts our array to a string with a defined separator if given
+ARGUMENTS: An optional separator
+RETURN: returns a string
+STATIC or INSTANCE: instance
+DOES IT MODIFY ORIGINAL ARRAY: No
+*/
+
+
+
+Spread Operator it's very common, use it a lot     ... syntax, use w array and object
+• The Spread (...) operator expands
+an iterable (like an array) into its
+individual elements.
+• The Spread (...) operator can be
+used to expand an iterable into more
+arguments for function calls
+Interview question ask what is spread operator
+const numbers = [1, 2, 3, 10, -7];
+console.log(numbers); // [ 1, 2, 3, 10, -7 ]
+console.log(...numbers); 1 2 3 4 5 6  більше не в ерей. а індивідув номер
+
+const winter = [ 'Dec', 'Jan', 'Feb'];
+const spring = [ 'Mar', 'Apr', 'May'];
+const summer = [ 'Jun', 'Jul', 'Aug'];
+const fall = [ 'Sep', 'Oct', 'Nov'];
+//const months = winter.concat(spring, summer, fall); ми зєднали усі місяці в один сінгил ерей
+але вчитель це не вжив тому нижче кращий приклад
+const months = [...winter, ...spring, ...summer, ...fall] get individul from the array 
+console.log(months);
+
+це інтервю приклад дуже популярне питання  знайди макс та мін номер
+const nums = [ 10, 15, -7, 5, 20 ];
+// max number in the array
+// min number in the array
+don't use sort here, sort has a lot of performans issues because we keer it in memory
+
+Math.max(nums)   math.max doesn't work w an array they take numbers as an arguments
+console.log(Math.max(...nums)); // 20 i can ssread individual elements
+console.log(Math.min(...nums)); // -7
+use a lot
+examp inf comes from server
+const products = ['Phone', 'MacBook Pro', 'Air Pods'];
+якщо ми хочемо додати новий продукт але мати новий кейс
+ми не можемо додати push because we will change our original value 
+producr.push('TV); не можна 
+const products2 = [...products, 'TV', 'Projector']; ми розділили та тодали елементи відразу тут або ми можемо створити нову верібл і зробити пуш слайс
+якщо в середині ['TV', ...products, 'Projector']
+
+console.log(products); // [ 'Phone', 'MacBook Pro', 'Air Pods' ]
+console.log(products2); // [ 'Phone', 'MacBook Pro', 'Air Pods', 'TV', 'Projector' ]
+
+
+let name1= John
+let name2 = name1
+name1 = Alex
+console.log(name1) alex
+          name2 john
+ось це різниця між примітив коли ми переписуєм імя вони не оновлюються і кожен іде порізно
+а в ерей якщо змінюєш один то змінюються і всі 
+Primitives- immutable
+ referance mutable
+ який з обєктів ти б не оновив воно оновиться до усіх обєктів
+
+Destructuring in JavaScript
+• Destructuring allows us to extract values from
+arrays, objects, or other iterable data structures
+and assign them to variables in a more concise
+and readable way.
+Destructuring Arrays
+• To destructure an array, we use square
+brackets [ ] on the left side of an assignment,
+and within those brackets, we specify the
+variables where we want to store the values
+from the array.
+NOTE: It allows a short and clean syntax to
+unpack elements
+вживаємо на роботі
+хочемо кожну частину 
+наприклад кастомер має бачити ід останього замовленняб від останьої дати транзакції 
+ріал таск
+let date = "02/23/2025";
+це стрінк і мені треба зберегти це в ерей вживати метод спліт
+// Get the date and make sure it is today's date.
+const dateArr = date.split("/");
+ми дістракт взяли фром ерей 
+// let month = dateArr[0];
+// let day = dateArr[1];
+// let year = dateArr[2];
+або цей варіант кращий
+const [month, day, year] = dateArr; // [ '02', '23', '2025' ] і вони перший приліпає до першого другий до друкгого
+goes w exactly order
+
+const currentDate = new Date();
+if (
+  month === currentDate.getMonth() + 1 &&
+  day === currentDate.getDate() &&
+  year === currentDate.getFullYear
+) {
+  console.log('The day retrieved is today');
+}
+else {
+  console.log('There is problem with the last login date!');
+}
+
+// array destructuring 
+const credentials = ['techglobal', 'techglobal@gmail.com', 'Test1234'];
+нам не треба свторювати веріебил а просто вписати, лише коли будемо багато разів вживати
+const [username, , password] = credentials;
+щоб password був третім трбеа поставити , що означає мені не важлмва наступна інфа дай настпуне після цього
+console.log(username); techglobal
+console.log(password); email     , test1234
+
+const favs = ['Shish Kabob', 'Amok', 7, 'Batch-11', true];
+const [ , favBook, , favBatch ] = favs; i' not looking for my favbook   , means skip
+ console.log(favBook);
+console.log(favBatch);
+
+example object this example better to save as object
+const student = {
+  fname: 'John',
+  lname: 'Doe',
+  className: 'Math',
+  grades: [ 25, 70, 100 ]
+};
+
+const [ mid1, mid2, final ] = student.grades; we exctrecte
+// 60 
+const finalResult = mid1 * 0.2 + mid2 * 0.3 + final * 0.5;
+console.log(finalResult >= 60 ? 'PASSED' : 'FAILED');
+
 
 
 

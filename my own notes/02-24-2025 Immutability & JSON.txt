@@ -1,0 +1,326 @@
+
+we dont use it in work environment but it's good to know
+JavaScript is single-threaded. means line by line
+JS will execute the code line-by-line.
+JS can execute one task at a time. 
+Multi-threaded languages: C++, Java
+
+Java is not multitask she can't exacute 2 test the same time
+JavaScript is asynchronous by default.!!! несинхрона
+бага то разів будемо мати проблеми із часом
+/ Synchronous code means it's not deley for any reason  i'm not take any inf from server
+everithing execute line my line
+// console.log('Hello');
+// console.log('Monday');
+
+
+// Asynchronous code 
+// setTimeout(() => {   we don't use this method just only to show
+//   console.log('John');
+// }, 2000); додали час 2 сек щоб довше прогрузило пррийшло пізніше
+
+// console.log('Batch-11'); це прейде перше ніж попереднє зверху, джава не чекає  а йде далі і джон останній тобто повернись до нього 
+як це буде зроблено
+що ми маємо позаду сцени цього що відбувається 
+
+ 
+// Call Stack - Web APIs - Callback Queue
+function connectToDB() {
+    setTimeout(() => {
+      console.log('Connected to DB...');
+    }, 1000);
+  }
+  function getData() {
+    console.log('Data...');
+  }
+  function processData() {
+    console.log('Data Processed...');
+  }
+
+  function runDB() {
+    connectToDB();
+    getData();
+    processData();
+  }
+  runDB();
+  спочатку очікуємо що всі по пo черзі execute
+  дивимось дебак = стаивмо червону крапку вкінці - зліва run and debug - w note js (on top) 
+  we have down call stack натискаєемо зверху степ into it foes into function implementention
+  call stack has runDB leter ConnectToDB кожна видаляєтся одна після одної
+call stack  it's plece where your functions are added from bottom starting from buttom get date execution done function is deleted from stack
+and at the end stack is empty
+працює за принципом останню тарілку яку ви поклали на купку ви будете брати першою її
+
+
+
+
+Immutability
+• Immutability in JavaScript refers to the concept that once an object (like an array or an object) is created, its state cannot be
+changed.
+• Any operation that appears to modify the object creates a new object with the desired changes.
+• Immutability is a core concept in functional programming and has become increasingly popular in modern JavaScript
+development.
+• Mutable: can be changed.
+• Immutable: cannot be changed.
+
+Key Aspects of Immutability
+• All the primitive values are immutable by nature.
+• Ex: strings, numbers, booleans, null and undefined
+• Arrays in JavaScript are mutable by default.
+• However, various array methods can be used to create new arrays without modifying the original.
+• Objects in JavaScript are mutable.
+• However, their immutability can be achieved by creating new objects with the desired changes.
+
+call stack is memory layer that invokes methods one by one  the last in firt out principle is here
+can be intervie question
+Call Stack: works with the LIFO (Last In First Out) principle
+Event loop: In the case of asynchronous programs, it will help JS to 
+wait for delayed operations
+
+Mutability
+Mutable: changing (references)
+Immutable: not changing (primitives) array object function
+// Primitives are immutable
+let num1 = 10;
+let num2 = num1;
+console.log(num1); // 10
+console.log(num2); // 10
+
+num2 = 11;
+console.log(num1); // 10
+console.log(num2); // 11
+ми маємо нам1 не оновився і залишилось те саме бл це намбер і вони примітив і ми з двох змінюємо лише одне
+
+// References are mutable
+const arr1 = [1, 2, 3];
+const arr2 = arr1;
+
+console.log(arr1); мають одинаковий резуль
+console.log(arr2);
+
+arr1.pop(); оновило і перший і другий набрало 3 з двох приклдаів бо reference from the same object even if it's looks we copy
+but we don't we reference them to another object
+when we call arr1 or arr2 we call or mutate the same object
+arr2.pop(); we remove not only from 2,  we remove from both
+console.log(arr1);    1
+console.log(arr2);    1
+
+const table1 = {
+  material: 'Wood',
+  color: 'Brown'
+};
+const table2 = table1;
+
+table1.material = 'Granite';  it's update for table1 too, decause we update the same object
+delete table2.color;   we delete for both table 
+console.log(table1);
+console.log(table2); // mater gran
+
+
+ми робитимемо часто це нам треба сторити окрему копію є два шляхи shallow  and deep 
+// Then how can I have independent copy of reference types  
+const testAccount = {
+  username: 'TestTech123',
+  password: 'SuperSecretPassword',
+  fullname: 'John Doe'
+};   нам треба створити свою копію щоб не зіпсувати оріджін бо може вона нам треба буде
+// Shallow copy using spread operator
+const testAccountCopy = {    це означає скопіювати усе зверху і вставити тут в нове
+  ...testAccount
+};
+зараз вони одинакові 
+
+testAccountCopy.fullname = 'Alex Smith';  тепер вони змінились перший той самий а другий змінився
+console.log(testAccount); john
+console.log(testAccountCopy); alex
+spread operator not the best to make copy
+
+// Why Shallow copy is not the best choice 
+// Shallow copy will not work nested objects
+const student = {
+  fullname: 'John Doe',
+  grades: {
+    mid: 50,
+    final: 75
+  }
+};
+const studentCopy = {  створили нову копію  одинакові 
+  ...student
+};
+
+studentCopy.fullname = 'Alex Smith'; імя не змінились двя двох різні нічого не оновлили все працює ок
+studentCopy.grades.final = 100;  проблема, воно оновило не другий варіант а перший та другий що створило нам помилку
+бо shallow cope doesn't work for nested object, array it doesn't help us
+console.log(student); // { fullname: 'John Doe', grades: { mid: 50, final: 100 } }
+console.log(studentCopy); // { fullname: 'Alex Smith', grades: { mid: 50, final: 100 } }
+
+для deep cope we need to learn what is JSON
+Json we use everyday because all date which we use on web broser comes as a Json format
+on web site response i can see inf about object 
+this inf from server always comes in a Jason and it's a string  
+looks like objects but it's array w one element (tesla)
+inside array i see the object
+we opened jsonviewer.stuck.hu
+looks similar to JS object but it's string and we can convert it 
+
+const car = {
+    make: 'Tesla',
+    model: 'Model 3',
+    trim: 'SEDAN',
+    color: 'Black',
+    VIN: '5YJ3E1EA1LF747442'
+  };
+  smtimes we allso sent inf to server and when we get or sent inf we never sent as JS Object only as JAson object 
+  js too heivy to sent  as object sent as string more light 
+
+  we need to lern 2 methods of JSon 
+    JSON.stringify(car) make it's string return value we wil store in another value, looks static method
+JSON.parse(student)  convert JS object notation into an object
+  // Serialize JS Object into JSON     when we convert our Java object into Json to be sent to server
+  const carJSON = JSON.stringify(car);    
+  
+  console.log(car);   /// first one it's object
+  console.log(carJSON);    // second we see  string
+  
+  JSON use all the time only " double quates
+   JSON - java screept object notation
+   if we write car.( we will see all objects methods)
+   if we type carJson. we will see all string ethods
+  
+
+
+  first we nned to create object  we got one student from server
+  const student = '{"ID": 1, "FULL_NAME":"John Doe", "EMAIL":"john@gmail.com"}';     it's Jason string 
+  
+  // Validate the email is john@gmail.com
+      we need conver it to object when we have 1000 email we use json method
+ 1.  // (convert)Deserialize JSON string into a JS Object    convert 
+  const studentObject = JSON.parse(student);  we can store in another variable because it's return new object
+  console.log(studentObject.EMAIL); /// отримали наш резуль без "
+  
+  ОТРИМАННЯ ВІД РАЗУ ІЗ СЕРВЕРА
+  fetch () is a method and one way when we can get inf from server
+  means gets, do some request   in headers we cope ling requst URL which comes from our server
+  цю частину вивчимо через декілька місяців
+  // Getting information from Server using fetch() 
+  fetch('https://api.techglobal-training.com/instructors')
+    .then(res => {
+      return res.json();
+    })
+    .then(data => {
+      const result = data;
+      console.log(result);
+      console.log(result.length);  .... отримали два бо два інстрактора
+    })
+  parse() use  to convert jason into js method
+  
+  const obj = {
+    age: undefined, // Not supported
+    favMovie: null,
+    symbol: Symbol(), // Not supported
+    printHi: function() {
+      console.log('Hi');
+    } // Not supported
+  }
+  
+  const objJSON = JSON.stringify(obj);
+  console.log(objJSON); // {"favMovie":null}
+
+
+
+
+
+// Deep copy using JSON
+const instructor = {
+  id: 1,
+  students: [
+    {
+      fullname: 'John Doe',
+      grades: {
+        final: 100
+      }
+    },
+    {
+      fullname: 'Jane Doe',
+      grades: {
+        final: 100
+      }
+    }
+  ]
+};
+
+const instructorCopy = JSON.parse(JSON.stringify(instructor)); спершу конвертит ту a string, then convert back to JS object this become deep copy
+instructorCopy.students[1].fullname = 'Alex Smith';
+
+console.log(instructorCopy.students[1].fullname);    alex
+console.log(instructor.students[1].fullname);  jane  doesn't change
+
+const studentCopy = JSON.parse(JSON.stringify(student)) 
+dirst covert sudent to string then agant to object
+ми це не вжив бо ми вжив завжди fetch('h) 
+JSON
+• It stands for JavaScript Object Notation.
+• It is a lightweight data interchange format that is easy for humans to read and
+write, and easy for machines to parse and generate.
+• In JavaScript, JSON is a common way to represent and exchange data
+between a server and a web application, or between different parts of a web
+application.
+• It is language independent and universally used for transporting data between
+server and browser.
+Syntax:
+• JSON is a text format that uses a specific syntax to represent data as key-
+value pairs. Keys are always strings, and values can be strings, numbers,
+objects, arrays, booleans, or null.
+
+Data Types Supported in JSON
+• Strings: "Hello, World!"
+• Numbers: 42 or 3.14
+• Booleans: true or false
+• Arrays: ["apple", "banana", "orange"]
+• Objects: {"key": "value", "age": 25}
+• Null: null
+
+interwie question what is that
+Serialization vs Deserialization         sns seri to string
+• Serialization is the process of converting a JavaScript object
+into a JSON string using JSON.stringify(). This is useful when
+sending local object as text to database or server.
+• Deserialization is the process of converting a JSON string into
+a JavaScript object using JSON.parse(). This allows us to use
+JSON data in our JavaScript code.
+• NOTE: JSON shares a similar syntax with JavaScript object
+literals, making it easy to convert between JSON and JavaScript
+objects.
+
+Deep Copy vs Shallow Copy
+• Shallow Copy: A shallow copy of an object or array creates a new instance of the top-level object or array, but it doesn't duplicate
+nested objects or arrays. Instead, it references them. Modifying nested objects will affect both the original and the copied object.
+• Deep Copy: A deep copy, on the other hand, creates a completely independent duplicate of the original object or array,
+including all nested objects or arrays. Changes made to the copy won't affect the original.
+
+Deep Copy vs Shallow Copy
+• Deep Copy: using JSON.parse() and JSON.stringfy
+()
+• Shallow Copy: using spread operator.
+• NOTE: Because a deep copy shares no references
+with its source object, any changes made to the deep
+copy do not affect the source object.
+
+Not Serializable Objects
+• Functions,
+• Symbols,
+• undefined
+• Objects that represent HTML elements in the
+HTML DOM API,
+• Recursive data, and many other cases.
+• Calling JSON.stringify() to serialize the
+objects in those cases will fail. So, there's no
+way to make deep copies of such objects
+
+
+
+what is the different  between shallow copy and deep
+Shallow copy: is when you use spread operator to create a copy of a JS object (reference types)
+Spread operator will not be ideal when object is nested
+Deep copy: is when you use JSON parse and stringify methods to create a copy of a JS object
+This will completely create an independent copy which will not affect the original object

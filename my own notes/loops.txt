@@ -1,0 +1,942 @@
+S Loops
+• JS loops are used to execute a block of code repeatedly.
+• Loops will execute until a termination condition is met.
+• Loops are helpful to eliminate duplicating codes and time-effort saving.
+• JS supports different kinds of loops:
+•  30 % for - loops through a block of code a number of times.
+•   невер юсfor/in - loops through the properties of an object.
+• 65%  for/of - loops through the values of an iterable object.
+•  1 % while - loops through a block of code while a specified condition is true.   можна замість вжив for loop
+• do/while - also loops through a block of code while a specified condition is true.
+
+For loop
+• The for statement creates a loop with 3 expressions:
+• Expression 1 is executed (one time) before the execution of the code block.
+• Expression 2 defines the condition for executing the code block.
+• Expression 3 is executed (every time) after the code block has been
+executed.
+
+
+Loops: mechanism used to run a block of code repeatedly 
+
+Iteration: Each time the loops run
+
+1. for loop 
+2. for...of loop 
+3. while loop 
+4. do-while loop
+5. for...in loop
+
+
+1. FOR LOOP 
+-also known as i loop or traditional loop
+-it uses 3 expression 
+  -initialization: it is the start point for the loop 
+  -condition: it is the termination point (stop)
+  -update: the change for each iteration 
+
+SYNTAX:
+for(initialization; condition; update) {
+  // block of code to execute
+}
+
+Infinite Loop: it is an error with the loop makes it infinite and never stops.
+Be careful with your loop logic and make sure it is not infinite
+
+DO NOT USE BELOW FOR CHECKING IF A NUMBER IS ODD!!!
+i % 2 === 1      it doesn't works for negetive numbers
+
+USE:
+i % 2 !== 0
+
+for(let i = 0; i <= 3; i++)
+означає перше і наш старт поїнт.  менше іквел 3 (condition)
+ та  кожен раз збільш валю ++ на один 
+
+
+// Print numbers from 1 to 15
+// start point: 1
+// termination point: 15
+// update: ++
+for(let num = 1; num <= 15; num++) {    /// start poin 1, secjnd poind always boolyn, each time update by one 
+  console.log(num, 'Hello LOOPS!') 15 hello loops
+}
+Iteration -everytime when this loop run  15 times this run
+console.log('End of the program!');
+коли ми дебагін це кожен раз воно йде в люп тоді стає номером напр 2  якщо менше=> 15 якщо тарілкуіде в консолог
+тоді знову пінімається число на один  коли до ходе до 15 теж екзекют тоді коли в нас тсало 16 фолс тоді йде то кінця закінч програми
+
+for(let i = 0; i < 5; i++) {  0. 1. 2. 3. 4.   5 разів буде праюувати люп hello
+    console.log("hello word")
+} 
+console.log(i)
+чому ми не почали з 1? окей ми можемо плчати але нам треба змінити 5 на 6  або <=5
+ми можемо будь які числа написати щоб декілька разів було але це не зручно хоч (7. <12 але це не зручно)
+
+// Print numbers from 1 to 15
+// start point: 1
+// termination point: 15
+// update: ++
+for(let num = 1; num <= 15; num++) {
+    console.log(num, 'Hello LOOPS!')
+  }
+  cosole.log('End of the program!');
+  
+for(let i = 0; i < 100; i++) { 
+  console.log('TechGlobal');    console.log(i)  /// 10 11 12 13 14 15
+}
+не можна вживати const  because we can't assignh only let if we don't have let it's work
+but it will have var and we try to get rid of it
+we cand have ; after expression because it show it's doing nothing
+for(let i = 0; i < 100; i++)  ;   !!!! not allowed
+якщо let i = 10; i <=5   result wiil be false e dont see in  console, because we have logical mistake
+                 i >1     this loop never stop  should be somerhing that stop your loop
+// Global scope will not allow us to have 2 variables with the same name
+// let i = 0;
+// let i = 1;
+ but for loops i use inside 
+
+ 
+// Output the numbers from 100 to 0 (both inclusive) –> 100 99 98 97 96 …. 0
+/*
+start: 100
+end: 0
+update: --   we can allways understand do we need increse or decrease by lookig of the start
+*/ 
+
+for(let i = 100; i >= 0; i--) {
+       console.log(i) 
+}
+//  i<= 0 mistake it's logical mistake i start dromm 100 is hundred less or = 0? no
+ //  i !==-1 never use it in loop part
+// necer skip { } in loops programers doesn't like it
+
+
+
+// Output all the even numbers from 0 to 50 (both inclusive) -> 0 2 4 6 8 …. 50
+/*
+start: 0
+end: 50
+update: ++   from star and end point we inderstand if i'm going up or down
+*/
+
+
+for(let i = 0; i <= 50; i++) {
+    if (i % 2 === 0)  console.log( i)
+   }
+/// if we don't want to see oll number make condition
+
+
+   for(let i = 0; i <= 50; i += 2) {     /// it mean everytime increse by 2, but we need to know our start point even, if it's odd it's not works
+    console.log(i);
+  }
+
+
+// Output all the numbers divisible by 5 from 0 to 50 (both inclusive) -> 0 5 10 …. 50
+   for(let i = 0; i <= 50; i++) {
+    if (i %  5 === 0)  console.log( i)
+   }
+
+   for(let i = 0; i <= 50; i += 5) {     //  we use it only id know that start point is even
+    console.log(i);
+  }
+
+
+  // Find sum of the numbers from 1 to 5 (both inclusive) -> 15
+   let sum = 0;       /// I HAVE conteiner initialy w 0 
+   for(let i = 1; i <= 5; i++) {
+    sum += i  // sum +=START     AFTER ASSINGMENT ++ START CHANGE EVETUTIME 
+   } //// to conteiner add one more evetutime my loop done w 15     it's the same as sum = sum + 1 but we use short hand assingment
+   console.log(sum) //// we have consolog not inside our expresion because 
+   // our loop run it everutime and result will be for all numbers like 1 6 10 15, but we nned our final result
+//
+
+   // Find sum of the numbers from 10 to 15 (both inclusive) -> 75
+   let sum1 = 0;
+   for(let i = 10; i <= 15; i++) {
+    sum1 += i 
+   }
+   console.log(sum1)
+
+
+
+/// // Find the product of all the numbers from 1 to 6 (both inclusive) -> 
+// 1 * 2 * 3 * 4 * 5 * 6 -> 720
+      let product = 1     // we can't write 0 because result would be 0
+   for(let i = 1; i <= 6; i++) {
+          product *= i 
+   }
+   console.log(product)
+    }we can even write i=2 because i=1 doesnt change any result and we need to sun our loop less
+
+// Output each character from TechGlobal School -> T e c h G l o b a l   S c h o o l
+   let str = 'TechGlobal School';
+    for(let i = 0; i <= str.length -1; i++ ){      /// i = str.length(17 chtrecter last underfine)  if we dont include use les i<str.length
+        console.log(str[i])
+       cnso.log[i] /////  we get indexex 1 2 3 16, that why we use str to specified our characters w that ind
+    }        
+
+// Count how many a's we have in the below string   -> 3
+    let fruit = 'banana';
+    let counterA = 0;         /// everythime we find 'a' increse by one
+   for(let i = 0; i < fruit.length; i++) {
+    if (fruit[i] === 'a')  counterA++;     increase be one if you find it
+   }
+   console.log(counterA)
+   fruit[i] it will give me all fruit one by one
+   we need to check one by one if it's letter is "a"  if (fruit[i] === 'a')
+
+
+// Output all the odd numbers from 1 to Random Number (inclusive) 
+// (between 10 and 20) (both inclusive) -> 1 3 5 7 9 ….
+
+let random = Math.floor(Math.random() * (20 - 10 ) + 10);
+console.log(random)
+let odd = 1
+for(let i = 1; i <= random; i++){
+    if(i % 2 !== 0) console.log(i)    /// it's helps to find odd if it's not !==0 
+}
+
+my start point is 1 end point random number     but for sure(<=20)
+update ++
+
+/*
+Generate a random number bt 1 to 10 (both inclusive
+   Find the product of all the numbers starting from 1 to randomly generated random
+   
+   5       -> 1 * 2 * 3 * 4 * 5 -> 120
+   6       -> 1 * 2 * 3 * 4 * 5 * 6 -> 720
+   3       -> 1 * 2 * 3 -> 6
+   *
+//let r2 = getRandomNumber(1,10)
+*/
+let random1 = Math.floor(Math.random() * (10 - 1 ) + 1);
+console.log(random1)
+let product1 = 1
+for(let i = 1; i <= random1; i++) {
+    product1 *= i 
+}
+
+console.log(product1)
+
+
+/*Print all the numbers between 2 random numbers in the range 
+of 1 to 10 (both inclusive) in ascending order
+
+ran1 ran2
+7, 5    -> 5 6 7
+4, 8    -> 4 5 6 7 8
+5, 5    -> 5
+
+start: Min of ran1 and ran2
+end: Max of ran1 and ran2
+*/
+let ran1 = getRandomNumber(1, 10);
+let ran2 = getRandomNumber(1, 10);
+
+console.log(`The random numbers are = ${ran1} and ${ran2}`);
+// let min = Math.min(ran1, ran2);
+// let max = Math.max(ran1, ran2);
+
+for(let i = min; i <= max; i++) {
+  console.log(i);
+}
+for(let i = Math.min(ra1, ra2); i <= Math.max(ra1, ra2); i++) {
+  console.log(i)}
+   we  don't know start points end point, we dont know larger anf smaller 
+   my star point should be min of num1, num2
+
+
+
+   
+
+Loops: are used to run a block of code repeatedly
+Iteration: each time that loop runs 
+There are 5 loops in JS: for loop, for...of loop, for...in loop (only in JS), while loop, do-while loop
+ {
+  ///some code 
+  console.log('Hello)     run a block
+ }
+
+
+1. for loop:  other name traditional loop, i loop
+Syntax: 
+for (initialization; terminationCondition; update) {
+  // block to execute
+}    for(let i = 0; i < 5; i++) {        /// when it's 5 this loop will terminate
+ be careful w logical mistakes
+  //
+}   getting each element from array arr[i],   each character in a string,    each key-value pair from object
+
+// A loop that never run
+for(let i = 1; i < 0; i++) { // i < 0 condition will be false for the first iteration and this loop will not run
+  console.log('SATURDAY');     ///  i not less then 0
+}
+
+// Infinite Loop 
+for(let i = 10; i > 1; i++) {      /// when you never meet your deternmintion points
+  console.log('SATURDAY');              /// this condotoin will never be false,  if condition we now all numbers > then 1
+}
+
+// Infinite Loop   ми це не вжив але на інтервю можуть запитати
+for( ; ; ) {          infinite loop
+  console.log('SATURDAY');
+}
+
+
+
+
+
+const names = [ 'John', 'Jane', 'Alex' ];   /// we know that elements may change  we cant harcode i, use length
+
+    for(let i = 0; i < names.length; i++) {         // be careful because we nned be careful for length if it's start from 0, we need do <=names.lenth - 1; (5-4),,or <names.length (mens 4 last alement which we will achieve)
+      console.log(names[i]);
+    }
+    
+    console.log('End of the program!');
+{
+
+// Count how many even numbers we have in the array below -> 4
+const number = [ 2, 6, 3, -1, 10, 8 ];     we neeed to creat a couter
+    let countE = 0;
+    
+    for(let i = 0; i < number.length; i++) { // 0, 1, 2, 3, 4, 5
+      if(number[i] % 2 === 0) {    /// if they even we nned to collect them in a variable
+        countE++;    /// whenever I found that number is even   i should increase my counter by one it by one
+      }  ( countE +=1) only 15% programers use this example to inrease
+    }
+
+    console.log(countE);   
+  дехто робили так if (i % 2 === 0)    /// 0 1 2 3 4 5 i it's your index it's not number itself
+
+  // some code 
+  console.log('Hello');
+}
+
+// getting each character in a string
+{
+  str[i];
+}
+
+// getting each element from array 
+{
+  arr[i]
+}
+
+// getting each key-value pair from object 
+{
+  // we'll learn this
+} 
+
+while-loop-logic we use when we don't now how many times do we need to use to gess the number
+const { getRandomNumber } = require('./../utils/MathHelper');
+let gameNumber = 5;
+let attempts = 0;     // start fron 0 but everitime when we generated a random N  we count atemmped with ++
+let randomNumber; // undefined
+
+while(randomNumber !== gameNumber) {    underfine random is not == 5
+  randomNumber = getRandomNumber(1, 10);     // let's imagine it's 3. and know 3 =5 ? no
+  attempts++;
+}
+ let time = attempts === 1 ? 'time' : 'times';    ЦЕ ВКАЗАЛИ ЩОБ закінчення були норм
+console.log(`Game is over after ${attempts} ${time}!`);
+
+// for( ; ; ) {      even when it's infinitive we can break it and stop
+//   let randomNumber = getRandomNumber(1, 10);
+//   attempts++;
+
+//   if(randomNumber === gameNumber) { stop when they the same (5)
+//     break;
+//   }
+// }
+
+let time = attempts === 1 ? 'time' : 'times';
+console.log(`Game is over after ${attempts} ${time}!`);
+
+2. while loop: it works with a condition. 
+  The loop will run while the condition is true
+  The loop will terminate whenever condition is false 
+  NOTE: it first checks the condition and then decides whether to run the block or not
+
+  Syntax: 
+  while(condition) {
+    // run this block  coonsole.log(Hello)
+  }
+ while(1 ===1) infinn loop but we cab break it 
+ it's like return break a function
+
+can i use while to print numbers from 1-5? yes but not prefer  for it's the best option
+
+while only takes condition but not expresion that's whu we use this
+let i = 1;   
+
+while(i <= 5) {   comes here as 1  1<=5?   yes     2    3   4   5
+ console.log(i);
+ i++;           then incresse by one
+}       6 break loop
+console.log('End of the program!');
+    
+When to use while over for loop:
+When the exact iteration is unknown
+коли ми незнаємо ск разів нам треба ран наш код коли знаємо вжив for
+
+
+// Keep generating a random number between 1-15 (inclusive) 
+// until you get lucky number = 13
+
+let ran; // undefined
+let countAt = 0;
+
+do {
+  ran = getRandomNumber(1, 15);
+  countAt++;
+} while (ran !== 13);
+
+console.log(`We got 13 after ${countAt} times.`);
+
+
+When to use while over for loop:
+When the exact iteration is unknown
+
+
+
+47.5% for loop 
+47.5% for...of loop (arrays/objects and other iterables)
+3% while loop 
+1% do-while loop
+1% for...in loop 
+
+// Output all the even numbers from 0 to 50 (both inclusive) -> 0 2 4 6 8 …. 50
+
+console.log('\n----------for-loop solution----------\n');
+for(let i = 0; i <= 50; i++) { // i is block-scoped
+  if(i % 2 === 0) console.log(i);
+}
+/// бо і лише для ціє луп як fname
+console.log(i); // ReferenceError: i is not defined
+
+console.log('\n----------while-loop solution----------\n');
+ let i = 0; // i is global-scoped    ми не можебо більше декларувати
+
+while(i <= 50) {
+  if(i % 2 === 0) console.log(i);
+  i++;     нам треба  збільшити бо наша і назавжди буде 0
+}   with 50 loop not breal i'ts break as 51 
+console.log(i); // 51
+
+// Find sum of the numbers starting from 3 to 7 (both inclusive) -> 3 + 4 + 5 + 6 + 7 -> 25
+let sum = 0
+for(let i = 3, i <= 7; i++ )
+sum += i 
+console.log(sum)
+
+let num = 3   /// we didn't name it i because i it's also variable name
+
+wrile(num <= 7){
+sum += num
+num ++ }
+ conso;e.log(sum)
+
+
+let num1 = 0;
+
+while(num1 < 3) {     //// 0 1 2 
+  console.log(num1);
+  num1++;
+}
+2. while loop: it works with a condition. 
+  The loop will run while the condition is true
+  The loop will terminate whenever condition is false 
+  NOTE: it first checks the condition and then decides whether to run the block or not
+
+  Syntax:  // while loop checks the condition first and then run the block of code
+  while(condition) {
+    // run this block
+  }
+
+simillar to while
+3. do-while loop: it works with a condition.
+  The loop will run while the condition is true
+  The loop will terminate whenever condition is false 
+  NOTE: the block of in do block will execute first and then the condition will be checked
+
+do {
+  // run this block
+} while(condition);
+// do-while executes the block of code first and then checks the condition
+let num2 = 0;
+
+do {
+  console.log(num2);       ///0 1 2 
+  num2++;
+} while(num2 < 0);
+ 
+ different between them while first check the condition if it's true  then run a block
+ do while first run the code then checks condition that'  why you have at least one execution
+ всеодно мало вжив 
+
+// Keep generating a random number between 1-15 (inclusive) 
+// until you get lucky number = 13
+
+let ran1; // undefined    
+let countAt = 0;  рахуватиме спроби
+do {
+  ran = getRandomNumber(1, 15); тут не можна декларувати рандом спершу декларув зверху
+  countAt++;
+} while (ran1 !== 13);
+console.log(`We got 13 after ${countAt} times.`);
+різниці немає  змінила лиеш синтакс
+while (ran1 !== 13);
+ran = getRandomNumber(1, 15); 
+  countAt++;
+
+Intervie question they don't give you a task but will ask what is the different between while, and do while
+do while first run the block then check the condition 
+while     while checks the condition and run a block
+do even when your condition is false run it at least one time,
+
+IF YOU KNOW HOW MANY TIMES YOUR LOOP RUN USE FOR LOOPS, IF NO,  USE WHILE
+USUALLY WE KNOW 
+NESTED VERY REAR
+
+While vs For loops
+• For loop is used to execute a block of code and preferred when we know the exact number of iterations.
+• While loop is used to execute a block of based on a condition and total number of iteration is not certain (dynamic).
+• While loop can be used instead of for loop and visa versa.
+w w w . t e c h g l o b a l s c h o o l . c o m
+Do-While loop
+• The do-while loop is a variant of the while loop.
+• This loop will execute the code block once, before checking if the condition is true, then it
+will repeat the loop as long as the condition is true.
+
+For-of loop
+• The for of loop is used to loop through the values of an iterable object such as Arrays,
+Strings, Maps and more.
+w w w . t e c h g l o b a l s c h o o l . c o m
+
+Loop Control Statements
+• break;
+break is used to terminate the loop.
+• continue;
+continue is used to skip only current iteration if a specified condition occurs and
+continues with the next iteration in the loop.
+w w w . t e c h g l o b a l s c h o o l . c o m
+
+Nested Loops
+• Any loop statement can be used in another loop.
+• Executing a loop inside another loop is known as nested loops.
+• The first loop is known as outer loop, and the second one which is used inside the first one is known as inner loop.
+• NOTE: we will cover for in loop once we learn JS Objects as it is used with obje
+
+FOR-OF LOOP favorite for teacher
+
+
+/// break: completely terminates the loop
+// continue: skips the current iteration     (one cycle in the loop can be skip)
+for(let i = 1; i <= 15; i++) {
+  if(i === 6) continue; // skips when i is 6     or i !== 6
+  else console.log(i);
+}  we don't use continu almost because logicaly we can make another way
+for(let i = 1; i <= 15; i++) 
+  if(i !== 6) console.log(i)      shorter  якщо i не 6 пропусти
+
+  for(let i = 1; i <= 15; i++) {
+  if(i === 10) break; //  will terminate the loop when i is 10  
+  else console.log(i);.}
+  vми не хочемо щоб воно було 15 разів, після 10 зупинись
+
+  // Create a new array with first 2 even numbers in the array above -> [2, 10]
+
+const result = [];
+
+for(let i = 0; i < arr.length; i++) {
+  if(arr[i] % 2 === 0) {
+    result.push(arr[i]);
+  }
+
+  if(result.length === 2) {
+    break;
+  }
+}
+console.log(result);
+ пояснення arr[i] get element one by one ,  use if, 
+ to add these numbers to my result we nned to use push
+ і коли ми отримали резултат два числа розриваємо блок
+  
+  nested loops 
+  for(let i = 1; i <= 3; i++) {   /// 3 times run
+    console.log('Saturday!');
+    for(let j = 1; j <= 2; j++) {     // 2 times run
+      console.log('Hey');
+    }
+  }
+   inner loops we don't able to use i in my second loop because i've alredy used it in me the same block that's why use j 
+but when we have loop within another loop every time when this loop is iterated  we should run full cycle of this
+Saturday!   for every itteration within loop will be run all  ci rclus 
+Hey
+Hey
+Saturday!
+Hey
+Hey
+Saturday!
+Hey
+Hey
+let count = 0;
+  for(let i = 1; i <= 3; i++) {
+    console.log('i =', i);
+    for(let j = 1; j <= 5; j++) {
+      console.log('\tj =', j);
+      count++;
+      console.log(count);
+    }
+  }  we try to void nested loop at work
+
+     
+      Loops:   last day of recording
+1. for loop   if you need indexes of smth
+2. while loop  if we don't how many times our loops iterates
+3. do-while loop  run code then check conditoon
+4. for...of loop (for each loop)  use very w array, string collection
+5. for...in loop only objects
+
+for...of loop: used to iterate thru iterable objects (arrays, objects)
+
+When to use for loop vs for...of to iterate arrays?
+1. idf we want to iterate backward with for of it's not impossible
+but w for loop you can start for example from 3
+
+can you tell powerful features which were released w ES6
+let const, arow function, for..of    spread operetor, classes, startw endw includes
+
+forEach(), map(), filter(), reduce(), some(), every()
+вивчити ці методи!!!  дуже сильно  можуть це замінити
+цими способами можна лупс наші ерей
+
+FOR....OF 
+SYNTAX 
+for(let variableName of objects)   it's mean variable name each time take one of this object  pen next time eraiser dont deal w indexes
+console.log( variableName)          we use single word 
+we can use inside let or const
+
+const objects = [ 'Pen', 'Eraser', 'Board', 'Paper' ];
+// You can use for loop to iterate arrays but for...of loop is better
+// for(let i = 0; i < objects.length; i++) { // 0, 1, 2, 3
+//   console.log(objects[i]);
+// }
+BUT FOR OF BETTER
+let countStartP = 0;
+for(const obj of objects) {
+  if(obj.startsWith('P')) countStartP++;
+}
+console.log(countStartP);
+
+1.
+const salaries = [ 1200.32542, 1500.345, 3000.349857 ];
+
+for(let i = 3; i < salaries.length; i++) { // i = 0, 1, 2
+  console.log(salaries[i].toFixed(2))
+}
+
+for(const salary of salaries) {
+  console.log(salary.toFixed(2));
+}
+if each of your element is string we can use any string methods, if numbers numbers methods
+
+2.   const students = [
+  {
+    fname: 'John',
+    age: 25
+  },
+  {
+    fname: 'Jane',
+    age: 24
+  }
+];
+for(const student of students) {
+  console.log(student.fname, student.age);
+}
+
+
+for(let i = 0;  i < nums.length; i++  ){
+    if (i <= 2 || i >= nums.length -3){
+        sum += nums[i]
+    }
+}
+console.log(sum);
+
+ 3 const names = [ 'John', 'Jane', 'Alex', 'Max', 'james' ]; 
+
+// Log each name  better use for of more readable
+console.log(`\n------TASK01-------\n`);
+for(const name of names) {
+  console.log(name);
+}
+ for(let i = 0; i < names.length; i++){
+    console.log(names[i])
+ }   /// if we put names we will get our arrays print 5 times
+     if we put [i] we wil get 0 1 2 3 4 5 
+
+     // Count how many names starts with j or J  -> 3
+
+
+console.log(`\n------TASK02-------\n`);
+let countJ = 0;
+for(const name of names) { // i = 0, 1, 2, 3, 4
+  if(name[0].toUpperCase() === 'J') countJ++;  not prefer but can use or name[0] === 'j' || name[0] === "J"
+}
+console.log(countJ);
+we can continue use the same name becaise it's a local not global
+* замітка якщо перевіряємо ловер  кейс то в скобках має бути лише мала буква "а" якщо апер кейс то лише фелика "А"
+або після (name[0].toUpperCase()starts.With('J'))
+    
+    for(let i = 0; i < names.length; i++){   ///// 0 1 2 3 4 
+        if(name[i][0].toLowerCase() === 'j') count++
+    }  firt we took name index then each element first index
+ 
+ // 'John', 'Jane', 'Alex', 'Max', 'james'
+// Count how many names have length of 4  -> 3
+
+console.log(`\n------TASK03-------\n`);
+let count4 = 0;
+
+for(const name of names) {
+  if(name.length === 4) count4++;
+}
+
+console.log(count4);
+
+// 'John', 'Jane', 'Alex', 'Max', 'james'
+// Count how many names have length of 4  -> 3
+
+console.log(`\n------TASK03-------\n`);
+let count4 = 0;
+for(let i = 0; i < names.length; i++)
+  if(names[i] === 4) count4 ++
+// first check if names[i] gives us those names one by one, but do I want name or their length?
+names[i].length === 4 that's why. add counter++ ech time i increase by one
+
+let count1 = 0
+    for(const name of names){
+ if(name.length === 4) count1++
+    }
+    console.log(count1)
+ 
+ new task
+ const numbers = [-7, -2, 0, -2, 0, 5, 5, 10, 100, 0];
+// Count how many positive numbers you have in the array -> 4
+let count = 0;
+for(let number of numbers)
+    if( number >= 1 ) count++  ///// > 0
+console.log(count)
+
+it's works too but not prefer for of better
+let coun = 0
+for(let i = 0; i < numbers.length; i++){
+    if(numbers[i] > 0) coun++  }
+    console.log(count)
+ 
+
+ // Count how many negetive numbers you have in the array -> 4
+let countNEG = 0;
+for(let number of numbers)
+    if( number < 0 ) countNEG++  ///// > 0
+console.log(count)
+
+it's works too but not prefer for of better
+let counNEG = 0
+for(let i = 0; i < numbers.length; i++){
+    if(numbers[i] < 0) counNEG++  }
+    console.log(count)
+ALL THESE TASK IT'S VERY COMMON INTERVIEW QUESTION
+
+// Count how many even numbers you have in the array -> 7
+console.log(`\n------TASK03-------\n`);
+const numbers2 = [-7, -2, 0, -2, 0, 5, 5, 10, 100, 0];
+let count2 = 0;
+for(let number of numbers2)     // gives us each numbers on by one
+    if( number % 2 === 0 ) count2++      // check if this number comes individualy from the array % === 0
+console.log(count2)
+
+
+    for(let i = 0; i <numbers.length; i++){
+        if(numbers[i] % 2 === 0) counter++
+    }
+    console.log(counter)
+
+
+    // Count how many positive-odd numbers you have in the array -> 2
+console.log(`\n------TASK04-------\n`);
+
+let countPosOdd = 0;
+
+for(const num of numbers) {
+  if(num > 0 && num % 2 !== 0) {    positive and odd conditions
+    countPosOdd++;
+  }
+}
+
+console.log(countPosOdd);
+
+const numbers = [ 3, 4, 7, 3, 2, 2, 7 ];
+console.log('\n--------TASK-1--------\n');
+// Find the sum of all numbers         -> 28
+// Find the average of the numbers     -> 4
+better use for of loop here
+let sum = 0
+
+for(let num of numbers){   /// 3 4 7 3 
+sum += num 
+       }       // додаємо всі числа
+console.log(sum)     /29  
+console.log(sum / numbers.length)    / так шукається average  
+
+first remember how we find sim or multiplication
+
+numbers.forEach((number)) => sum + number)    one more way for future
+ call back function
+
+// Find the product of all the numbers starting from the index 3 -> 3 * 2 * 2 * 7 -> 84
+console.log('\n--------TASK-2--------\n');
+ let product = 1
+for(let i = 3; i <numbers.length; i++)   
+    product *= numbers [i]
+console.log(product)   ///84
+   
+
+for(let num of numbers.slice(3)) {   ///[3 2  2 7]
+    product *= num }
+console.log(product)
+
+
+Вправа має декілька рішень
+const nums = [ 1, 5, 7, 2, 3, 4, 9, 4, 5, 2, 1, 0, 10, 3, 5 ];
+let sum = 0
+// Find the sum of first 3 and last 3 elements -> 31
+for(let num of [...nums.slice(0,3), ... nums.slice(-3)])   
+    sum +=  num 
+console.log(sum)
+
+console.log('\n--------SOLUTION-1--------\n');
+let sum1 = 0;
+ 
+for(let i = 0; i <= 2; i++) {     ./// i 0 1 2 
+  sum1 += nums[i];            дістали перші три
+}
+
+for(let i = nums.length-3; i < nums.length; i++) {   оатсанні три
+  sum1 += nums[i];
+}
+
+console.log(sum1);
+погане рішення бо завелике і дві люп
+
+console.log('\n--------SOLUTION-2--------\n');
+let sum2 = 0
+
+for(const num of nums.slice(0, 3)) {  почни з першого і третій не вкл знайшли перші три
+  sum2 += num;
+}
+for(const num of nums.slice(-3)) {
+  sum2 += num;
+}
+ дві луп теж не дуже 
+console.log(sum2);
+
+
+console.log('\n--------SOLUTION-3--------\n');
+
+let sum3 = 0;
+
+for(const num of [...nums.slice(0, 3), ...nums.slice(-3)]) {    означає дай перші та осатні три ерей
+  sum3 += num;
+}
+console.log(sum3);
+
+console.log('\n--------SOLUTION-4--------\n');
+let sum4 = 0;
+
+for(let i = 0; i <= 2; i++) {  // i = 0, 1, 2
+  sum4 += nums[i] + nums.at(-1 - i);      // ot nums.length - 1 - i
+}
+console.log(sum4);
+sum4 += nums[i] - додало перші три бо наша і = 0 1 2 
+nums.at(-1 - i);   i in a first place is 0, when it's 1 it will be -2
+
+const numbers = [3, 4, 7, 3, 2, 2, 7]
+console.log('\n--------TASK-1--------\n');
+// Find the sum of numbers that has even index -> 3 + 7 + 2 + 7 -> 19
+let sumForEvenIndex = 0;
+
+for(let i = 0; i < numbers.length; i += 2) { // i = 0, 2, 4, 6
+  sumForEvenIndex += numbers[i];  my i is here stsrt om top
+console.log(sumForEvenIndex);
+
+}  i += 2 (because i know my indexes will be 0 2 4 6 )
+
+// Find the product of numbers that has odd index -> 4 * 3 * 2 -> 24
+console.log('\n--------TASK-2--------\n');
+let productOfOddIndex = 1;
+for(let i = 1; i < numbers.length; i += 2) { i=1 first odd index
+  productOfOddIndex *= numbers[i]; 
+}
+console.log(productOfOddIndex); ///24
+
+const a1 = [10, 3, 7];
+const a2 = [3, 5, 1];
+const a3 = [0, 9, 4, 3];
+// Put together all these elements from a1, a2 and a3 in a descending order
+// in a new array -> [10, 9, 7, 5, 4, 3, 3, 3, 1, 0]
+
+const newArray =[...a1, ...a2, ...a3].sort((a, b)=>(b-a))
+const newArr2 = a1.concat(a2, a3).sort((a, b) => b - a);
+console.log(newArray)
+console.log(newArr2);
+ спершу сторили нове ерей. ВЖИВ ... ЩОБ ЗЄДНАТИ ЇХ вСІ тепер разомб тепер сортуєм sort.(a,b)
+
+ /*
+Requirement:
+-Create 2 arrays that stores numbers below.
+First array->     [ 5, 8, 2, 1, 2 ]
+Second array ->   [ 9, 3, 5, 1, 0 ]
+
+THEN:
+-Output both arrays
+–Then, create a new array that will multiply the numbers of the same indexes from the first 2 arrays 
+and output the third array as well.
+
+Third array->       [ 45, 24, 10, 1, 0 ]
+*/
+
+const arr1 = [ 5, 8, 2, 1, 2 ];
+const arr2 = [ 9, 3, 5, 1, 0 ];
+const arr3 = [ ];
+в даній ситуації не важливо яке arr писати бо довжина одинакова а коли вони різні то важливо
+for(let i = 0; i < arr1.length; i++) { // i = 0, 1, 2, 3, 4
+  arr3[i] = arr1[i] * arr2[i];
+ //// arr3.push(arr1[i] * arr2[i]); one more way
+} 
+  arr3[i]  означає 0 1 2 3 4 
+  arr1[i] означає перший кейс 5 тодв 2 тоді 2 
+arr2[i] 9 3 5 1 0
+console.log(arr1);
+console.log(arr2);
+console.log(arr3);
+
+
+const nums = [-1, 1, 3, 0, 2, 6, 8];
+// Please find the first even number from the array -> 0
+let firstEven;  
+
+for(const num of nums){
+ if( num % 2 === 0){   /// це означає що ми знайшли перший
+firstEven = num;
+break }  нам треба розбити бо якщо ми не розібємо то воно дасть результ останього 
+ }  нам треба обовзяково зберегти  дужки після if бо воно тоді не зарахує break 
+console.log(firstEven)
+
+// for(let i = 0; i < nums.length; i++) { 
+//   if(nums[i] % 2 === 0) {    vми перевіряємо не i а перевір num[i wt df;kbdj]
+//     firstEven = nums[i];
+//     break;
+//   }
+// }
