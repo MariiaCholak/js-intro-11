@@ -412,4 +412,19 @@ isPasswordValid("Abcd1234$")  -> true
 isPasswordValid("Chicago123$")  -> true
 isPasswordValid("Test1234#")  -> true
 */
-
+const isPasswordValid = (email) => {
+  if(email.length < 8 || email.length > 16)  return false
+  if(email.includes(' ')) return  false
+  if(!email.search(/\d/) === -1)  return false
+  if (!email.search(/[A-Z]/) === -1) return false
+  if(!email.search(/[a-z]/) === -1) return false
+  return true
+}
+console.log(isPasswordValid(''))
+console.log(isPasswordValid("abcd"))
+console.log(isPasswordValid("abcd1234"))
+console.log(isPasswordValid("Abcd1234"))
+console.log(isPasswordValid("Chicago12345US!#$%"))
+console.log(isPasswordValid("Abcd1234$"))
+console.log(isPasswordValid("Chicago123$"))
+console.log(isPasswordValid("Test1234#"))
