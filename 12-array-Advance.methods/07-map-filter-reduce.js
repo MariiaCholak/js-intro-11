@@ -1,4 +1,4 @@
-const numbers = [-2, -5, 3, 0, 5, 8, 10];
+const numberss = [-2, -5, 3, 0, 5, 8, 10];
 // count even and positive numbers -> 2
  let evenOdd = numbers.filter(x => x % 2 === 0  && x > 0).length 
 console.log(evenOdd);
@@ -8,22 +8,66 @@ let evenOdd1 = numbers.reduce((acc, curr) => curr % 2 === 0  && curr > 0 ? acc +
 console.log(evenOdd1);
 
 
+
+const numbers = [-2, -5, 3, 0, 5, 8, 10]; 
+
+// count even and positive numbers -> 2
+
+let countEvenPos = numbers.reduce((acc, curr) => curr > 0 && curr % 2 === 0 ? acc + 1 : acc, 0);
+
+console.log(countEvenPos);
+
+
+
 const nums = [
-    [1, 2, 3],
-    [5, 10, 20],
-    [100, 200]
-  ];
-  // sum of numbers of inner arrays : [6, 35, 300]
+  [1, 2, 3],
+  [5, 10, 20],
+  [100, 200]
+];
 
-  let number = nums.filter(x => nums.splite( []) )
+// Find sum of numbers of inner arrays : [6, 35, 300]
 
-  const result = []
-  for(const innernum of nums){ 
-    let sum = 0
-for(const num of innernum )
-    sum += num
+const result = nums.map((x) => x.reduce((acc, curr) => acc + curr, 0));
+
+console.log(result);
+
+/*
+const result = [];
+
+for(const innerArr of nums) { // [5, 10, 20]
+  let sum = 0;
+  for(const num of innerArr) {
+    sum += num;
+  }
+  result.push(sum);
 }
-result.push(sum) 
-console.log (result)
+
+console.log(result); // [ 6, 35, 300 ]
+*/
+
+const words = [ 'hello', 'Tuesday', 'HEYY', 'Apple' ];
+
+// Find all the words that has 5 letters: [ 'HELLO, 'APPLE' ]
+
+const result1 = [];
+
+words.forEach((x) => {
+  if(x.length === 5) result1.push(x.toUpperCase());
+});
+
+console.log(result1);
+
+const result2 = words.filter(x => x.length === 5).map(x => x.toUpperCase());
+console.log(result2);
+
+// 'hello', 'Tuesday', 'HEYY', 'Apple'
+// ['HELLO', 'APPLE']
+// reduce initial value array issue
+const result3 = words.reduce((acc, curr) => {
+  if(curr.length === 5) acc.push(curr.toUpperCase());
+  return acc;
+}, []);
+
+console.log(result3);
 
 

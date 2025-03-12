@@ -1,0 +1,529 @@
+
+
+const movie = {
+  title: 'The Batman',
+  year: 2022,
+  director: 'Matt Reeves',
+  imdbRating: 7.8,
+  img: 'https://kjdshfks'
+};
+
+
+Object is collection of key-value pairs (properties / entries)
+
+Keys: title, year, director 
+Values: The Batman, 2022, Matt Reeves
+
+Properties: title: 'The Batman', year: 2022
+
+object has {} key value pairs
+
+const mouse = {
+  name: 'HP Smart',
+  price: 10.99,
+  quantity: 15,
+  delivery: [ 'pick up', 'delivery' ]
+};
+// add properties with dot notation or bracket notation
+mouse.colors = [ 'White', 'Black', 'Blue', 'Pink' ];
+//mouse['colors'] = [ 'White', 'Black', 'Blue', 'Pink' ];
+(call your object then . and what you want to add)
+use most . notation
+
+ // remove properties with dot notation or bracket notation
+delete mouse.delivery;     95%
+// delete mouse['delivery']
+
+console.log(mouse);
+
+// update property values with dot notation or bracket notation
+mouse.price = 15.99;
+// mouse['price'] = 15.99;
+
+
+// retrieve property values with dot notation or bracket notation
+console.log(mouse.price);
+// console.log(mouse['price']);
+give as that value
+
+only one situation when we use [] notation
+
+JS Object – for...in loop   teacher doen;t use but we can
+•We can loop through object properties using for...in loop
+JavaScript for...in Loop
+•The JavaScript for...in statement loops through the properties of 
+an object.
+•The block of code inside of the for...in loop will be executed once 
+for each property.
+NOTE: You must use person[x] in the loop. (bracket notation)
+person.x will not work because x is a variable. 
+we must use [] notatin we ca'nt use dot notation
+const batch = {
+    number: 11,
+    program: 'SDET',
+    numberOfStudent: 20
+};
+
+get value one my one
+for(const key in batch) {
+    console.log(batch[key])   /// batch.key не працює це underfine
+}  we can't use . in loops бо воно означає після крапочки шукай values
+a key воно шукає конкретно написане слово якого в нас немає looking for ptoperty exactly name as key
+batch[key] fot thr first iteratin iys num then ptogrm then munof stud
+ перше слово це keys друге це value
+in a [] bre ket notation
+const batch = {
+    number: 11,
+    program: 'SDET',
+    numberOfStudents: 20
+  };
+  
+  looking loop for arr
+  // for...in loop
+  for(const key in batch) { 
+    console.log(key, batch[key]);   /// number 11  program sdet   nubofstud 20
+  }
+  kyy - number program, numpf stud
+
+we can use for in for arr, arr have indexes, on case you loop your arr like an object
+yourindexes are going to be key and your valur are going to be the actual value that you have in tjose indexes 
+  const arr = [ 'Rome', 'Berlin', 'Chicago' ];
+
+  for(const key in arr) {
+    console.log(key, arr[key]);
+  }    0 rome, 1 berlin, 2 Chicago
+  never use fot in for arrr, teacher doesn't use for in at all
+
+  if you want loop througth keys use key
+  if you want value use your object and bracket notatin key []   arr[key]
+
+  // key is always string
+// value can be null, undefined, number, boolean, string, array, object, function
+// JSON does not support undefined, Symbol(), function
+
+const person = {
+    fname: 'John',
+    mname: null,
+    lname: 'Doe',
+    age: 25,
+    married: undefined,
+    isMember: true,
+    favMovies: [ 'The Batman', 'Red' ],   arr
+    address: {      // nested object
+      street1: '2800 S River Rd',
+      street2: 'Ste 310',
+      city: 'Des Plaines',
+      state: 'IL',
+      zip: 12345
+    }
+  };
+  all of it supported w value, but all the keys there are string 
+    if you don't have your string around your keus it's always  a string exam 'fname'=fname "" without but it's string
+
+    THIS KEYWORD REFERS TO AN OBJECT,     THIS IS RESERVED KEYWORD
+    REpresentation of the current object
+
+    const cat = {
+    name: 'Ra',
+    age: 1,
+    sound: function() {       /// cat has some function, now it's object, property function
+      console.log('MEOW!');     function takes no argument and wwvrythime when we call sound it say meow
+    },
+    getMood: function() {
+      return 'HUNGRY';  since it return smith we csn stire it in variable or console.log
+    },
+    getInfo: function() {
+      console.log(`name: ${this.name}, age: ${this.age}`); // this refers to cat object
+    }                     cat.name            cat.age     no!
+  };
+  
+  console.log(cat.name); // Ra
+  cat.sound();  we invoke it with (), we don't have it in consol log because it a void function, it doesn't return anything
+   and when we invoke it we get meow
+  cat.sound();
+  
+  console.log(cat.getMood());   // hangry
+  cat.getInfo();
+  different between void and return methif- return always give you inf back you can store it in a variable or console.log it
+  but void methof you can never store it in a varible or console log!!!
+  
+  {this.name}, age: ${this.age}`
+  cat.name            cat.age   <= in object we use object properties itself
+  it's where we can use propeerty this  we refer the current object with this key word
+  this refers to cat object
+
+  const dog = {
+    name: 'Johnny',
+    age: 3,
+    getInfo: function(num) {
+      return this.name + ' ' + (this.age + num);   //// we dont use  dog.name dog age!!!
+       }    inside function use this.!!!
+  };
+  
+  console.log(dog);
+  console.log(dog.getInfo(2));  ///5
+  зараз фанк має аргумент намбер і ми завжди додаємо це число до нашого age
+  
+  const math = {
+    pi: 3.14,
+    sum: function(num1, num2) {
+      return num1 + num2;
+    },
+    multiply: function(num1, num2) {
+      return num1 * num2;
+    }
+  };
+  
+  console.log(math.pi); // 3.14
+  console.log(math.sum(3, 5)); // 8
+  console.log(math.multiply(3, 5)); // 15
+
+
+  OBJECT DESTRUCTUTING 
+  Destructuring allows us to extract 
+values from arrays, objects, or other 
+iterable data structures and assign them 
+to variables in a more concise and 
+readable way. 
+
+  const cities = [ 'Rome', 'Berlin', 'Kyiv' ];
+  FOR ARR DISTRUCNTING  CONST     /// [0,] [1] [2]
+const [ capItaly, capGermany, capUkraine ] = cities;
+console.log(capItaly); // Rome
+
+
+const account = {
+  accountHolder: 'John Doe',
+  email: 'johndoe@gmail.com',
+  password: 'Jonh123',
+  username: 'johnwashere',
+  DOB: '01/01/2000',
+  accountNumber: '1234-1234-1234-1234',
+  securityCode: 123
+};
+
+LET asy wi will use it very frequently in my program and don't want to say everytime acount.usermane and so on
+looks same match
+vety useful
+const { username, password, email, DOB } = account;
+weneed  {} becase it's object, object don't have indexes so it can be any order with arr need to be to their indexes
+console.log(username);
+console.log(password);
+console.log(email);
+console.log(DOB);
+
+SPREAD ANOTHER WAY THAT YOUU COULD EXTRACT DATA TO THEIR INDIVIDUAL ELEM FROM THE ARR
+const numbers = [ 5, 10, 20, 15 ];
+MATH.max(numbers)  /// shows it's NaN because arr it's not an num, this methods works only w num, but we have arr
+... solve this problem
+console.log(Math.max(...numbers));
+console.log(Math.min(...numbers));
+
+
+const batch = {
+  number: 11,
+  program: 'SDET',
+  startDate: 'January 20, 2025',
+  address: {
+    street1: 'Street',
+    city: 'Chicago',
+    state: 'IL',
+    zip: 12345
+  }
+};
+
+const student1 = {
+  fname: 'Ayah',
+  lname: 'abc',
+  ...batch
+  (if we need only adress we can use batch.address)
+}; spread means evety single elemnt to spread
+if we need we take them sndividualy
+let say student has all the same inf which we have in batch
+we can copy barch or do    ... batch(spread batch into student)
+we like copy paste this inf into student 1
+spread more you for arr not for object
+
+const student2 = {
+  fname: 'Alina',
+  lname: 'abc',
+  ...batch
+};
+console.log(student1);   we have f l name and batch inf
+console.log(student2);
+
+
+const process = {
+  url: 'www.techglobal-training.com',
+  username: 'TechGlobal',
+  password: 'Test1234'
+};
+const config = {
+  env: { ...process }
+}
+
+Enhanced Object Literals  (посилений покращений)
+•In JavaScript, enhanced object literals 
+were introduced in ECMAScript 6 (ES6) to 
+make working with objects more concise стислийб лаконічний
+and convenient.
+
+
+const eat = true;
+const sleep = true;
+
+// Before ES6
+// const cat = {
+//   name: 'Silver',
+//   eat: eat,  property and value
+//   sleep: sleep
+// }; 
+onsole.log(cat)//// true true
+
+
+const eat = true;
+const sleep = true;
+// After ES6
+const cat = {
+  name: 'Silver',
+  eat,
+  sleep
+}; JS знає що це посилання і маса підтягне інфу
+console.log(cat);
+
+
+const batchNumber = 11;
+const program = 'SDET';
+
+const student1 = {
+  batchNumber,
+  program,
+  fullname: 'John Doe'
+};
+console.log(student1);   // has everything w 11 sdet too
+useful
+if you provide just batch and program i will do it for you, i will make batchnu as a key and get their value and assigthn to your properties
+
+Most of object mathod are static we invoke all them with the predefied object 
+Object.create()
+
+const person = {
+    fname: 'John',
+    lname: 'Doe',
+    age: 25
+  };
+  we creat another person and addd inf from pers1 and add end inf
+  const person2 = Object.create(person);
+  or  const person2 = {...person}
+  person.isAlive = true;
+  
+  console.log(person);
+  console.log(person2);{} doesn't show anything looks like empty
+  console.log(person2.age); 25
+  console.log(person2.fname); john
+  console.log(person2.isAlive);
+  console.log(person2.address);
+
+  our console doesn't show returns for person2 but we can check it in a browser it's prototype
+  simply person1- parents, person2-child
+  we don't spread inf fully but we making a relationship between them
+  person2 can use all properties person1
+  peroson 2 it's reference from person1
+  will you change the parents you change the child
+  but if i add to person2(child) it won't change person1(parents)
+  child has access to everything what perants have
+  
+  FREEZE
+  The Object.freeze() static method freezes an object. Freezing an object prevents extensions and makes existing properties non-writable and non-configurable. A frozen object can no longer be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object's prototype cannot be re-assigned. freeze() returns the same object that was passed in
+  const book = {
+    author: {
+      fname: 'Stefan',
+      lname: 'Zweig'
+    },
+    title: 'Amok',
+    pages: 62
+  };
+  Object.freeze(book); //  add which object   we made it immutable
+  після цього ми не можемо додати інфу в наш object
+  book.price = 10.99
+  book.pages = 65
+  delete book.author
+
+  
+  
+  console.log(Object.isFrozen(book)); // true
+  
+  console.log(book);
+
+The Object.seal() static method seals an object. Sealing an object prevents extensions and makes existing properties non-configurable. 
+A sealed object has a fixed set of properties: new properties cannot be added, existing properties cannot be removed, their enumerability 
+and configurability cannot be changed, and its prototype cannot be re-assigned. Values of existing properties can still 
+be changed as long as they are writable. seal() returns the same object that was passed in.
+
+різниця що воно каже existing ones can be updated but you can't add new one or apdated
+ but it's bit more flexible then freeze
+ frezze you can'r completly do anything with it anymore but w seal you can cheng the value of  existing
+
+ important but not used that common
+ JS Object – pre-built methods
+•JavaScript object keys and values can 
+be converted to arrays.
+•Object.keys(obj) - returns an array of 
+a given object's property keys.
+•Object.values(obj) - returns an array 
+of a given object's property values.
+•Object.entries(obj) - returns an array 
+of a given object's property key-value 
+pairs.
+for interview import for work not realy
+
+const phone = {
+    brand: 'iPhone',
+    storage: 64,
+    color: 'Yellow',
+  };
+  
+  console.log(Object.keys(phone)); // [ 'brand', 'storage', 'color' ]
+  console.log(Object.values(phone)); // [ 'iPhone', 64, 'Yellow' ]
+  console.log(Object.entries(phone)); // [ [ 'brand', 'iPhone' ], [ 'storage', 64 ], [ 'color', 'Yellow' ] ]
+  
+  // keys: array of keys 
+  // values: array of values
+  // entries: nested array of properties
+  
+  for(const feature of Object.keys(phone)) { // [ 'brand', 'storage', 'color' ]
+    console.log(feature);
+  }
+  
+  for(const value of Object.values(phone)) { // [ 'iPhone', 64, 'Yellow' ]
+    console.log(value);
+  }
+  
+  for(const [ key, value ] of Object.entries(phone)) { // [ [ 'brand', 'iPhone' ], [ 'storage', 64 ], [ 'color', 'Yellow' ] ]
+    console.log(`The entry key is '${key}' and the entry value is '${value}'.`);
+  }
+  const phone = {
+    brand: 'iPhone',
+    storage: 64,
+    color: 'Yellow',
+  };
+  
+  console.log(Object.keys(phone)); // [ 'brand', 'storage', 'color' ]
+  console.log(Object.values(phone)); // [ 'iPhone', 64, 'Yellow' ]
+  console.log(Object.entries(phone)); // [ [ 'brand', 'iPhone' ], [ 'storage', 64 ], [ 'color', 'Yellow' ] ]
+  
+  // keys: array of keys 
+  // values: array of values
+  // entries: nested array of properties
+  
+  for(const feature of Object.keys(phone)) { // [ 'brand', 'storage', 'color' ]
+    console.log(feature);
+  }
+  
+  for(const value of Object.values(phone)) { // [ 'iPhone', 64, 'Yellow' ]
+    console.log(value);
+  }
+  
+  for(const [ key, value ] of Object.entries(phone)) { // [ [ 'brand', 'iPhone' ], [ 'storage', 64 ], [ 'color', 'Yellow' ] ]
+    console.log(`The entry key is '${key}' and the entry value is '${value}'.`);
+  }
+  /*
+Create a student object with below info
+firstName : Alex
+lastName : Smith
+hobbies : Soccer - Watching movies
+examScores : midterm: 60 and final: 90
+
+Output your object to the console
+*/
+  /*
+  Print hobbies -> [ 'Soccer', 'Watching movies' ]
+  Print examScores -> { midterm: 60, final: 90 }
+  Print first hobby -> Soccer
+  Find and print average of exam scores -> 75
+  */
+const student = {
+    firstName: "Alex",
+    lastName: "Smith",
+    hobbies: ["Soccer", "Watching movies"],
+    examScores: {
+      first: 60,
+      second: 75,
+      third: 80,
+      fourth: 100,
+      final: 90
+    }
+  };
+  console.log(student.hobbies); // [ 'Soccer', 'Watching movies' ] gives arr
+  console.log(student.examScores); // { midterm: 60, final: 90 } 
+  console.log(student.hobbies[0]); // Soccer
+  //console.log((student.examScores.midterm + student.examScores.final) / 2); // 75
+  цей приклд ок але коли в нас є багато інф нам треба зробити код динамічним
+  
+  const allExamValues = Object.values(student.examScores);  тепер це арр// [60, 75, 80, 100, 90]
+  
+  let average = allExamValues.reduce((acc, curr) => acc + curr, 0) / allExamValues.length;
+  console.log(average); 81    це динамічно і можна вжив для багато обєктів навіть 30 і тд
+
+
+RECAP
+
+  // keys are always unique but values can be duplicates
+  we can't do another color or memory, if we do it's mean we reasign
+const computer = {
+    os: 'MacOS',
+    color: 'Black',
+    memory: '1 TB',
+    price: 999.99
+  };
+  Object.freeze(computer)
+  object.isFrozen(computer) /// true
+
+  // for in loop 
+  for(const key in computer) { refer to our keys 
+    console.log(key); // retrieves keys one by one 
+    console.log(computer[key]); // retrieves values one by one mac black 1 tb
+  }  the same using. But in one case we MUST to use object[]
+  because computer.key(почне шукати слово key а у нас його немає) ... underfine
+  
+  console.log('\n------for..of loop--------\n')
+  // for...of loop    you can't use for off loop w the object directly like this
+  use w arr
+  we need to yse evetythung separatly
+  Object.keys(computer); // keys as an array 
+  Object.values(computer); // values as an array
+  Object.entries(computer); // key-value pairs as a nested array
+  now they return as arr and i can use for of loop w them
+  for(const key of Object.keys(computer)) {
+    console.log(key); // retrieves keys one by one os color memory
+    console.log(computer[key]); // retrieves values one by one
+  }  // mac b lack 1 tb
+  
+  for(const value of Object.values(computer)) {
+    console.log(value); // retrieves values one by one
+    color black,
+  }
+  
+  console.log('\n------entries--------\n')
+  
+  console.log(Object.entries(computer));
+  
+  for(const entry of Object.entries(computer)) {
+    console.log(entry); // entries keys one by one  os, msc, color, black
+    console.log(entry[0]); // retrieves keys one by one oc mac
+    console.log(entry[1]); // retrieves values one by one
+  }
+  
+  each enty going to give me a key value
+  for(const [ k, v ] of Object.entries(computer)) {
+    console.log(k, v);
+  } if we use last method we don't nned to use  any of this above
+  // [ 'os', 'MacOS' ]
+  // [ 'color', 'Black' ]
+  // [ 'memory', '1 TB' ]
+  // [ 'price', 999.99 ]
+
+  /// check if comp has ram info
+  Oblect.keys(completly).includes('ram')
+  but better to use  computer.ram === 'inderfined' means no any inf
+  

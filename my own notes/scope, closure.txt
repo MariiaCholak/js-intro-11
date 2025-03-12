@@ -1,0 +1,346 @@
+Hoisting: is the ability to call a variable or function before their declaration
+var is hoisted,
+let-const are not hoisted
+
+So, JS will move all the variable declaration to the top when they are used with var keyword
+console.log(name); // undefined
+var name = 'John';
+
+console.log(name); // ReferenceError: Cannot access 'name' before initialization
+let name = 'John'; // same goes for const 
+
+functions created with traditional way (function declaration) are hoisted. So, you can use them
+before their declaration.
+we able to use them before declaration
+sum(3, 5); // 8
+
+function sum(num1, num2) {
+  console.log(num1 + num2);
+}
+
+functions created with arrow or expressions cannot be hoisted. So, you can't use them 
+before their declaration.
+
+вчитель має звичку якщо це не primitive use const all the time
+he use  object const
+
+goSite(); // ReferenceError: Cannot access 'goToSite' before initialization
+const goToSite = function () {
+  console.log('Here is website');}
+
+
+// Hoisting can happen in a block or function body as well 
+
+function startProcess() {
+  console.log(smth); // ReferenceError: Cannot access 'smth' before initialization
+
+  let smth = 10;
+}
+if(true) {
+  console.log(name); // ReferenceError: Cannot access 'name' before initialization
+  let name = 'Alex';    але якби було var було б underfine
+}
+тобто в середині фанкшин є всетолдно проблема бо ми декларуємо після 
+Hoisting
+•Hoisting is a concept in 
+JavaScript that allows you to use 
+functions and variables before 
+they're declared. 
+•This is because the JavaScript 
+interpreter moves declarations to 
+the top of their containing scope 
+before execution. 
+•This process is called hoisting.
+RULE: To avoid bugs, always 
+declare all variables at the 
+beginning of every scope.
+
+
+console.log(x); // ReferenceError: Cannot access 'x' before initialization
+const x = 10;
+
+console.log(y);      // underfine
+var y = 5;
+
+
+
+// function hoisting
+sayHi();
+sayHi();
+
+const sayHi = () => {
+  console.log('Hi');
+}
+
+// variable hoisting
+// let and const are not hoisted  error
+// var hoisted
+// function hoisted
+console.log(x); // ReferenceError: Cannot access 'x' before initialization
+
+const xx = 10;
+
+
+console.log(y);
+
+var y = 5;
+
+/*
+var y; // undefined
+
+console.log(y); // undefined
+
+y = 5;
+
+*/
+with func expression or => it' not hoisting, we can't use it before declaration (like let and const) 
+// function hoisting
+sayHi();
+sayHi();
+
+function sayHi() {   this tipe of function is hoisting and you can use it befor decleration
+  console.log('Hi');
+}
+
+
+
+var is hoisted,
+let-const are not hoisted
+
+So, JS will move all the variable declaration to the top when they are used with var keyword
+
+console.log(name); // undefined
+var name = 'John';
+
+console.log(name); // ReferenceError: Cannot access 'name' before initialization
+let name = 'John'; // same goes for const 
+
+
+functions created with traditional way (function declaration) are hoisted. So, you can use them
+before their declaration.
+
+sum(3, 5); // 8
+
+function sum(num1, num2) {
+  console.log(num1 + num2);
+}
+
+
+
+functions created with arrow or expressions cannot be hoisted. So, you can't use them 
+before their declaration.
+
+goSite(); // ReferenceError: Cannot access 'goToSite' before initialization
+
+const goToSite = function () {
+  console.log('Here is website');
+}
+
+validateTitle(); // ReferenceError: Cannot access 'validateTitle' before initialization
+
+const validateTitle =  () => {
+  console.log('Here is title');
+}
+
+Scope in JavaScript
+•Scope determines the accessibility (visibility) of 
+variables, objects, and functions.
+•JavaScript has 4 types of scope:
+•Global scope
+•Function scope
+•Block scope (ES6)
+•Lexical Scope (ES6 - Closure)
+Global Scope
+•Variables declared globally (outside any 
+function) have Global Scope.
+•Global variables can be accessed from 
+anywhere in the program.
+•Variables declared with var, let and const 
+are quite similar when declared outside a 
+block
+Function Scope
+•Variables declared within a JavaScript 
+function, become LOCAL to the function.
+•They can't be used outside the function.
+•Variables declared with var, let and const 
+are similar when declared inside a function 
+considering the scope
+Block Scope
+•JavaScript had only Global Scope and 
+Function Scope before ES6 (2015).
+•Variables declared with the var keyword 
+can NOT have block scope.
+•ES6 introduced two important new 
+JavaScript keywords: let and const.
+•These two keywords provide Block Scope 
+in JavaScript.
+•Variables declared inside a { } block with 
+let or const cannot be accessed from 
+outside the block.
+Lexical Scope
+•Used in case of nested functions 
+and defines the accessibility of 
+variables for inner and outer 
+functions.
+•In simple terms, lexical scope 
+means that a variable or function 
+can only be accessed within the 
+scope in which it is defined. 
+•The scope of a variable or function 
+is determined by its position in the 
+source code.
+// Global Scope when you greate variable outside
+let name = 'John';
+
+const cities = ['Rome', 'Berlin'];
+
+const person = {
+  fullname: 'John Doe',
+  age: 45
+};
+const sayHi = () => console.log('Hi');
+
+// Globally access these variables ми можемо вживати їх будь де
+console.log(cities);
+console.log(name);
+console.log(person);
+sayHi();
+
+// Locally access the variables   ми залучити нашу глобал ми accees it localy  
+for(let i = 0; i < cities.length; i++) {
+  console.log(sayHi(), cities[i]);      
+}
+якщо глобалі деклер ми можемо це вживати будь де 
+
+if(true) {   ми можемо access them everywhere
+  cities.push('Chicago');
+  sayHi();
+}
+function funcA() {
+  sayHi();
+}
+
+FUNCTION SCOPE
+SMTH A VARIABLE THAT YOU CREATED WITHIN THE FUNCTION CANNOT BE USED UOTSIDE THAT'S THE RULE
+function any() {
+    var var1 = 'Hello';
+    let var2 = 'Hi';
+    const var3 = 'Sunday';
+    
+    console.log(var1, var2, var3); // Hello Hi Sunday
+  }
+
+  console.log(var1); // ReferenceError: var1 is not defined
+  console.log(var2); // ReferenceError: var2 is not defined
+  console.log(var3); // ReferenceError: var3 is not defined    we caannot use, access var outside the function
+VARIABLE THAT we create in the function can only be used within the function
+it can not be outside  не працбє за межами 
+ WE SHOULD SAY FUNCTION SCOPE VARIABLES CAN ONLY BE USED WITHIN THE FUNCTION THEY ARE DECLARED THEY CANNOT BE USED OUTSIDE-FUNCTION SCOPE
+
+
+ BLOCK SCOPE (it can be any block if, for switch loop)
+var doesn't respect block scope or doesn't suppot,    let and const sopport block scope  
+// Before ES6 - there was only var 
+if(true) {
+    var name = 'John';
+  }
+  console.log(name); // John
+  
+  // After ES6 - let and const added
+  if(true) {
+    const num = 10;      ...its not allowed to be used local variable outside
+  }
+  console.log(num); // ReferenceError: num is not defined, наче шукаємо серед невідомого це речення 
+  з двох випадків ми бачимо що з var ми вживали в середині блоку і його знайшло
+  з let in block showed the mistake
+  // if-else, switch, loop blocks
+  {
+    var num1 = 1;
+    let num2 = 2;
+    const num3 = 3;
+  }
+  console.log(num1); // 1     для вар я бачу ми можемо це зробити
+  console.log(num2); // ReferenceError: num2 is not defined
+  console.log(num3); // ReferenceError: num3 is not defined
+let const cannot be used outside a block
+
+LEXICAL SCOPE
+FIRST TALK ABOUT NESTED function 
+function connect() {
+    function greet(name) {      we created inside dun another fun
+      console.log(`Hello ${name}!`);
+    }
+  
+    return greet;   // since it return smth i can store it in anither variable
+  }    /// in function we always can return smth
+  we just return a function back instead of names 
+  we return our function
+  
+  let result = connect(); // connect return smth that why i can store it in another variable
+  
+  result('Mariia');
+  result('Alex');
+  
+=> wirh arrow function this sumlol means return
+function in JS are also regular reference type object  its not different that creating string or arr 
+
+
+
+
+Closure
+•A closure in JavaScript is a 
+function that has access to 
+variables from its containing 
+(enclosing) function.
+•It makes it possible for a 
+function to have "private" 
+variables.
+•These private variables can 
+only be changed using inner 
+functions.
+
+
+
+
+
+
+
+
+var-let-const 
+1. Re-assignment 
+var-let can be re-assigned 
+const can't be re-assigned 
+
+2. hoisting 
+var is hoised (var declaration move to the top - no errors if you try to access them before their declaration - you get undefined)
+let-const are not hoisted (You get error - ReferenceError if you try to access them before their declaration)
+
+3. Scope
+var-let-const supports global and function scope
+var does not support block scope (variables declared with var within a block can be used outside the block)
+let-const support block scope (variables declared with let-const within a block CANNOT be used outside the block)
+
+Closure: closure is about preventing a variable to be updated outside the function it is declared
+However, same function will provide another function to manipulate the variable value 
+
+function outer() {
+  // private variable
+
+  // provide a function which updates the variable value 
+
+  // return that inner function to be used outside
+}
+
+const innerFunction = outer();
+innerFunction(); // update the private variable value
+
+
+
+INTERVIEW QUESTIONS:
+1. var-let-const? (reassingment, hoisting, scope)
+2. What is scope in JS? 
+3. What is hoisting?
+4. What is closure? (3-5%)
+
+
+Search (Good to know): Currying in JS

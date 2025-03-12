@@ -940,3 +940,28 @@ console.log(firstEven)
 //     break;
 //   }
 // }
+
+// Find the first city that has the odd length  -> Chicago
+const cities = ['Berlin', 'Rome', 'Chicago', 'Kyiv', 'Istanbul', 'Tokyo'];
+let cityodd;/// first create variable rigth now underfine
+for(const city of cities){    /// then loop which going throudh all elements
+    if(city.length % 2 !== 0) {      find odd
+        cityodd = city       we assign it to out fist variable
+    break      треба зупинити щоб після першого зупинилось
+    }
+}
+console.log(cityodd)
+
+
+/ Find all the cities that has length more than 5 -> [ 'Berlin', 'Chicago', 'Istanbul' ]
+const  moreThen5  = [];
+for(const city of cities)
+    if(city.length > 5) moreThen5.push(city)
+            console.log(moreThen5)
+    }
+
+спрершу дивимось що ми маємо дати назад якщо нам треба ерей містб то нам треба спершу мати веребил міст with []
+цього разу ми не робимо стрінг чи намбер що були underfine раніше. бо цей раз мій результат не номер це ерей, тому ми стоврили пусті []
+і якщо ми немаємо місто більше ніж 5 карак ми поернемо пусті ерей назавжди
+спершу дивимось через loop усі міста і тоді if city has length more then 5
+moreThen5.push(city)   ми пуш елемент який зійшовся із нашою умовою бо це ерей і ми можемо лише пуш до наших ерей

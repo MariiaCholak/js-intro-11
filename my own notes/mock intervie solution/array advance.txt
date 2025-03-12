@@ -1,0 +1,678 @@
+Array Methods: 
+
+Higher Order Method/Function: It is a method/function that takes another 
+callback function as an argument
+
+Callback: it is a function or method passed as an argument to another function or method
+ми робили це із сорт раніше, сорт бере іншу колбек фанкшин ця інер фанкшин має 2 аргументс
+sort((a, b) => a - b);
+sort((a, b) => b - a);
+
+Functional Programming
+it's the most powerful programing array methods, makes our code much less and should be much easier
+forEach(callback)
+map(callback)
+filter(callback)
+reduce(callback)
+some(callback)
+every(callback)
+find(callback)
+findIndex(callback)
+усі ці методи nonstatic(instance) which is mean you first create an array object your invoke it with your variable
+JS Arrays –forEach() method
+• The forEach() method is a higher-order method that you call
+on an array.
+• It takes a callback function as an argument, and this function
+is executed for each element in the array.
+• The callback function is passed the current element, the
+current index, and the entire array.
+• This method is useful for performing an action for each
+element, such as printing or modifying the values.
+• The example could be simplified using arrow function
+names.forEach((name) => console.log(name));
+
+const numbers = [ 5, 7, 1, 3, 10 ];
+ можна 3 шляхи 1 // for loop
+// for(let i = 0; i < numbers.length; i++) {
+//   console.log(numbers[i]);
+// }
+
+2 // for...of loop
+// for(const number of numbers) {
+//   console.log(number);
+// }
+ 
+3 найкращий// forEach() method    if one statemnt omitt { one line}
+numbers.forEach((x) => console.log(x * 2));   print each number multiply by 2
+looks like function expresion we deleted word function and made => means arrow function
+we already have our variable numbers. now we invoke it with our method
+forEach takes as an argument callback function. first needs give a callback to this
+numbers.forEach(function(){})      forEach((x)=>{})
+anonymous function,  body for function has arguments lets say x. it's mean forEach of thos element it will invoke a function
+that takes arguments x
+тобто що ми зробили? для кожного номера в намбер ерей я run a function whick takes argumdnts
+        WHEN WE CALL IT'S AS A CALLBACK FUNCTION WE DON'T NEED TO GIVE A NAME THE FUNCTION, BECAUSE IT'S INVOKING RIGTH AWAY FOR EACH OF THESE ELEMENT IN THE ARRAY
+        ТОму наш х сам по собі перший раз 5 тоді 7 тоді 1 3 10
+
+наступн прикл const names = [ 'Mariia', 'Alex', 'John', 'Jane', 'Victoria'];
+// Print all the names that has 4 characters - filter() method is better choice for this task
+names.forEach(function(argument) {   
+          /// може не сподобатись вживання еров фанкшин, то це інший вид фанкшин експрешин
+})
+names.forEach((name) =>{
+    if(name.length === 4) console.log(name)
+} )   // alex, john, jane
+
+const nums = [ 5, 3, 2, 1 ];
+
+// Find sum of numbers: 11        -> preferred way is reduce() 
+// Find product of numbers: 30    -> preferred way is reduce()
+// Create a new array which has all numbers multiplied by 5: [ 25, 15, 10, 5 ]  -> preferred way is map()
+let sum = 0
+let product = 1
+const newArr = []
+nums.forEach((number) =>{      /// we tale an arguments
+    sum += number
+    product *= number
+    newArr.push(number*5)    ////each number should be push into this aaray
+})
+console.log(sum);
+console.log(product);
+console.log(arr5);
+як ми робили це раніше?
+1. спершу сторити веріебил назвавши sum 
+тоді for(const num of nums){
+    sum += num     //до кожного Num thar comes i added this to sum
+    and when everything is done I consologe everything 
+}    і те саме з ghjlfrn
+console.log(sum)
+
+
+filter: returns an array filtered with elements matching a condition (smaller size array)
+map: returns a same size array based on requirements
+JS Arrays - Iterations
+• We can use all the loops to iterate through array objects.
+• However, we will commonly use two types of loops
+1. for loop
+2. for-of loop
+• NOTE: We can also use the array.forEach() built-in method to iterate through array elements.
+JS Array Callback Methods – filter()
+• filter() - creates a shallow copy of a portion of a
+given array, filtered down to just the elements
+from the given array that pass the test
+implemented by the provided function.
+• Simply, the filter() creates a new array with array
+elements that pass a test.
+
+const names = [ 'Mariia', 'Alex', 'John', 'Jane', 'Victoria' ];
+// Get all the names that have 4 characters: [ 'Alex', 'John', 'Jane' ]
+спершу сторити const names4 =[]
+for(const name for names){
+    if( name.length === 4) names4.push(name) ///push it to names4
+}
+console.log(names4)
+ 
+       we have callback takes a function takes element which is a name
+const names4 =names.filter((name => {
+    if(name.length === 4)  return true ;   /// whichever element meets this condition will be collected in a separate arr and this arr will be return
+    return false; });
+    console.log(names4)  /// alex jogn, jane
+  inner function is going to return true or false. For which ever element true is returns, it's  going to collect in a separate array
+  and return that array to me. 
+  Since it return a new arr with collected elements i can store it in a variable THAT'S WHY CREATED const names4 (collected new arr)
+FILTER RETURN A NEW ARR   
+скоротили верхнє
+const namesWith4Chars = names.filter((x) => x.length === 4); it's stores all the names that are matchng this consition in an array(names4) 
+console.log(namesWith4Chars);                                 і нам не треба зберігати та свторювати нове ерей
+ або 
+ якщо я хочу консол лог ці керектерс я можу
+ 1. спершу я фільтр їх усіх, усі слоа що мають довжину 4, тоді додали forEach x console log x
+спершу почистили тоді кожен з них я друкую, we chaining our method (we did it befor we slice then reverse subarray)
+names.filter((x) => x.length === 4).forEach((x)) => console.log(x))
+але це дає нам елементи але не ерей а нам треба ерей
+або я можу відразу сонсол лог це  names.filter((x) => x.length === 4) або зберегти в новий веріабл
+ нове завдання до тих імен / How many names has 'a' or 'A' in it : 4  -> reduce() is preferred for this
+ const hasA = names.filter((x) => x.toLowerCase(). includes('a').length)
+condushion because filter takes a method and return a booling/  forEach doesn't return anything we can't stor result of Each in another variable it's void method
+filter already returned an aray, if it's string arreay it's return sting arr but with few of this element beacuse we are filtering out
+тому спершу names.filter(()=> {    mmxm })      / ТОДІ ДОДАЛИ НАШУ CALLBACK FUNC which should return booling true or fals
+const nameWith = names.filter((name)=> {
+return name.toLowerCase(). includes('a') 
+це завдли щось повертає ми не маємо щось рахувати  чи додавати в веріебил
+воно бере та срерігає всю інфу тому ми можемо зберегти це в іншій веріебил const nameWith
+це означає що я отримаю усі імені збережені  в цьому контейнері  f' .length
+console.log(nameWith) //// jane alex...
+         nameWith.length    побачимо к-сть елементів
+
+    так як це одна ліня ми можемо оміт {} and return keyword
+     const hasA = names.filter((x) => x.toLowerCase(). includes('a').length)
+    або  console.log(names.filter((x) => x.toLowerCase(). includes('a').length))
+  if we want to see our elements dont use length, but if you need have many elements use length 
+
+ new task  const numbers = [10, 5, 100, 77, 50, 65, 0]; 
+// Find all the numbers that are 50 or more -> [100, 77, 50, 65] 
+console.log(numbers.filter((num) => num >= 50))
+okey we needs numbers which are more than 50 or 50 and return elements which meets this conditions
+numbers.filter((num) =>{    ///// takes number each time
+return num >=  50     })           each time if it true(collect it's to new arr, if it's not true din't add this num to arr)
+filter oaleady doing this array creating, pushing into new array and so on
+і тоді скорочуємо код і ми можемо зберегти у веріебил або відразу консол лог
+коли питають ск елементів є додай в кінці length console.log(numbers.filter((num) => num >= 50).length)
+
+IF WE ARE COUNTING SOMETHING WE PREFER REDUCE
+
+const fruits = [ 'Orange', 'Apple', 'Red apple', 'Pineapple', 'Kiwi'];
+// Find all the fruits that has apple -> [ 'Apple', 'Red apple', 'Pineapple' ]
+// Count how many elements has a      -> 4    -> reduce() method would preferred
+// Count how many elements has i      -> 2    -> reduce() method would preferred
+console.log(fruits.filter((fruit) => fruit.toLowerCase().includes('apple')))
+console.log(fruits.filter((fruit) => fruit.toLowerCase().includes('a')).length)
+fruits.filter(fruit) => fruit.toLowerCase().includes('i').length
+we ignore cases toLowerCase,      після всіх дужок перед (консоле лог в кінці ставимо ленгз)
+неможна одним фільтром перевірити усі conditional, ,j filer checks one conditional for each element, and it's in our task separate conditions
+if conditional was it has apple and 'i' тоді це один сондітіон але у нас окремі завдання
+ THROUGTH ALL OUR ARRAYS
+REDUCE METHOD IS PREFER WHEN WE ITERATING THROUGH ARRAY AND RETURN ONE RESULT LILE COUNT, SUM
+PRODUCR, MAX MIN AND SO ONE THEY ALL ARE REDUCE. WE ITERATING THROUGH ALL ARRAY ELEMENT BUT RETURN ONE RESULT
+ FILTER USUALY WHEN YOU RETURN ANOTHER SUB ARRAY KEYWORD WOULD BE SUB ARRAY (LIKE WHOS STUDENDS NAME STARTS W A )
+
+map one of the favorite for our teacher. return the same size of arr.
+напр якщо ми хочемо зробити нові ерей   з трьома старими іменами апер кайсю з loop ми могли зробити run and puch into a new arr
+but for map we can    names.map(x) => x.toUpperCase(  ( ))
+x means element foreveryelement uppercase element, and return a new element as a new arr
+const numbers = [ 5, 3, 2, 20 ];
+// [ 'odd', 'odd', 'even', 'even' ]
+we need to do first new array and make them empty
+ const oddEven = []
+ for(const num of numbers){
+  if( num % 2 === 0 ) oddEven.push('even')
+  else oddEven.push('odd')  }
+  console.log(oddEven)
+  але можна коротше
+   
+ console.log( numbers.map((el) => el % 2 === 0 ? 'even' : 'odd'))
+we map each element and use ternary op
+always return the same size of arr. returns array which contains the result. a callbacj=k function accepts 3 arguments.
+numbers.map(() => {    we need to give a calback f, and take an argument
+if(num % 2 === 0 ) return "even"
+else 'odd"})
+we can return anything but fir both cases we should return smth
+const oddEven = numbers.map((num) => num % 2 === 0 ? 'even' : 'odd');
+we omit out {} as a return key words
+
+filter: returns an array filtered with elements matching a condition (smaller size array)
+map: returns a same size array based on requirements
+same size array it's  key words for map, when see use map
+filter if anything metching you return the ampty size. if Arr  all matching return the same size but uwually filter smaller size of arr
+
+ task const sentences = ['Good evening', 'I like arrays', 'It is Monday'];
+// each sentence's first word -> ['Good', 'I', 'It'];
+const firstWords = sentences.map((sen) => sen.split(' ')[0]);
+console.log(firstWords);
+let's recap how do we takes first word from the string 1. use slice which always starts from 0 and also the same sting indexOd( ' ' ) it's gong to give me Good
+'Good evening'.slice(0, 'Good evening'.indexOf(' ' )) five us good
+or if you don't like use splice  use split( " ") by space (which will return every word an arr) якщо я хочу отримати перший [0]
+'Good evening'.splite(" ")[0]
+sentences.map((el) =>{      //rigth away have my holdback and then feel part
+return el.slice(0, el.indexOf( ' ' )) })
+цього разу немає if else тут немає кондишин якщо тут од or even
+
+const salaries = [1000.2342, 5234.34533, 721.9786, 3452.50];
+
+// Create a new array storing the given salaries with 2 decimals
+// [1000.23, 5234.35, 721.98, 3452.50]
+consr newArrr = salaries.map((salary) => salary.toFixed(2))
+console.log(salaries.map((x) => x.toFixed(2)));
+
+findIndex
+FIND RETURN THE VALUE OF THE FIRST ELEMENT IN THE ARR WHERE  IS TRUE FOR CONDITION
+наш попередній таск робимо з інш методом а не  луп
+const nums = [-1, 1, 3, 0, 2, 6, 8];  
+// Please find the first even number from the array -> 0
+let firstEven;
+for(const num of nums) {
+    if(num % 2 === 0) {
+      firstEven = num;
+      break;
+    }
+  }  
+  console.log(firstEven); 
+а тепер інший спосіб
+
+let firstEven = nums.find((num) => num % 2 === 0 )     ...
+CONSOLE.LOG(FIRSTeVEN)      ... 0
+  ЩО МИ МАЄМО ТУТ воно вернуло перше парне число або перше число яке ми напишемо в умові воно поверне нам.
+let first.pos = nums.find(num) => num > 0    ///  перше позитивне число 
+it checks every element but stopps where it gets true, and return first matching element
+
+let firstEvenIndex = nums.findIndex((num) => num % 2 === 0);       /////3
+знайде індекс першго парного числа у нашому випадку 0 наш парний і тоді ми знайшли його індекс
+
+
+const cities = ['Rome', 'Kyiv', 'Berlin', 'Brugge', 'LA']; 
+
+// Find the first element that has 4 letters -> Rome
+// Find the last element that has 6 letters -> Brugge
+// Find the index of LA -> 4
+// Find the first element which has i -> Kyiv
+// Find the last element that has 4 letters -> Kyiv
+
+console.log(cities.find((city) => city.length === 4));
+console.log(cities.findLast((city) => city.length === 6));
+console.log(cities.findIndex((city) => city === 'LA'));
+console.log(cities.find((city) => city.toLowerCase().includes('i'))); 
+console.log(cities.findLast((city) => city.length === 4));
+
+
+when we don't have in our arr mistakes what we get  for index it's -1, for element underfine
+console.log(cities.find((city) => city.length === 10)); // undefined
+console.log(cities.findIndex((city) => city.length === 10)); // -1
+
+console.log(cities.findLastIndex(x => x === 'Des Plaines')); // -1
+
+to find yhe first element use find, for the last element use findLast
+
+we use for arfument two (()), but when it's one arg we can omiit one ()
+nums.find((num) => )    nums.find(num =>)
+
+findLast && findLastIndex they are super new
+
+    
+
+
+JS Arrays – For Loop
+• This is one of the most basic ways to iterate through an
+array.
+• You can initialize a loop counter (i) to 0, and you iterate as
+long as (i) is less than the length of the array.
+• Inside the loop, you access each element of the array using
+array[i].
+
+
+JS Arrays – For...of Loop
+• This is a cleaner and more readable way to iterate through
+an array, introduced in modern JavaScript.
+• You use the for...of loop to directly loop through the
+elements of the array without the need for an explicit index.
+
+
+
+
+JS Array Callback Methods – forEach()
+• forEach() - executes a provided function once for
+each array element.
+
+
+
+JS Array Callback Methods – map()
+• map() - creates a new array populated with the
+results of calling a provided function on every
+element in the calling array.
+• The map() creates a new array by performing a
+function on each array element.
+• It does not execute the function for array
+elements without values.
+• It does not change the original array.
+
+
+
+
+
+JS Array Callback Methods – find()
+• find() - returns the first element in the provided
+array that satisfies the provided testing function. If
+no values satisfy the testing function, undefined is
+returned.
+• findIndex() - returns the index of the first element
+in an array that satisfies the provided testing
+function. If no elements satisfy the testing function,
+-1 is returned.
+
+А ТЕПЕР МАТЕРІАЛ ЯКИЙ ВЧИТЕЛЬ ЗАПИСАВ НА ЮТУБІ
+
+CALLBACK FUNCTION IT'S A FUNCTION THAT IS PASSED AS AN ARGUMWNT TO ANOTHER FUNC
+when it's useful to use map method   examp 1 2 6  7 when yOu want to diuble all these nums and return new arr with double of these nums
+because we return the same size of arr
+NEXT EXAM   THE SAME NUMS 1 2 3 5 7 AND YOU WANT A SQUARE EACH OF THESE NUM  1 9 36 49
+OR YOU HAVE SUM NAMES WORDS. STRING 'FOO',  bar, foobar and you want to uppercase all these strings
+  map IT RETURN A SAME SIZE OF ARR !!!!
+map don't change your orsganal arr
+const numbers = [ 1, 3, 6, 7]      return double of  this num, we need the same size use map
+map is goinf to take another fun calback func which will execute this  callbackfunct for each of this arr that we have
+
+const numD = number.map(number) => {
+  return number * 2
+})
+consile.(numD)
+ 
+  const numS = numbers.map((number) => {
+  return number * number
+ }) cons.lo(numS)    orifinal diesn't changed
+
+const words= ['foo', 'bar', 'foorbar']     /// upercase each el
+ const wordUpper = words.map((word) => word.toUpperCase())    return new arr
+
+FILTER TO FILTER SOME ARR LET SAY IF WE NEED EVEN OR ODD NUM, OR WHEN WE HAVE NAMES AND NEED TO FIND NAMES STARTS W j OR, WORDS WHICH HAS ONLY 4 CHARACTER
+FILTER USUALLY RETURN A NEW ARR WITH SMALLER size. IF IT'S NOT ELEMNET MATCHING IT'S RETURN [] EMPTY ARR
+
+ CONST NAMES = ['Jane, alex. 'Max, 'James]     /star w j
+ console.log(names.filter((name) => name.toLowerCase().[0] === 'j'))
+
+ reduce RETURN A SINGLE VALUE OF YOUR TASK 
+ EXAM you want to return  a sum of numbers 1 2 4 5 = 12, or max or min, 
+ names takes shortest ar longest name
+
+ const numbers = [1 2 4 5 ]
+ const res = numbers.reduce((sum, num)=> {
+  sum += num return sum
+  } 0,)  consl(res)
+ we need to give an optional value (initialValue)= is what you want to give to your sum variable befor you started, we can start it from 0
+ what happened if we don't provide it? it takes the first el to be subm initially, hen num will be 2 4 5
+ this functon takes 2 arfg but it can have multiple arg. first ob=ne conseder as your accumulator (накопичувач), second current
+  але цей раз вчитель вжив замість них назви sum and num(retrieve from the arr one by one)
+max number 
+numbers.reduce((acc, curr) =>{
+  if(curr > acc) return curr;
+  return acc 
+}, - Infinity);
+but if we don't add initial value it still works, but our acc starts w default first num (exam 11)
+it's cause some issues if your arr is empty because now you may get an error 
+ console.log(maxNumber)
+
+task find the shortest length
+const names = [John, JAMES, MAX, jane]
+LET SHORTESTNAME = names.reduce((acc, curr) =>{
+if(acc.length < curr.length) return acc
+else return cur
+} names[0],)
+console.log(shortestName)
+
+acc it's our result, current is curent ele which will be retrieved from the arr, and then body of the funct
+
+
+JS Array Callback Methods – some() & every
+()• some() - tests whether at least one element in the array
+passes the test implemented by the provided function.
+• It returns true if, in the array, it finds an element for
+which the provided function returns true.
+• Otherwise, it returns false. It doesn't modify the array.
+• Simply, the some() checks if some array values pass a
+test.
+• every() - tests whether all elements in the array pass
+the test implemented by the provided function.
+• It returns a boolean value.
+• Simply, the every() method checks if all array values
+pass a test.
+w w w . t e c h g l o b a l s c h o o l . c o m
+
+S Array Callback Methods – reduce()
+• reduce() - executes a user-supplied "reducer" callback function on
+each element of the array, in order, passing in the return value from
+the calculation on the preceding element.
+• The final result of running the reducer across all elements of the array
+is a single value.
+• The first time that the callback is run there is no "return value of the
+previous calculation".
+• If supplied, an initial value may be used in its place.
+• Otherwise the array element at index 0 is used as the initial value and
+iteration starts from the next element (index 1 instead of index 0).
+• Simply, the reduce() runs a function on each array element to produce
+(reduce it to) a single value.
+• It works from left-to-right in the array.
+• It does not reduce the original array.
+• reduceRight() – similar to reduce() but works from right-to-left
+S Arrays – Sorting Arrays
+• sort() -> sorts an array alphabetically - be
+careful with the numbers!
+• This functions performs a lexicographic
+(dictionary) sort by default, treating numbers
+as strings. This means it compares the
+characters in the number as strings, which
+can lead to unexpected results.
+• We can solve this issue with a callback
+function!
+
+
+RECAP:
+
+Array Higher Order Methods:
+1. forEach(callback)  task:
+  -it runs the callback for each array element    arr.forEach() it's instance methood 
+  -it is a void method (it does not return anything)   we can't store it in another variable or we can't put it into console.log
+
+it's arr we just didn't store it in a variable
+для кожного з цих елементів x ,will be  3 5 10,  we can conlose.log them inside!!
+[ 3, 5, 10 ].forEach((x) => {          
+  console.log(x);
+})
+or 
+[ 3, 5, 10 ].forEach(function(x) {})      it's function expression     
+Output: результат буде
+3
+5
+teacher prfer aroow funct
+let sum = 0
+[ 3, 5, 10 ].forEach((x) => {          
+sum +=x 
+})
+console.log(sum);   ///18
+  IF WE DON'T DO ANY MANIPULATION W DATA BUT I WANT TO SEE WHAR THEY ARE FOREach it's Good
+but each doen not return anything we can't do !! CONST RESULT = [ 3, 5, 10 ].forEach((x))!!! NOT!
+IT DOENST RETURN ANYTHING THAT IS WHY WHY DO YOU PUT IT INTO CONTEINER TO STOR&?
+
+2. map(callback)
+  -it runs the callback for each array element, and collects the mapped elements in a new array 
+  -it returns a new array with the same size as original array  (SAME SIZE IT'S KEYWORD)
+ IT'S WORKING W EVERYELEMENT MANIPULATED WITH THEM and return the same size arr
+[1, 2, 3]   -> [2, 4, 6] MULTIPLE
+['apple', 'ORANGE', 'Kiwi']   -> ['Apple', 'Orange', 'Kiwi'] UPPER OR LOWER CASE
+
+const newMappedArr = ['apple', 'ORANGE', 'Kiwi'].map((x) => {
+  return x[0].toUpperCase() + x.slice(1).toLowerCase();
+})
+console.log(newMappedArr); // ['Apple', 'Orange', 'Kiwi']
+x[0 -it's the firt letter of the element]    + (concatination)
+x.slice(1) start from 1 means all the letter except firts one
+now it's mean  i/m taking an element and returning elements first letter uppercase + the rest of letter lowercase
+when i run it it's collected all these return element in a new ar
+thar why we can stor it in a new arr
+
+const newMappedArr = [1, 2, 3].map((x) => {
+  return x % 2 === 0 ? 'even' : 'odd';
+});
+
+console.log(newMappedArr); // [ 'odd', 'even', 'odd' ]
+
+
+3. filter(callback) 
+  -it runs the callback for each array element, and collects filtered elements in a new array 
+  -it returns a new array usually with a smaller size array 
+  -the inner callback should return boolean 
+
+cosnt filteredArr = [ 5, 2, 'Hello', null, 12.5 ].filter((x) => {
+  return typeof x === 'number';       ///якщо так ретирн номер 
+})
+  
+console.log(filteredArr); // [5, 2, 12.5]
+ we have different type of data 
+ якщо того  елементу що ми шукаємо немає резульату немає буде [] nothing matching|
+ якщо всі співпали то всі повернуться назад if everyrhing matching everything come back aggain
+
+ 
+4. reduce(callback)
+  - it runs the callback for each array element, and collects an accumulated value
+  - it returns a single value 
+  - if initialValue is not provided, then the first array element is considered as initialValue by default
+  
+  SOME() && every()    theacher never use in work envorinment, but for interwie a lot   
+   return true false
+    THEY CHECK THE CONDITions if some of the lements in your arr metch the conditions it will return true otherwise false
+   for evample if it's at least one even num return true. but every mean every elements must match
+
+   const numbers = [1, 2, 3, 4, 5] //// - 1
+//// numbers are positive
+//let flag = true; /// num are positive      true=1
+/*(const num of numbers){
+    if(num <= 0){            /// means not positive
+        flag = false;       / means at least i found one num is not positive
+        break;            / if we founf at leanst one negetive we don't need to check the rest, break it
+    }
+}
+console.log(flag)/// true     if neg   if at least one neg it become as a false
+numbers.forEach((x) => {
+    if(x <= 0) flag = false;
+})*/
+we can't use  break w forEac because it's not a refular loop it's a method
+ 
+ let allPosotive = numbers.every((x) => x > 0)
+console.log(allPosotive)
+if it's one arg we cam ommit one()   numbers.every(x => x > 0)
+
+ task const cities = ['Chicago', 'Berlin', 'Rome']
+// Check if any city has 6 letters -> false     
+console.log(cities.some((city) => city.length === 6)) /// true
+we didn't use every because it would check if all element city has  6 char with every t return false
+
+// Check if any city has 10 letters -> false 
+let some61 = cities.some((x) => x.length === 10);
+console.log(some6); false
+
+didderent between filter reduce and map
+REDUCE IS ALWAYS RETURN A SINGLE VALUE
+WHENEVER IT'S MAX OR MIN ARR SUM OR PRODUCT POS EVEN ODD 
+ONLE RETURN ONE ELEMENT
+REDUCE TAKES CAll back fucn and this inner func call as reducer
+
+const numbers = [ 3, 6, 10, 4 ];
+// count even
+counEv = numbers.reduce((accumulator, current) => {
+if(current % 2 === 0)  return accumulator + 1
+return accumulator
+} 0,)
+console.log(counEv)  ///3
+or ternaty operator               acc
+let countEven = numbers.reduce((evens, curr) => curr % 2 === 0 ? evens + 1 : evens, 0);
+cскорочена версія 
+а тепер як це працює
+we name our agrumnet another way
+accumulator = our result (eventually it will be 3 for our task)
+current - it's like our x for the previous examples each time it's the new element first 3, then 6 then 10 and 4
+and then our calback with {}
+Then we need to have INITIAL VALUE it's optinal you amy have it or not. but if you dont have it
+for count even it make sence to have 0, but for others it can be difference
+this 0 is assighn to accumulator. and when we star me acc is 0 and current is 3
+if(current % 2 === 0) we need to return our acc + 1
+it's mean if it's even then return acc + 1 which was 0
+but if not return acc itself
+(when it's method we use noy else we use return)
+examp our acc was 0, current 3, if 3 even? no, so acc stay as 0, 
+then curent 6 (current % 2 === 0 yes) so acc + 1 become as 1
+then 10 (current % 2 === 0 yes) so acc + 1 результат вже буде 2( бо 0 тоді 1 а тепер 2)
+отже коли наш елемент івен це буде оновлено на +1  і прахує результат
+ми можемо acc називати різними іменами але це найдліш поширено
+
+we again take 2 arg, first acc- will be our result at the end, second is our current element
+and after that our call back => our value 0
+every time when i get an alement i need to add to  this time we even don't need if else
+ let sum = number.reduce((acc, curent)=>{
+return acc + current     //every  el will be ad to acc
+ } 0,)
+ console.log(sum)
+
+ if we don't have initial value it will start acc with your initial value and current become the next element
+ const numbers = [ 3, 6, 10, 4 ]; like here acc become 3, and curr 6
+ but dor product it will be work
+ 'for product we useed initial value = 1 so
+ let product = number.reverse((acc, curr) => return acc * curr {}1,)
+ // curr = 3, 6, 10, 4
+// acc = 720  first 18* 10 =180*4=720
+
+let max = numbers.reduce((acc, curr) => curr > acc ? curr : acc, -Infinity);
+we make sure our initial value is the possible lowest number -infinitive or  0 
+rigth now our acc is neg infin and our current is 3
+is 3 > then -infinity   yes so our acc become 3, then new current 6> 3 yes, 6< 10
+4< 10 no return acc
+ alse i can do this task w Math.max( ...numbers)
+ 
+ const fruits = ['Apple', 'Orange', 'Kiwi', 'Pineapple', 'Mango', 'Melon'];
+// Find shortest fruit -> Kiwi
+fruit.reduce((acc, curent ) =>{ 
+if( acc.length < curr.length) return acc;  /// it's mean acc is shorter 
+}, fruit[0])/// if we don't provide initial value in this case okay because if we don' provide it still starts from firts element
+right now y accum is  apple, and current is orange
+console.log(fruits.reduce((acc, curr) => acc.length < curr.length ? acc : curr));
+0 initial value we can use when we have sum so and so one.  but here we know our friuts is one of this fruits
+fruits[0] we assuming its' apple then update it
+ more tasks 
+ const numbers = [-2, -5, 3, 0, 5, 8, 10];
+// count even and positive numbers -> 2
+let countEven = 0;
+for(num of numbers){
+  if(num % 2 ===0 && num > 0) countEven++
+}  console.log(countEven)    // 2
+or
+console.log(numbers.filter((num) => num % 2 ===0 && num > 0).length)
+filter return true or false and if we want a count we need to get the length of this
+or if we see it's an array and we have acc(count even and poss num) it's reduce
+let count = numbers.reduce((acc, curr) => {
+  if( curr > 0 && cur % 2 === 0) return acc +1;
+  return acc
+  }, 0),
+  why acc++ doesn't work? and we use acc + 1.    ac++ means increse acc next time but we don't have next time, it's mean we terurn old value which is 0
+it's shortest version w ternaty
+let evenOdd1 = numbers.reduce((acc, curr) => curr % 2 === 0  && curr > 0 ? acc + 1 : acc, 0)
+
+const nums = [
+    [1, 2, 3],
+    [5, 10, 20],
+    [100, 200]
+  ];
+  // sum of numbers of inner arrays : [6, 35, 300]
+/*   first way
+const result = [];  //c reate conteiner 
+for(const innerArr of nums) { // [5, 10, 20]  loop thriugh each inner  element
+  let sum = 0;       // start from 0 
+  for(const num of innerArr) {     
+    sum += num;
+  }
+  result.push(sum);
+}
+console.log(result); // [ 6, 35, 300 ]
+*/
+or another way i have 3 elemts and return 3 elements it's like map
+nconst result = ums.map((num) => {
+  return num.reduce((acc, curr) =>{
+    return acc + current; }, 0) 
+  })  console.log(result)
+
+  const result = nums.map((x) => x.reduce((acc, curr) => acc + curr, 0));
+
+  const words = [ 'hello', 'Tuesday', 'HEYY', 'Apple' ];
+// Find all the words that has 5 letters: [ 'HELLO, 'APPLE' ]
+const result1 = [];     /// спершу зберігаємо контейнер
+words.forEach((x) => 
+  if(x.length === 5) result1.push(x.toUpperCase()); якщо так пуш це дщ нашого резуль
+console.log(result1);
+
+const result2 = words.filter(x => x.length === 5).map(x => x.toUpperCase());
+console.log(result2);
+якщо ми вживатимемо філтер то це дасть нам лише 5 карактерс вле не аперкейс
+але вчитель не рекомендує вживати бо тут дві люп залучено
+
+
+// 'hello', 'Tuesday', 'HEYY', 'Apple'
+// ['HELLO', 'APPLE']
+// reduce initial value array issue
+const result3 = words.reduce((acc, curr) => {
+  if(curr.length === 5) acc.push(curr.toUpperCase());
+  return acc;
+}, []);    бо ми почали з контейнера пусті ерей, якщо немає слова з 5 букв то поверне пусті []
+
+console.log(result3);
+
+
+
+
+
+
+
