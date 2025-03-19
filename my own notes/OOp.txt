@@ -1,0 +1,667 @@
+
+OOP: Object Oriented Programming We used then a lot for testing, everyday 
+object is a based for JS
+This helps us to put real life object into programming 
+every online item has a lot of inf 
+const phone1 = {
+  brand: '',
+  color: '',
+  price: ,
+  img: ''
+}
+const phone2 = {
+  brand: '',
+  color: '',
+  price: ,
+  img: ''
+}
+const phone3 = {
+  brand: '',
+  color: '',
+  price: ,
+  img: ''
+}
+const phone4 = {
+  brand: '',
+  color: '',
+  price: ,
+  img: ''
+}
+So, the way of creating individual objects like above is too much efforts and time consuming
+We don't create oblect one by one
+OOP: Java, C#, C++  99% based on object
+Prototype Based: JS, TS
+JavaScript started to implement classes (OOP) after ES6. before it was prototype based
+BEFORE ES6:
+// constructor function
+function Phone(brand, color, price) {     /// this our object, whetever object created we refer dynamic
+  this.brand = brand;
+  this.color = color;
+  this.price = price;
+}
+/// this referse to  object which was created  line Phone iphone purpule it's below
+const phone1 = new Phone('iPhone', 'Purple', 1000);     //// with constructor we assighn whatever value is given we assigth to this keyword 
+const phone2 = new Phone('Samsung', 'Blue', 1200);    // we can assign our object into another variable
+const phone3 = new Phone('Nokia', 'Black', 750);
+so from now when i want to create an object  i can use new Phone constructor => provide a value that i need => and it will take value and assign to this keyword
+this refers to our current object which we created
+this is reserved key word use to refer to our object been created
+
+phone1.brand; // iPhone 
+phone2.color; // Blue
+phone3.price; // 750
+
+// we can  update our value and now our phone become as yellow
+phone1.color = 'Yellow';
+phone1.color; // Yellow
+Whener we creat a new Object w the Constructor we always need keyword new!!.    leke (new Day)
+It always used to create an instance of  prototype or class. Used to create a new oblect
+
+instead of using function constructor we are introduced with classes (to make simmilar and easy for other people)
+with classes we don't need to use function keyword at all!!! if it has () next to name it's automatically says i know this is a function
+AFTER ES6: syntax    changed only syntax
+class Pnone {
+  constructor() {
+
+  }
+}
+
+class Phone {     
+  constructor(brand, color, price) {
+    this.brand = brand;
+    this.color = color;
+    this.price = price;
+  }     these all it's our Properties
+}
+
+const phone1 = new Phone('iPhone', 'Purple', 1000);
+const phone2 = new Phone('Samsung', 'Blue', 1200);
+const phone3 = new Phone('Nokia', 'Black', 750);
+
+phone1.brand; // iPhone 
+phone2.color; // Blue
+phone3.price; // 750
+
+phone1.color = 'Yellow';
+phone1.color; // Yellow
+Now when i create my template i can use this, makes our code more reusable
+if we need to add smth we can add it to out templates and then add to our obj
+
+Each prototype or class will have
+Properties: what it has. Phone has brand, color, price      зарактеристики який 
+Methods: what it does. Phone calls, texts    дія що робить
+
+Prototype / Class = templates, blueprints | Phone class or prototype   це наш шаблон 
+Object = instance of a class / prototype | phone1, phone2, phone3  наш кожен індивідуальний обєкт
+         (приклад)
+What is OOP?
+•The entire idea of object-oriented programming is 
+to implement real-world characteristics in terms of 
+objects that contain data and code.
+•Main advantages of OOP;
+•easy code maintenance
+•code reusability with inheritance
+•simplicity
+•Some OOP programming languages: Java, C++, C#, 
+Kotlin...
+
+
+РІЗНИЦЯ МІЖ VOID AND RETURN METHOD. IF IT'S RETURN SMTH YOU SHOULD STORE IT ON A VARIABLE OT CONSOLE.LOG IT. YOU SHOULD USE IT
+
+НЕ ДО ТЕМИ АЛЕ ФОРМУЛА ЯК МИ МОЖЕМО ЗНАЙТИ ДВІ СЕРЕДНІ БУКВИ ЯКЩО СЛОВО МАЄ ПАРНУ К-СТЬ СИМВОЛІВ
+IF(STR.length % 2 === 0)   RETURN str.slice(str.length / 2 - 1, str.length / 2 + 1)   joHn   = oh
+   return str[(str.length - 1) / 2] it's for odd непаррне слово    HELLO -  L
+
+DIFFERENT BETWEEN STATIC AND INSTANCE METHOD 
+TO be able to call i need have instance 
+Array.isS=Array() static object
+names. all instance method 
+static Phone. see method
+як  я зрозуміла коли перед обєктом є слово то це статік метод якщо немає то це інстенс
+Phone.anyFunction();  це статік тепер Math.min
+
+/ After ES6   TAMPLATE
+// Create a class
+class Phone {
+    // create constructor which takes properties and assigns them to this keyword
+    constructor(brand, color, price) {
+      this.brand = brand;
+      this.color = color;
+      this.price = price;
+    }
+  
+    // Add void instance/object methods    // WE don't need to write function key word when create ckasses  if you have indedifier with() it's now it's your function
+    call() {
+      console.log(`${this.brand} is calling!`);
+    }
+  
+    // Add return instance/object methods
+    text() {                 /// це інстенс, нам треба сторити для них веріебил
+      return `${this.brand} text!`;
+    }
+  
+    // static methods - this can be invoked with the template name
+    static anyFunction() {
+      console.log('This is a static method!');
+    }
+  }
+  
+  // Instances or object of the Phone template
+  const phone1 = new Phone('iPhone', 'Purple', 1000);
+  const phone2 = new Phone('Samsung', 'Blue', 1200);
+  const phone3 = new Phone('Nokia', 'Black', 750);
+  
+  phone1.call(); iphone is calling
+  phone2.call();
+  phone3.call();
+  
+  Phone.anyFunction();
+
+
+
+JavaScript | OOP
+•OOP in other languages;
+•Objects (instances) are instantiated from a class.
+•Class-based programming.
+•OOP in JavaScript;
+•Objects are linked to a prototype object.
+•Prototype-based programming.  even  cllasses were added it still prototype-based because behind it goes back to prototype and convert that to constractor function
+NOTE: Class or prototype is a blueprint or 
+template from which many objects are created
+
+JavaScript | OOP
+•An Object is a unique entity that contains properties and 
+methods. 
+•For example, “a car” is a real-life Object, which has some 
+characteristics like color, type, model and performs certain 
+actions like driving. 
+•The characteristics of an Object are called Properties in 
+Object-Oriented Programming, and the actions are 
+called methods. 
+•Objects are everywhere in JavaScript, almost every element 
+is an Object whether it is a function, array. 
+NOTE: A Method in JavaScript is a property of an object whose 
+value is a function. 
+prototype(has method) =>  Object can acsses method
+JavaScript | OOP – ES6
+•JavaScript classes, introduced in ECMAScript 2015, are 
+primarily syntactical sugar over JavaScript’s existing 
+prototype-based inheritance. 
+•The class syntax is not introducing a new object-oriented 
+inheritance model to JavaScript. 
+•JavaScript classes provide a much simpler and clearer syntax 
+to create objects and deal with inheritance. 
+•NOTE: Class declaration are not hoisted. So, you must 
+declare a class before you can use it to create objects.
+JavaScript Classes | What is a class?
+
+•Class is a blueprint or template from 
+which objects are created.
+•We can think of the class as a sketch 
+(prototype) of a car. It contains all the 
+details about the engine, doors, windows, 
+etc. Based on these descriptions we build 
+the car. Car is the object.
+•Since many cars can be made from the 
+same description, we can create many 
+objects from the car class.
+
+JavaScript Classes | How to create a class?
+•Syntax:
+class className {
+//data(properties) and 
+methods(functions)
+}
+•Example:
+class Car {
+//data(properties) and 
+methods(functions)
+}
+•Every class has its properties and methods.
+•Properties are known as states or fields.
+•Methods are functions of that class.
+•For example:
+•In real life, a car is an object. 
+•The car has properties, such as brand and color.
+•And the car has methods, such as drive and brake
+
+JavaScript Classes | What is an Object?
+•Object is the instance of a class.
+•Class is a template or blueprint from which 
+objects are created. 
+•So, object is the instance (result) of a class.
+•EXAMPLE: if car is a class, then BMW can be an 
+object of that class. BMW is known as instance of 
+car class. Also, Audi is an instance of car class.
+Class = Car
+Object = BMW
+Object = Audi
+
+JavaScript Classes | How to create an 
+object?
+•Assume we have a class as Car
+class Car {
+//data(properties) and 
+methods(functions)
+}
+•Then, we can create an object of Car class by 
+using new keyword.
+Example:
+const mercedes= new Car();
+•Object is an instance of a class in programming 
+languages.
+•Objects can be created by using new keyword.
+•We can create countless number of objects from 
+the same class.
+•For example:
+•If car is a class, then hundreds of car objects can 
+be created from that class
+
+JavaScript Class Members
+•Properties are used to define all the information of the objects of that class. These are used to store data.
+•Methods are also known as functions of the class and defines behaviors of the objects of that class.
+•Constructors are kind of special methods and enable us to create objects of the class.
+/*
+OOP = Object-Oriented Programming
+OOP Languages: Java, C#, C++
+OOP languages will convert every real life objects into programming
+
+JS is not an oop language
+JS is prototype based programming language
+
+const mug = {
+  material: 'glass',
+  price: 36.08,
+  design: [ 'design1', 'design2' ]
+}
+*/
+
+// constructor function - Before ES6 - prototype-based
+function Mug(material, price, designName, size) {
+    this.material = material;
+    this.price = price;
+    this.designName = designName;
+    this.size = size
+  }
+  
+  const mugJanuary = new Mug('glass', 36.08, 'design1');
+  const mugFebrTuary = new Mug('wooden', 37.84, 'design2');
+  const mugMarch = new Mug('plastic', 37.84, 'design3');
+  const mugApril = new Mug('glass', 100, 'supernicedesign', 'big');
+  
+  console.log(mugApril);
+  
+  
+  // After ES6 - classes - class-based
+  class Student {
+    constructor(fullname, age, program) {
+      this.fullname = fullname;
+      this.age = age;
+      this.program = program;
+    }
+  }
+  
+  const student1 = new Student('John Doe', 25, 'SDET');
+  const student2 = new Student('Alex Smith', 17, 'SE');
+  
+  console.log(student1);
+  console.log(student1.fullname); // 'John Doe'
+  console.log(student2.program); // 'SE'
+  console.log(student1.address); // undefined
+
+  // TASK: Create a Teacher prototype with fname, lname, age, field properties
+
+function Teacher ( fname, lname, age, field){
+    this.fname = fname;
+    this.lname = lname;
+    this.age = age;
+    this.field = field;
+}
+
+// Create 2 Teacher Prototype methods as teach and giveHomework - void and logs below
+// fname teaches field.
+// fname gives homework.
+Teacher.prototype.teach = function(){        ///     we can't  use => here we must write function
+    console.log(`${this.fname} teaches ${this.field}`)
+}
+Teacher.prototype.givesHomework = function (){
+    console.log(`${this.fname} gives Homework }`)  
+}
+
+
+
+//// Create 4 Teacher Objects/Instances
+const teacher1 = new Teacher('John', 'Doe', 35, 'Math');
+const teacher2 = new Teacher('Jane', 'Donnely', 55, 'English');
+const teacher3 = new Teacher('Sarah', 'Elly', 43, 'Art');
+const teacher4 = new Teacher('Adam', 'Bayer', 33, 'Science');
+
+// Find the oldest Teacher -> Jane
+// Find the average age of the teachers -> 39
+// Find the youngest teacher -> Adam Bayer
+// Get all the fullnames of the teachers -> ['John Doe', 'Jane Donnely', 'Sarah Elly', 'Adam Bayer']
+
+const teachers = [teacher1, teacher2, teacher3, teacher4]   /// спочатку зібрали вчителів до купи. знайти к-сть дописали б length  =4
+teachers.forEach(x => console.log(x))    /// print teacher one be one     x.fname отримаємо перші номера для вчителів
+
+const oldest = teachers.reduce((acc, curr) => {
+  if(curr.age > acc.age) acc = curr;   /// we update our acc,  якщо є два одинакового віку 0означає ,якщо тут ,є два  тих самих візьми перше значенн
+  return acc;             // сurr.age >= acc.age  поверне друге
+}, teachers[0]);  // наше інітіал  ми припускаємо що перше yeacherі ше    припускаємо curr is john 55
+console.log('Oldest Teacher is:', oldest.fname);  // щоб знайти лише перше імя
+
+const sumOfAges = teachers.reduce((acc, curr) => acc += curr.age, 0);    // curr meand teache that's why we add age    // init value sum we star as 0
+console.log('Sum of ages', sumOfAges);
+console.log('Average of ages', sumOfAges / teachers.length);     /// ділимо на довжину   тоюто поділили на 4 бо їх є 4
+
+const youngest = teachers.reduce((acc, curr) =>{
+    if (curr.age < acc.age) acc = curr;
+    return acc;
+}, teachers[0])
+
+console.log('Youngest Teacher is:', youngest.fname, youngest.lname);
+
+const fullnames = teachers.map(x => `${x.fname} ${x.lname}`)    /// цікаве спостережння як він додав '
+console.log(fullnames) /// 'jogn dpe', 'jane donnely', 'sara elly
+
+
+new tamplates
+
+create a car classand a constructor which takess parameter : make, model, year, price
+add 2 metods drive, brakes,
+{make }{model} drives!
+
+class Car {
+    constructor( make, model, year, price){
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.price = price;
+    }
+    drive(){
+       console.log(`${this.make} ${this.model} drive`);
+    }
+    brakes(){
+        console.log(`${this.make} ${this.model}break`);
+    }
+}
+module.exports = Car
+we  CREATE OUR PROTOTYPE IN ONE FILE, AND NEVER TOUCH IT, WE EXPORT IT TO ANOTHER FILE AND USE IT IN ANOTHER FILE
+IN THAT FILE ONLY OUR PROROTYPE
+ IF I USE IT A LOT IN DIFFERENT FILES, I CAN EXPORT AND IMPORT IT
+ USE module.export = Car;  means I'll export my Car tampletes in another files
+ be careful with path for file
+
+ //when we move to car it's tell us what we nned to do
+const car1 = new Car('Tesla', 'X', 2023, 80000);
+const car2 = new Car('BMW', 'X7', 2022, 60000);
+const car3 = new Car('Tesla', 'Y', 2020, 27000);
+
+1. Log each car object to the console
+2. Execute drive and stop methods for each car
+3. Get each cars price information in the format -> {year make model} is ${price}.
+Example: 2023 Tesla X is $80000.
+const cars = [ car1, car2, car3]  //// creat cars arr
+cars.forEach(x => {      /// use loop for all cars           or for(const car of cars) 
+     console.log(x)
+     x.drive();     /// для усіх машин ми зробиил та кикликали ці функції
+     x.brakes();
+     console.log(`${x.year} ${x.model} is $${x.price}`)
+     console.log()   /// після кожної машини ми зробили нову лінії для читабельності у нас є пропуск 
+
+})
+
+class Product {
+    constructor (name, quantity, price){
+
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+    sell (num){     //// our quanity go dowm
+       if(this.quantity >= num) this.quantity -= num;   // we need decrease our quanitity
+       else throw new Error (`We don't have ${num} of ${this.name} in stocks!!!`)
+
+    }
+    return (num){
+        this.quantity += num;       ///we increse our quan
+    }
+    applyDiscount(percentage){    /// 0.1 10%
+        if(percentage <= 1) this.price -= this.price * percentage
+    }
+}
+module.exports = Product;
+it's our template
+fnd now in another file we ceate a new file
+
+
+without import we can't star create an pbject based on our prototype, first import!!!
+if you invoke  in new file const car1 = new Car  (ми уже побачимо де воно знаходит натиснути на нього і воно підтягне автоматично hit enter)
+or
+const Car = require('./ptototypes/Car')
+
+спершу треба робити імпорт
+const Product = require('./ptototypes/Product')
+тепер ствворюємо наші продакт
+const Product = require('./ptototypes/Product')
+
+const pen = new Product('Pen', 20, 10)
+const mug = new Product('Mug', 10, 15)
+const tshirt = new Product('T-shirt', 5, 20)
+console.log(pen)  /// Product { name: 'Pen', quantity: 20, price: 10 }
+pen.sell(15)
+pen.return(3)
+pen.applyDiscount(2)
+console.log(pen) ////  Product { name: 'Pen', quantity: 8, price: 8 }
+
+tricky situation 
+mug.sell(20)    /// -10, а так не можна прадати більше ніж у тебе є к-сть
+нам треба зробити умову яка коли ти продаєш перевірь чи номер білше ніж існуюча кість викинь помилку
+ sell and update  if(this.quantity >= num) this.quantity -= num;   // we need decrease our quanitity
+  if don't give an error     else throw new Error (`We don't have ${num} of ${this.name} in stocks!!!`)
+applyDiscount(percentage){    /// 0.1 10%
+        if(percentage <= 1) this.price -= this.price * percentage
+    } we ignore it like skip it
+usually we don't do it in our worl envo but we need to know it
+we created one template and use it in different file
+we will not create object we will get them from server ready
+   we name our Car, Product with upper case,  it doesn't metter it's better to use Uper case, and name out object
+   utils also has UpperCase
+   90% we use classes a lot
+
+   again hoe to import into file
+   const car1 = new Car ( і тут нам вибиває списсок і папка шляху натискаємо на нього нам піддягує локація)
+   а тепер додаю value 
+   const car1 = new Car('Honda;, 'Civic')
+   or import my sielf  без підтягнення інфи
+   const Product = require('./')
+. step into it if you put ./ it's authomaticaly help us to choose files, nevigate us
+
+2 ways import 
+Common JS (module.exports require) used w Nodejs   better because easier
+ES Module(import export) are not directly supported w nodeJs but browser
+cypress Playwrigth = used both( both supporrted)
+but company decide what they wants
+
+
+INHERITANCE   2 day
+
+OOP:
+-reusability (inheritance) even better успадкування
+-maintainability
+-easy to read 
+you don't need to create a lot of new object you can create 1 tamplate and use for a lot of object
+// After ES6 - classes
+class Person {
+  constructor(fname, age) {
+    this.fname = fname;
+    this.age = age;
+  }
+  study() {
+    return true;
+  }
+  eat() {
+    return true;
+  }
+}
+
+const person1 = new Person('John', 25);
+const person2 = new Person('Jane', 22);
+const person3 = new Person('Alex', 30);
+const person4 = new Person('Mariia', 26);
+
+Inheritance Concept: Child-Parent relationship 
+
+Parent classes: Base classes: Super classes -> are inherited by child classes
+Child classes: Sub classes -> inheriting from parent classes 
+
+Classes have constructor, methods, properties
+чацлд можуть успадкувати від батіків усі ці поданні зверху we can reused it 
+окрім того дітина може мати додаткові свою якості 
+
+OOP | Inheritance
+•Inheritance in OOP is inheriting properties and methods 
+from one object to another. This will create "inheritance 
+concept".
+•In JavaScript, there are various methods to achieve 
+inheritance. 
+1. Prototypal Inheritance: Every object in JavaScript has a 
+prototype, and objects inherit properties and methods from 
+their prototype.
+2. Constructor/Class Inheritance (ES6): Using the extends 
+keyword and super() constructor in ES6 classes.
+3. Object.create(): Creating objects directly with 
+Object.create() to establish inheritance.
+
+class Person {
+    constructor(fullname, age) {
+      this.fullname = fullname;
+      this.age = age;
+    }
+    eat(str = 'food') {      /// if they don't provide anything we will get underfine, we can provide ad least default inf to have smt
+      console.log(`${this.fullname} eats ${str}.`);    якщо вони нададуть інф це оновиться до їнсьої наприклад салат
+    }
+    sleep(num = 8) {
+      console.log(`${this.fullname} sleeps ${num} hours.`)    jone doe sleeprs 88 hours
+      }
+    walk() {
+      return true;
+    }
+  }
+  
+  module.exports = Person;
+  person.sleep(6)    / 6
+console.log (person.walk()) to see this function
+створили нову людину майже те саме має лише деякі зміни
+this works w inheritance shorter our code, and dynamic  we don;t need copy paste it, we use it from person 
+const Person = require('./Person');
+
+const Person = require('./Person');
+class Programmer extends Person {
+  constructor(fullname, age, companyName) {
+    super(fullname, age); // this invokes parent class constructor - must be the first statement
+    this.companyName = companyName;
+  }
+  code(language) {
+    console.log(`Programmer codes in ${language}.`);
+  }
+}
+
+const programmer = new Programer ('HHH' 'HJH', 10, 'Akefe')  те треба тут писати просто показую тобі приклад
+module.exports = Programmer
+
+
+const Person = require("./Person");
+
+class Singer extends Person{
+  constructor(fullname, age, bandName) {
+    super(fullname, age);
+    this.bandName = bandName;
+  }
+  sing() {
+    return true;
+  }
+  playGuitar() {
+    return true;
+  }
+}
+
+module.exports = Singer
+ 
+ TO DO INHERITANCE 
+ 1. WE NEED TO EXPORT / IMPORT FIRST
+ 2. ЯКЩО ти спадкуєш від персон і там у тебе вже є першеб друге імя ти не можеш створити ії ще раз у новому обєкті тобі треба вживати їх із super()
+ 3. super()- means parents constructor
+  super(fullname, age); // this invokes parent class constructor - must be the first statement
+   this.companyName = companyName; - після супер робимо те що відноситься до обєктаб якщо зробити навпаки буде помилка
+
+
+
+Prototypal Inheritance – Before ES6
+•The Prototypal Inheritance is a feature in JavaScript used to add methods and properties in objects. 
+•It is a method by which an object can inherit the properties and methods of another object.
+•We use a JavaScript prototype to add new properties and methods to an existing object constructor. 
+•Then, we can tell our JS code to inherit properties from a prototype.
+
+
+
+
+
+
+
+
+
+
+
+MUST KNOWN
+ES6 Classes
+Inheritance with ES6 classes using extends keyword
+function constructor 
+super keyword - constructor
+
+
+GOOD TO KNOW
+Prototypal inheritance
+
+
+OKAY if you forgot
+prototype chain
+Object.create()
+
+Number.MAX_SAFE_INTEGER; // static property of Number prototype
+Math.max(); // static method of Math prototype
+
+class AutomationHelper {
+  static info = 'This is a helper class';
+
+  static helperMethod1() {}
+  static helperMethod2() {}
+
+  instanceMethod() {}
+}
+
+
+AutomationHelper.info; // This is a helper class
+AutomationHelper.helperMethod1(); 
+AutomationHelper.helperMethod2(); 
+
+const ah = new AutomationHelper();
+ah.instanceMethod();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

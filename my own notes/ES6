@@ -1,0 +1,316 @@
+
+
+ES6 - ES2015 
+
+Before ES6: JS was commonly used for web development (frontend).
+
+
+Frontend: UI (User Interface) of the application -> developed using JS 
+API: Application Programming Interface (REST, SOAP, GRAPHQL)     //// middle takes to server, makes connection between 2 of them, most of them use Json
+Backend: Server and DB(data based)
+all apps has this 3 combination together
+
+
+Backend Developers: Java, .NET/C#, Ruby, GO, JS
+
+After ES6: JS can be used for backend development as well.
+JS improve language for backenf development
+
+ES6: Interviews Questions:
+Tell me some new features added with ES6?
+-> let-const
+-> for...of loop
+-> arrow functions
+-> string templates / interpolation
+-> spread operator
+-> default parameters
+-> rest parameters 
+-> classes
+-> promises (async - await)
+-> Map, Set
+EcmaScript
+•ES stands for 
+ECMAScript which is 
+the language standard 
+of JavaScript.
+•ES2015 was released 
+in...2015! 
+•It is commonly called 
+ES6, and it was a 
+revolutionary update 
+to JavaScript.
+•ES6 = ES2015
+et - const
+•Historical Context:
+•The var keyword has been a staple in 
+JavaScript since its inception in 1995 and 
+was the primary method for variable 
+declaration until 2015.
+var name = ”John";
+
+
+Can you tell me how many different ways you can create functions in JS?   www3schooole inf aboit it
+1. function declaration
+2. function expression
+3. arrow function
+4. constructor function
+5. IIFE    // imidiately invoke function expresion
+6. Recursive functions    / function invoke itself
+
+Recursion: it is a concept that a function invokes itself within its body
+// There is an infinite loop for below execution
+function printHi() {
+  printHi();       //// overflow error we hit our server
+}
+
+printHi();
+
+we spread arr into another arr or we speed arr into math.max ad so on
+and spread object properties into another object
+
+
+What is the difference between spread operator and the rest parameters?
+interview questions because they are have syntax with ...
+but works completely opposite
+const arr = [1, 3, 4];
+...arr -> this will spread array elements into individual values
+
+function funcName(...rest) { // ...rest will collect individual arguments in an array
+  [1, 2, 3]
+}
+
+funcName(1, 2, 3) it's individual arrdument but comes here with the rest as an arr
+. Оператор розповсюдження (...)
+Призначення: Використовується для того, щоб розпакувати елементи ітерабельного об'єкта (наприклад, масиву чи об'єкта) в окремі елементи.
+Де використовується: Зазвичай в функціях, масивах чи об'єктах для того, щоб "розпакувати" значення.
+ Параметри решти (...)
+Призначення: Використовується для того, щоб збирати кілька значень в один масив. Це дозволяє передавати невизначену кількість аргументів у функцію.
+Де використовується: Зазвичай у функціях для збору параметрів в один масив.
+Ключові відмінності:
+Оператор розповсюдження використовується, коли потрібно розпакувати елементи з ітерабельного об'єкта (масиву, об'єкта) в окремі значення.
+Параметри решти використовуються, коли потрібно збирати кілька значень у один масив, зазвичай в функціях для збору невизначеної кількості аргументів.
+Тобто основна різниця в тому, як і де ви їх використовуєте:
+
+Розповсюдження використовується для "розпакування" значень у місцях, таких як виклики функцій, масиви чи об'єкти.
+Решта використовується для "збирання" значень у одну змінну, зазвичай це параметри функції.
+Default Parameter we are talking about another funvtion, related to function, allow us to assign a default value for a function parameter if no argument is provided when the function is called. useful when we want to make function more flexible. Must used as last parameter
+
+function sum(num1, num2 = 0) { // default value for num1 and num2 is undefined
+    return num1 + num2;
+  }  
+  console.log(sum(3)); // 3
+  console.log(sum(2, 4)); // 6
+  if we didn;t provide second argument it return only one
+  let say we have only firt 3 second is underfine =NaN 
+  and then we change it, if people doesn't give me value default value 
+ if people didn't provide it  we default to make it 0, because it doesn't change anything to get su, and we wouldn't get underfine    (3+0=3)
+ but if we have a second arguments it's mean, it will go and use the parameter of argument (3 ,2 = 5)
+  for num1 and num2 is undefined
+use a lot w switch features
+  we prefer if one our parameter is defaulte we use last one
+  we can default both arguments but it's not common
+  pass as the last
+  function greet(name = 'my friend!', time = 'morning') {
+    if(time === 'evening') console.log('Good evening', name);
+    else console.log('Good morning', name);
+  }
+  greet('John', 'evening');
+  greet('Alex');
+  greet(); /// good morning my friend
+  use a lot
+ second it's optinal if you dont add  at anyrhinf it's always provide morning   exabple jogn morning, but if we add greet('john, evening) wi will get this. We do the most use case as a default, if i cald this method i don't need to call morning again and again
+
+
+Vanilla JS = pure JS
+•Introduction of let and const:
+•In 2015, with the introduction of ECMAScript 6 (ES6), 
+the let and const keywords were added, providing 
+more flexible and modern alternatives.
+let name = ”John";
+const pi = 3.14
+let – const | Reassignment and 
+Immutability•let variables can be reassigned after declaration.
+•That tells, let variables are mutable.
+let name = ”John";
+name = ”James"; // allowed
+•Mutable: can be modified after their creation. This 
+means that you can change their properties, add or 
+remove elements, and the object's identity remains 
+the same.
+•Examples of mutable data types in JavaScript 
+include arrays and objects.
+
+
+•const variables, once assigned, cannot be reassigned 
+after declaration.
+•That tells, const variables are immutable.
+const pi = 3.14;
+pi = 5; // Throws an error
+•Immutable: cannot be changed once they are 
+created. Any operation that appears to modify the 
+object actually creates a new object with the desired 
+changes.
+•Examples of immutable data types in JavaScript 
+include strings, numbers and other primitives
+String Templates
+•String templates terminology is also known as 
+template strings, template literals or backticks 
+syntax.
+•String templates use backticks (``) rather than single or 
+double quotes to define a string.
+•Template literals makes it easy to embed single or 
+double quotes into your string.
+•Template literals allows to create multiline strings.
+
+JS Arrow Functions
+•JavaScript arrow functions allows a short 
+syntax for writing function expressions.
+•We don't need the function keyword, the 
+return keyword, and the curly brackets.
+•Using const is safer and preferred, because a 
+function expression is always constant value.
+•We can only omit the return keyword and the 
+curly brackets if the function body has a 
+single statement.
+•We can skip the parentheses if we have only 
+one parameter.
+Spread Operator
+•The Spread (...) operator 
+expands an iterable (like an 
+array) into its individual 
+elements.
+•The Spread (...) operator can 
+be used to expand an iterable 
+into more arguments for function 
+calls.
+Default Parameters
+•Default parameters in programming languages allow you to 
+assign a default value to a function parameter if no argument 
+is provided when the function is called. 
+•This feature is especially useful when you want to make your 
+functions more flexible and provide sensible default behavior.
+NOTE: Default parameters must be used as last arguments.
+
+
+The Rest (...) Parameters
+•The rest parameter (...) allows a function to 
+treat an indefinite number of arguments as an 
+array.
+•It's a powerful tool for working with functions 
+that can accept an arbitrary number of inputs.
+NOTE: The rest parameter must be used as the 
+last argument.
+Math.max(2, 3); // 3
+Math.max(3, 10, 6); // 10
+Math.max(7, 2, 10, 15, 3, 2); // 15
+takes rest parameters loks like spread but it's rest ...
+function sum(...args) { // rest parameters collects all the arguments and stores in an array   it's array
+  return args.reduce((acc, curr) => acc + curr, 0); initial value 0
+}  
+//// return ards.length to see  length, how many nymbers
+we use length for string and arr
+ 
+ or another way
+ function sum(...args){    if it's arr we can find sum of numb as for array
+    let result = 0;
+    for( const arg of args){  
+ }  
+ result += arg      / let each num to result
+ }
+ now we can use any abount of numbers
+console.log(sum()); // 0
+console.log(sum(5)); // 5
+console.log(sum(5, 2)); // 7
+console.log(sum(10, 5, 2)); // 17
+console.log(sum(2, 1, 10, 5, 2, 10)); // 30
+console.log(sum(2, 1, 10, 5, 2, 10, 3)); // 33
+console.log(sum(2, 1, 10, 5, 2, 10, 3, 2, 1, 10, 5, 2, 10, 3)); // 66
+
+
+function printArgs(...values) { // values = [ 'John', 3, null, undefined ]
+  values.forEach(x => console.log(x));
+}
+printArgs('John', 3);
+
+
+function greet(greet, ...values) {
+  console.log(`${greet}, ${values}!`);
+}
+greet('Hi', 'John');   everything collected in the value
+greet('Good morning', 'John', 'Jane');
+greet('Hello', 'John', 'Jane', 'Mariia');
+
+
+
+// Before ES6 - there was arguments object
+// arguments object - array-like object
+
+function product() {
+  if(arguments.length === 0) return 0;
+  let result = 1;
+  for(const value of arguments) {
+    result *= value;
+  }
+  return result;
+}
+
+console.log(product()); // 0
+console.log(product(5)); // 5
+console.log(product(5, 2)); // 10
+console.log(product(5, 2, 4)); // 40
+console.log(product(3, 5, 2, 4)); // 120
+
+
+Destructuring in JavaScript
+•Destructuring allows us to extract 
+values from arrays, objects, or other 
+iterable data structures and assign them 
+to variables in a more concise and 
+readable way. 
+we used it for aar and object
+Destructuring Arrays
+•To destructure an array, we use square 
+brackets [ ] on the left side of an 
+assignment, and within those brackets, 
+we specify the variables where we want 
+to store the values from the array. 
+NOTE: It allows a short and clean syntax to 
+unpack elements.
+Destructuring Objects
+•To destructure an object, we use curly 
+braces {} on the left side of an 
+assignment, and within those braces, we 
+specify the variables where we want to 
+store the values from the object. 
+NOTE: It allows a short and clean syntax to 
+unpack values from the object.
+
+Enhanced Object Literals
+•In JavaScript, enhanced object literals 
+were introduced in ECMAScript 6 (ES6) to 
+make working with objects more concise 
+and convenient.
+const fullname = john
+const field = 'Science'
+const instructor = {
+    full name
+    field
+}
+console.log(instructor)
+
+let fullname = 'John Doe';
+let age = 25;
+let address = {
+  street: '123 ABC Street',
+  city: 'Chicago',
+  state: 'IL',
+  zip: 12345
+}
+
+// to sent this inf to serewr we need to Make a JS object out of above variables
+const customerObj = {
+  fullname,    /// its our key  and we get our value from variable
+  age,
+  address
+};
+we do it because we need to sent it through Json format

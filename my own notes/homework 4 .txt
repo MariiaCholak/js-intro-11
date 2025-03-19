@@ -1,0 +1,44 @@
+how to know which loop to use?
+-if we know how many times we wonna iterate throught the loop use for i loop
+we can give starting point and ending point
+-if we don't know how long it for the loop to go. don't konw how many times
+in this case we use while loop, because you will give a condition in the veginning and if that condition is true then it will continue with that loop
+when  it's bacomes false  while go through loop and stop
+
+If you know number of iteration use for loop
+
+sum = sum + i; it's the same as  sum += i
+ because += means to add i  into sum, make sum = to i + sum
+
+ factorial of the number is that number multiplied to every number before it until it reaches one
+ тобто задане число для нас 10 ми множимо кожен раз на нижче наступне число поки не досягнемо 1
+ n! = n × (n-1) × (n-2) × ... × 2 × 1
+For example:
+5! = 5 × 4 × 3 × 2 × 1 = 120
+4! = 4 × 3 × 2 × 1 = 24
+0! (by convention) is defined as 1       0=1 !!!! запамятай
+
+ддя факторіал нам треба створити контейнер зверху щоб ми могли додавати  номери
+let random = Math.floor(Math.random() * 10 ) + 1;
+let factorial = 1;
+console.log(random)
+for( let i = 1; i <= random; i++){    /// this i it's our factorial number
+factorial *= i     it's gonna take fuctorial, it's going to multiply it by i(whatever is num of random is i)
+mens if num is 5,  it's gonna multiply factorial time 1, then times 2 then times 3 rimes 4 5 and stop
+}
+we can't make factorial 0, because it's stay 0  we need only 1!!!!!!
+
+08 remember if you don't know how namy time you need to run loop, don't use for loop
+we need while (when we don't know the exact iteration of the loop)
+another question do we nned to use while or do while loop
+do while loop -- does task first, and when conditon is met then it will do it again
+in our case we do task fist we generate random, and then if it's not % 5
+we need creat random num container
+let random1;
+let attemptsRandom = 0;   / 1 then 2 then count our ettemp
+do{
+    random1 = Math.floor(Math.random() * 100 ) + 1;
+        attemptsRandom++     ////everytime we enter this loop 
+}
+while(random1 % 5 !== 0) {       // if while condition it's true then it's will go again run the code, we want to leave the loop when it's divisible by 5
+}  /// means if it's not remainder  of 5 then it will go again, if it's %5 it's stop there and exit the loop

@@ -276,17 +276,67 @@ function connect() {
   we just return a function back instead of names 
   we return our function
   
-  let result = connect(); // connect return smth that why i can store it in another variable
+  let result = connect(); // connect return smth that why i can store it in another variable, return function
+  if result it's greet ang greet is a function we can invoke result()
+  this function takes a name and say hello name, if we don't provide name it will be underfine
+  every  function has return or void  typpe
+  result('Mariia'); we get back another function we invoke another funct
+  result('Alex');   /// hello alex
+  now result invoke this and return hello mariia
+  is this dunction takes any arguments? yes, name, ok provide a name
   
-  result('Mariia');
-  result('Alex');
-  
+  we don't use it a lot but they can ask it on interview
+  toLowerCase(it's don't take any arg, it's the same)
+  we dont use it for our work but developers can use it
+
+   we can invoke the connect (), but we don't do anything w the result
+   it similar to this function getHi(){
+    return 'Hi';
+   }
+getHi()   /// but we don't do anything w Hi. if it's return smth we can store variable or console.log
+that we we did let var1 = getHi();
+console.log(var1, 'Batch-11')   ///// result Hi batch 11
+closure and lexical scope we need to know only for interwie
 => wirh arrow function this sumlol means return
 function in JS are also regular reference type object  its not different that creating string or arr 
 
 
+  function program() {
+    function print1() {
+      console.log('1');
+    }
+    return print1;   /// () don't use parantesis w function, when we use () it's mean invoke it. but we need to return it
+  }
+  
+  const r1 = program();/// return print1 and print1 it's a function, we can invoke it
+  
+  r1(); we invoked it  /// we got 1 in console.log  we execute our inner function print
 
+   // Lexical Scope: inner function can access the variables of outer function
+  // However, outer function CANNOT access the variables of inner function
+  function funcA() {
+    let varA = 'A'; 
+  
+    function funcB() {
+      let varB = 'B';
+      console.log(varA); // accessible    if we have variable declared about a function we can use it  
+      console.log(varB); // accessible
+    } we didn't return anyting
+  
+    funcB();   we can execure it result a b 
+  
+    console.log(varA); // accessible
+    console.log(varB); // not accessible - ReferenceError: varB is not defined
+  }   B belong to inner fucntion
+  
+  funcA(); 
 
+variable A is protected w closure
+
+on interwie they will ask us what is the lexical scope?
+in case we have inner and outer function, inner function will be able to access outer function variable as well as its own variable but
+outer function can not access the inner function variable (like var b)
+  
 Closure
 •A closure in JavaScript is a 
 function that has access to 
@@ -298,14 +348,44 @@ variables.
 •These private variables can 
 only be changed using inner 
 functions.
+// let initialScore = 0;
 
+// function score() {
+//   initialScore += 1;  when get a point we increase score
+// }
 
+// score();  ///1  previous value + 1
+// score();   /2
+// initialScore = 100;
+// score();
+// score();
+// score();
 
+// console.log(initialScore); // 103
 
+function program() {  outer function
+    let initialScore = 0; // private variable to program function and cannot be accessed directly outside the function
+  we can't change it outside and access only iiner function has access to it
 
+    // this is the function to manipulate the private initialScore variable
+    function score() {   inner function we increse score
+      return initialScore += 1;    /// when it will be 1? when it's increse and invoke, when we invoke score method()
+    }
+  
+    return score;//// store that people can use it
+  }
+  
+  const player1Score =  program(); // initialScore = 0   we store in another var because we get result
+  const player2Score = program(); // initialScore = 0
+  scinese it's method i can execute it
+  player1Score();
+  console.log(player1Score());   /// 2
+  console.log(player2Score());///1
+  we don't use closure but developer use their code w it
 
-
-
+  closure is a concept where you don't want a variable to be manipulated you make it private to a function
+  and you provide another method within that function to manipulate yout variable, we kind of boxin it
+  
 var-let-const 
 1. Re-assignment 
 var-let can be re-assigned 
@@ -338,9 +418,48 @@ innerFunction(); // update the private variable value
 
 INTERVIEW QUESTIONS:
 1. var-let-const? (reassingment, hoisting, scope)
-2. What is scope in JS? 
-3. What is hoisting?
+2. What is scope in JS?    (what type of scope do we have what is the different)
+global. anywhere, fuction scope-var declare in a function cannot be used outside function
+block scope comed w es6 works only with let and const, but var dos not support block scope
+means varible that you create within a block cannot be used outside the block
+3. What is hoisting?     is use w var key word and it was before ES. The declaration of the variable being moved to the top
+thar's why  instead of getting an error you get underfined, or you try to access a variable before it's declaration or initialization
 4. What is closure? (3-5%)
+closure is having a var within a function and providing a manipulation method to play around in the private data
+Search (Good to know): Currying in JS   it's is splitting variable into multiple function with lested function
+Currying в JavaScript — це техніка, яка дозволяє перетворити функцію, яка приймає кілька аргументів, на послідовність функцій, кожна з яких приймає один аргумент. Це дає змогу зберігати значення аргументів у замиканнях і викликати їх поступово.
+
+Приклад:
+Замість того, щоб створювати функцію, яка приймає кілька аргументів одразу, можна створити кілька функцій, кожна з яких приймає один аргумент.
+Без currying:
+javascript
+Копіювати
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add(2, 3)); // 5
+З використанням currying:
+javascript
+Копіювати
+function add(a) {
+  return function(b) {
+    return a + b;
+  }
+}
+
+const addTwo = add(2);
+console.log(addTwo(3)); // 5
+У цьому прикладі:
+
+Функція add приймає один аргумент і повертає нову функцію, яка чекає на другий аргумент.
+Ми можемо створити функцію addTwo, яка фіксує перше значення (2), і потім передавати їй інші аргументи поступово.
+Переваги:
+Модульність: Можна створювати частково застосовані функції, які зберігають певні параметри.
+Гнучкість: Коду стає легше керувати, оскільки можна поетапно передавати аргументи.
+Читабельність: Код стає чистішим і зручнішим для тестування, коли можна ізолювати функції з однаковими частинами аргументів.
+Використання в реальному коді:
+Використання currying дозволяє створювати більш гнучкі функції для роботи з API чи інших інтерфейсів, де аргументи можуть змінюватись.
 
 
-Search (Good to know): Currying in JS
+

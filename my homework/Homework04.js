@@ -131,6 +131,15 @@ factorial *= i
 }
 console.log (factorial)
 
+//// second solution go down from beggest num to 1(let say rand is 5, lets start 5 4 3 2 1)
+let random01 = Math.floor(Math.random() * 10 ) + 1;
+let factorial01 = 1;     /// let factorial01 = random   (FACTORIAL = to the random num)
+console.log(random01)
+for( let i = random01; i >= 1; i--){     /// stop when it's 1.     // let i = random01-1 (для верхнього зеленого прикладу)
+    factorial01 *= i                     //   we take out one of the iteration  short our code to work   
+}
+console.log(factorial01)
+
 
 
 console.log('=========Task7=========\n')
@@ -152,9 +161,12 @@ The random number is {randomNumber} and it took
 
 let random1;
 let attemptsRandom = 0;
-while(random1 % 5 !== 0) {
-     random1 = Math.floor(Math.random() * 100 ) + 1;
-        attemptsRandom++    
+do{
+    random1 = Math.floor(Math.random() * 100 ) + 1;
+        attemptsRandom++      ////everytime we enter this loop 
+}
+while(random1 % 5 !== 0) {       // if while condition it's true then it's will go again run the code, we want to leave the loop when it's divisible by 5
+   /// means if it's not remainder  of 5 then it will go again, if it's %5 it's stop there and exit the loop
     }
 console.log(`The random number is ${random1} and it took 
     ${attemptsRandom} attempt/s to generate it.`)
@@ -176,6 +188,7 @@ Expected Result:
 
 console.log(countries)
 console.log(countries.sort())
+
 console.log('=========Task9=========\n')
 /*
 Requirement:
@@ -193,10 +206,9 @@ true
 */
 const dogs = ['Scooby Doo', 'Snoopy', 'Blue', 'Pluto', 'Dino', 'Sparky']
 
-let dog = dogs.includes("Pluto")
-
 console.log(dogs)
-console.log(dog)
+console.log(dogs.includes("Pluto"))
+
 console.log('=========Task10=========\n')
 /*
 Requirement:
@@ -214,11 +226,9 @@ false
 */
 
 const cats = [ 'Garfield', 'Tom', 'Sylvester', 'Azrael']
-cats.sort()
-
 const catsInclude = cats.includes('Gardiled') && cats.includes('Felix')
 
-console.log(cats)
+console.log(cats.sort())
 console.log(catsInclude)
 
 
@@ -239,11 +249,17 @@ Expected Result:
 15.75
 */
  const numbersA = [10.5, 20.75, 70, 80, 15.75]
-
+// we need to loop numbers 
  console.log(numbersA)
- for(let i = 0; i <= numbersA.length - 1; i++)
-    console.log(numbersA[i])
-
+ for(let i = 0; i < numbersA.length; i++)   // i = 0 because ut's start index,  and it's go to the end of the arr
+    console.log(numbersA[i]) //// no matter how long the arr, it's print each index of numbers
+/// recomended to use for of loop - we use it for arr, when we need to loop entire arr
+ for( const num of numbersA)    // num is num is each numbers of arr
+    console.log(num)
+    
+   ///  forEach way to do. It's a high levelfunction used to calledback each element
+   
+   numbersA.forEach((num) => console.log(num))      /// it's make JS easier
 
 
 console.log('=========Task12=========\n')
@@ -264,11 +280,11 @@ Elements having 'book' or 'pen' = 4
 
 */
 const studyObject = ['Pen', 'notebook', 'Book', 'paper', 'bag', 'pencil', 'Ruler']
-let startBP = 0
+let startBP = 0    // we create container, and when we find start we add it to our container
 let includesElement = 0
-for(let object of studyObject){
-    if(object.toLowerCase()[0] === 'b' || object.toLowerCase()[0] === 'p')
-        startBP++
+for(let object of studyObject){   //means take object from each objects
+    if(object[0].toLowerCase() === 'b' || object[0].toLowerCase() === 'p')
+        startBP++   // add matching to conteiner
 }
 for(let element of studyObject){
     if(element.toLowerCase().includes('book') || element.toLowerCase().includes('pen'))
@@ -278,8 +294,18 @@ console.log(studyObject)
 console.log(`Elements starting with 'B' or 'P' = ${startBP} `)
 console.log(`Elements having 'book' or 'pen' = ${includesElement} `)
 
-
-
+ /// or second way to check
+ const studyObject1 = ['Pen', 'notebook', 'Book', 'paper', 'bag', 'pencil', 'Ruler']
+let startBP1 = 0    // we create container, and when we find start we add it to our container
+let includesElement1 = 0
+ for(let object of studyObject1){    /// and it means we change olny for this instance, outside our Pan still start with uppercase Pan, we didn't change the origin
+    object = object.toLowerCase()
+    if(object.startsWith('b') || object.startsWith('p')) startBP++
+    /// it's all inside our loop
+/// for second part of task since we lowercase it we don't need to lower case everythin again
+if(element.includes('book') || element.includes('pen'))
+    includesElement++     /// because everuthng already lower
+}
 
 console.log('=========Task13=========\n')
 /*
@@ -302,16 +328,20 @@ const newArray3 = [3, 5, 7, 10, 0, 20, 17, 10, 23, 56, 78]
 let moreThen10 = 0
 let lessThen10 = 0
 let element10 = 0
-
+//// since we know we need to check every index of the arr it's a loop we need loop arr
+// for of and for each works the same
 for(let element of newArray3){
-    if(element > 10)
-        moreThen10++
-     else if (element < 10)
-        lessThen10++
-     else 
-        element10++
+    if(element > 10)  moreThen10++
+     else if (element < 10) lessThen10++
+     else  element10++    /// has to be 10 itseelf
 }
-
+   ///// people make mistske when do else if( number ===10) element10++, it looks like work, but not good. It's only possible num left it's 10, we don't need to check
+ /// or another way do to it with forEach. teacher like more forEach
+   newArray3.forEach((element) => {
+    if(element > 10)  moreThen10++
+     else if (element < 10) lessThen10++
+     else  element10++  
+     })
 console.log(newArray3)
 console.log(`Elements that are more than 10 = ${moreThen10}`)
 console.log(`Elements that are less than 10 = ${lessThen10}`)
@@ -334,14 +364,15 @@ Expected Result:
 3rd array is =  [ 9, 8, 67, 1, 2 ]
 
 */
-
+//// what is the larger put it to our conteiner
 const firstArray = [ 5, 8, 13, 1, 2 ]
 const secondArray = [ 9, 3, 67, 1, 0 ]
 const thirdArray = []
-
-for(let i = 0; i < firstArray.length; i++)
+ //// reason why we use for i loop instead of (for of loop) we utilize that i, we use index i to up value
+for(let i = 0; i < firstArray.length; i++)    ///because we know these arr are the same length we can take any of them and use the length of that arr . Is these were two different lengths of arr then we woild check which one is the larger one or smaller one
     thirdArray.push(Math.max(firstArray[i], secondArray[i]))
-
+// we push our result to our conteiner, and need to find which one is the largest between two INdexes
+/// і воно по черзі буде брати кожен індекс та перевіряти який з них більше (5, 9)тоді (8. 3) 
 console.log(`1st array is = ${firstArray}`)
 console.log(`2nd array is = ${secondArray}`)
 console.log(`3rd array is = ${thirdArray}`)
@@ -365,19 +396,20 @@ firstDuplicate([ 1, 2, 3]) -> -1
 firstDuplicate([ 'foo', 'abc', '123', 'bar’ ])  -> -1
 
 */
-
-function firstDuplicate(array){
-    let dublicate = []
-    for(let i = 0; i < array.length; i++){
-      if(dublicate.includes(array[i]))  return array[i] 
-else dublicate.push(array[i])
-}
-    return -1  
- }
+/// with each element in the arr we check every index after
+// okay it's take first index of 0, then go into first itteration of loop, and go to the rest indexes
+function firstDuplicate(array){      
+    for(let i = 0; i < array.length; i++){//// we need to compare every number after first index(exam 5 after 5), ot goes to check every index of arr
+     for( let j = i + 1 ; j < array.length; j++){/// we dont need to have j the same as i, if i is [0], we need to start from the one after if i 0, j is 1, when i is 1 j is 2
+     if(array[i] === array[j])  return array[i]    // then we have a match, if we have a match return i
+     } 
+    }                      
+    return -1        // if the no dublicates return -1
+ }     
 console.log(firstDuplicate([3, 7, 10, 0, 3, 10]))
 console.log(firstDuplicate([5, 7, 7, 0, 5, 10]))
 console.log(firstDuplicate([5, '5', 3, 7, 4] ))
-console.log(([123, 'abc', '123', 3, 'abc']))
+console.log(firstDuplicate([123, 'abc', '123', 3, 'abc']))
 console.log(firstDuplicate([1, 2, 3 ]))
 
 
@@ -402,24 +434,30 @@ getDuplicates([ 'foo', '12' , 12, 'bar', 'a' ]) -
 
 */
 function getDuplicates(array){
-    let check = []
-    let dublicates = []
-    for(let i = 0; i < array.length; i++) {
-        if(check.includes(array[i])) {
-            if(!dublicates.includes(array[i])) {
-                 dublicates.push(array[i])
+    let dublicates = [];
+    for(let i = 0; i < array.length; i++) {   ///check every index of arr
+        for( let j = i + 1 ; j < array.length; j++){/// start from next index, where i index start from next one
+            if(array[i] === array[j] && !dublicates.includes(array[i]))  dublicates.push(array[i] )     /// we get 0 three times, because it's add  every ele if it's true,  when we find a match we also wants to see if that match is already added to duplicate. (if they match check if it's already contains)
+            // && !dublicates.includes(arr[i]))  but when it's check it's return true, that why we need !not false , if duplicate is  not includes that variable (if t's includes, it becomes false and not edit at the dublic)   /0,7
             }
-
-         } else {
-             check.push(array[i]) }
-         }
-        return dublicates 
-}
-
+    }
+      return dublicates
+        } 
+     /// second way to do it, better because it's not nested, and smaller then loop
+     function getDuplicates2(array){
+        let container = []
+        let allDublicates = [];
+        for(let obj of array) {    // we don't use for i loop, ealier to use for loop because we don't need to use index, since weare doinf one loop throught the arr
+     if(container.includes(obj) && !allDublicates.includes(obj)) allDublicates.push(obj)  //// if find dubl add them, but id it includes dont add
+    else container.push(obj)/// if it's not in conteiner add it 
+        }
+return allDublicates
+        }
 console.log(getDuplicates([ 0, -4, -7, 0, 5, 10, 45, -7, 0]))
 console.log(getDuplicates([ 1, 2, 5, 0, 7 ]))
-console.log(getDuplicates([`'A', 'foo', '12' , 12, 'bar', 'a', 'a', 'foo'`]))
+console.log(getDuplicates(['A', 'foo', '12' , 12, 'bar', 'a', 'a', 'foo']))
 console.log(getDuplicates([ 'foo', '12' , 12, 'bar', 'a' ]))
+
 
 console.log('=========Task17=========\n')
 /*
@@ -438,14 +476,13 @@ reverseStringWords("")  -> ""
 */
 
 function reverseStringWords(string){
-    let words = string.split(' ')
+    let words = string.trim().split(' ')    // we get our string as array and spit by spaces
     let reverseString = []
 
-    for(let i = 0; i < words.length; i++){
-       let newReverse =  words[i].split('').reverse().join('')
-        reverseString.push(newReverse)
+    for(let i = 0; i < words.length; i++){/// створили луп бо треба переглянути кожен розділений елемент
+       words[i] =  words[i].split('').reverse().join('') // it's how we reverse it/ reverse it's a arr function and doesn't works w string what wgy we convert it using split(''), we made separate arr it's splt each string into arr, and know we use join function to return it back to string from arr
     }  
-    return reverseString.join(' ')
+    return words.join(' ') //// join them by places now it's string
     
 }
 console.log(reverseStringWords("Hello World"))
@@ -474,14 +511,13 @@ getEvens(3, 3) -> [ ]
 
 */
 function getEvens(num1, num2){
-let numbers = []
-let biggest = Math.max(num1,num2)
-let smallest = Math.min(num1,num2)
-if( smallest % 2 !== 0) smallest++
-for(let i = smallest; i <= biggest; i+= 2){
-    
-        numbers.push(i)
-}
+let numbers = []   // created cont for even
+let biggest = Math.max(num1,num2) /// need to find smaller and biggest num
+let smallest = Math.min(num1,num2)  //// now we need looping through this range starting from smaller, stopping at the largest num, including larger
+
+for(let i = smallest; i <= biggest; i++){ /// because <= greater num is includes =
+   if( i % 2 === 0)  numbers.push(i)   // know we check if i is even num if ies ot will add to our var
+}    // ти вжила смолест % 2 це не правильно треба писати i!!    після того ми додали і до контейнеру лише парні
 return numbers
 
 }
@@ -508,23 +544,40 @@ getMultipleOf5(23, 5) -> [ 20, 15, 10, 5 ]
 getMultipleOf5(5, 5) -> [ 5 ]
 getMultipleOf5(2, 4) -> [ ]
 
-*/
+*/   /// ми маємо інше кондиш ми маємо умову почати від меншого до більшного і від більшлго до меншого, тому ми робимо дві умови з двома луп щоб якщо посинаються з меншого почни однуб якщо з більшого роби іншу луп
 function getMultipleOf5( num1, num2){
     let divisible = []
-      let biggest = Math.max(num1,num2)
-    let smallest = Math.min(num1,num2)
-    if( smallest % 5 !== 0)  smallest += (5 - smallest % 5)
-        for(i = smallest; i<=biggest; i+=5){
-    divisible.push(i)
-       
-}
-return divisible  
- }
+      if(num1 > num2)  { /// we are going loopenig backwards, else will be looping like normal
+        for(let i = num1; i >= num2; i--){  /// means greater num is first , i=larger num, i -- go down
+        if(i % 5 === 0) divisible.push(i)
+        }
+    }
+    else {
+        for( let i = num1; i <= num2; i ++){
+        if(i % 5 === 0 ) divisible.push(i)
+    }
+    }
+    return divisible
 
-console.log(getMultipleOf5(3, 17))
+    ///// second way
+    /*
+function getMultipleOf5( num1, num2){
+    let divisible = []
+        for(let i = Math.max(num1, num2); i >= Math.min(num1, num2); i--){  
+        if(i % 5 === 0) divisible.push(i)
+        }
+        if(num1 < num2) return divisible.reverse()   //// щоб повернути наше значення якщо воно йде з більшого до меншого
+        return divisible
+}
+    */
+}
+     console.log(getMultipleOf5(3, 17))
 console.log(getMultipleOf5(23, 5))
 console.log(getMultipleOf5(5,5))
 console.log(getMultipleOf5(2, 4))
+
+
+
 
 
 
@@ -544,6 +597,19 @@ Examples:fizzBuzz(13, 18) -> "13 | 14 | FizzBuzz | 16 | 17 | Fizz" fizzBuzz(12, 
 */
 function fizzBuxx(num1, num2){
 let result = []
+  for(let i = Math.min(num1, num2); i <= Math.max(num1, num2); i++)  { ///we use <=  = because they are both inclusive                                ///// починаємо від меншого бо в завданні сказано від меншого до більшого 
+    if(i % 3 === 0 && i % 5 === 0) result.push("FizzBuzz")  /// we started with this condition specificly! бо якщо ми перевіримо чи вони дивізибил 3 а тоді 5 а тоді (3 та 5)ми ніколи не отриємо 3та5. бо ці номери що дівісибилб будуть перші додані та стануть фіз наприклад
+        else if( i % 3 === 0) result.push("Fizz")
+            else if( i % 5 === 0) result.push("Buzz")
+                else result.push(i);
+  }
+  return result.join(' | ')
+}
+console.log(fizzBuxx(13, 18))
+console.log(fizzBuxx(5, 5))
+console.log(fizzBuxx(12, 5))
+
+//// дуже схожий спосіб мій та чат
 let smallest = Math.min(num1, num2)
 let biggest = Math.max(num1, num2)
 for( let i = smallest; i <= biggest; i++)

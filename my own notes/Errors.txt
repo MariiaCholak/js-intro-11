@@ -1,0 +1,219 @@
+
+
+Errors: 
+Errors we can fix with our code
+unexpected result caused by programmers code 
+
+Checked (syntax errors) (compile-time errors): You see the error before you run the code
+Unchecked (runtime errors): You see the error when you run the code  бачимо в терміналф
+Errors: caused by server, network, loads
+Custom Errors: 
+JS allows us to throw an error (create own errors) using throw keyword
+trow it reserwe key word to throw the error
+
+intervie qouestion
+What is error-handling?
+it's controlling your erroe better w try catch block 
+How do you handle errors?
+use try catch block
+What are some JS errors you got while coding?
+sometimes i get reference error or type error when i forget to update my variable to be let if i'm going to reassign them
+say whar error and how to fix it
+What are checked and unchecked exceptions/errors?
+checked- it's a syntax error i rigth away see my red line with () and so one without even ranning the code (reference, unchecked)
+unchecked looks okay but when we run we see an eerorr 
+What are compile-time and runtime exceptions/errors?
+compile tyme(it's syntax error), runtime when you run you see the error
+
+falsy values: NaN, undefined, null, 0, false, ''
+ESLINT: define rules
+throw Error('My first way did not work!'); // not proper way and converted to below line
+throw new Error('My first way did not work!');
+we can directly in a file and line know where our mistake
+const pi = 3.14;
+pi = 10; // TypeError: Assignment to constant variable.
+немає інфи про адресу
+console.log(address); // ReferenceError: address is not defined
+
+// Syntax Error
+console.log('Hello'; // SyntaxError: missing ) after argument list
+нам не треба ран наш код бо ми бачимо ще до того що це помилка наприклда забув)  але ми бачимо це відразу
+synraxError has gid mening
+
+// 'hello.toLowerCase(); // SyntaxError: Invalid or unexpected token
+
+it use to prevent some error before you even close it
+you just put it on top of your file, kinf of make strickt your code
+‘use strict’ directive
+•The "use strict"; directive in JavaScript 
+enables strict mode for the entire 
+script or a specific function. 
+•Strict mode is a set of rules and 
+restrictions designed to catch common 
+coding errors, prevent the use of certain 
+error-prone features, and generally 
+make the code more robust.
+•To use the "use strict"; directive, you 
+include it at the beginning of a script or 
+at the beginning of a function.
+undeclared variable are not allowed
+
+"use strict"   save us foe a future failures, because e can use smth in a different way
+i = 10;         don't use only i = 10
+console.log(i); // ReferenceError: i is not defined
+const pi = 3;
+pi = 5;
+console.log(address);
+use stict works only in one file, for another i need to creat another
+
+
+avaScript Errors
+•In JavaScript, errors are 
+unexpected or undesired events 
+that occur during the execution 
+of a program. 
+•These errors can be caused by 
+various factors, such as 
+incorrect syntax, runtime issues, 
+or logical mistakes. 
+•Error handling is the process 
+of dealing with these errors in a 
+controlled and graceful manner 
+to prevent them from causing 
+the entire program to fail.
+
+•1. Syntax Errors: Occur when the JavaScript engine encounters code that 
+violates the language's syntax rules. These errors prevent the script from 
+running.
+•2. Runtime Errors: Occur during the execution of the program and are often 
+related to unexpected conditions, such as division by zero or accessing 
+undefined variables.
+•3. Logical Errors: Do not result in immediate failure but cause the program to 
+produce incorrect or unexpected results.   let say we create loop and made it infinite and it hit our server
+•4. TypeError: Occurs when a variable or value is not of the expected type.
+•5. ReferenceError: Occurs when trying to reference an undefined variable or 
+property.
+•There are more error types!!
+
+the best way to handle error it's try-catch    finally alost don't use
+Error Handling – try-catch-finally
+•Error handling in JavaScript involves 
+using try, catch, finally, and throw 
+statements.
+•try block can be used either with catch 
+or finally or both.
+•catch or finally cannot be used without 
+the try block.
+you know your will get an eror and you  can make try block
+try {
+    // your code goes here
+    // Runtime will always attempt to run this block   / means this block will ne attempt yo execute
+  }
+  catch(error) {
+    // your code to handle the error
+    // will be executed ONLY if there is an error in the try block,     (if it no error we will not see anything in this block )
+  }
+  finally {   // we dont use finally 
+    // your code to run regardless there is an error or not
+  }
+  
+  
+  try {
+    // console.log('Hello', fname);    /// we know fname is not define and it throw the error   
+    console.log('Welcome!');
+  }
+  catch(err) {
+    console.log('Caught an error!!!');
+  }
+  finally {
+    console.log('Good Bye!');
+  }
+  покаже нам 'Caught an error i тоді йде далі і ран наступні завжання
+  якби не було помилки то ран усі б три блоки
+
+  
+  try {
+    console.log('Batch-11');
+    const firstMonth = 'January';
+    firstMonth = 'John'; // TypeError
+  } 
+  catch(error) {
+    console.log(`An error occurred: ${error}`);
+  }
+  без файнал воно всердно ран наступні рядки тому нам по суті не треба файнел
+we can't have multiple catch one mistake one catch first error 
+
+ми додали усе в блок try блок що означає де ти взяв помилку хоча б лдну з ним
+ дай мені наступну відповідь та йди далі
+
+// Why we need try-catch 
+
+try {
+    console.log(fname);      imagine we have an error, it's our part of code and f it's fail
+  }                    but we still wam nt to show another part
+  catch(error) {       /// i knoe it migth be an issue 
+    console.log(`You have an error here: ${error}!!!`);      //// we get an inf about error (referenceerror: fname is not defined)
+    console.log(`The error message is: ${error.message}!!!`);
+  } error- object massage is property- say 'fname is not defined'
+  
+  console.log('Rest of the program!');
+but our program doesan't stop
+try catch very common for developer but for tester we wont to see error
+
+Throw Errors
+•The throw keyword allows us to 
+create/throw a custom error.
+•This error can also be handled with error 
+handling techniques.
+
+function validateAgeForDL(age) {
+    if(age >= 16) return 'Valid!';
+    throw new Error(`${age} is not allowed for DL!`);
+  }
+  
+  try {
+    const r1 = validateAgeForDL(15);     /// it has chance to show me wrror that why it's in try
+  
+    console.log(r1);    not allowed, може я не хочу щоби помилка зупинняла мою програму тому я вжив try carch
+  }   
+  catch(error) {
+    console.log('You get an Error:', error.message);
+  }
+  
+  console.log('Rest of program!');    //// this one allowed to continue
+  
+  
+  try {
+    // Approach A
+  }
+  catch(error) {
+    // Approach B
+  }
+  
+  
+  
+  const numbers = [ 2, 3, 5, 6 ];
+  
+  try {
+    const max = Math.max(numbers);   /// it's not work because we can't pass math method w arr
+    console.log(max); // NaN
+  
+    if(!max) {       ///(if it not truly)
+      throw Error('My first way did not work!');     JS convert it to throw new Error
+    }
+  }
+  catch(error) {
+    console.log('Error message:', error.message);    
+    console.log('Error name:', error.name);
+    console.log('Error stack:', error.stack);   it's all error properties
+    console.log('Error cause:', error.cause);
+    const max = numbers.reduce((acc, curr) => acc > curr ? acc : curr);
+    console.log(max);
+  }
+
+error it's a buld in object as an arr and other
+we use only error.massage
+stack- all mistakes explan in console
+properties would see w blue box, and if it method- purpule cube
+
+   
