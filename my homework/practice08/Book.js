@@ -9,4 +9,5 @@ class Book {
         this.page = page;
     }
 }
-module.exports = Book;
+module.exports = Book;   // twhat ever you doing here depent what do you import, if you doing object here you put your book in object
+ ///    module.exports = { Book }  ;                  //// and export as an object

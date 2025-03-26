@@ -1,0 +1,242 @@
+
+JS Modules
+
+Creating small-reusable, easy to maintain components (functions, objects, classes)
+to be exported and reused anywhere in your project by importing.
+
+Or, sometimes we install some ready packages (NPM) and these are stored in node_modules
+and we can import them to use anywhere within our project.
+
+
+There is 2 ways to create/use JS Modules 
+1. CommonJS: mostly used with NodeJS 
+2. ES6 Modules: mostly used with browsers
+both commonly use
+we can make rule use one, teacher us ES5 
+
+const UIHelper = {
+component: 'User Interface',
+getUrl: function() {
+    return 'Example URL';
+},
+navigateBack: function () {
+    return 'Back';
+},
+navigateBack: function () {
+    return 'FORWARD';
+},
+navigateBack: function () {
+    return 'REFRESH';
+},
+};
+module.exports = UIHelper;     prefer when it's one obj  тобто якби ще в нас була інша функція чулоу ми б не могли використати лише її одну
+it's our class, we have one single object //// and we export it one way      ////// const UIHelper = reqiure (./UIHelper)
+now we import it  its for single
+UIHelper.   and we see al properties or methods
+ 
+ second way for export   it's for multiple
+or module.exports.UIHelper = UIHelper;      /// we assigning our object into another properties, into mpd export property
+know module export it bigger properties and insidemUIH it's his properties
+const { UIHelper } = require('./UIHelper');
+it's useful when we need to export multiple thingth in the same file,обто якби ще в нас була інша функція хулоу ми б  могли використати лише її одну
+it'wsii be another stay along function
+or module.exports.hello = hello  ///// comes as a separate properties within the object
+means i need only this part from this file
+and we extrct using object destructoring
+const { UIHelper, hello } = require('./UIHelper'); 
+console.log(UIHelper.component);
+console.log(UIHelper.getUrl());
+consile.log(hello())
+our module it's our object, and we destructoring our propeties
+
+module.exports = UIHelper;      /// yiu are exporting as an object
+module.exports.UIHelper = UIHelper;   exporting as a proretie, you will get Back as properties, and we need use it object destructiog
+const { UIHelper} = reqiure('./UIHelper')
+
+for common JS doesn't metther do we have at the and    .js
+const { getRandomNumber } = require('../utils/MathHelper');    import as a propeties
+console.log(getRandomNumber(1, 10));
+
+
+
+
+console.log(UIHelper.component);
+console.log(UIHelper.getUrl());
+
+console.log(DBHelper.DB_PASSWORD);
+console.log(DBHelper.DB_USERNAME);
+console.log(DBHelper.connect());
+console.log(APIHelper.post());
+console.log(APIHelper.del());
+console.log(APIHelper.get());
+console.log(APIHelper.update());
+
+
+usually we name module as a class name 
+class DBHelper {
+    static DB_USERNAME = 'JOHN DOE';
+    static DB_PASSWORD = 'JOHN1234';
+  
+    static connect() {
+      return true; }}
+  module.exports = DBHelper;    //// it's indif object   it's single class
+const DBHelper = require('./DBHelper');    we dont need to export it as properties
+console.log(DBHelper.DB_PASSWORD);    i відразу вжили
+console.log(DBHelper.DB_USERNAME);
+console.log(DBHelper.connect());
+
+
+assuming we have a lot stand a lot methods
+function get() {
+    return 'GET';
+  }
+  
+  function post() {
+    return 'POST';
+  }
+  
+  function del() {
+    return 'DELETE';
+  }
+  
+  function update() {
+    return 'UPDATE';
+  }
+  
+  // module.exports.get = get;    i can use all of them in different file, or just only one part in a one file
+  // module.exports.post = post;
+  // module.exports.del = del;
+  // module.exports.update = update;
+ /// let say we need only post and update, they are in a one file, and i can extrat them in one statement
+ const { post, update } = reqiure('./APIHelper)   
+ console.log(post())
+
+ or another way
+ put all of them in object 
+  const APIHelper = {
+    get,
+    del,
+    post,
+    update
+  };
+  
+  module.exports = APIHelper;
+  when i use require what we get back? we will get back as object , we don't need proreties becaise it doesn't come as properties
+  const APIHelper = reqiure('./APIHelper)  //// means we get everuthing and can use any properties
+  now we can't say only post or get
+  we need to say console.log(ApIHelper.post())
+or the above, we could create a class with all
+  the functions/methods and export the class
+  class APIHelper {
+    get() {
+      return 'GET';
+    }
+    
+    post() {
+      return 'POST';
+    }
+    
+    del() {
+      return 'DELETE';
+    }
+    
+    update() {
+      return 'UPDATE';
+    }
+  }
+  
+  module.exports = APIHelper
+  */
+
+
+it's a way to export arrow function     we still export properties,
+  module.exports.connect = () => {
+    return true;
+  }
+  const { connect, teardown } = require('./ServerHelper')
+  console.log(connect());  /// true
+console.log(teardown());
+
+WE USE  THE MOST CREATE SINGLE OBJECT AND IMPORT it WHOLE THING (EXAPLE uihELPER) AND DONT NEED DESTRUCT
+OR  USE A CLASS AN DEXPORT AS A OBJ NOT AS PRORETIES, ITS THE MOST 2 CASES
+What is JavaScript Modules?
+• A module is just a bit of code
+encapsulated in a file and
+exported to another file.
+• Therefore, the code becomes
+easier to maintain and organize.
+• There are 2 different
+mechanisms for working with
+modules in JavaScript.
+1. CommonJS (module.exports/require):
+• CommonJS is the module system used in Node.js by default. It's suitable
+for server-side applications and environments.
+2. ES6 Modules (ESM) (export/import):
+• ESM is supported in modern web browsers and Node.js with the --
+experimental-modules flag or when using .mjs file extensions.
+• NOTE: CommonJS is synchronous by nature while ESM is
+asynchronous.
+• Compatibility: CommonJS is more compatible with older Node.js
+codebases and environments while ESM is the modern standard for
+JavaScript modules in both browsers and Node.js
+CommonJS (module.exports/require)
+• Exporting: To export values
+or objects, we can use
+module.exports.
+• Importing: To import
+modules, we can use
+require().
+
+export const name = 'John';
+
+export const hi = () => console.log('Hi');
+
+export const obj = {
+  name: 'John Doe',
+  city: 'Chicago'
+}; // ES6
+
+// CommonJS   IF WE WANT INdivid export it
+// module.exports.name = name;
+// module.exports.hi = hi;
+// module.exports.obj = obj
+for ES6
+import { name, hi, obj } from './NavHelper.js';
+import { Batch11Helper } from './Batch11Helper.js';
+hi();    it's not working in Note Js, we nned to run in brosew, to run in brother we need to run w HTNL
+we created a file nams index.html    it's every single page in mode we have a lot of if inf
+we diwnloaded live server and then index him click oopen w live server
+we need to add full path!!! don't forget .js!
+Batch11Helper.funcA()
+console.log('spring')
+
+export  class BrowserHelper {     /// or after export default
+    static browserName = 'Chrome';
+    static launch() {
+      return true;
+    }
+  }  import { BrowserHelper from } './BrowserHelper.js';
+  console.log(BrowserHelper.browserName);
+console.log(BrowserHelper.launch());
+
+export defalte adventures we dont need { } when we imoirt 
+export default class BrowserHelper {}
+    import BrowserHelper from './BrowserHelper.js';
+ES6 Modules – default export/import
+• We can export only one function, variable or a
+class as default.
+• This function, variable or class can be imported
+without the use of curly braces.
+• Check getInfo() function from the images!
+
+export default function open() {
+    console.log('OPEN');
+  }
+import { close, refresh } from './AutomationHelper.js';
+  коли ми з нашох функцій одну використ дві не дуже ми можемо зробити її діфолт  import open from './AutomationHelper.js'
+
+
+
+
+
+  

@@ -1,0 +1,336 @@
+How do we create a class? using class keyword and then name of class {  }  and block
+after add constuctor () if you don't have any argg, don't create even constuctore because class is  already giving you a default one.
+but we have 3 properties to add into constructor, and whenere they provide me this inf, means in future who create a book object need to give me this 3  ins
+and i will assignh this inf into this
+class Book {
+    constructor(title, genre, page){    /// this not private or public  it's belong to this inf which provide, and it not public, because will be own dofferent
+        this.title = title;
+        this.genre = genre;
+        this.page = page;
+    }
+}
+
+  // twhat ever you doing here depent what do you import, if you doing object here you put your book in object
+ ///    module.exports = { Book }  ;                  //// and export as an object
+ and then import need as an object too const { Book} = require('')
+ in work environment choose one 
+ teacher prefer module.exports = Book;   create a template and get as template 
+ /*
+1. Create a class called Author
+2. Create a constructor which takes firstName, lastName, country, array of books
+3. Create a function called as getFullName() for Author object that will return {firstName lastName}
+4. Create a function called as getBooks() for Author object that will return all the books
+*/     //      they are instance method, not static. How we  undersdant it? ask to you question if it static then i need to call it with the Author
+ for example for the water or for the river you can say river is static
+today or the sea is static today that means it doesn't do a lot of movements right kind of something that stays uh
+doesn't move right so uh mat. P for example was a static information static
+in another way it means it doesn't change right but full name for every
+single instance it's going to change or the books for every single author it's
+going to change isn't it list of books so Gabrielle Garcia Marquez has
+different books Stefan Z has different books or orhan pamuk has different books
+books so that's why each time whenever we call these books we are specifically
+getting it for one author so one outter means what one instance of this template
+or one object of this template that's why these are instance variables but if
+there was something that is shared coming across all of the Alors they have the same information then it
+would be static simply okay so that's why these are instance so please go
+
+const Book = require('.book/')
+
+class Author extends Book{     //// now whoever  is creating author, it will be arr
+    constructor  (firstName, lastName, country, books){ we were confused about books arr but dor JS you can write books, it doesn/t check a type 
+        this.firstName = firstName;   
+        this.lastName = lastName;
+        this.country  = country;
+        this.books = books;
+    }
+        getFullName(){
+ return `${this.firstName} ${this.lastName}`;
+    }      /// imagine it's instance method i do we invoke it. How?  first we need create an obje const author1 = new Author ( 'name' 'last'' name', 'd;f [])  //dont' have inf book yet
+    author1.getfullname()/// we can because now it instance method and we can call w instane name we return first and last name 
+
+    getBooks(){
+        return `${this.books}`;
+    }
+}
+
+module.exports = Author;
+
+/*
+We will write our actual program that we define an author and the books
+In this program we will write the biography of George R. R. Martin, an American novelist.
+
+Create 3 books object with the below information:
+        BookName                            Genre           TotalPage
+        A Game of Thrones                   Epic Fantasy    694
+        A Clash of Kings                    Epic Fantasy    768
+        A Storm of Swords                   Epic Fantasy    973
+
+Create an Author object with the below information:
+    First name: George R. R.
+    Last name: Martin
+    Country: United States
+    Books: are given above
+
+1. Get and print Author's full name
+2. Get and print Author's books iterated with a loop
+
+EXPECTED OUTPUT:
+George R. R. Martin
+Book { title: 'A Game of Thrones', genre: 'Epic Fantasy', page: 694 }
+Book { title: 'A Clash of Kings', genre: 'Epic Fantasy', page: 768 }
+Book { title: 'A Storm of Swords', genre: 'Epic Fantasy', page: 973 }
+*/
+
+const Book = require('./Book');
+const Author = require('./Author');
+
+const book1 = new Book ('A Game of Thrones', 'Epic Fantasy', 694)
+const book2 = new Book('A Clash of Kings','Epic Fantasy', 768)
+const book3 = new Book('A Storm of Swords', 'Epic Fantasy', 973)
+
+ 
+//const books = [book1, book2, book3,].   we can create arr, and past vari in author books, or we can pass them inside author 
+const author1 = new Author ('George R. R.', 'Martin', 'United States', [book1, book2, book3] )   // create and right away use it
+ console.log(author1.getFullName())    ////  George R. R. Martin
+// tc create cook we need individual from our templates, and book as arr
+    /// we should not exceed 120 character in a line
+
+we can't use method = console.log(auhtor.getBooks()) because it's return for as as arr and we don't neet it
+but if it's arr we can loop i it
+///1
+ const books = [book1, book2, book3,];
+ for(const book of author1.getBooks()){
+    console.log(books)
+ }
+ ////2 
+ author1.getBooks().forEach(book => console.log(books))      return back as our book 
+/
+
+///// // Find and print the name of the Book which has more pages  -> A Strom of Swords sort not prefer
+ 
+ let maxPagesBook = author1.getBooks()[0];    ///let firt book it's the first that has the max pages, i don't which one has but lets be first one has max pages
+for (const book of author1.getBooks()) {   /then i loop through each book whenever   book page > more then my assigning. 
+    if (book.page > maxPagesBook.page) {   i will reassigthn the book to var
+        maxPagesBook = book;            and want only title
+    }
+}
+console.log(`The book with the most pages is: ${maxPagesBook.title}`)
+/// another way to find pages
+ const maxPag = author1.getBooks().reduce((acc, curr) => {   
+    if(curr.page > acc.page) return curr 
+    else return acc
+}, author1.getBooks([0]))   initial value 0
+console.log(maxPag.title)
+ // Find and print the name of the Book which has more pages  -> A Strom of Swords   shorter version
+const bookWithMaxPages = author.getBooks().reduce((acc, curr) => curr.page > acc.page ? curr : acc);
+console.log(bookWithMaxPages.title);
+
+/*
+
+What is 'IS A RELATIONSHIP' vs 'HAS A RELATIONSHIP'?    inter quetion
+class Animal {    we did 2 classes instended from each other
+	
+}
+class Dog extends Animal {
+	
+}
+class GermanShepherd extends Dog {   able to get from dog and animal,
+	
+}
+GermanShepherd is a Dog
+GermanShepher is an Animal
+IS A RELATIONSHIP: inheritance with parent child relationship 
+
+HAS A RELATIONSHIP: it is not inheritance but one class uses another class as property., they related but not as parents child
+Author has Books
+Car has Engine
+class Car{
+	constructor(engine) {
+	}
+}
+class Engine {
+	
+}
+
+
+*/
+
+practice 10
+
+/*
+-Create a class called as Player
+-Create a constructor for this class which takes 2 arguments: 
+    nickName
+    score
+-Create a method called as getInfo() which returns the score for the player object info in the format: {nickName}'s score is {score}.
+-Create a method called as attack() which takes a player object as argument and 
+increases the attacking player's score by 1 while it decreases the attacked player's score by 1
+-Create a method called as damage() which decreases the score of the player object by 1
+*/
+
+class Player  {
+    constructor(nickName, score) {
+    this.nickName = nickName          /// this like go one step back  to actual class
+    this.score = score    
+}
+   getInfo(){
+    return `${this.nickName}'s score is ${this.score}`  /// this - refer to that nickname object, player, we need to use this!!
+   }                                                    /// nickName store in iur object,  and we can we it highligth with each other 
+  
+   attack(attackedPlayer){ //// it's take arr of attack object, we call it object but other words iys an attacked palyer
+    this.score += 1    /// function call with a  another player object
+   attackedPlayer.score -= 1        /// so attack adds one to the person that's attacking and  subtract a score to person who was attacked
+}                           /// so player2 will ne one who lose  a score and playser1  gain a score
+   /// this  refer to object one so this score will be player 1
+//// player1.attack(player2)  
+     ///// this ia a void functin doing action based on what we  wanted to do
+
+   damage(){
+    this.score -= 1     /// remove the score from object that will be call, because we don't have any arr, take score from 1
+   }   /// Js read this as player1.demage()
+
+  
+}
+
+
+
+/*
+-Create a class called as SuperPlayer and inherit the Player class
+-Create a constructor for this class which takes 2 arguments: 
+    nickName
+    score
+    -Inherit the Player class constructor and the other methods
+-Create a method called as superAttack() which takes a player object as argument and 
+increases the attacking player's score by 2 while it decreases the attacked player's score by 2
+*/
+
+class SuperPlayer extends Player {   /// we are using const player    extends adding it
+    constructor(nickName, score){
+        super(nickName, score)   /// super tels compile look at player
+    }
+    superAttack(attackedPlayer){    /// we add paramether who will be superattacted the same as  atack ()
+        this.score += 2                       ///only !superplayer can use it! player not, and not hero player. because he created from Player
+        attackedPlayer.score -= 2
+    }
+}
+
+
+
+
+/*
+-Create a class called as HeroPlayer and inherit the Player class
+-Create a constructor for this class which takes 2 arguments: 
+    nickName
+    score
+    -Inherit the Player class constructor and the other methods
+-Create a method called as heal() which takes a player object as argument and 
+increases the healed player's score by 1.
+*/
+ class HeroPlayer extends(Player){
+    constructor(nickName, score){
+        super(nickName, score)
+    }
+    heal(healedPlayer){
+        healedPlayer.score += 1
+    }
+ }
+
+/*
+Create 2 player objects with below information
+player1 = { nickName: 'Player 1', score: 5 }
+player2 = { nickName: 'Player 2', score: 5 }
+
+Create a superPlayer object with below information
+superPlayer = { nickName: 'Super Player', score: 3 }
+
+Create a heroPlayer object with below information
+heroPlayer = { nickName: 'Hero Player', score: 10 }
+*/
+
+const player1 = new Player('Player 1', 5)   /// take a constructor arg
+const player2 = new Player('Player 2', 5)
+
+const superPlayer = new SuperPlayer('Super Player', 3)
+
+const heroPlayer = new HeroPlayer('Hero Player', 10)
+
+
+/// if we cal player1 we can see what he can
+/// supperplayer. comes from supper
+// . see his function and healer  comes from player
+
+
+/*
+Execute the attack() method for player1 over player2
+    -this will decrease player2's score by 1 and increase player1's score by 1
+Execute the attack() method for player1 over superPlayer
+    -this will decrease superPlayer's score by 1 and increase player1's score by 1
+Execute the superAttack() method for superPlayer over player2, player1 and heroPlayer
+    -this will decrease player2, player1 and heroPlayer's score by 2 and increase superPlayer's score by 6
+Execute the heal() method for heroPlayer over player1 and player2
+    -this will increase player1 and player2's score by 1
+Execute the attack() method for player1, player2 and heroPlayer over superPlayer
+    -this will decrease superPlayer's score by 3 and increase player1, player2 and heroPlayer's score by 1
+Execute the damage() method for player1 and player2
+    -this will decrease player1 and player2's score by 1
+*/
+
+player1.attack(player2)  //// it should subtract 1 point from player2  and add one to player1   we had 5 and 5 => 6 , 4(player2)
+console.log(player1.getInfo())    /// check if it's work 6
+console.log(player2.getInfo()) //4
+
+player1.attack(superPlayer)
+console.log(player1.getInfo())
+console.log(superPlayer.getInfo())
+
+superPlayer.superAttack(player2)
+superPlayer.superAttack(player1)
+superPlayer.superAttack(heroPlayer)
+
+heroPlayer.heal(player1)
+heroPlayer.heal(player2)
+
+player1.attack(superPlayer)
+player2.attack(superPlayer)
+heroPlayer.attack(superPlayer)
+
+player1.damage()
+player2.damage()
+
+/// we can add to all of them get info how i did in first 2 or use loop
+
+const  players = [player1, player2, superPlayer, heroPlayer]
+for( const player of players){
+    console.log(player.getInfo())
+}
+/*
+Print information of all the players using getInfo() method
+
+EXPECTED OUTPUT:
+Player 1's score is 6
+Player 2's score is 3
+Super Player's score is 5
+Hero Player's score is 9
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

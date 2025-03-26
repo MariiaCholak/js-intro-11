@@ -1,0 +1,339 @@
+
+
+JS is single threaded. (Multitasking / Multithreading is not possible.)
+JS is asynchronous.
+
+Handling asynchronous code: we need to this frequently when writing automated
+scripts because there will be test failures as some steps will not wait for the previous
+step to complete.  (all the time)
+  it's our script   playwrigth
+test('Test Financing Page header', async({ page}) => {
+await page.goto('https://www.carvana.com/');
+await page.getByRole('link', { name: 'Financing' }).click();
+await expect(await page.locator('h2')).toBeVisible;     //// here we have 2 action inside to wait
+//// we can set out out time to make it slow to see what is foinf on
+})
+Cypress handle all asynchronous,
+
+we need to handle asynhronous because we can't make authomation
+
+ Manager give us requirement what we need to find on pages, desighn, and so on
+
+How can we handle asynchronous code?
+1. callbacks (old not preferred)
+2. promises (es6)
+3. async-await (es6)
+
+TEST CASE: 
+Go to https://www.carvana.com/
+Click on Financing
+Validate "FINANCING MADE EASY" heading is visible
+
+                    Promise States 
+                        pending     ///first it pending, after time it reject or resolved
+
+                    IS THERE ERROR?
+            YES                       NO 
+          rejected                 fulfilled (resolved)
+
+
+
+goto()
+click()
+fill()
+locator()
+
+
+test('Test name', async () => {
+  await page.goto('www.google.com')
+  await page.locator('search input').fill('JavaScript')
+  await page.locator('search button').click()
+})
+
+Asynchronous JavaScript
+• It refers to the ability of JavaScript to execute code that doesn't block the main thread of execution.
+• This allows for non-blocking operations like network requests, file reading/writing, timers, and user interactions, where the
+program doesn't have to wait for one operation to complete before moving on to the next one.
+• Asynchronous operations are crucial for building responsive and efficient web applications.
+• To handle asynchronous JavaScript, we use one or more of the following techniques;
+• Callbacks (old way)
+• Promises (preferred)
+• Async/Await (preferred)
+
+Asynchronous JavaScript - Promises i'ts object     //// when we create promis we nned to have resolve! and reject
+it has callback, we can  name them as we want, and inside of finction use only smth one we can get what we want
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject('FAILURE');
+    }, 2000);    //promise {pending} after 2 second it's resolve, promises takes some time
+  });
+  
+  console.log(p);
+  VS show us only pending, it's better go to the browser
+  reject always thow the error and we need to catch it
+
+  function gotoCarvana() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('Carvana website is loaded...');
+      resolve();
+    }, 500);
+  });
+}
+if we din't see result we know it's excecute
+every promises is return smth
+promises execute code run the same time, we nned to  set up timing
+
+function test1() {
+  gotoCarvana().then(() => {    //// зроби щось тоді йди далі
+    clickOnFinancing().then(() => {    (data)
+      validateHeading('FINANCING MADE EASY');
+    });
+  });
+}
+ promises has 2 ethods then and catch
+ then return data
+
+ function test2() {
+  gotoCarvana()
+    .then(() => clickOnFinancing())
+    .then(() => validateHeading('FINANCING MADE EASY'))
+}
+
+test2();
+but this implementation is better!!!!
+Fetch always return promis!!!! if it return promise use .then((res)=> {}) and then return respond, and i use that response to get data
+and then i return this w another return and then i can get dat from json and then console log
+fetch ('htttps://apidhfweufh')
+.then((res) => {
+    const data = res.json();
+    return data;
+})
+.then(data =>console.log(data))   we can use more not only console log
+.catch(err => console.log(err.message))  we can handle our error
+
+function connectToServer() {
+    return new Promise((resolve, reject) => {
+      const serverUp = true;    /in real life it up or down
+      if(serverUp) resolve('Server connection is complete...');
+      else reject('ERROR: Server is down...');
+    });
+  }
+  connectToServer()     /// when you run  a method which return promise you can do .then.(success case) .catch(failure case when we get an error, false)
+    .then((data) => {      /// succesful
+      console.log(data);
+    })
+    .catch((failure) => {      //catch eeroor write whar we want
+      console.log(failure);
+    });
+• Promises are a more modern and structured way to handle asynchronous
+code.
+• They represent a value that might be available now, in the future, or never.
+• Promises provide methods like .then() to attach success and error
+handlers to execute when the asynchronous operation completes or fails.
+• States or Properties of Promise Object:
+• Pending: Initial state, neither fulfilled nor rejected.
+• Fulfilled: Meaning that the operation completed successfully, and a
+result is available.
+• Rejected: Meaning that an error occurred, and an error reason is
+available.
+
+Asynchronous JavaScript - Promises
+• Promises can be chained together to
+represent a sequence of asynchronous
+operations.
+• Each .then() or .catch() call returns a new
+Promise, allowing you to compose complex
+asynchronous flows.
+
+Error Handling with Promises
+• Promise States:
+• Promises can be in one of three states: pending, fulfilled, or rejected.
+• When a Promise is fulfilled, it means the asynchronous operation
+completed successfully.
+• When a Promise is rejected, it means an error occurred during the
+operation.
+• .then() and .catch():
+• You use the .then() method to handle the successful resolution of a
+Promise. It takes a success callback function as its argument.
+• You use the .catch() method to handle errors or rejections in a
+Promise. It takes an error callback function as its argument
+The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+To learn about the way promises work and how you can use them, we advise you to read Using promises first.
+
+Description
+A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
+
+A Promise is in one of these states:
+
+pending: initial state, neither fulfilled nor rejected.
+fulfilled: meaning that the operation was completed successfully.
+rejected: meaning that the operation failed.
+The eventual state of a pending promise can either be fulfilled with a value or rejected with a reason (error). When either of these options occur, the associated handlers queued up by a promise's then method are called. If the promise has already been fulfilled or rejected when a corresponding handler is attached, the handler will be called, so there is no race condition between an asynchronous operation completing and its handlers being attached.
+
+A promise is said to be settled if it is either fulfilled or rejected, but not pending.
+
+Flowchart showing how the Promise state transitions between pending, fulfilled, and rejected via then/catch handlers. A pending promise can become either fulfilled or rejected. If fulfilled, the "on fulfillment" handler, or first parameter of the then() method, is executed and carries out further asynchronous actions. If rejected, the error handler, either passed as the second parameter of the then() method or as the sole parameter of the catch() method, gets executed.
+
+You will also hear the term resolved used with promises — this means that the promise is settled or "locked-in" to match the eventual state of another promise, and further resolving or rejecting it has no effect. The States and fates document from the original Promise proposal contains more details about promise terminology. Colloquially, "resolved" promises are often equivalent to "fulfilled" promises, but as illustrated in "States and fates", resolved promises can be pending or rejected as well. For example:
+
+js
+Copy to Clipboard
+new Promise((resolveOuter) => 
+  resolveOuter
+    new Promise((resolveInner) => 
+      setTimeout(resolveInner, 1000);
+
+
+function connectToDB() {
+  return new Promise((resolve, reject) => {
+    const dbUp = true;
+    setTimeout(() => {
+      if(dbUp) resolve('DB connection is successful...');
+      else reject('ERROR: DB is down...')
+    }, 3000);
+  });
+  function test2() {
+  connectToDB()
+    .then(() => getData())   in work envork we dont use consolelog, i need to know it's work. for succesdul cases we don't console.log only for arror
+    .then(() => useData())
+    .catch(err => console.log(err));   // if we wii get error end know which errror we had
+}
+    WE WILL NOT CREATE THIS THINGS WHEN WE GET A JOB, WE WILL GET LABRIERS, ANS ALL METHODS REYRN PROMISEES AND WE WILL USE THEM
+   await can not be use if it not asynch funct!!!!
+test('Test name', async () => {
+  await page.goto('www.google.com')
+  await page.locator('search input').fill('JavaScript')
+  await page.locator('search button').click()
+}) 
+
+this is much better !!!! we use only this!!!
+we make this funct async, ad add to each lune await
+async function test3() {
+  try {      ///// it's handle errors
+    await connectToDB();
+    await getData();
+    await useData();
+  }
+  catch(err) {     if this error
+    console.log(err);
+  }
+}
+
+test3();
+Asynchronous JavaScript – Async/Await
+• Async functions provide a way to write asynchronous code that looks more like
+synchronous code, making it easier to read and reason about.
+• We can use the async keyword before a function declaration and await inside
+that function to pause execution until a promise is resolved.
+• It is built on top of Promises and provides a more readable and synchronous-
+like syntax for working with asynchronous operations.
+
+Error Handling with Async/Await
+• We can use try...catch blocks to handle errors in async/await functions, similar
+to synchronous code.
+• If a Promise passed to await is rejected, it will throw an error that can be
+caught using try...catch.
+function connectToServer() {
+    return new Promise((resolve, reject) => {
+      const bool = false;
+      if(bool) {
+        console.log('Connection successful!');
+        resolve('We are connected!');
+      }
+      else {
+        console.log('Connection failed!');
+        reject('ERROR: This connection is failed!!!!');  //// reject need have massage in error and we can catch it
+      }
+    });
+  }
+   //// promises comes from labries we only async it or use then catch it's only our part
+   /// playwrigth resolved it better for us
+  //exsecurte func
+  async function test1() {     //// most of the time we don't handle error we let our error show
+    try {
+      await connectToServer();
+    }
+    catch(err) {
+      console.log(err);
+    }
+  }
+  
+  async function test2() {
+    connectToServer()
+    .then(() => {})
+    .catch((err) => console.log(err));
+  }
+  DAy 2
+  
+Asynchronous JS:
+
+AJAX: AJAX (Asynchronous JavaScript and XML) is a web development technique that 
+enables web pages to update content dynamically without requiring a full page reload.
+whatever complete show it , show it
+
+TEST CASE:
+Go to https://www.amazon.com/ (0.5 seconds)
+Click on location header item (0.2)
+Validate the "Choose your location" dialog is visible (0.3)
+
+
+3 ways to handle asynchronous operations/code 
+1. callbacks 
+2. promises 
+3. async-await
+ 
+ in work envr we can run 10 test the same time, and we need to handle it, we will learn how most of them doind playw and celeniym
+
+JS Modules
+CommonJS Modules (module.exports, require)
+ES6 Modules (export, import)
+
+
+NodeJS
+NPM: Node Package Manager 
+We can install, update or uninstall some external packages/libraries using npm 
+npm install sypress
+
+// AFTER ES6 - using promises with then-catch methods
+  function gotoAmazon2() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let bool = true;
+        if (bool) {
+          console.log("Amazon is loaded...");
+          resolve();
+        } else {
+          reject("ERROR: Go to amazon FAILED!");
+        }
+      }, 500);
+    });
+  }
+  
+  function test2() {
+    gotoAmazon2()
+      .then(() => clickOnLocationHeaderItem2())   /// then has another callback funct
+      .then(() => validateDialogIsVisible2())
+      .catch((err) => console.log(err));
+  }
+  
+  // test2();
+  
+  we don't create promisses our part it here in this moment
+  // AFTER ES6 - using promises with async-await keywords
+  if we want to make our function completed and another start we need to use asynk  and  await in front each method
+  how do i know this method is asynhr?  because i check if it returns Promise when i move to my my function(gotoAmaz)and see it's a promise
+  when it return promise i swould have await, if it not promise i don't need to have promise!!!
+  async function test3() {
+    try {    /// this for error but we usually don't use it
+      await gotoAmazon2();
+      await clickOnLocationHeaderItem2();
+      await validateDialogIsVisible2();
+    }
+    catch(err) {
+      console.log(err);
+    }
+  }
+  
+  test3();

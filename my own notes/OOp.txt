@@ -585,18 +585,164 @@ class Singer extends Person{
     return true;
   }
 }
-
+singer.eat()
+singer.sleep()
 module.exports = Singer
  
+ const Person = require("./Person");
+
+class Dancer extends Person {
+  constructor(fullname, age, groupName) {
+    super(fullname, age);
+    this.groupName = groupName;
+  }
+  dance() {
+    return true;
+  }
+}
+
+module.exports = Dancer;
  TO DO INHERITANCE 
  1. WE NEED TO EXPORT / IMPORT FIRST
  2. ЯКЩО ти спадкуєш від персон і там у тебе вже є першеб друге імя ти не можеш створити ії ще раз у новому обєкті тобі треба вживати їх із super()
  3. super()- means parents constructor
   super(fullname, age); // this invokes parent class constructor - must be the first statement
    this.companyName = companyName; - після супер робимо те що відноситься до обєктаб якщо зробити навпаки буде помилка
+обовязково не забудь поставити супер першим
 
 
+const Dancer = require("./es6-inheritance/Dancer");
+const Person = require ("./es6-inheritance/Person");
+const Programmer = require("./es6-inheritance/Programmer");
+const Singer = require("./es6-inheritance/Singer");
+ми сторюємо наші обєкти якщо пишемо персон нам треба написати імя та рік що вказано в шаблон, але перд тим треба імпорт наш інхеріт  
+const person = new Person('John Doe', 25)
+const programmer = new Programmer ( 'Jane Doe', 24, 'Microsoft')
+const singer = new Singer ( 'Alex Doe', 30, 'Starts')
+const dancer = new Dancer ( 'Alex gfd', 30, 'Starts')
+person. we see everuthing for thar object we see property(name) and method(sleep)
+programer. we don't see that methods but they exist in our prototype we can inherit all parents methods
 
+// this keyword refers to the current object of the template
+// super keyword refers to the parent of current object of the template 
+
+class Engineer {
+  constructor(fullname, major) {
+    console.log('This is Engineer constructor running...');
+    this.fullname = fullname;
+    this.major = major;
+  }
+  build() {
+    console.log('Engineer builds!');
+  }
+}
+
+class SoftwareEngineer extends Engineer {    we took inf from engeneer our parents
+  constructor(fullname, major, companyName) {
+    console.log('This is SoftwareEngineer constructor running...');
+    super(fullname, major); // invokes the parent constructor to assign fullname and major to object - MUST be the first statement before using this keyword!!!
+    this.companyName = companyName;
+  }
+}
+
+const eng = new SoftwareEngineer('Jane Doe', 'Software Engineering', 'Microsoft');
+super key word when i use it it going to out tample execute , first our parent inf
+воно спершу іде в наше чайлд тоді в наш супер переходить в перентс тоді повернеться завершить чайлб а тоді іде у створений обджект const name = new Enginner
+
+// Similar logic with standalone functions
+function funcA() {
+  console.log('This is function A running...');
+}
+
+function funcB() {
+  funcA();
+  console.log('This is function B running...');
+}
+funcB();
+
+// parent class can have multiple child classes like Person had Singer, Dancer, Programmer
+// However, child class can have only ONE parent class like Singer had Person, not allowed have a lot of Perents!!!
+// Classes can ONLY extend a single class, we can't have multiple classes 
+// constructor() {} // this is default constructor will always be in your class in case you do not create one, it's hidden
+
+class Animal {
+  //////hidden constuctor 
+    eat() {
+      console.log('EAT');
+    }
+    sleep() {
+      console.log('SLEEP');
+    }
+  }
+  
+  class Cat extends Animal {
+    play() {
+      console.log('PLAY');
+    }
+  }
+  
+  class Dog extends Animal {   //// extand from animal eat and sleep , child have only one parent
+    protect() {
+      console.log('PROTECT');
+    }
+  }
+  
+  class GermanShephard extends Dog {   has parent dog 2 method, and granperents animal ear and sleep
+    task() {
+      console.log('TASK');
+    }
+  }
+  
+  const dog1 = new Animal();   our animal has 2 methods
+  dog1.eat();
+  dog1.sleep();
+  
+  const dog2 = new Dog();  extance anymal and dog methods
+  dog2.eat();
+  dog2.sleep();
+  dog2.protect();
+  //dog2.task(); // TypeError: dog2.task is not a function -> Parent class CANNOT access child class methods and properties
+  child never shere their method w Perents
+  const dog3 = new GermanShephard();
+  dog3.eat();
+  dog3.sleep();
+  dog3.protect();
+  dog3.task();
+  JS canot have multiple constructors!!
+  the goal was to show thar we can inherit not only parent constr but grandparents  too,
+  якщо ми змінюємо щось в нашому головному тепл, це вкплине на всі чайлд теж. example temple  Person  ми щось змінили то тепер нам треба в кожному чайлі це дозмінювати, та оновити
+  спочатку стоврили перент на листочку а тоді  вже починати усі ідеї графікиб тоді починай свій код
+  ми не створ.ємо дуже багато, але лайбері які ми вживаємо ми вживаємо отсанні версії 
+
+  на вебсайті хедер та фудер ті самі, на всі сторнки на сайті що заходимо вони всі ті самі та не змінюються
+  ми можемо додати лого в перент і ми просто вживаємо їх для всіх сайтів 
+  console.log(dog3.__proto__); // Dog {}
+  console.log(dog3.__proto__.__proto__); // Animal {}
+  console.log(dog3.__proto__.__proto__.__proto__); // {}
+  console.log(dog3.__proto__.__proto__.__proto__.__proto__); // null
+
+
+class Customer {
+  // private property
+  #secretInformation = 'Hello';
+
+  // public property
+  notSecret = 'Hi';
+
+  // public property - all the instances can access this
+
+  constructor(fullname, address) {
+    this.fullname = fullname;
+    this.address = address;
+  }
+}
+
+// 
+const cust1 = new Customer();
+
+console.log(cust1);
+console.log(cust1.notSecret); // Hi
+console.log(cust1.secretInformation); // undefined
 Prototypal Inheritance – Before ES6
 •The Prototypal Inheritance is a feature in JavaScript used to add methods and properties in objects. 
 •It is a method by which an object can inherit the properties and methods of another object.
@@ -604,14 +750,133 @@ Prototypal Inheritance – Before ES6
 •Then, we can tell our JS code to inherit properties from a prototype.
 
 
+вони менш важливі ми робиил це із spread operator cхоже
+const baseTable = {
+    name: 'Table',
+    adjustable: true,
+    method: function () {
+      console.log('This is a function');
+    }
+  };
+  
+  const diningTable = {
+    __proto__: baseTable, // inheriting properties and methods of baseTable object
+    purpose: 'Dining',   .. дві __ ptoto__
+    material: 'Wood'
+  };
+  
+  const officeTable = {
+    purpose: 'Work-Office',
+    material: 'Wood',
+    __proto__: baseTable we inherit it
+  }
+   усе працює ми його не бачимо коли ставимо крапку але ми маємо доступ до усього початкового обєкту
+   it's how we can inherit indiv object properties into another indiv object.
+   it was for developer before es6
+   we accses main to our  new object we inherite everything
+  // console.log(officeTable.name); // Table
+  // console.log(officeTable.adjustable); // true
+  // officeTable.method(); // This is a function
+  
+  
+  console.log(officeTable.__proto__); // { name: 'Table', adjustable: true, method: [Function: method] }
+  
+  
+  // Another way to inherit a single objects methods and properties to another object using Object.create() method!!!!
+  const tool = {
+    variable: 'Just an info',
+    fix: function () {
+      console.log('FIX');
+    }
+  };
+  
+  const hammer = Object.create(tool); // hammer inherits all the methods and properties of the tool object here
+  hammer.brand = 'any brand';     МИ ДАДАЛИ УСЮ ІНФ З ТУЛ ДО ХАМЕР
+  hammer.break = function () {   added t's own methods
+    console.log('BREAK');
+  }
+  
+  hammer.fix();
+  hammer.break();
+  console.log(hammer.variable); // Just an info
+  console.log(hammer.brand); // any brand
+  
+  //tool.break(); // ool.break is not a function -> parent cannot access child methods or properties
+  
+  console.log(hammer.__proto__); // { variable: 'Just an info', fix: [Function: fix] }
+
+so it's 2 way to use proto__, or object.Create
+bu we don't use it we use Classes
 
 
 
+const vehicle = {
+    move: function() {
+      console.log('MOVE');
+    }
+  };
+  
+  const car = {
+    __proto__: vehicle,
+    drive: function () {
+      console.log('DRIVE');
+    }
+  };
+  
+  const myCar = {
+    __proto__: car,
+    electricCharging: true
+  }
+  
+  console.log(myCar.electricCharging); // true
+  myCar.drive(); // DRIVE
+  myCar.move(); // MOVE
+  
+  Its individual object inheritance, it's not prorotype
+  // Prototype chaining
+  console.log(myCar.__proto__); // { drive: [Function: drive] }
+  console.log(myCar.__proto__.__proto__); // { move: [Function: move] }   me car pents parents our grandparents
+  console.log(myCar.__proto__.__proto__.__proto__); // [Object: null prototype] {}   auntomate parent of all object Perent Animal new Date
+  console.log(myCar.__proto__.__proto__.__proto__.__proto__); // null no more perents
 
+  console.log(dog3.__proto__); // Dog {}
+  console.log(dog3.__proto__.__proto__); // Animal {}
+  console.log(dog3.__proto__.__proto__.__proto__); // {}
+  console.log(dog3.__proto__.__proto__.__proto__.__proto__); // null
+it's also works w classes
 
+  programTOTYPE INHERITANCE function Animal(name, age) {
+  this.name = name;
+  this.age = age;
+}
 
+Animal.prototype.eat = function () {
+  console.log('EAT');
+}
 
+Animal.prototype.sleep = function () {
+  console.log('SLEEP');
+}
 
+function Dog(name, age, breed) {
+  this.name = name;
+  this.age = age;
+  this.breed = breed;
+}
+
+// Inherit Animal Prototype for Dog Prototype
+Dog.prototype = Object.create(Animal.prototype);
+instead of giving  the individual case, we just call the whole prototype for dog
+
+Dog.prototype.bark = function () {
+  console.log('BARK');
+}
+
+const dog1 = new Dog('Lucy', 3, 'Collie');
+
+dog1.bark();
+dog1.eat();//// 
+dog1.sleep();
 
 MUST KNOWN
 ES6 Classes
@@ -628,18 +893,33 @@ OKAY if you forgot
 prototype chain
 Object.create()
 
+Prototypal Inheritance – Before ES6   we don't use it was before6
+•Every object with its methods and properties contains an 
+internal and hidden property known as [[Prototype]]. 
+•Traditionally, in order to get and set the [[Prototype]] of an 
+object, we would use Object.getPrototypeOf and 
+Object.setPrototypeOf. 
+•Nowadays, in modern language, it is being set using 
+__proto__.
+Prototype Chain
+•The prototype chain is a mechanism that allows objects to 
+inherit properties and methods from other objects. 
+•Every object can have exactly one prototype object. 
+•That prototype object can also have a prototype object, and 
+so on, creating a chain of inherited properties and methods
+
 Number.MAX_SAFE_INTEGER; // static property of Number prototype
 Math.max(); // static method of Math prototype
+we will  ake our own 
 
 class AutomationHelper {
   static info = 'This is a helper class';
 
-  static helperMethod1() {}
+  static helperMethod1() {}    mostly we don't do propery but methods
   static helperMethod2() {}
 
-  instanceMethod() {}
+  instanceMethod() {}   here I always first need to create  the object
 }
-
 
 AutomationHelper.info; // This is a helper class
 AutomationHelper.helperMethod1(); 
@@ -647,6 +927,442 @@ AutomationHelper.helperMethod2();
 
 const ah = new AutomationHelper();
 ah.instanceMethod();
+it's useful to create our utill folder
+
+
+DAY 3
+
+
+
+Re-using your object with spread operator 
+const obj1 = {
+  key1: 'value1',
+  key2: 'value2'
+};
+
+const obj2 = {
+  ...obj1,     we learn early  to spread one you object into another indiv object
+  newKey: 'newValue'
+};
+
+
+Re-using your object with Object.create()
+const obj1 = {
+  key1: 'value1',
+  key2: 'value2'
+};
+  but we don't like this
+const obj2 = Object.create(obj1);
+obj2.newKey = 'newValue';
+
+
+1. Prototypes   was before es6
+function Movie(title, duration, director) {
+  this.title = title;
+  this.duration = duration;
+  this.director = director;
+}
+
+Movie.prototype.publish = function () {
+  console.log('PUBLISH');
+}
+now we can create a lot of movie object. Use new keyword
+const movie1 = new Movie('Batman', 180, 'John Doe');
+const movie2 = new Movie('Lord of the Rings', 175, 'Jane Doe');
+
+movie1.publish();   it's acssess to use them from prototype
+movie2.publish();
+
+
+2. ES6 classes
+class Movie {
+  constructor(title, duration, director) {
+    this.title = title;
+    this.duration = duration;
+    this.director = director;
+  }
+
+  publish() {      /// we do our method inside our class
+    console.log('PUBLISH');
+  }
+}
+
+const movie1 = new Movie('Batman', 180, 'John Doe');  if you want to add speciffic method to movie1, you can't you need to creat a new template
+const movie2 = new Movie('Lord of the Rings', 175, 'Jane Doe');     you can even create a child and add one method to use it for movie 1 any additional methods
+or compleatly separate templete
+ 
+movie1.publish();
+movie2.publish();
+
+Inheritance very important
+1. Prototypal Inheritance  befor es6
+1.1. Individual Object Inheritance 
+const obj1 = {
+  key1: 'value1',
+  key2: 'value2'
+};
+   it's inherits
+const obj2 = Object.create(obj1); // obj2 inherits all the properties and methods of the obj1
+obj2.newKey = 'newValue';
+
+1.2. Prototypes Inheritance  for templates
+function Book(author, title) {
+  this.author = author;
+  this.title = title;
+}
+Book.prototype.sell = function() {
+  console.log('SELL');
+}
+function PLBook() {}
+
+PLBook.prototype = Object.create(Book.prototype);
+
+
+const book1 = new PLBook();
+book1.sell();
+
+dont do ^| abowe anymore
+
+2. ES6 Classes 
+
+class Book {
+  constructor(author, title) {
+    this.author = author;
+    this.title = title;
+  }
+  sell() {
+    console.log('SELL');
+  }
+}
+
+class PLBook extends Book {   /// child book
+  constructor(author, title, compiled) {
+    super(author, title);     //// super to get it from the parent 
+    this.compiled = compiled;
+  }
+}
+
+const jsBook = new PLBook('John Doe', 'Intro to JS', false);    we inherit these objects
+const tsBook = new PLBook('John Doe', 'Intro to TS', true);
+jsBook.sell();
+tsBook.sell();
+
+
+INHERITANCE RULES:   INTERVIEW QUESTUIN
+-Parent class can have multiple child classes    (example yuo have musliple account)
+-Child class can have ONLY one parent 
+-Child class inherits properties, constructors and methods of the parent class
+-Parent class CAN NEVER access any of the properties, constructors and methods of the child class
+we never see this: class A extends B, C, D {}   because A it's child class and other can't be musliple perents.
+
+
+*** What is constructor? interwiw
+-It is a special function/method used to create instances/objects of the classes/prototypes 
+-it is always used next new keyword to create an object    new Date(), new Customer()    99%
+-every class will have a default (zero-arg) constructor if you do not create a custom one
+constructor() {}
+
+Defenition of new keyword it's new key word use together w the constuctor to create an object
+
+
+*** this vs super keywords?
+this refers to the current object 
+super refers to the parent class object
+this() -> it refers to current class constructor 
+super() -> it refers to parent class constructor
+
+template = prototype = class = blueprint 
+object = instance
+
+Class is a blueprint from which many instances can be created.
+Instance/Object is instantiated from a class.
+
+
+class A {
+  // this one has 2 instance methods
+}
+
+class B extends A {
+  // has additional 3 instance methods 
+}
+
+class C extends B {
+  // has additional 5 instance methods
+}
+
+const c = new C(); // have access to all 10 methods
+
+const a = new A(); // has access to only 2 methods
+
+
+***What is encapsulation and it's benefits?
+it is making private properties for a class and providing public getters and setters 
+getters are used used retrieve the private properties - they are usually return type methods 
+setters are used to set/update the private properties - they are usually void methods and take at least 1 parameter
+
+Encapsulation increases data security by get methods and set 
+It can make some data readonly (via getters) or writeonly (via setters).
+ми всі маємо щось одне наприклад секрет ="secret info' we didnn't provide geet or set method means no one can access it
+but you can provide only get method , now everyone they can get it method but no one can't update this method, because we didn't provide set method
+so now it's only read method
+
+
+What are the OOP Principles?  people doesn't no JS can ask this questin, because jaca C# very realible
+JS is not heavily relyineg on OOP printipal, (we cover more then we need)
+when we get this question we need to know other person is knowing Java background, and they don't know JS is not heavily realying on OOP
+and they expectetion you no all of it.But your answer should be- In JavaSC we are relying on prorotypes not really OOp but what i use, i use:
+Inheritance for reusability (extends keyword): inherit parent class properties, methods, contructors to child classes
+Encapsulation: making private properties and providing public getters and setters 
+Abstraction: parent class will have abstract methods (methods with no body/implementation) and child class must implement these methods
+Polymorphism: one object being able to get many shapes
+JS doen;t do 2 last one 
+tell them JS don't really rely on OOP consept, like Java, C#, but we don't really use all of them we ise only inheritance  you need to tell them 
+common question
+
+private-propeties 
+class Customer {
+    // private property
+    #secretInformation = 'Hello';      #make it's private   pound in a class, ourside class we can't do it. it's mean it's ptivate we can't acsess it it's underfine
+  
+    // public property
+    notSecret = 'Hi';
+  
+    // public property - all the instances can access this
+  
+    constructor(fullname, address) {
+      this.fullname = fullname;
+      this.address = address;
+    }
+  }
+  
+  // 
+  const cust1 = new Customer();
+  
+  console.log(cust1);
+  console.log(cust1.notSecret); // Hi
+  console.log(cust1.secretInformation); // undefined
+
+/// might be case when we can use it, maybe credention    
+// but teacher never used it
+don't be surprice when you see #
+  property in a class can rigth away be declared in a classbut we don't use  key let and cont inside a class it's not allowed we are not in a constructor
+ we use it secret but we use it in another file name secret.txt we add there information then we import them 
+
+
+
+class Citizen {
+  // public property
+  country = 'US';
+  batch = 11;                                                    everyone use it
+
+  // private properties - encapsulation
+  #SSN;
+  #secret = 'secret info';      /// no one can asses it
+
+  constructor(fullname, age) {
+    this.fullname = fullname;
+    this.age = age;
+  }
+
+  // getters and setters for private properties which provides in-direct access
+  (means theuy can not directly say customer 1 sss = smth), but they can indirectly access it thougth a method. we don't give you inf but we give you a method
+  with method we have more control
+  getSSN(adminPassword) {
+    if(adminPassword === 'SecretPassword') return this.#SSN;
+    throw new Error('You are not authorized!!!');
+  }
+
+  setSSN(ssn) {
+    if(ssn.length === 9) this.#SSN = ssn;
+    else throw new Error('The SSN is not correct!');
+  }
+
+  getSecret() {
+    return this.#secret;
+  }
+}
+
+const c1 = new Citizen('John Doe', 25);
+const c2 = new Citizen('Jane Doe', 25);
+
+c1.country = 'Canada';
+c1.age = 30;
+c1.setSSN('123121234');   before get sssn we set it, customers provide it to us, we can't do it
+no one can use it ourside a class
+
+we cant c1.#SNN =('12552)it's error
+console.log(c1); //// fullname джон cand    //// for everyone it's public
+console.log(c2);
+
+// 
+c1.setSSN('123121234');
+console.log(c1.getSSN('SecretPassword'));    ///123456789
+
+console.log(c2.getSecret());
+ sencse if you have a private inf  and you don't want to give this ind it's like you incapsulate it and no  one can use it easily
+
+
+ES6 Class Inheritance
+•The entire idea of Inheritance is code reusability as it allows properties 
+and functions of one object or class to be used by other objects or classes.
+•JavaScript added classes with ES6 and allows inheritance using extends 
+keyword like other OOP languages.
+•subclass (child) - the class that inherits from super (parent) class
+•superclass (parent) - the class being inherited from sub (child) class
+ES6 Class Inheritance – super() keyword
+•super is used to call the constructor 
+on the parent object that is being 
+inherited by the child. 
+•It is used to avoid duplication of the 
+parts of the constructor that are 
+present in both the parent and child 
+class.
+ES6 Property Encapsulation | private 
+properties•The encapsulation is a OOP concept used 
+to protect properties from being 
+accessed directly.
+•It can be achieved in JS by creating 
+private class properties using #.
+•Advantages:
+•Better control of properties
+•Read-only or write-only flexibility
+ES6 Class | getters and setters
+•ES6 Classes also allows you to 
+use getters and setters.
+•It can be smart to use getters 
+and setters for your 
+properties, especially if you 
+want to do something special 
+with the value before 
+returning them, or before you 
+set them.
+•To add getters and setters in 
+the class, use the get and 
+set keywords.
+
+class Program {
+    // static properties          instance properties
+    static name = 'SDET';        name = 'SDET
+    static batchNo = 11;          batchNo = 11;
+  
+  
+    // instance methods
+    funcA() {           how do i understand they are instance, not static?
+      console.log('A');
+    }
+  
+    static funcB() {
+      console.log('B');
+    }
+  }
+  
+  //Program.funcA(); // you cannot access instance methods and properties with class name
+  Program.funcB(); // B     when you add static B  it's work
+  console.log(Program.name);
+  console.log(Program.batchNo); batch 11///
+  console.log(Number.MAX_SAFE_INTEGER); it's all static properties
+  console.log(Math.PI);
+  how we can acces or invoke  function A?  How we invoke ckass method? it's instance mathod. we need first create 
+   an instance of this program  внизу
+  const p1 = new Program(); forst we create instance then use it
+  p1.funcA();   now it's work    /// A
+ it's like we did
+let name = 'Jone;
+name.toLowerCase()  it's all instance method, and first i need to create instance of string
+we use it a lot for utils and we will create baunch reusable methods
+
+
+instance variables = properties = fields = states
+how do i understand they are instance, not static?
+when it's say instance example, when we do Program. i don't have access to any of thhis it doeant show name or datche num, 
+
+Math.PI;, Numer.MAX_SAFE_INTEGER , Mat.max   /// static 
+
+What is the diferent between them  static and regular?
+one you need ro create an instance to invoke   /// прикладб укземпляр
+another one you can call it with Class name
+better to use in our folder static, just create and use it 
+when do we use static, template. if you don't need to mahe object, you don't wotl w server it's better static
+for utility we do static
+for static we get it with tempalte name, otherwise create an object and invoke w  the object 
+
+
+
+
+// JAVA   it's example to our OOP principal
+class Animal {
+  public String name;
+  public int age;
+  private String secret;
+
+  public Animal(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  public void eat() {
+    System.out.println("EAT");
+  }
+
+  public void setSecret(String secret) {    
+    this.secret = secret;
+  }
+
+  public String getSecret(){
+    return this.secret;
+  }
+}
+
+
+class Dog extends Animal {
+  public String breed;
+
+  public Dog(String breed) {
+    this.breed = breed;
+  }
+
+  public void protect() {
+    System.out.println("PROTECT");
+  }
+}
+
+// Polymorphism
+const dog1 = new Dog();    can access to protect
+const dog2 = new Animal(); no because it;s to separate object
+
+dog2.protect(); // compilation is fine but when we run we'll get error
+
+
+abstract class Teacher {
+  public abstract void teach();
+  public abstract void giveTask();
+}
+
+class PT extends Teacher { // Error - this class MUST implement Teacher class methods
+  @Override
+  public void teach() {
+    //body
+  }
+
+  @Override
+  public void giveTask() {
+    //body
+  }
+}
+
+class MathTeacher extends Teacher {
+   @Override
+  public void teach() {
+    //body
+  }
+
+  @Override
+  public void giveTask() {
+    //body
+  }
+}
+
+
 
 
 

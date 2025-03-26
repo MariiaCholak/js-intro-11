@@ -35,7 +35,7 @@ const book3 = new Book('A Storm of Swords', 'Epic Fantasy', 973)
 //const books = [book1, book2, book3,].forEach(element => console.log(books))
 const author1 = new Author ('George R. R.', 'Martin', 'United States', [book1, book2, book3] )
  console.log(author1.getFullName())
-
+// tc create cook we need individual from our templates, and book as arr
  
  const books = [book1, book2, book3,];
  for(const book of author1.getBooks()){
@@ -43,7 +43,8 @@ const author1 = new Author ('George R. R.', 'Martin', 'United States', [book1, b
  }
  author1.getBooks().forEach(book => console.log(books))
 
-/////
+///// // Find and print the name of the Book which has more pages  -> A Strom of Swords
+
  let maxPagesBook = author1.getBooks()[0];
 for (const book of author1.getBooks()) {
     if (book.page > maxPagesBook.page) {
