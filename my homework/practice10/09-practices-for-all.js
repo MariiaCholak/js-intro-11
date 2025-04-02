@@ -396,8 +396,7 @@ function test1() {
 test1();
 
 
-TechGlobal
-  12:02 PM
+
 function connectToDB() {
   return new Promise((resolve, reject) => {
     const dbUp = true;

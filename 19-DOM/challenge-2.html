@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>student Table</title>
+</head>
+<body>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Student Names</th>
+      </tr>
+    </thead>
+    <tbody  id="studentTable">
+      <!-- Render student names here -->
+    </tbody>
+  </table>
+  
+  <script>
+    // Create an array of 
+    const students  = ['A', 'B', 'C', 'D'];
+
+    // In html file you will have a table element
+    const table = getElementById('studentTable')
+
+
+
+
+    // Dynamically append new row with array data
+   students.forEach(stName => table.innerHTML = `<tr><td>${studentName}</td></tr>`)
+  </script>
+</body>
+</html>

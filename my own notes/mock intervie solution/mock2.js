@@ -121,23 +121,43 @@ averageOfEdges(-2, -2, 10)   -> 4
 averageOfEdges(-3, 15, -3)   -> 6 
 averageOfEdges(10, 13, 20)   -> 15 
 Swap First and Last Characters 
-Examples: 
-replaceFirstLast("")      
-replaceFirstLast("Hello")     
-replaceFirstLast("Tech Global")    
-replaceFirstLast("A")     
-replaceFirstLast("    A   
 */
-
+const averageOfEdges = (num1, num2, num3) => {
+   return (Math.max(num1, num2, num3) + Math.min(num1, num2, num3)) / 2
+}
+console.log(averageOfEdges(0, 0, 0)) 
+console.log(averageOfEdges(0, 0, 6)) 
+console.log(averageOfEdges(-2, -2, 10))
+console.log(averageOfEdges(-3, 15, -3)) 
+console.log(averageOfEdges(10, 13, 20)) 
 
 
 /*
 Write a function named replaceFirstLast() which takes a string argument and returns a new string with 
 the first and last characters replaced. 
 NOTE: If the length is less than 2, return an empty string. 
-NOTE: Ignore extra spaces before and after the string. ->  "" ->  "oellH" -> "lech GlobaT" -> "" 
+NOTE: Ignore extra spaces before and after the string.  ->    -> "" 
 ")     -> "" 
+
+Examples: 
+replaceFirstLast("")    ->  ""  
+replaceFirstLast("Hello")   "oellH" ->  
+replaceFirstLast("Tech Global")    "lech GlobaT"
+replaceFirstLast("A")   ""  
+replaceFirstLast("    A   ') ""
+NOTE: If the length is less than 2, return an empty string. 
+NOTE: Ignore extra spaces before and after the string. 
 */
+const replaceFirstLast = (str) => {
+    if(str.length < 2) return ""
+  return str.at(-1) +str.slice(1, -1) + str[0]
+
+} 
+
+console.log(replaceFirstLast(""))     
+console.log(replaceFirstLast("Hello"))     
+console.log(replaceFirstLast("Tech Global"))    
+console.log(replaceFirstLast("A"))     
 
 
 /* 18 pa
@@ -146,14 +166,24 @@ Write a function named as swap4() which takes a string word as an argument and r
 back with its first and last 4 characters swapped when invoked. 
 NOTE: Return empty string if the given string does not have 8 or more characters. 
 Examples: 
-swap4("abc")     
-swap4("JavaScript")    
-swap4("TechGlobal")    
-swap4("")      
-swap4(" 
-swap4("Apple")     
-")     -> "" -> "riptScJava" -> "obalGlTech" -> "" -> "" -> "" 
+Examples: 
+swap4("abc")       -> "" 
+swap4("JavaScript")      -> "riptScJava" 
+swap4("TechGlobal")     -> "obalGlTech" 
+swap4("")         -> "" 
+swap4("  ")       -> "" 
+swap4("Apple")       -> "" 
 */
+ const swap4 = (str) => {
+    if(str.length <= 8) return ""
+    return str.slice(-4) +  str.slice(4, 6) + str.slice(0, 4)
+  }
+  console.log(swap4("abc"))
+  console.log(swap4("JavaScript")) 
+  console.log(swap4("TechGlobal"))
+  console.log(swap4("")) 
+  console.log(swap4("  "))
+  console.log(swap4("Apple")) 
 
 /*
 Swap First and Last Words 
@@ -161,41 +191,91 @@ Write a function named as swapFirstLastWord() which takes a string word as an ar
 the string back with its first and last words swapped when invoked. 
 NOTE: Return empty string if the given string does not have 2 or more words. 
 Examples: 
-swapFirstLastWord("Hello World")     
-swapFirstLastWord("I like JavaScript")  
-swapFirstLastWord("foo bar foo bar")    
-swapFirstLastWord("")      
-swapFirstLastWord(" ")      
-swapFirstLastWord("Hello")     
-swapFirstLastWord("Hello   ")     
-Count Positive Numbers 
-Examples: 
-countPos([-45, 0, 0, 34, 5, 67])    -> 3 
-countPos([-23, -4, 0, 2, 5, 90, 123])   -> 4 
-countPos([0, -1, -2, -3])   
+
+
+swapFirstLastWord("Hello World")      -> "World Hello" 
+swapFirstLastWord("I like JavaScript")   -> "JavaScript like I" 
+swapFirstLastWord("foo bar foo bar")     -> "bar bar foo foo" 
+swapFirstLastWord("")         -> "" 
+swapFirstLastWord("  ")         -> "" 
+swapFirstLastWord("Hello")        -> "" 
+swapFirstLastWord("Hello   ")       -> "" 
 */
+const swapFirstLastWord = (word) => {
+   let words =  word.trim().split(" ")
+    if(words.length < 2) return ""
+    let first = words[0]
+     let last = words[words.length -1] 
+     words[0] = last
+     words[words.length -1] = first
+        return words.join(' ')
+}
+
+
+function reverseStringWords1(string){
+    let words = string.trim().split(' ')    // we get our string as array and spit by spaces
+    let reverseString = []
+
+    for(let i = 0; i < words.length; i++){/// створили луп бо треба переглянути кожен розділений елемент
+       words[i] =  words[i].split('').reverse().join('') // it's how we reverse it/ reverse it's a arr function and doesn't works w string what wgy we convert it using split(''), we made separate arr it's splt each string into arr, and know we use join function to return it back to string from arr
+    }  
+    return words.join(' ') //// join them by places now it's string
+}
+console.log(swapFirstLastWord("Hello World")) 
+console.log(swapFirstLastWord("I like JavaScript"))
+console.log(swapFirstLastWord("foo bar foo bar")) 
+console.log(swapFirstLastWord("")) 
+console.log(swapFirstLastWord("  ")) 
+console.log(swapFirstLastWord("Hello"))
+console.log(swapFirstLastWord("Hello   "))   
 
 
 /*
 Find Even Numbers -> "World Hello" -> "JavaScript like I" -> "bar bar foo foo" -> "" -> "" -> "" -> "" 
 Write a function named countPos() which takes an array of numbers as an argument and returns how 
 many elements are positive when invoked.  -> 0 
+Count Positive Numbers 
+Examples: 
+countPos([-45, 0, 0, 34, 5, 67])    -> 3 
+countPos([-23, -4, 0, 2, 5, 90, 123])   -> 4 
+countPos([0, -1, -2, -3])   
+*/
+const countPos = (numbers) =>{
+   return numbers.filter(el => el > 0).length
+}
+console.log(countPos([-45, 0, 0, 34, 5, 67]))
+console.log(countPos([-23, -4, 0, 2, 5, 90, 123]))
+console.log(countPos([0, -1, -2, -3]))
+
+/*
 Write a function named as getEvens() which takes 2 number arguments and returns all the even 
 numbers as an array stored from smallest even number to greatest even number when invoked. 
 NOTE: Make your code dynamic that works for any numbers and return empty array if there are no even 
 numbers in the range of given 2 numbers. 
 Assume you will not be given negative numbers. 
-19 
-Examples: 
-www.techglobalschool.com 
-getEvens(2, 7)   
-getEvens(17, 5)   
-getEvens(4, 4)   
-getEvens(3, 3)   -> [ 2, 4, 6 ] -> [ 6, 8, 10, 12, 14, 16 ] -> [ 4 ] -> [ ] 
+getEvens(2, 7)    -> [ 2, 4, 6 ] 
+getEvens(17, 5)    -> [ 6, 8, 10, 12, 14, 16 ] 
+getEvens(4, 4)    -> [ 4 ] 
+getEvens(3, 3)    -> [ ] 
 */
 
+const getEvens = (num1, num2) => {
+    let even =  []
+    let greatest = Math.max(num1, num2)
+    let smallest = Math.min(num1, num2)
+    for(let i = smallest; i <= greatest; i++){
+        if(i % 2 === 0) even.push(i)
+        }
+            return even
+    
+}
+console.log(getEvens(2, 7))   
+console.log(getEvens(17, 5))  
+console.log(getEvens(4, 4))  
+console.log(getEvens(3, 3)) 
 
-/*
+
+/*   19
 Find Numbers Divisible By 5 
 Write a function named as getMultipleOf5() which takes 2 number arguments and returns all the numbers 
 divisible by 5 as an array stored from first found match to last found match when invoked. 
@@ -204,16 +284,28 @@ numbers divisible by 5 in the range of given 2 numbers.
 Assume you will not be given negative numbers. 
 Examples: 
 getMultipleOf5(3, 17)   -> [ 5, 10, 15] 
-getMultipleOf5(23, 5)   
-getMultipleOf5(5, 5)    
-getMultipleOf5(2, 4)    -> [ 20, 15, 10, 5 ] -> [ 5 ] -> [ ] 
+getMultipleOf5(23, 5)   [ 20, 15, 10, 5 ]
+getMultipleOf5(5, 5)     [ 5 ]
+getMultipleOf5(2, 4)    ->  -> -> [ ] 
 Count Negative Numbers 
-Examples: 
-countNeg([-45, 0, 0, 34, 5, 67])    -> 1 
-countNeg([-23, -4, 0, 2, 5, 90, 123])   -> 2 
-countNeg([0, -1, -2, -3])     
 */
+const getMultipleOf5 = (num1, num2) => {
+    let divisible = []
+    let smallest = Math.min(num1, num2)
+    let greatest = Math.max(num1, num2)
 
+    for( let i = greatest; i >= smallest; i--)
+        if(i % 5 === 0) divisible.push(i)
+            if(num1 < num2) return divisible.reverse()
+    
+return divisible
+ 
+}
+
+console.log(getMultipleOf5(3, 17)) 
+console.log(getMultipleOf5(23, 5)) 
+console.log(getMultipleOf5(5, 5))
+console.log(getMultipleOf5(2, 4))
 
 
 /*
@@ -221,10 +313,19 @@ Write a function named countNeg() which takes an array of numbers as an argument
 many elements are negative when invoked.  -> 3 
 Write a function named countA() which takes a string argument and returns how many A or a there are 
 in the given string when invoked. 
+
+Examples: 
+countNeg([-45, 0, 0, 34, 5, 67])    -> 1 
+countNeg([-23, -4, 0, 2, 5, 90, 123])   -> 2 
+countNeg([0, -1, -2, -3])     
+*/
+
+
+/*
 NOTE: Ignore case sensitivity.  
-countA("TechGlobal is a QA bootcamp")     
-countA("QA stands for Quality Assurance")    
-countA("Cypress")        
+countA("TechGlobal is a QA bootcamp")     4
+countA("QA stands for Quality Assurance")  5  
+countA("Cypress")        0
 Count Words -> 4 -> 5 -> 0 
 Write a function named countWords() which takes a string argument and returns the total count of 
 words in the given string when invoked. 

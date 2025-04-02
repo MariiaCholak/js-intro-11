@@ -19,7 +19,9 @@ const hasUpperCase = (str) => {
 }
 //// array method
 const hasUpperCase1 = (str) => str.split("").some(str => str >= "A" && str <= "Z");
-
+///// filter 
+const hasUpperCase11 = (str) => str.split("").filter(letter => letter >= "A" && str <= "Z"). length > 0
+                                                        //// true ot false if the length more then 0
 console.log(hasUpperCase("javascript"))
 console.log(hasUpperCase("John"))
 console.log(hasUpperCase("$125.0"))
@@ -53,6 +55,7 @@ console.log(noDigit("123Hello"))
 console.log(noDigit("123Hello World149"))
 console.log(noDigit("123Tech456Global149"))
 str.split('').filter(elem => !(elem <= '9' && elem >= '0')).join('')
+                    ////filter(i => i < '0' || i > '9').join('')
 
 
 
@@ -72,6 +75,9 @@ const noVowel1 = (char) => {
     let vowels = ['a','e', 'i', 'o', 'u']
 return char.split('').filter(str => !vowels.includes(str.toLowerCase())).join('')
 }
+
+///// teacher way 
+return char.split('').filter(str => !('aeiou'.includes(str.toLowerCase()))).join('')
 
  console.log(noVowel("TechGlobal"))
  console.log(noVowel("AEOxyz"))
@@ -147,7 +153,7 @@ const middleInt = (num1, num2, num3) => {
     const nums = [num1, num2, num3]
     nums.sort((a, b) => a - b)
     return nums[1]
-}
+} ////// short vershion  => [num1, num2, num3].sort((a, b) => a - b)[1]     //// we didn't create a variable
 
 ////for of loop
 const middleInt1 = (num1, num2, num3) => {
@@ -200,6 +206,11 @@ sumOfDigits("")  -> 0
     }, 0)
 
 
+  /////  filter
+  (str) => str.split('').filter(el => el >= '0' && el <= '9').reduce((sum, num) => {
+sum += Number(num)    ///// because our num isstring and we convert it to num with Num
+  }, 0)
+
 console.log(sumOfDigits("Javascript"))
 console.log(sumOfDigits("John’s age is 29"))
 console.log(sumOfDigits("$125.0"))
@@ -222,12 +233,25 @@ arrFactorial([])  -> []
 const factorial = (num) => {
     if(num === 0) return 1;
     let result = 1
-for(let i = 1; i <= num; i++){
+for(let i = 2; i <= num; i++){   /// бо ми почали з 1 тому наше і стартує з 2
   result *= i
 }
 return result
 }
 const arrFactorial = (arr) => arr.map(factorial)
+
+
+//// teacher way
+
+const arrFactorial1 = (arr) => {
+    return arr.map(num => {
+    let result = 1
+    for(let i = 2; i <= num; i++){   /// бо ми почали з 1 тому наше і стартує з 2
+      result *= i
+    }
+    return result
+})
+}
 
 console.log(arrFactorial([1, 2, 3 ,4]))
 console.log(arrFactorial([0, 5]))
@@ -268,7 +292,7 @@ console.log(categorizeCharacters("12ab$%3c%"))
 /// reduce
 const categorizeCharacters1 = (str) =>{
         return str.split('').reduce((acc, curr) => {
-        if((curr >= 'A' && curr <= 'Z') || (curr >= 'a' && curr <= 'z'))
+        if((curr >= 'A' && curr <= 'Z') || (curr >= 'a' && curr <= 'z'))////// curr.toLowerCase() >= 'a' && curr.toLower <= 'z'   /// and we don't deen to check upper
              acc[0]  += curr
         else if (curr >= '0' && curr <= '9')
              acc[1] += curr
@@ -276,7 +300,7 @@ const categorizeCharacters1 = (str) =>{
              acc[2] += curr
 
     return acc
-    },  ['', '', ''])
+    },  ['', '', ''])     /// it's add to our index
 }
 console.log(categorizeCharacters1("1234"))
 console.log(categorizeCharacters1("abc123$#%"))

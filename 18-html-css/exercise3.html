@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Table</title>
+   
+    <style>
+        table{
+            background-color: bisque;
+            border-collapse: collapse;
+        }
+        td{
+            
+            padding: 10px;
+            border: 1px solid black;
+            font-weight: bold;
+
+        }
+        .button {
+            border-radius: 8px;
+        }
+        .button:focus {
+            border: 2px solid gray;
+            background-color: lightgray;
+        }
+        .save{
+            background-color:cadetblue;
+            border: solid darkblue
+        }
+        .wide-textarea {
+            width: 500px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+
+
+<table>
+    <tr>
+        <td>Name:</td>
+        <td><input type="text" value="John AppleScript"></td>
+    </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" value="johnny@AppleScript.com"></td>
+        </tr>
+        <td>Password:</td>
+        <td><input type="text"  value="*****" style="font-weight:bold;"></font-weigth:bold></font-weigth></td>
+   
+    <tr>
+        <td>Approval Required: <br>
+            <small style="font-weight: normal;">Click on the button or text to check/uncheck </small></td>
+        
+        <td><input type="checkbox"> Do you approve? <br>
+
+        </td>
+        </tr>
+        <tr>
+            <td>Pick Your Favorite <br>
+                <small style="font-weight: normal;"> Click on the button or text to check/uncheck</small>
+            </td>
+            <td> 
+                <input type="radio" name="choice" value="A">Choice A <br>
+                <input type="radio" name="choice" value="B" checked>Choice B <br>
+                <input type="radio" name="choice" value="C">Choice C  </td>
+        </tr>
+    <tr>
+        <td>Popup Menu:</td>
+        <td>
+            <select>
+                <option> Texas -- TX</option>
+                <option> California -- CA</option>
+                <option> Colorado -- CO</option>
+            </select> </td> 
+    </tr>
+        <tr>
+            <td>List <br>
+            <small style="font-weight: normal;">Setup Options: 
+            <ul> 
+               <li> Number of rows to display</li>
+            <li>Allow Multi-select</li>
+        </ul>
+</td> 
+            </small>
+            <td>
+            <select multiple>
+                <option> California -- CA</option>
+                <option> Colorado -- CO</option>
+                <option> Connecticut -- CN</option>
+                <option> Dalifornia -- DA</option>
+                <option> Dalifornia -- DO</option>  
+            </select>
+            </td>
+        </tr>
+    </tr>
+    <tr>
+        <td>Field Ignored by KM</td>
+        <td><input type="text" value="10.834"></td>
+        </tr>
+        <tr>
+            <td>Text Area</td>
+            <td><textarea rows="4" cols="50"> Now is the time for all good men to come to the aid of their country </textarea>
+            </td>
+        </tr>
+        <tr class="button">
+            <td colspan="2">
+                <button class="save">Save</button>
+                <button>Cancel</button>
+                <button>Resize</button>
+            </td>
+        </tr>
+    </tr>
+</table>
+</body>
+</html>

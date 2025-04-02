@@ -54,7 +54,7 @@ function test2() {
 }
 
 async function test3() {
-  try {
+  try {           /// or console.log(await Actions.visitUrl("https://www.techglobalschool.com");)
     const data1 = await Actions.visitUrl("https://www.techglobalschool.com");
     console.log(data1);
 
