@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .card {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px;
+            width: 200px;
+        }
+
+        .highlight {
+            background: #f0f8ff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>User Profiles</h1>
+    <div id="card-container"></div>
+
+    <script>
+        const users = [
+            { name: 'Alice', age: 25, hobby: 'Drawing' },
+            { name: 'Bob', age: 30, hobby: 'Soccer' },
+            { name: 'Charlie', age: 22, hobby: 'Gaming' },
+            { name: 'Dana', age: 28, hobby: 'Photography' }
+        ];
+       // Your code goes here ...
+
+       /*
+          CARD example
+          |----------------|
+          | name: Alice    |
+          | age: 25        |
+          | hobby: Drawing |
+          |----------------|
+       */
+
+       // 1. Create 3 element (name, age, hobby)
+       // innerHTML or createElement()
+
+       // 2. Append to card element
+       //  className or classList
+
+       // 3. Append card element to body
+       // append or appendChild()
+
+       // 4. Create random number and based on it highlight the card. Check style above 
+      const containerEl = document.getElementById('card-container');
+
+       users.forEach((user, index) => {
+        // Create card element
+        const cardEl = document.createElement('div');
+        cardEl.classList.add('card');
+
+        // Highlight
+        const rndNum = Math.random();
+        if(rndNum < 0.5) {
+          cardEl.classList.add('highlight')
+        }
+        
+        // Create content of card
+        const name = document.createElement('p');
+        name.textContent = `Name: ${user.name}`;
+
+        const age = document.createElement('p');
+        age.textContent = `Age: ${user.age}`;
+
+        const hobby = document.createElement('p');
+        hobby.textContent = `Hobby ${user.hobby}`;
+
+
+        // Add content to card
+        cardEl.append(name, age, hobby);
+        // cardEl.appendChil(name);
+        // cardEl.appendChild(age);
+        // cardEl.appendChild(hobby);
+
+        // Add card to container
+        containerEl.appendChild(cardEl);    
+       })
+    </script>
+</body>
+
+</html>

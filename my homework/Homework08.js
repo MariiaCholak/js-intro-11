@@ -20,6 +20,10 @@ return false
 
 //// some 
 const hasLowerCase1 = (str) => str.split('').some(char => char >= 'a' && char <= 'z') 
+////filter
+const hasLowerCase2 = (str)=> {
+    return str.splite('').filter(char => char >='a' &&  char <= 'z').length > 0
+}   /// if it ore then > it's return true, if not return false
 
 console.log(hasLowerCase("")) 
 console.log(hasLowerCase("JAVASCRIPT"))
@@ -157,7 +161,7 @@ removeStringSpecialsDigits("Automation123#$%")  -> "Automation"
 
 const removeStringSpecialsDigits = (str) => {
  return str.split('').filter(el => ((el >= 'a' && el <= 'z') || (el >= 'A' && el <= 'Z' ||(el === " ")))).join('')
-}
+}    //// it removed also space that why we nned to add " ", means keep letter and " " space
 console.log(removeStringSpecialsDigits("123Javascript #$%is fun"))
 console.log(removeStringSpecialsDigits("Cypress"))
 console.log(removeStringSpecialsDigits("Automation123#$%"))
@@ -187,6 +191,18 @@ return arr.map(element => {
 return result
 })
 }
+const removeStringSpecialsDigits = (arr) => arr.map(str => str.split('').filter(char => char === ' ' || (char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z')).join(''))
+/// if it's a letter or space
+
+const removeStringSpecialsDigits = str => {
+  let result = '';
+
+  for(let char of str){
+    if(char === ' ' || (char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z')) result += char;
+  }
+
+  return result
+}
 console.log(removeArraySpecialsDigits(["123Javascript", "#$%is", "fun"]))
 console.log(removeArraySpecialsDigits(["Cypress", "123$%", "###"]))
 console.log(removeArraySpecialsDigits(["Automation", "123#$%tool"]))
@@ -212,8 +228,16 @@ const getCommons = (str1, str2) => {
         if(str2.includes(element) && !conteiner.includes(element)) conteiner.push(element)
     }
 return conteiner
+}
 
-
+const getCommons = (str1, str2) => { 
+   str1 = str1.filter(i => str2.includes(i))
+ let conteiner = []
+ str1.forEach(element => {
+  if(!conteiner.includes(element)) conteiner.push(element)
+  ///// якщо резуль не включає наш елемент тоді додай наш результат елементу в контейнерб якщо це не всередині
+});
+return conteiner
 }
 console.log(getCommons( ["Javascript", "is", "fun"], ["abc", "xyz", "123"] )) 
 console.log(getCommons( ["Javascript", "is", "fun"], ["Javascript", "C#", "Python"] ))
@@ -249,3 +273,164 @@ console.log(noXInVariables(["abc", 123, "#$%"]))
 console.log(noXInVariables(["xyz", 123, "#$%"]))
 console.log(noXInVariables(["x", 123, "#$%"])) 
 console.log(noXInVariables(["xyXyxy", "Xx", "ABC"]))
+
+
+
+///// BILLAL DECISION
+/*
+*
+Requirement:
+Write a function named noXInVariables() which takes an array as argument 
+and return an array that all the x or X removed from the elements. 
+NOTE: If the element is existing of x or X letters only, then completely remove 
+the element.
+Examples:
+noXInVariables(["abc", 123, "#$%"])  -> ["abc", 123, "#$%"]
+noXInVariables(["xyz", 123, "#$%"])  -> ["yz", 123, "#$%"]
+noXInVariables(["x", 123, "#$%"])  -> [123, "#$%"]
+noXInVariables(["xyXyxy", "Xx", "ABC"])  -> ["yyy", "ABC"]
+*/ 
+
+const noXInVariables = arr => {
+  return arr.map(ele => typeof ele === 'string' ? ele.split('').filter(ele => ele.toLowerCase() !== 'x').join('') : ele)
+  .filter(ele => ele)
+}    // we take each index of arr  remove x and return it back
+///  el first it's string and we convert it arr, then filter takes condition if the words it's not x, then addad it to our arr, jion them together  
+//// because spit use only for string and we can't use it for numbers, that why we need to check if it is str
+const noXInVariables2 = arr => {
+  let result = [];
+  for(let ele of arr){
+    if(typeof ele === 'string'){
+      result.push(ele.split('').filter(ele => ele.toLowerCase() !== 'x').join(''))
+    }else{
+      result.push(ele)   /// if not string just return elle back 
+    }
+  }/// because we return  everything and where we have x we have "" we don't neet that
+  return result.filter(ele => ele)/// we just return our element w no space
+}
+
+console.log(noXInVariables(["abc", 123, "#$%"]))
+console.log(noXInVariables(["xyz", 123, "#$%"]))
+console.log(noXInVariables(["x", 123, "#$%"]))
+console.log(noXInVariables(["xyXyxy", "Xx", "ABC"]))
+
+/*
+Requirement:
+Write a function named getCommons() which takes two string arrays as 
+arguments and returns all the common words.
+Examples:
+getCommons( ["Javascript", "is", "fun"], ["abc", "xyz", "123"] ) 
+-> []
+getCommons( ["Javascript", "is", "fun"], ["Javascript", "C#", "Python"] ) -> 
+["Javascript"]
+getCommons( ["Javascript", "C#", "C#"], ["Python", "C#", "C++"] )  -> ["C#"]
+*/
+
+const getCommons = (arr1, arr2) => {
+  let result = []
+
+  for(let ele of arr1){
+    if(arr2.includes(ele) && !result.includes(ele)) result.push(ele)
+  }
+
+  return result
+}
+
+const getCommons = (arr1, arr2) => arr1.reduce((result, ele) => (arr2.includes(ele) && !result.includes(ele)) ? result.concat(ele) : result, [])
+
+
+function getCommons(arr1, arr2) {
+  let result = []
+  for (let el of arr1) {
+    for (let item of arr2) {
+      if (el === item && !result.includes(el)) result.push(el) ;
+    }
+  }
+  return result;
+}
+
+
+console.log(getCommons(["Javascript", "is", "fun"], ["abc", "xyz", "123"]))//[]
+console.log(getCommons(["Javascript", "is", "fun"], ["Javascript", "C#", "Python"]))//["Javascript"]
+console.log(getCommons(["Javascript", "C#", "C#", "C++"], ["Python", "C#", "C++"]))//["C#", "C++"]
+
+/*
+Requirement:
+Write a function named removeStringSpecialsDigits() which takes a string 
+as argument and return a string without the special characters or digits.
+Examples:
+removeStringSpecialsDigits("123Javascript #$%is fun")  -> "Javascript is 
+fun" 
+removeStringSpecialsDigits("Cypress")  -> "Cypress"
+removeStringSpecialsDigits("Automation123#$%")  -> "Automation"
+*/
+
+const removeStringSpecialsDigits = str => str.split('').filter(char => char === ' ' || (char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z')).join('')
+
+const removeStringSpecialsDigits = str => {
+  let result = '';
+
+  for(let char of str){
+    if(char === ' ' || (char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z')) result += char;
+  }
+
+  return result
+}
+console.log(removeStringSpecialsDigits("123Javascript #$%is fun"))
+console.log(removeStringSpecialsDigits("Cypress"))
+console.log(removeStringSpecialsDigits("Automation123#$%"))
+
+
+/*
+Requirement:
+Write a function named reverseSentence() which takes a string as argument 
+and returns the words in reverse order.  If there is no enough words reverse, 
+return "There is not enough words!".
+Examples:
+reverseSentence("Hello")  -> "There is not enough words!"
+reverseSentence("Javascript is fun")  -> "Fun is javascript"
+reverseSentence("This is a sentence")  -> "Sentence a is this"
+*/
+
+const reverseSentence = str => {
+  if(!str.includes(' ')) return "There is not enough words!"
+
+  let result =  str.split(' ').reverse().join(' ').toLowerCase()
+  return result[0].toUpperCase() + result.slice(1)
+}
+
+console.log(reverseSentence("Hello"))
+console.log(reverseSentence("Javascript is fun"))
+console.log(reverseSentence("This is a sentence"))
+
+/*
+Requirement:
+Write a function named numberAndSquare() which takes an array of numbers 
+as argument and returns a multidimensional array with all numbers squared. 
+Examples:
+numberAndSquare([1, 2, 3])  -> [[1, 1], [2, 4], [3, 9]]
+numberAndSquare([0, 3, -6])  -> [[0, 0], [3, 9], [-6, 36]]
+numberAndSquare([1, 4])  -> [[1,1], [4, 16]]
+numberAndSquare([0, 0, 0])  -> [[0, 0], [0, 0], [0, 0]]
+numberAndSquare([0, 1, -10])  -> [[0, 0], [1, 1], [-10, 100]]
+*/
+
+const numberAndSquare = arr => arr.map(n => [n, n**2])
+
+console.log(numberAndSquare([1, 2, 3]))
+console.log(numberAndSquare([0, 3, -6]))
+console.log(numberAndSquare([1, 4]))
+console.log(numberAndSquare([0, 0, 0]))
+console.log(numberAndSquare([0, 1, -10]))
+
+
+
+
+
+
+
+
+
+
+
+

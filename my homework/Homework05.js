@@ -208,7 +208,7 @@ const factorial = (number) => {
     }
 /// another way to silwe is using recursion more complex then normal function, interwiewers love to see it, they loke when you solve factorial w recursion 
 const fac = (n) =>{
-  if (n == 0 || n === 1) return 1
+  if (n === 0 || n === 1) return 1
   return n * fac(n-1)    /// when it's more then 1 we recall factorial function w n time - 1. It's multiply n(let say 5) * times(rerun factorial=> n-1    5-1=4) and then go eggein 4*3,   3*2  2* 1   leave single version 
 }   /// fac(5) => 5 * fac(4)   => 5 * 24 =   120     because f4 = now 24
    ////fac(4) => 4 * fac(3)    => 4 * 6 = 24    // because factorial 3 in down line became as 6
@@ -317,7 +317,7 @@ return count
 //// reduce teacher's way
 const countMultipleWords1 = (arr) => {
   return arr.reduce((count, str) => {      //count start 0, str = every index for arr
-      if (curr.trim().includes(' ')) return count + 1;   /// count++ doesn't work in our case, we need to use count + 1 because we return value of count
+      if (str.trim().includes(' ')) return count + 1;   /// count++ doesn't work in our case, we need to use count + 1 because we return value of count
       return count;       /// count++ return 0, it's modify our value, but in this case we dont modify, we reassigning count to be equel to smth,,, vecause count++ changing value but not add it to value
 }, 0 )
 }
@@ -491,7 +491,7 @@ const removeExtraSpaces11 = (word) => word.trim().split(' ').filter(s => s.lengt
 
 
 // teacher way
-const removeExtraSpaces1 = (word) => {
+const removeExtraSpaces = (word) => {
   let strAsArr =  word.trim().split(' ')  /// але ми отрамали  спейс між словами як "", тому нам треба люп
   let result = []  /// результ збережненні
   for(st of strAsArr){

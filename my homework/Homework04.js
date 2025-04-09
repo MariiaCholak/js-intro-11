@@ -444,7 +444,7 @@ function getDuplicates(array){
       return dublicates
         } 
      /// second way to do it, better because it's not nested, and smaller then loop
-     function getDuplicates2(array){
+     function getDuplicates(array){
         let container = []
         let allDublicates = [];
         for(let obj of array) {    // we don't use for i loop, ealier to use for loop because we don't need to use index, since weare doinf one loop throught the arr

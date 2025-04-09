@@ -151,12 +151,12 @@ middleInt(-1, 25, 10)  -> 10
 */
 const middleInt = (num1, num2, num3) => {
     const nums = [num1, num2, num3]
-    nums.sort((a, b) => a - b)
+    nums.sort((a,  b) => a - b)
     return nums[1]
 } ////// short vershion  => [num1, num2, num3].sort((a, b) => a - b)[1]     //// we didn't create a variable
 
 ////for of loop
-const middleInt1 = (num1, num2, num3) => {
+const middleInt = (num1, num2, num3) => {
     const nums = [num1, num2, num3]
     let middle = ""
     for(let n of nums){
