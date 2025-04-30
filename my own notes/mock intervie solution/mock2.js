@@ -176,7 +176,7 @@ swap4("Apple")       -> ""
 */
  const swap4 = (str) => {
     if(str.length <= 8) return ""
-    return str.slice(-4) +  str.slice(4, 6) + str.slice(0, 4)
+    return str.slice(-4) +  str.slice(4, -4) + str.slice(0, 4)
   }
   console.log(swap4("abc"))
   console.log(swap4("JavaScript")) 
@@ -212,7 +212,7 @@ const swapFirstLastWord = (word) => {
 }
 
 
-function reverseStringWords1(string){
+const  reverseStringWords =(string) =>{
     let words = string.trim().split(' ')    // we get our string as array and spit by spaces
     let reverseString = []
 
@@ -221,6 +221,16 @@ function reverseStringWords1(string){
     }  
     return words.join(' ') //// join them by places now it's string
 }
+
+
+// Write your solution below
+const  swapFirstLastWord = (str) => {
+    let words =  str.trim().split(" ")
+  if(words.length < 2 ) return "";
+  [words[0], words[words.length - 1]] = [words[words.length - 1], words[0]]
+  return words.join(" ")
+  }
+
 console.log(swapFirstLastWord("Hello World")) 
 console.log(swapFirstLastWord("I like JavaScript"))
 console.log(swapFirstLastWord("foo bar foo bar")) 
@@ -823,9 +833,20 @@ add([3, 0, 0, 7, 5, 10], [6, 3, 2])         -> [9, 3, 2, 7, 5, 10]
 add([10, 3, 6, 3, 2], [6, 8, 3, 0, 0, 7, 5, 10, 34])     -> [16, 11, 9,  3, 2, 7, 5, 10, 34] 
 add([-5, 6, -3, 11], [5, -6, 3, -11])         -> [0, 0, 0, 0]
 */
-const add = () => {
-
+const add = (arr1, arr2) => {
+    if(arr2.length > arr1.length)[arr1, arr2] = [arr2, arr1]
+    return arr1.map((value, i) => {
+        return value + (arr2[i] || 0)
+    })
+    
 }
+
+//orr
+if(arr2.length > arr1.length) [arr1, arr2] = [arr2, arr1]  //// незрозуміал
+for(let i = 0; i < arr2.length; i++){
+  arr1[i] += arr2[i]//// додасть індекси між собою
+}
+return largerArr
 
 
 
@@ -841,9 +862,10 @@ noA(["javascript", "hello", "123", "xyz"])     ->  ["javascript", "hello", "123"
 noA(["apple", "123", "ABC", "javascript"])     ->  ["###", "123", "###", "javascript"] 
 noA(["apple", "abc", "ABC", "Alex", "A"])     ->  ["###", "###", "###", "###", "###"]   
 */
-const noA = () => {
+const noA = (str) => str.map(x => x.toLowerCase()[0] === 'a'  ? '###' : x)
+    
 
-}
+//// forEach
 
 console.log(noA(["javascript", "hello", "123", "xyz"]))     
 console.log(noA(["apple", "123", "ABC", "javascript"]))
@@ -861,7 +883,13 @@ no3and5([7, 4, 11, 23, 17])       -> [7, 4, 11, 23, 17]
 no3and5([3, 4, 5, 6])       -> [100, 4, 99, 100] 
 no3and5([10, 11, 12, 13, 14, 15])     -> [99, 11, 100, 13, 14, 101]
 */ 
-const no3and5 = ()  => {
+const no3and5 = (arr)  => {
+    return arr.map((x) => {
+    if(x % 3 === 0 && x % 5 === 0 ) return 101
+    else if(x % 3 === 0) return 100
+    else if( x % 5 === 0) return 99
+    else return x
+    })
 
 }
 console.log(no3and5([7, 4, 11, 23, 17]))
@@ -880,9 +908,17 @@ no13([13, 13, 13 , 13, 13])     -> [0, 0, 0, 0, 0]
 no13([])         -> []
 */
 
-const no13 = () => {
+const no13 = (arr) => arr.map(x => x === 13 ? 0 : x)
+/// for of
 
+const no131 = (arr) => {
+let result = []
+for(let el of arr)
+    if(el === 13) result.push(0) 
+else result.push(el)
 }
+return result
+
 console.log(no13([1, 2, 3 ,4]))  
 console.log(no13([13, 2, 3])) 
 console.log(no13([13, 13, 13 , 13, 13]))  
@@ -899,8 +935,19 @@ removeDuplicates([0, -1, -2, -2, -1])         -> [0, -1, -2]
 removeDuplicates(["abc", "xyz", "123", "ab", "abc", "ABC"]) -> ["abc", "xyz", "123", "ab", "ABC"] 
 removeDuplicates(["1", "2", "3", "2", "3"])         -> ["1", "2", "3"]
 */
-const removeDuplicates = () => {
-
+const removeDuplicates = (arr) => {
+    let conteiner = []
+     arr.forEach((el) => {
+        if(!conteiner.includes(el)) conteiner.push(el)
+    })
+return conteiner
+}
+const removeDuplicates = (arr) => {
+let container = []
+for(let el of arr){
+    if(!container.includes(el)) container.push(el)
+}
+return container
 }
 console.log(removeDuplicates([10, 20, 35, 20, 35, 60, 70, 60]))    
 console.log(removeDuplicates([1, 2, 5, 2, 3]))       
@@ -922,9 +969,17 @@ noDigit("123Hello")         -> "Hello"
 noDigit("123Hello World149")     -> "Hello World” 
 noDigit("123Tech456Global149")     -> "TechGlobal"
 */
-const noDigit = () => {
+const noDigit = (str) => str.split('').filter(el => !(el >= '0' && el <= "9")).join('')
 
+const noDigit = (str) => {
+    let result = []
+    for(let el of str){
+        if(!(el >= '0' && el <= "9")) result.push(el)
+        } 
+return result.join('')
+    
 }
+
 console.log(noDigit(""))   
 console.log(noDigit("Javascript"))  
 console.log(noDigit("123Hello"))   
@@ -944,8 +999,15 @@ noVowel("")   -> ""
 noVowel("125$")   -> "125$" 
 */
 
-const noVowel = () => {
+const noVowel = (str) => str.split('').filter(el => !('aeiou'.includes(el.toLowerCase()))).join('')
 
+/// for of
+const noVowel = (str) => {
+let result = []
+for(let el of str){
+    if(!'aeiou'.includes(el.toLowerCase())) result.push(el)
+}
+return result.join('')
 }
 
 console.log(noVowel("TechGlobal")) 
@@ -966,10 +1028,32 @@ sumOfDigits("$125.0")       -> 8
 sumOfDigits("")         -> 0 
  */
  
-const sumOfDigits = () => {
+const sumOfDigits = (str) => {
+    return str.split('').filter(x => x > '0' && x <= '9').reduce((sum, num) => {
+return sum += Number(num)
+    }, 0)
 
 }
+
+//// reduse
+const sumOfDigits = (str) => str.split('').reduce((sum, num) => {
+if(num >= '0' && num <= '9') {
+    return sum + parseInt(num)
+}
+return sum
+}, 0)
  
+/// for of
+const sumOfDigits = (str) => {
+let sum = 0
+for( let el of str){
+    if(el >= '0' && el <= '9') {
+        sum += parseInt(el)
+    }
+}
+    return sum
+
+}
 console.log(sumOfDigits("Javascript"))  
 console.log(sumOfDigits("John’s age is 29"))
 console.log(sumOfDigits("$125.0"))  
@@ -987,9 +1071,14 @@ arrFactorial([])       -> []
 
 */
 
-const arrFactorial = () => {
-
+const arrFactorial = (arr) => arr.map((number) => { 
+let result = 1
+for(i = 2; i <= number; i++){
+    result *= i
 }
+return result
+
+})
 console.log(arrFactorial([1, 2, 3 ,4]))  
 console.log(arrFactorial([0, 5])) 
 console.log(arrFactorial([5 , 0, 6])) 

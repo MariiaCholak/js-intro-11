@@ -620,7 +620,7 @@ for( let i = smallest; i <= biggest; i++)
         else result.push(i);
     
 return result.join(' | ')
-}
+
 console.log(fizzBuxx(13, 18))
 console.log(fizzBuxx(5, 5))
 console.log(fizzBuxx(12, 5))

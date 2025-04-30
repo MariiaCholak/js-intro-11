@@ -187,7 +187,7 @@ sumOfDigits("$125.0")  -> 8
 sumOfDigits("")  -> 0
 
 */   
- const sumOfDigits1 = (str) => {
+ const sumOfDigits = (str) => {
     let sum = 0
      for( let digit of str){
         if (digit >= '0' && digit <= '9') {
@@ -197,6 +197,11 @@ sumOfDigits("")  -> 0
      return sum
   
  }
+ console.log(sumOfDigits("Javascript"))
+console.log(sumOfDigits("John’s age is 29"))
+console.log(sumOfDigits("$125.0"))
+console.log(sumOfDigits(""))
+
 ///// reduce method
     const sumOfDigits = (str) => str.split('').reduce((acc, curr) => {
         if (curr >= '0' && curr <= '9'){
@@ -208,7 +213,7 @@ sumOfDigits("")  -> 0
 
   /////  filter
   (str) => str.split('').filter(el => el >= '0' && el <= '9').reduce((sum, num) => {
-sum += Number(num)    ///// because our num isstring and we convert it to num with Num
+ return sum += Number(num)    ///// because our num isstring and we convert it to num with Num
   }, 0)
 
 console.log(sumOfDigits("Javascript"))
@@ -243,7 +248,7 @@ const arrFactorial = (arr) => arr.map(factorial)
 
 //// teacher way
 
-const arrFactorial1 = (arr) => {
+const arrFactorial = (arr) => {
     return arr.map(num => {
     let result = 1
     for(let i = 2; i <= num; i++){   /// бо ми почали з 1 тому наше і стартує з 2
