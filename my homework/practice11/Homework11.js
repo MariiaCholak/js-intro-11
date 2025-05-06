@@ -220,6 +220,7 @@ console.log(sumDigitsDouble("n0numh3r3"))
 
 console.log(`==========TASK08=======\n`)
 /*
+
 Task-8
 Requirement:
 Write a function named countOccurrence() which takes two string arguments 
@@ -241,7 +242,7 @@ const obj = {};
     }
     return obj;
 };
-////// don't know how to solve
+////// don't know how to solvee
 
 console.log(countOccurrence("Javascript", "Java")) 
 console.log(countOccurrence("Hello", "World"))
