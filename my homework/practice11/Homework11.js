@@ -202,7 +202,8 @@ sumDigitsDouble("Hi-23")  -> 10
 sumDigitsDouble("ab12")  -> 6
 sumDigitsDouble("n0numh3r3")  -> 12
 */
-const sumDigitsDouble = (str) => {
+
+const sumDigitsDouble = (str) => { 
 let container = 0
 
 for(let i = 0; i < str.length; i++ ){
