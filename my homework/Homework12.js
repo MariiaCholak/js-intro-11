@@ -13,13 +13,8 @@ makeNegative( -7)      -> -7
 makeNegative( 0)        -> 0
 makeNegative(0.45)    -> -0.45
 */
-const makeNegative = (num) => {
-    if(num === 0) return 0
-    else if (num < 0) return num
-    else return - num
+const makeNegative = (num) =>  (num <= 0) ? num : - num
 
-
-}
 
 console.log(makeNegative(10)) 
 console.log(makeNegative( -7)) 
@@ -40,10 +35,8 @@ isSumEvenOrOdd(0, 0, 0)  -> "even"
 isSumEvenOrOdd(7, 1, 9)        -> "odd"
 isSumEvenOrOdd(1, 1, 1)        -> "odd"
 */
-const isSumEvenOrOdd = (num1, num2, num3) => {
-    if ((num1 + num2 + num3) % 2 === 0) return 'even'
-    else  return 'odd'
-}
+const isSumEvenOrOdd = (num1, num2, num3) =>(num1 + num2 + num3) % 2 === 0 ?'even' : 'odd'
+
 
 console.log(isSumEvenOrOdd(0, 1, 4))
 console.log(isSumEvenOrOdd(0, -1, -5)) 
@@ -63,11 +56,14 @@ decimal2( [94.356, 8.9752] )  -> [ 94.36, 8.98 ]
 decimal2( [76.62, 128.4, 84] )  -> [ 76.62, 128.4, 84 ]
 decimal2( [20987, 3.53245, 12.345, 32.9] )  -> [ 20987, 3.53, 12.35, 32.90 ]
 decimal2( [ ] )  -> [  ]
-decimal2( [4.35623, 8.9742] )  -> [ 4.36, 8.97 ]
+decimal2( [4.35623, 8.9742] )  -> [ 4.36, 8.97 ]  
 */
-const decimal2 = (num) =>   num.map(ele => ele.toFixed(2)) 
-
-
+/// toFixed()- takes num round up what we want
+/// map - new arr for each value, byt we have problem  84 = 84.00 it's not our expected result
+const decimal2 = (arr) =>  arr.map(ele => i == ele.toFixed(2) ? ele : ele.toFixed(2))
+   /// if they = each other return i, if not return fix value   we need == use we check if actual value equel to each other
+/// 25==25.00 true ( mathematically they are equel)   128.4 == 128.40  yes
+/// 94.356 == 94.35 not equel because  of 6 value and return rounf result
 
 console.log(decimal2( [94.356, 8.9752] ))
 console.log(decimal2( [76.62, 128.4, 84] )) 
@@ -91,13 +87,13 @@ myPow(1, 1)  -> 1
 myPow(4, 2)    -> 16
 myPow(0, 0)    -> 1
 myPow(5, 3)    -> 125
-*/
+*/     /// Math.pow(x,n) or x**n 
 const myPow = (x, n) => {
     if(n === 0) return 1
     else if(n === 1) return x
-    let result = 1
+    let result = 1  // /5, 25 125
     
-    for(let i = 0; i < n; i++){    /// execution n times
+    for(let i = 1; i < n; i++){    /// execution n times, if n 3, it will rum 3 times
         result *= x                    //множення x самого на себе n разів.
     }
     return result
