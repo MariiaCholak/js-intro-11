@@ -25,6 +25,14 @@ const countVC = (str) => {
   return { vowels, consonants }
 }
 
+////bilal solution
+const countVC = (str) => {
+  return VC_Count = {     /// we created our obj w 2 key 
+      'vowels': str.split('').filter(x => 'aeiouAEIOU'.includes(x)).length,     /// return numbers of our vowel 
+      'consonants' :  str.split('').filter(x => (x.toLowerCase() >= 'a' && x.toLowerCase() <= 'z') && !('aeiouAEIOU'.includes(x))).length
+  }    ///we checked that between letter . and then between !== vowels means it cinsinants' its' length
+}
+
 console.log(countVC("Hello"))
 console.log(countVC("Programming"))
 console.log(countVC("123AbC"))
@@ -65,6 +73,26 @@ const countChars = (str) => {
   if (specials > 0) result.specials = specials;
 
   return result;
+}
+/// school solution
+const countChars = (str) => {
+  str = str.replaceAll(' ', '')   //we remove all spaces and empty str, we don't have any spaces
+  let charCount = {}   //  we created our obj, and then we will order in wrigth order, but don't add 0!
+// filter everything not a letter, and return length
+  let letterCount = str.split('').filter(x => x.toLowerCase() >= 'a' && x.toLowerCase() <= 'z').length
+  letterCount > 0 ? charCount['letters'] = letterCount : ''
+// the add to our charcount if it's more then 0 will add it first to our charcouner, if it'ss les don't add it at all , else if it false : just return "", if true add our key and value
+
+
+  let numberCount = str.split('').filter(x => x >= '0' && x <= '9').length
+  numberCount > 0 ? charCount['numbers'] = numberCount : ''
+/// the same for num
+
+///it's everything else exept letter or num, keep only special char
+  let specialCount = str.split('').filter(x => !(x.toLowerCase() >= 'a' && x.toLowerCase() <= 'z')).filter(x => !(x >= '0' && x <= '9')).length
+  specialCount > 0 ? charCount['specials'] = specialCount : ''
+
+  return charCount
 }
 
 console.log(countChars("Hello"))
@@ -115,6 +143,31 @@ const maxOccurrences = (str) => {
 
 }
 
+/// school decision 
+ const maxOccurrences = (str) => {
+  let occurences = {}
+  let highestCount = 0;  // our conteiner  to save rusult // Максимальна кількість входжень
+  let highestChar = ''; // our letter will be replace w new counter  Символ, який зустрічається найчастіше
+
+  // we need to add every occurense to out occurence  index of our el,if occurences[e] it's not occur it's going to creat it, if it's there, means occur of that letter = this = occurences[e] + 1 || 1 
+  str.split('').forEach(e =>e !== ' ' ? occurences[e] = occurences[e] + 1 || 1 : '');   // if it's not esist it will create it +1 
+  /// if it's spave ignore 
+   //Що тут відбувається?
+// e !== ' ' — пропускає пробіли.
+// occurences[e] = occurences[e] + 1 || 1:
+// Якщо occurences[e] вже існує, додаємо 1
+// Якщо ще не існує (undefined), вираз стає undefined + 1 → NaN, і тому спрацьовує || 1, тобто 1 раз зустрічається вперше
+ 
+   for(key in occurences){  ///for (key in occurences) — перебираємо всі ключі в об'єкті (тобто всі символи, які зустрічались).
+      if(occurences[key] > highestCount){ //Якщо поточний символ зустрічався більше разів, ніж попередній лідер (highestCount), оновлюємо лічильник і символ.
+          highestCount = occurences[key] // оновлюємо максимальне входження
+          highestChar = key; /// зберігаємо символ, який має найбільше входжень
+      }
+  }
+  return highestChar
+
+}
+
 console.log(maxOccurrences("Hello"))
 console.log(maxOccurrences("Occurrences"))
 console.log(maxOccurrences("    ab    "))
@@ -145,7 +198,6 @@ starOut("   ")      -> "   "
 starOut("")    -> ""
 */
 
-
 const starOut = (str) => {
   const arr = str.split('')
   return arr.filter((el, index) =>
@@ -153,6 +205,25 @@ const starOut = (str) => {
   //алишаємо тільки ті символи, які: не * і не сусідять з *   не справа зірочка
 }
 
+//// school
+const starOut = (str) => {
+  let strAsArr = str.split('');  // cjyvert everyrhong to arr because also splice works w arr 
+
+  while(strAsArr.includes('*')){     /// while because we don't know how many starts we gave, and we need to find srats and remove before and afte
+      const indexOfStar = strAsArr.indexOf('*');  
+      const indexBeforeStar = indexOfStar - 1;   // знаходимо індекс зірки та після неї  та перед нею індекс
+      const indexAfterStar = indexOfStar + 1;
+ 
+      while(strAsArr[indexAfterStar] === '*'){ //Якщо є декілька зірочок поспіль (наприклад, **), ми видаляємо усі додаткові зірочки після першої, але залишаємо першу, щоб обробити її як центр.
+          strAsArr.splice(indexAfterStar, 1);  //"ab**cd" → обробляється як "ab*cd" після цього блоку.
+      }
+
+      strAsArr.splice(indexBeforeStar, 3)// Видаляє три символи:символ перед зірочкою саму зірочку символ після зірочки
+
+  }
+
+  return strAsArr.join('');
+}
 
 console.log(starOut("ab*cd"))
 console.log(starOut("ab**cd"))
@@ -213,6 +284,30 @@ const romanToInt = (num) => {
   return total
 
 }
+
+/// школа
+const romanToInt = (roman) => {
+  const values = {
+      'I': 1,
+      'V': 5,
+      'X': 10,
+      'L': 50,
+      'C': 100,
+      'D': 500,
+      'M': 1000,
+  }
+                             //    every value symb
+  return roman.split('').reduce((result, numberal, i) => values[numberal] < values[roman[i+1]] ? result - values[numberal] : result + values[numberal],0)
+
+
+  // let result = 0;
+
+  // for(let i = 0; i < roman.length; i++){
+  //     if(values[roman[i]] < values[roman[i+1]]) result -= values[roman[i]]
+  //     else result += values[roman[i]]
+  // }
+}
+
 
 console.log(romanToInt("I"))
 console.log(romanToInt("IV"))
