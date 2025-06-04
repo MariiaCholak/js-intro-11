@@ -14,6 +14,7 @@ repeatingX("xxxxx")  -> true
 const repeatingX = (str) =>  str.toLowerCase().split('').some((element, index, arr) => {
   return  (element === 'x' &&  arr[index + 1] === 'x')
     })
+    ////SCHOOL    str.toLowerCase().includes('xx')
 
 
 
@@ -75,7 +76,7 @@ convertTemperature(-40, 'Celsius’)  -> -40
 convertTemperature(-40, 'Fahrenheit’)  -> -40
 */
 
-const convertTemperature = (temp, unit) => (unit === 'Celsius’') ? (temp * 9/5) + 32 :  (temp - 32) * 5/9
+const convertTemperature = (temp, unit) => unit.toLowerCase()  === 'celsius' ? (temp * 9/5) + 32 :  (temp - 32) * 5/9
 
 console.log(convertTemperature(100, `Celsius’`))
 console.log(convertTemperature(32, `Fahrenheit’`))
@@ -99,7 +100,7 @@ sumOfEvenNumbers( [ 10, 20, 30, 40, 50 ] )  -> 150
 */
 
 const  sumOfEvenNumbers = (arr) => arr.reduce((acc, curr) =>(curr % 2 === 0) ? acc += curr : acc , 0)
-
+///      teacher           (arr) => arr.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0)
 console.log(sumOfEvenNumbers( [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] ))  
 console.log(sumOfEvenNumbers( [ 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 ]))
 console.log(sumOfEvenNumbers( [ 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 ]))
