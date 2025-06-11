@@ -7,6 +7,7 @@ toCamelCase("first name")  ->"firstName"
 toCamelCase("last     name")  ->"lastName"
 toCamelCase("   ZIP CODE")  ->"zipCode"
 toCamelCase(“I Learn Java Script”)    -> "iLearnJavaScript"
+toCamelCase(“helloWorld”)     -> “helloWorld”
 */
 const toCamelCase = (str) => {
     const word = str.trim().toLowerCase().split(/\s+/)
@@ -20,6 +21,15 @@ const toCamelCase = (str) => {
     return word.join('')
 }
 /// or    map((word, index) => index === 0   ? word.toLowerCase()  : word[0].toUpperCase() + word.slice(1).toLowerCase()) .join('');
+
+
+//// BILAL
+const toCamelCase = (str) => {
+  if(!str.includes(' ')) return str    /// if it 1 word and doan't have extra space
+  return str.trim().toLowerCase().split(' ').filter(word => word !== '').map((word, index)=>{   // first part we get split but it splited w spasec between wprds
+      return index===0 ? word : word[0].toUpperCase() + word.slice(1)                         // фільтер забрав нам усі між словами відступи
+  }).join('')                                 // меп візьме уожен індекс слова якщо інкес 0 перша буква, просто верни слово назад нічого не робиб якщо ні верни слово індекс 0 перша буква великими і далі все приєднай малими
+}    /// і вкінці обєднай 
 console.log(toCamelCase("first name"))
 console.log(toCamelCase("last     name"))
 console.log(toCamelCase("   ZIP CODE"))
@@ -44,6 +54,7 @@ toSnakeCase("hello")     -> "hello"
 
 
 const toSnakeCase = (str) => str.trim().toLowerCase().split(/\s+/).join('_')
+const toSnakeCase = (str) => str.trim().toLowerCase().split(' ').filter(word => word !== '').join('_') /// we remove space between words
 console.log(toSnakeCase("first name"))
 console.log(toSnakeCase("last    name"))
 console.log(toSnakeCase("    I love Java Script"))
@@ -87,6 +98,18 @@ const alternatingCases = (str) => {
     return result
 
 }
+/// bilal
+const alternatingCases = (str) => {
+  let indexShifter = 0    // this index i int to shift if i fund spec char
+  return str.split('').map((char, index)=>{   // rchar and index 
+      if(char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z'){
+          if((index + indexShifter) % 2 === 0) return char.toUpperCase();  // if index even return letter as uppercase, if we find space we want to skip it and move to next one
+          else return char.toLowerCase()  // if it's odd
+      }
+      indexShifter++;  //if it's not letter
+      return char  /// we return our char w space between
+  }).join('')
+}
 
 console.log(alternatingCases("Hello"))
 console.log(alternatingCases("basketball"))
@@ -118,6 +141,19 @@ const isNeutral = (str1, str2) => {
 }
 // Метод .map() проходить по кожному символу з масиву. char — символ з str1,  i — його індекс.  str2[i] — символ з другого рядка на тому ж місці.
 // Якщо вони однакові (===) — повертаємо символ char.  Якщо різні — повертаємо '0'.
+
+
+
+// bilal
+const isNeutral = (str1, str2) => {
+  let result = ''   // conteiner
+  for(let i = 0; i < str1.length; i++){
+      if(str1[i] === '+' && str2[i] === '+') result += '+'
+      else if (str1[i] === '-' && str2[i] === '-') result += '-' /// we reasigb our result 
+      else result += '0'   /// rest it's 0
+  }
+  return result
+}
 console.log(isNeutral("-", "+"))
 console.log(isNeutral("-+", "-+"))
 console.log(isNeutral("-++-", "-+-+"))
@@ -162,6 +198,21 @@ const isTrueOrFalse = (str) => {
     }
     return positive >= negative;  ///порівнюємо кількість позитивних і негативних слів. Якщо позитивних більше або однаково → повертаємо trueб інше - false 
 }
+/// bilal
+const isTrueOrFalse = (str) => {
+  str = str.toLowerCase()
+  let countNeg = 0;
+  let countPos = 0;
+
+  for(word of str.split(' ')){    // we split everyword by space
+      if('abcdefghijklm'.includes(word[0])) countPos++;
+      else if('nopqrstuvwxyz'.includes(word[0])) countNeg++;
+  }
+
+  return countPos >= countNeg;
+
+}
+
 
 console.log(isTrueOrFalse("A big brown fox caught a bad rabbit"))
 console.log(isTrueOrFalse("Xylophones can obtain Xenon."))
